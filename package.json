@@ -1,5 +1,5 @@
 {
-  "name": "understrap",
+  "name": "newstore",
   "version": "0.4.6",
   "description": "Wordpress Theme framework",
   "main": "index.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/holger1411/understrap.git"
+    "url": "https://github.com/sptheme/newstore.git"
   },
   "keywords": [
     "wordpress",
@@ -17,12 +17,12 @@
     "bootstrap",
     "underscores"
   ],
-  "author": "Holger Koenemann",
+  "author": "Sopheak",
   "license": "GPL-2.0",
   "bugs": {
-    "url": "https://github.com/holger1411/understrap/issues"
+    "url": "https://github.com/sptheme/newstore/issues"
   },
-  "homepage": "https://github.com/holger1411/understrap",
+  "homepage": "https://github.com/sptheme/newstore",
   "dependencies": {
     "bower": "^1.7.9",
     "gulp": "^3.9.1",

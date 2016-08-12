@@ -4,7 +4,7 @@
  *
  * Displays all of the <head> section and everything up till <div id="content">
  *
- * @package understrap
+ * @package newstore
  */
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?>>
@@ -27,7 +27,7 @@
     <!-- ******************* The Navbar Area ******************* -->
     <div class="wrapper-fluid wrapper-navbar" id="wrapper-navbar">
 	
-        <a class="skip-link screen-reader-text sr-only" href="#content"><?php _e( 'Skip to content', 'understrap' ); ?></a>
+        <a class="skip-link screen-reader-text sr-only" href="#content"><?php _e( 'Skip to content', 'newstore' ); ?></a>
 
         <nav class="navbar navbar-dark bg-inverse site-navigation" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
                             

@@ -4,7 +4,7 @@
  *
  * Learn more: https://codex.wordpress.org/Author_Templates
  *
- * @package understrap
+ * @package newstore
  */
 get_header(); ?>
 
@@ -24,7 +24,7 @@ get_header(); ?>
                             $curauth = (isset($_GET['author_name'])) ? get_user_by('slug', $author_name) : get_userdata(intval($author));
                         ?>
 
-                        <h1><?php esc_html_e( 'About:', 'understrap' ); ?> <?php echo $curauth->nickname; ?></h1>
+                        <h1><?php esc_html_e( 'About:', 'newstore' ); ?> <?php echo $curauth->nickname; ?></h1>
 
                         <?php if ( ! empty( $curauth->ID ) ) : ?>
                             <?php echo get_avatar($curauth->ID); ?>
@@ -32,17 +32,17 @@ get_header(); ?>
 
                         <dl>
                             <?php if ( ! empty( $curauth->user_url ) ) : ?>
-                                <dt><?php esc_html_e( 'Website', 'understrap' ); ?></dt>
+                                <dt><?php esc_html_e( 'Website', 'newstore' ); ?></dt>
                                 <dd><a href="<?php echo $curauth->user_url; ?>"><?php echo $curauth->user_url; ?></a></dd>
                             <?php endif; ?>
 
                             <?php if ( ! empty( $curauth->user_description ) ) : ?>
-                                <dt><?php esc_html_e( 'Profile', 'understrap' ); ?></dt>
+                                <dt><?php esc_html_e( 'Profile', 'newstore' ); ?></dt>
                                 <dd><?php echo $curauth->user_description; ?></dd>
                             <?php endif; ?>
                         </dl>
                         
-                        <h2><?php esc_html_e( 'Posts by', 'understrap' ); ?> <?php echo $curauth->nickname; ?>:</h2>
+                        <h2><?php esc_html_e( 'Posts by', 'newstore' ); ?> <?php echo $curauth->nickname; ?>:</h2>
                             
                     </header><!-- .page-header -->
                     

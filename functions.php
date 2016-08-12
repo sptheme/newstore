@@ -1,8 +1,8 @@
 <?php
 /**
- * understrap functions and definitions
+ * newstore functions and definitions
  *
- * @package understrap
+ * @package newstore
  */
 
 /**

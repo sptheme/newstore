@@ -2,7 +2,7 @@
 /**
  * The template used for displaying page content in page.php
  *
- * @package understrap
+ * @package newstore
  */
 ?>
 
@@ -22,7 +22,7 @@
 
 		<?php
 			wp_link_pages( array(
-				'before' => '<div class="page-links">' . __( 'Pages:', 'understrap' ),
+				'before' => '<div class="page-links">' . __( 'Pages:', 'newstore' ),
 				'after'  => '</div>',
 			) );
 		?>
@@ -31,7 +31,7 @@
 
 	<footer class="entry-footer">
 
-		<?php edit_post_link( __( 'Edit', 'understrap' ), '<span class="edit-link">', '</span>' ); ?>
+		<?php edit_post_link( __( 'Edit', 'newstore' ), '<span class="edit-link">', '</span>' ); ?>
 
 	</footer><!-- .entry-footer -->
 
