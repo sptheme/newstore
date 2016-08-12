@@ -4,35 +4,47 @@
  *
  * This is the template that displays all pages by default.
  * Please note that this is the WordPress construct of pages
- * and that other 'pages' on your WordPress site may use a
+ * and that other 'pages' on your WordPress site will use a
  * different template.
  *
- * @link https://codex.wordpress.org/Template_Hierarchy
- *
- * @package newstore
+ * @package understrap
  */
 
 get_header(); ?>
 
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
+<div class="wrapper" id="page-wrapper">
+    
+    <div  id="content" class="container">
 
-			<?php
-			while ( have_posts() ) : the_post();
+        <div class="row">
+        
+    	   <div id="primary" class="<?php if ( is_active_sidebar( 'sidebar-1' ) ) : ?>col-md-8<?php else : ?>col-md-12<?php endif; ?> content-area">
+           
+                 <main id="main" class="site-main" role="main">
 
-				get_template_part( 'template-parts/content', 'page' );
+                    <?php while ( have_posts() ) : the_post(); ?>
 
-				// If comments are open or we have at least one comment, load up the comment template.
-				if ( comments_open() || get_comments_number() ) :
-					comments_template();
-				endif;
+                        <?php get_template_part( 'loop-templates/content', 'page' ); ?>
 
-			endwhile; // End of the loop.
-			?>
+                        <?php
+                            // If comments are open or we have at least one comment, load up the comment template
+                            if ( comments_open() || get_comments_number() ) :
+                                comments_template();
+                            endif;
+                        ?>
 
-		</main><!-- #main -->
-	</div><!-- #primary -->
+                    <?php endwhile; // end of the loop. ?>
 
-<?php
-get_sidebar();
-get_footer();
+                </main><!-- #main -->
+               
+    	    </div><!-- #primary -->
+            
+            <?php get_sidebar(); ?>
+
+        </div><!-- .row -->
+        
+    </div><!-- Container end -->
+    
+</div><!-- Wrapper end -->
+
+<?php get_footer(); ?>

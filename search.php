@@ -2,47 +2,60 @@
 /**
  * The template for displaying search results pages.
  *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#search-result
- *
- * @package newstore
+ * @package understrap
  */
 
 get_header(); ?>
+<div class="wrapper search-wrapper">
+    
+    <div class="container">
 
-	<section id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
+        <div class="row">
+        
+            <section id="primary" class="<?php if ( is_active_sidebar( 'sidebar-1' ) ) : ?>col-md-8<?php else : ?>col-md-12<?php endif; ?> content-area">
+                
+                <main id="main" class="site-main" role="main">
 
-		<?php
-		if ( have_posts() ) : ?>
+                <?php if ( have_posts() ) : ?>
 
-			<header class="page-header">
-				<h1 class="page-title"><?php printf( esc_html__( 'Search Results for: %s', 'newstore' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
-			</header><!-- .page-header -->
+                    <header class="page-header">
 
-			<?php
-			/* Start the Loop */
-			while ( have_posts() ) : the_post();
+                        <h1 class="page-title"><?php printf( __( 'Search Results for: %s', 'understrap' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
+                        
+                    </header><!-- .page-header -->
 
-				/**
-				 * Run the loop for the search to output the results.
-				 * If you want to overload this in a child theme then include a file
-				 * called content-search.php and that will be used instead.
-				 */
-				get_template_part( 'template-parts/content', 'search' );
+                    <?php /* Start the Loop */ ?>
+                    <?php while ( have_posts() ) : the_post(); ?>
 
-			endwhile;
+                        <?php
+                        /**
+                         * Run the loop for the search to output the results.
+                         * If you want to overload this in a child theme then include a file
+                         * called content-search.php and that will be used instead.
+                         */
+                        get_template_part( 'loop-templates/content', 'search' );
+                        ?>
 
-			the_posts_navigation();
+                    <?php endwhile; ?>
 
-		else :
+                    <?php the_posts_navigation(); ?>
 
-			get_template_part( 'template-parts/content', 'none' );
+                <?php else : ?>
 
-		endif; ?>
+                    <?php get_template_part( 'loop-templates/content', 'none' ); ?>
 
-		</main><!-- #main -->
-	</section><!-- #primary -->
+                <?php endif; ?>
 
-<?php
-get_sidebar();
-get_footer();
+                </main><!-- #main -->
+                
+            </section><!-- #primary -->
+
+            <?php get_sidebar(); ?>
+
+        </div><!-- .row -->
+    
+    </div><!-- Container end -->
+    
+</div><!-- Wrapper end -->
+
+<?php get_footer(); ?>
