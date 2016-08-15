@@ -19,12 +19,17 @@ class WPSP_Theme_Setup {
 
 		// Included Metabox.io framework as meta boxes of theme core
 		require_once( get_template_directory() . '/inc/meta-box/meta-box.php' );
+		require_once( get_template_directory() . '/inc/meta-box/meta-config.php' );
 		
 		// Define theme info
 		add_action( 'after_setup_theme', array( $this, 'theme_info' ), 0 );
 
+		// Load all core theme function files
+		add_action( 'after_setup_theme', array( $this, 'wpsp_include_functions' ), 1 );
+
 		// Register sidebar
 		add_action( 'widgets_init', array( $this, 'register_sidebar' ), 2 );
+
 	}
 
 	/**
@@ -53,6 +58,17 @@ class WPSP_Theme_Setup {
 	 */
 	public static function register_sidebar() {
 		require get_template_directory() . '/inc/widgets.php';
+	}
+
+	/**
+	 * Framework functions
+	 * Load before Classes & Addons so we can use them
+	 *
+	 * @since 1.0.0
+	 */
+	public static function wpsp_include_functions() {
+		require_once( get_template_directory() .'/inc/core-functions.php' );
+		require get_template_directory() . '/inc/layout.php';
 	}
 }
 

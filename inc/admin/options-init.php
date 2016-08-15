@@ -133,63 +133,235 @@
      * ---> START SECTIONS
      *
      */
-
+    // General section
     Redux::setSection( $opt_name, array(
-        'title'  => __( 'Basic Field', 'redux-framework-demo' ),
-        'id'     => 'basic',
-        'desc'   => __( 'Basic field with no subsections.', 'redux-framework-demo' ),
-        'icon'   => 'el el-home',
-        'fields' => array(
-            array(
-                'id'       => 'opt-text',
-                'type'     => 'text',
-                'title'    => __( 'Example Text', 'redux-framework-demo' ),
-                'desc'     => __( 'Example description.', 'redux-framework-demo' ),
-                'subtitle' => __( 'Example subtitle.', 'redux-framework-demo' ),
-            )
-        )
+        'title'            => __( 'General', 'wpsp-redux-framework' ),
+        'id'               => 'general-options',
+        'desc'             => __( '', 'wpsp-redux-framework' ),
+        'customizer_width' => '400px',
+        'icon'             => 'el el-cog'
     ) );
-
+    // General > Pages
     Redux::setSection( $opt_name, array(
-        'title' => __( 'Basic Fields', 'redux-framework-demo' ),
-        'id'    => 'basic',
-        'desc'  => __( 'Basic fields as subsections.', 'redux-framework-demo' ),
-        'icon'  => 'el el-home'
-    ) );
-
-    Redux::setSection( $opt_name, array(
-        'title'      => __( 'Text', 'redux-framework-demo' ),
-        'desc'       => __( 'For full documentation on this field, visit: ', 'redux-framework-demo' ) . '<a href="http://docs.reduxframework.com/core/fields/text/" target="_blank">http://docs.reduxframework.com/core/fields/text/</a>',
-        'id'         => 'opt-text-subsection',
+        'title'      => __( 'Pages', 'wpsp-redux-framework' ),
+        'id'         => 'single-page',
         'subsection' => true,
+        //'desc'       => __( 'Use for any post that do not have post featured image with landscape, portrait and square', 'wpsp-redux-framework' ),
         'fields'     => array(
             array(
-                'id'       => 'text-example',
-                'type'     => 'text',
-                'title'    => __( 'Text Field', 'redux-framework-demo' ),
-                'subtitle' => __( 'Subtitle', 'redux-framework-demo' ),
-                'desc'     => __( 'Field Description', 'redux-framework-demo' ),
-                'default'  => 'Default Text',
+                'id'       => 'page-layout',
+                'type'     => 'image_select',
+                'title'    => __( 'Layout', 'wpsp-redux-framework' ),
+                'subtitle' => __( 'Layout for all Pages', 'wpsp-redux-framework' ),
+                'desc'     => __( 'Other layouts will override this option if they are set', 'wpsp-redux-framework' ),
+                //Must provide key => value(array:title|img) pairs for radio options
+                'options'  => array(
+                    'inherit' => array(
+                        'alt' => 'Inherit',
+                        'img' => get_template_directory_uri() . '/images/admin/layout-off.png'
+                    ),
+                    'full-width' => array(
+                        'alt' => 'Full width',
+                        'img' => get_template_directory_uri() . '/images/admin/full-width.png'
+                    ),
+                    'full-screen' => array(
+                        'alt' => 'Full screen',
+                        'img' => get_template_directory_uri() . '/images/admin/full-screen.png'
+                    ),
+                    'left-sidebar' => array(
+                        'alt' => '2 Column Left',
+                        'img' => get_template_directory_uri() . '/images/admin/2cl.png'
+                    ),
+                    'right-sidebar' => array(
+                        'alt' => '2 Column Right',
+                        'img' => get_template_directory_uri() . '/images/admin/2cr.png'
+                    )
+                ),
+                'default'  => 'inherit',
+            ),
+            array(
+                'id'       => 'sidebar-page',
+                'type'     => 'select',
+                'data'     => 'sidebar',
+                'title'    => __( 'Sidebar', 'wpsp-redux-framework' ),
+                'subtitle' => __( 'Sidebar for all Pages', 'wpsp-redux-framework' ),
+                'desc'     => __( 'Other sidebar will override this option if they are set', 'wpsp-redux-framework' ),
+            ),
+            array(
+                'id'       => 'is-pages-custom-sidebar',
+                'type'     => 'checkbox',
+                'title'    => __( 'Enable/Disable page sidebar', 'wpsp-redux-framework' ),
+                'desc'     => __( 'Show page sidebar on/off', 'wpsp-redux-framework' ),
+                'default'  => '0'// 1 = on | 0 = off
+            ),
+            array(
+                'id'       => 'is-page-comments',
+                'type'     => 'checkbox',
+                'title'    => __( 'Enable/Disable comment on pages', 'wpsp-redux-framework' ),
+                'default'  => '0'// 1 = on | 0 = off
+            ),
+            array(
+                'id'       => 'is-page-featured-image',
+                'type'     => 'checkbox',
+                'title'    => __( 'Display Featured Images', 'wpsp-redux-framework' ),
+                'default'  => '0'// 1 = on | 0 = off
             ),
         )
     ) );
 
+    // Blog section
     Redux::setSection( $opt_name, array(
-        'title'      => __( 'Text Area', 'redux-framework-demo' ),
-        'desc'       => __( 'For full documentation on this field, visit: ', 'redux-framework-demo' ) . '<a href="http://docs.reduxframework.com/core/fields/textarea/" target="_blank">http://docs.reduxframework.com/core/fields/textarea/</a>',
-        'id'         => 'opt-textarea-subsection',
+        'title'            => __( 'Blog', 'wpsp-redux-framework' ),
+        'id'               => 'blog-options',
+        'desc'             => __( '', 'wpsp-redux-framework' ),
+        'customizer_width' => '400px',
+        'icon'             => 'el el-file-edit'
+    ) );
+    // blog > general
+    Redux::setSection( $opt_name, array(
+        'title'      => __( 'General', 'wpsp-redux-framework' ),
+        'id'         => 'blog-general-option',
         'subsection' => true,
+        //'desc'       => __( 'Use for any post that do not have post featured image with landscape, portrait and square', 'wpsp-redux-framework' ),
         'fields'     => array(
             array(
-                'id'       => 'textarea-example',
-                'type'     => 'textarea',
-                'title'    => __( 'Text Area Field', 'redux-framework-demo' ),
-                'subtitle' => __( 'Subtitle', 'redux-framework-demo' ),
-                'desc'     => __( 'Field Description', 'redux-framework-demo' ),
-                'default'  => 'Default Text',
+                'id'       => 'blog-page',
+                'type'     => 'select',
+                'data'     => 'pages',
+                'title'    => __( 'Main Page', 'wpsp-redux-framework' ),
+            ),
+            array(
+                'id'       => 'blog-cats-exclude',
+                'type'     => 'text',
+                'title'    => __( 'Exclude Categories From Blog', 'wpsp-redux-framework' ),
+                'subtitle' => __( 'Enter the ID of categories to exclude from the blog template or homepage blog seperated by a comma (no spaces).', 'wpsp-redux-framework' ),
             ),
         )
     ) );
+    // blog > single 
+    Redux::setSection( $opt_name, array(
+        'title'      => __( 'Single', 'wpsp-redux-framework' ),
+        'id'         => 'blog-single-option',
+        'subsection' => true,
+        //'desc'       => __( 'Use for any post that do not have post featured image with landscape, portrait and square', 'wpsp-redux-framework' ),
+        'fields'     => array(
+            array(
+                'id'       => 'single-layout',
+                'type'     => 'image_select',
+                'title'    => __( 'Layout', 'wpsp-redux-framework' ),
+                'subtitle' => __( 'Layout for single post', 'wpsp-redux-framework' ),
+                'desc'     => __( '[ is_single ] Single post layout - If a post has a set layout, it will override this.', 'wpsp-redux-framework' ),
+                'options'  => array(
+                    'inherit' => array(
+                        'alt' => 'Inherit',
+                        'img' => get_template_directory_uri() . '/images/admin/layout-off.png'
+                    ),
+                    'full-width' => array(
+                        'alt' => 'Full width',
+                        'img' => get_template_directory_uri() . '/images/admin/full-width.png'
+                    ),
+                    'full-screen' => array(
+                        'alt' => 'Full screen',
+                        'img' => get_template_directory_uri() . '/images/admin/full-screen.png'
+                    ),
+                    'left-sidebar' => array(
+                        'alt' => '2 Column Left',
+                        'img' => get_template_directory_uri() . '/images/admin/2cl.png'
+                    ),
+                    'right-sidebar' => array(
+                        'alt' => '2 Column Right',
+                        'img' => get_template_directory_uri() . '/images/admin/2cr.png'
+                    )
+                ),
+                'default'  => 'inherit',
+            ),
+        )
+    ) );
+    // Blog > Archive
+    Redux::setSection( $opt_name, array(
+        'title'      => __( 'Archive', 'wpsp-redux-framework' ),
+        'id'         => 'blog-archive-option',
+        'subsection' => true,
+        //'desc'       => __( 'Use for any post that do not have post featured image with landscape, portrait and square', 'wpsp-redux-framework' ),
+        'fields'     => array(
+            array(
+                'id'       => 'archive-layout',
+                'type'     => 'image_select',
+                'title'    => __( 'Archive', 'wpsp-redux-framework' ),
+                'subtitle' => __( 'Layout for archive page', 'wpsp-redux-framework' ),
+                'desc'     => __( '[ is_archive ] Category, date, tag and author archive layout', 'wpsp-redux-framework' ),
+                'options'  => array(
+                    'inherit' => array(
+                        'alt' => 'Inherit',
+                        'img' => get_template_directory_uri() . '/images/admin/layout-off.png'
+                    ),
+                    'full-width' => array(
+                        'alt' => 'Full width',
+                        'img' => get_template_directory_uri() . '/images/admin/full-width.png'
+                    ),
+                    'full-screen' => array(
+                        'alt' => 'Full screen',
+                        'img' => get_template_directory_uri() . '/images/admin/full-screen.png'
+                    ),
+                    'left-sidebar' => array(
+                        'alt' => '2 Column Left',
+                        'img' => get_template_directory_uri() . '/images/admin/2cl.png'
+                    ),
+                    'right-sidebar' => array(
+                        'alt' => '2 Column Right',
+                        'img' => get_template_directory_uri() . '/images/admin/2cr.png'
+                    )
+                ),
+                'default'  => 'inherit',
+            ),
+        )
+    ) );
+
+    // Layout
+    Redux::setSection( $opt_name, array(
+        'title'            => __( 'Layout', 'wpsp-redux-framework' ),
+        'id'               => 'basic-layout',
+        'desc'             => __( 'These are general setting for layout', 'wpsp-redux-framework' ),
+        'customizer_width' => '400px',
+        'icon'             => 'el el-screen'
+    ) );
+
+    Redux::setSection( $opt_name, array(
+        'title'      => __( 'General', 'wpsp-redux-framework' ),
+        'id'         => 'general-layout',
+        'subsection' => true,
+        'desc'       => __( 'Manage page layout with fullwide and responsive', 'wpsp-redux-framework' ),
+        'fields'     => array(
+            array(
+                'id'       => 'layout-global',
+                'type'     => 'image_select',
+                'title'    => __( 'Global layout', 'wpsp-redux-framework' ),
+                'subtitle' => __( 'Layout for all pages, posts and custom post', 'wpsp-redux-framework' ),
+                'desc'     => __( 'Other layouts will override this option if they are set', 'wpsp-redux-framework' ),
+                //Must provide key => value(array:title|img) pairs for radio options
+                'options'  => array(
+                    'full-width' => array(
+                        'alt' => 'Full width',
+                        'img' => get_template_directory_uri() . '/images/admin/full-width.png'
+                    ),
+                    'full-screen' => array(
+                        'alt' => 'Full screen',
+                        'img' => get_template_directory_uri() . '/images/admin/full-screen.png'
+                    ),
+                    'left-sidebar' => array(
+                        'alt' => '2 Column Left',
+                        'img' => get_template_directory_uri() . '/images/admin/2cl.png'
+                    ),
+                    'right-sidebar' => array(
+                        'alt' => '2 Column Right',
+                        'img' => get_template_directory_uri() . '/images/admin/2cr.png'
+                    )
+                ),
+                'default'  => 'right-sidebar',
+            ),
+        )
+    ) );
+
 
     /*
      * <--- END SECTIONS

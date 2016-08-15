@@ -1,5 +1,16 @@
 // This is an empty scss file for your custom styles - Please add your super duper awesome mega design styles here
 
-.newstore {
-	background-color: $brand-primary;
-}
+// Structure and Layout
+
+// Layout & Widths > Left Sidebar
+body.left-sidebar .wrapper .content-area { float: right }
+body.left-sidebar .wrapper .widget-area { float: left }
+
+// Layout & Widths > Full-Width & Full-Screen
+body.full-screen .wrapper,
+.full-screen { width: 100% !important; max-width: none !important; }
+body.full-width .wrapper .content-area,
+.full-width .content-area,
+body.full-screen .wrapper { width: 100% !important; max-width: none !important; }
+body.full-screen .wrapper .container,
+.full-screen .container { float: none; padding: 0; width: 100% !important; max-width: none !important; }

@@ -37,3 +37,11 @@ function wpsp_slider(){
 }
 endif;
 
+// Load the scripts in WP Admin
+add_action( 'admin_enqueue_scripts', 'wpsp_admin_scripts' );
+function wpsp_admin_scripts( $hook ) {
+    if ( !in_array($hook, array('post.php','post-new.php')) )
+    return;
+    wp_enqueue_script( 'admin-scripts', get_template_directory_uri() . '/js/admin-scripts.js', array( 'jquery' ) );
+}
+
