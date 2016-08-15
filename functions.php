@@ -6,16 +6,62 @@
  */
 
 /**
+ * Startup class
+ * 
+ * @version 1.0.0
+ */
+class WPSP_Theme_Setup {
+	
+	function __construct() {
+
+		// Add admin option with redux framework
+		require_once( get_template_directory() . '/inc/admin/admin-init.php' );
+
+		// Included Metabox.io framework as meta boxes of theme core
+		require_once( get_template_directory() . '/inc/meta-box/meta-box.php' );
+		
+		// Define theme info
+		add_action( 'after_setup_theme', array( $this, 'theme_info' ), 0 );
+
+		// Register sidebar
+		add_action( 'widgets_init', array( $this, 'register_sidebar' ), 2 );
+	}
+
+	/**
+	 * Define theme information
+	 * 
+	 * @version 1.0.0
+	 */
+	public function theme_info() {
+		// Theme info
+		$theme = wp_get_theme( 'newstore' );
+		$theme_name = $theme['Name'];
+		$theme_version = $theme['Version'];
+		
+		// Branding
+		define( 'THEME_BRANDING', $theme_name );
+		define( 'THEME_VERSION', $theme_version );
+		define( 'THEME_BRANDING_PREFIX', 'NST');
+	}
+
+	/**
+	 * Register widget area.
+	 *
+	 * @link http://codex.wordpress.org/Function_Reference/register_sidebar
+	 *
+	 * @version 1.0.0
+	 */
+	public static function register_sidebar() {
+		require get_template_directory() . '/inc/widgets.php';
+	}
+}
+
+$wpsp_theme_setup = new WPSP_Theme_Setup();
+
+/**
  * Theme setup and custom theme supports.
  */
 require get_template_directory() . '/inc/setup.php';
-
-/**
- * Register widget area.
- *
- * @link http://codex.wordpress.org/Function_Reference/register_sidebar
- */
-require get_template_directory() . '/inc/widgets.php';
 
 /**
 * Load functions to secure your WP install.
