@@ -61,3 +61,14 @@ function wpsp_get_redux( $id, $default = '' ) {
 
 }
 endif;
+
+/**
+ * Returns the correct classname for any specific column grid
+ *
+ * @since 1.0.0
+ */
+if ( ! function_exists('wpsp_grid_class') ) :
+function wpsp_grid_class( $col = '4' ) {
+	return esc_attr( apply_filters( 'wpsp_grid_class', 'col-md-'. $col ) );
+}
+endif;

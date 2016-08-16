@@ -10,6 +10,34 @@
 
 <?php get_sidebar('footerfull'); ?>
 
+<div class="wrapper" id="wrapper-footer-widget">
+    <div class="container">
+        <?php // Get footer widgets columns
+        $columns    = wpsp_get_redux( 'footer-widgets-columns', '4' );
+        $grid_class = wpsp_grid_class( $columns );
+        $gap        = wpsp_get_redux( 'footer-widgets-gap', '30' );
+
+        // Classes
+        $wrap_classes = array(); 
+        if ( '1' == $columns ) {
+            $wrap_classes[] = 'single-col-footer';
+        } 
+        if ( $gap ) {
+            $wrap_classes[] = 'gap-'. $gap;
+        }
+        $wrap_classes = implode( ' ', $wrap_classes ); ?>
+
+        <div class="row <?php echo esc_attr( $wrap_classes ); ?>">
+            <!-- Widget 1 -->
+            <div class="<?php echo esc_attr( $grid_class ); ?> col col-1">
+                <?php dynamic_sidebar( 'footer-sidebar-1' ); ?>
+            </div><!-- .footer-one-box -->
+
+        </div> <!-- row end -->
+
+    </div><!-- container end -->
+</div> <!-- wrapper end -->
+
 <div class="wrapper" id="wrapper-footer">
     
     <div class="container">

@@ -58,7 +58,7 @@ get_header(); ?>
                         <?php get_template_part( 'loop-templates/content', 'none' ); ?>
                         
                     <?php endif; ?>
-                        
+
                     </main><!-- #main -->
                    
     	       </div><!-- #primary -->

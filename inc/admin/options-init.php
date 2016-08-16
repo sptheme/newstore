@@ -101,6 +101,16 @@
      */
 
     /*
+     * ---> OTHER VARIABLE
+     */
+
+    $header_styles = header_styles();
+
+    /*
+     * ---> END OTHER VARIABLE
+     */
+
+    /*
      * ---> START HELP TABS
      */
 
@@ -299,6 +309,107 @@
                 'title'    => __( 'Sidebar', 'wpsp-redux-framework' ),
                 'subtitle' => __( 'Sidebar for search page', 'wpsp-redux-framework' ),
                 'desc'     => __( '[ <strong>is_search</strong> ] Primary', 'wpsp-redux-framework' ),
+            ),
+            array(
+                'id'       => 'search-style',
+                'type'     => 'select',
+                'title'    => __( 'Style', 'wpsp-redux-framework' ),
+                'options'  => array(
+                    'default' => 'Left Thumbnail',
+                    'blog' => 'Inherit From Blog',
+                ),
+                'default'  => 'default'
+            ),
+            array(
+                'id'       => 'search-posts-per-page',
+                'type'     => 'text',
+                'title'    => __( 'Posts Per Page', 'wpsp-redux-framework' ),
+                'validate' => 'preg_replace',
+                'preg'     => array(
+                    'pattern'     => '/[^0-9]/s',
+                    'replacement' => 'Allow only number'
+                ),
+                'default'  => '10',
+            ),
+            array(
+                'id'       => 'is-search-custom-sidebar',
+                'type'     => 'checkbox',
+                'title'    => __( 'Enable/Disable search sidebar', 'wpsp-redux-framework' ),
+                'desc'     => __( 'Show search sidebar on/off', 'wpsp-redux-framework' ),
+                'default'  => '0'// 1 = on | 0 = off
+            ),
+            array(
+                'id'       => 'is-main-search',
+                'type'     => 'checkbox',
+                'title'    => __( 'Enable/Disable main search on header', 'wpsp-redux-framework' ),
+                'default'  => '1'// 1 = on | 0 = off
+            ),
+        )
+    ) );
+
+    // Footer
+    Redux::setSection( $opt_name, array(
+        'title'            => __( 'Footer', 'wpsp-redux-framework' ),
+        'id'               => 'footer-options',
+        'desc'             => __( '', 'wpsp-redux-framework' ),
+        'customizer_width' => '400px',
+        'icon'             => 'el el-credit-card'
+    ) );
+    // Footer > widget 
+    Redux::setSection( $opt_name, array(
+        'title'      => __( 'Footer Widget', 'wpsp-redux-framework' ),
+        'id'         => 'footer-widget',
+        'subsection' => true,
+        //'desc'       => __( 'Use for any post that do not have post featured image with landscape, portrait and square', 'wpsp-redux-framework' ),
+        'fields'     => array(
+            array(
+                'id'       => 'is-footer-widgets',
+                'type'     => 'checkbox',
+                'title'    => __( 'Enable footer', 'wpsp-redux-framework' ),
+                'desc'     => __( 'Switch footer on/off', 'wpsp-redux-framework' ),
+                'default'  => '0'// 1 = on | 0 = off
+            ),
+            array(
+                'id'       => 'footer-widgets-columns',
+                'type'     => 'select',
+                'required' => array( 'is-footer-widgets', '=', '1' ),
+                'title'    => __( 'Columns', 'wpsp-redux-framework' ),
+                'options'  => array(
+                        '1' => '1', 
+                        '2' => '2', 
+                        '3' => '3', 
+                        '4' => '4', 
+                        '5' => '5', 
+                    ),
+                'default'  => '4',
+            ),
+            array(
+                'id'       => 'footer-widgets-gap',
+                'type'     => 'select',
+                'required' => array( 'is-footer-widgets', '=', '1' ),
+                'title'    => __( 'Footer Widgets Gap', 'wpsp-redux-framework' ),
+                'options'  => array(
+                    'default' => esc_html__( 'Default', 'wpsp-redux-framework' ),
+                    '0' => esc_html__( '0px','wpsp-redux-framework' ),
+                    '5' => esc_html__( '5px','wpsp-redux-framework' ),
+                    '10' => esc_html__( '10px','wpsp-redux-framework' ),
+                    '15' => esc_html__( '15px','wpsp-redux-framework' ),
+                    '20' => esc_html__( '20px','wpsp-redux-framework' ),
+                    '25' => esc_html__( '25px','wpsp-redux-framework' ),
+                    '30' => esc_html__( '30px','wpsp-redux-framework' ),
+                    '35' => esc_html__( '35px','wpsp-redux-framework' ),
+                    '40' => esc_html__( '40px','wpsp-redux-framework' ),
+                    '50' => esc_html__( '50px','wpsp-redux-framework' ),
+                    '60' => esc_html__( '60px','wpsp-redux-framework' ),
+                ),
+                'default'  => 'default',
+            ),
+            array(
+                'id'       => 'is-footer-reveal',
+                'type'     => 'checkbox',
+                'title'    => __( 'Footer Reveal', 'wpsp-redux-framework' ),
+                'desc'     => __( 'Enable the footer reveal style. The footer will be placed in a fixed postion and display on scroll. This setting is for the "Full-Width" layout only and desktops only.', 'wpsp-redux-framework' ),
+                'default'  => '0'// 1 = on | 0 = off
             ),
         )
     ) );
