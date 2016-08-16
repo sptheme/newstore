@@ -208,6 +208,100 @@
             ),
         )
     ) );
+    // General > Error 404
+    Redux::setSection( $opt_name, array(
+        'title'      => __( 'Error 404', 'wpsp-redux-framework' ),
+        'id'         => 'error-404',
+        'subsection' => true,
+        //'desc'       => __( 'Use for any post that do not have post featured image with landscape, portrait and square', 'wpsp-redux-framework' ),
+        'fields'     => array(
+            array(
+                'id'       => '404-layout',
+                'type'     => 'image_select',
+                'title'    => __( 'Layout', 'wpsp-redux-framework' ),
+                'subtitle' => __( 'Layout for 404 error page', 'wpsp-redux-framework' ),
+                'desc'     => __( '[ is_404 ] Error 404 page layout', 'wpsp-redux-framework' ),
+                'options'  => array(
+                    'inherit' => array(
+                        'alt' => 'Inherit',
+                        'img' => get_template_directory_uri() . '/images/admin/layout-off.png'
+                    ),
+                    'full-width' => array(
+                        'alt' => 'Full width',
+                        'img' => get_template_directory_uri() . '/images/admin/full-width.png'
+                    ),
+                    'full-screen' => array(
+                        'alt' => 'Full screen',
+                        'img' => get_template_directory_uri() . '/images/admin/full-screen.png'
+                    ),
+                    'left-sidebar' => array(
+                        'alt' => '2 Column Left',
+                        'img' => get_template_directory_uri() . '/images/admin/2cl.png'
+                    ),
+                    'right-sidebar' => array(
+                        'alt' => '2 Column Right',
+                        'img' => get_template_directory_uri() . '/images/admin/2cr.png'
+                    )
+                ),
+                'default'  => 'inherit',
+            ),
+            array(
+                'id'       => 'sidebar-404',
+                'type'     => 'select',
+                'data'     => 'sidebar',
+                'title'    => __( 'Sidebar', 'wpsp-redux-framework' ),
+                'subtitle' => __( 'Sidebar for 404 Error page', 'wpsp-redux-framework' ),
+                'desc'     => __( '[ <strong>is_404</strong> ] Primary', 'wpsp-redux-framework' ),
+            ),
+        )
+    ) );        
+    // General > Search
+    Redux::setSection( $opt_name, array(
+        'title'      => __( 'Search', 'wpsp-redux-framework' ),
+        'id'         => 'search',
+        'subsection' => true,
+        //'desc'       => __( 'Use for any post that do not have post featured image with landscape, portrait and square', 'wpsp-redux-framework' ),
+        'fields'     => array(
+            array(
+                'id'       => 'search-layout',
+                'type'     => 'image_select',
+                'title'    => __( 'Layout', 'wpsp-redux-framework' ),
+                'subtitle' => __( 'Layout for search page', 'wpsp-redux-framework' ),
+                'desc'     => __( '[ is_search ] Search page layout', 'wpsp-redux-framework' ),
+                'options'  => array(
+                    'inherit' => array(
+                        'alt' => 'Inherit',
+                        'img' => get_template_directory_uri() . '/images/admin/layout-off.png'
+                    ),
+                    'full-width' => array(
+                        'alt' => 'Full width',
+                        'img' => get_template_directory_uri() . '/images/admin/full-width.png'
+                    ),
+                    'full-screen' => array(
+                        'alt' => 'Full screen',
+                        'img' => get_template_directory_uri() . '/images/admin/full-screen.png'
+                    ),
+                    'left-sidebar' => array(
+                        'alt' => '2 Column Left',
+                        'img' => get_template_directory_uri() . '/images/admin/2cl.png'
+                    ),
+                    'right-sidebar' => array(
+                        'alt' => '2 Column Right',
+                        'img' => get_template_directory_uri() . '/images/admin/2cr.png'
+                    )
+                ),
+                'default'  => 'inherit',
+            ),
+            array(
+                'id'       => 'sidebar-search',
+                'type'     => 'select',
+                'data'     => 'sidebar',
+                'title'    => __( 'Sidebar', 'wpsp-redux-framework' ),
+                'subtitle' => __( 'Sidebar for search page', 'wpsp-redux-framework' ),
+                'desc'     => __( '[ <strong>is_search</strong> ] Primary', 'wpsp-redux-framework' ),
+            ),
+        )
+    ) );
 
     // Blog section
     Redux::setSection( $opt_name, array(
@@ -275,6 +369,14 @@
                 ),
                 'default'  => 'inherit',
             ),
+            array(
+                'id'       => 'sidebar-single',
+                'type'     => 'select',
+                'data'     => 'sidebar',
+                'title'    => __( 'Sidebar single post', 'wpsp-redux-framework' ),
+                'subtitle' => __( 'Sidebar for single post', 'wpsp-redux-framework' ),
+                'desc'     => __( '[ is_single ] Primary - If a single post has a unique sidebar, it will override this.', 'wpsp-redux-framework' ),
+            ),
         )
     ) );
     // Blog > Archive
@@ -313,6 +415,52 @@
                     )
                 ),
                 'default'  => 'inherit',
+            ),
+            array(
+                'id'       => 'category-layout',
+                'type'     => 'image_select',
+                'title'    => __( 'Archive — Category', 'wpsp-redux-framework' ),
+                'subtitle' => __( 'Layout for each categories', 'wpsp-redux-framework' ),
+                'desc'     => __( '[ is_category ] Category archive layout', 'wpsp-redux-framework' ),
+                'options'  => array(
+                    'inherit' => array(
+                        'alt' => 'Inherit',
+                        'img' => get_template_directory_uri() . '/images/admin/layout-off.png'
+                    ),
+                    'full-width' => array(
+                        'alt' => 'Full width',
+                        'img' => get_template_directory_uri() . '/images/admin/full-width.png'
+                    ),
+                    'full-screen' => array(
+                        'alt' => 'Full screen',
+                        'img' => get_template_directory_uri() . '/images/admin/full-screen.png'
+                    ),
+                    'left-sidebar' => array(
+                        'alt' => '2 Column Left',
+                        'img' => get_template_directory_uri() . '/images/admin/2cl.png'
+                    ),
+                    'right-sidebar' => array(
+                        'alt' => '2 Column Right',
+                        'img' => get_template_directory_uri() . '/images/admin/2cr.png'
+                    )
+                ),
+                'default'  => 'inherit',
+            ),
+            array(
+                'id'       => 'sidebar-archive',
+                'type'     => 'select',
+                'data'     => 'sidebar',
+                'title'    => __( 'Sidebar', 'wpsp-redux-framework' ),
+                'subtitle' => __( 'Sidebar for archive page', 'wpsp-redux-framework' ),
+                'desc'     => __( '[ is_archive ] Primary', 'wpsp-redux-framework' ),
+            ),
+            array(
+                'id'       => 'sidebar-category',
+                'type'     => 'select',
+                'data'     => 'sidebar',
+                'title'    => __( 'Sidebar — Category', 'wpsp-redux-framework' ),
+                'subtitle' => __( 'Sidebar for each categories', 'wpsp-redux-framework' ),
+                'desc'     => __( '[ is_category ] Primary', 'wpsp-redux-framework' ),
             ),
         )
     ) );
