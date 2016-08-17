@@ -20,6 +20,12 @@ class WPSP_Theme_Setup {
 		// Register sidebar
 		add_action( 'widgets_init', array( $this, 'register_sidebar' ), 1 );
 
+		// Load theme js
+		add_action( 'wp_enqueue_scripts', array( $this, 'theme_scripts' ) );
+
+		// Load the scripts in WP Admin
+		add_action( 'admin_enqueue_scripts', array( $this, 'wpsp_admin_scripts' ) );
+
 		// Load all core theme function files
 		add_action( 'after_setup_theme', array( $this, 'wpsp_include_functions' ), 2 );
 
@@ -57,13 +63,60 @@ class WPSP_Theme_Setup {
 	}
 
 	/**
+	 *Enqueue scripts and styles
+	 *
+	 * @version 1.0.0
+	 */
+	public function theme_scripts() {
+		$localize_array = $this->localize_array();
+
+	    wp_enqueue_style( 'styles', get_stylesheet_directory_uri() . '/css/theme.min.css', array(), '0.4.6');
+	    wp_enqueue_script('jquery'); 
+	    wp_enqueue_script( 'scripts', get_template_directory_uri() . '/js/theme.min.js', array(), '0.4.6', true );
+
+	    if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
+	        wp_enqueue_script( 'comment-reply' );
+	    }
+
+	    
+	    wp_enqueue_script( 'wpsp-custom-script', get_template_directory_uri() .'/js/custom.js', array( 'jquery' ), THEME_VERSION, true );
+	    // Localize script
+	    wp_localize_script( 'wpsp-custom-script', 'wpspLocalize', $localize_array );
+
+	}
+
+	/**
+	 * Localize array
+	 * 
+	 * @version 1.0.0
+	 */
+	public static function localize_array() {
+		$arrays = array(
+	        'my_custom_localize'    => 'test',
+	    );
+
+		return apply_filters( 'wpsp_localize_array', $arrays );
+	}
+
+	/**
+	 * Load custom admin scripts
+	 *
+	 * @since 1.0.0
+	 */
+	public static function wpsp_admin_scripts( $hook ) {
+	    if ( !in_array($hook, array('post.php','post-new.php')) )
+	    return;
+	    wp_enqueue_script( 'admin-scripts', get_template_directory_uri() . '/js/admin-scripts.js', array( 'jquery' ) );
+	}
+
+	/**
 	 * Framework functions
 	 * Load before Classes & Addons so we can use them
 	 *
 	 * @since 1.0.0
 	 */
 	public static function wpsp_include_functions() {
-		require_once( get_template_directory() .'/inc/core-functions.php' );
+		require_once( get_template_directory() . '/inc/core-functions.php' );
 		require_once( get_template_directory() . '/inc/arrays.php' );
 		require_once( get_template_directory() . '/inc/layout.php' );
 		require_once( get_template_directory() . '/inc/security.php' );
@@ -92,16 +145,6 @@ $wpsp_theme_setup = new WPSP_Theme_Setup();
  * Theme setup and custom theme supports.
  */
 require get_template_directory() . '/inc/setup.php';
-
-/**
-* Load functions to secure your WP install.
-*/
-
-
-/**
- * Enqueue scripts and styles.
- */
-require get_template_directory() . '/inc/enqueue.php';
 
 /**
  * Custom template tags for this theme.

@@ -6,6 +6,7 @@
  */
 
 function wpsp_scripts() {
+
     wp_enqueue_style( 'styles', get_stylesheet_directory_uri() . '/css/theme.min.css', array(), '0.4.6');
     wp_enqueue_script('jquery'); 
     wp_enqueue_script( 'scripts', get_template_directory_uri() . '/js/theme.min.js', array(), '0.4.6', true );
@@ -17,9 +18,12 @@ function wpsp_scripts() {
 
 add_action( 'wp_enqueue_scripts', 'wpsp_scripts' );
 
+
 /** 
-*Loading slider script conditionally
-**/
+* Loading slider script conditionally
+*
+* @version 1.0.0
+*/
 
 if ( is_active_sidebar( 'hero' ) ):
 add_action("wp_enqueue_scripts","wpsp_slider");
@@ -36,12 +40,4 @@ function wpsp_slider(){
     }
 }
 endif;
-
-// Load the scripts in WP Admin
-add_action( 'admin_enqueue_scripts', 'wpsp_admin_scripts' );
-function wpsp_admin_scripts( $hook ) {
-    if ( !in_array($hook, array('post.php','post-new.php')) )
-    return;
-    wp_enqueue_script( 'admin-scripts', get_template_directory_uri() . '/js/admin-scripts.js', array( 'jquery' ) );
-}
 
