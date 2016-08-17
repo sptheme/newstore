@@ -63,12 +63,13 @@ function wpsp_get_redux( $id, $default = '' ) {
 endif;
 
 /**
- * Returns the correct classname for any specific column grid
+ * Returns the correct classname for any specific column grid work with bootstrap
  *
  * @since 1.0.0
  */
-if ( ! function_exists('wpsp_grid_class') ) :
-function wpsp_grid_class( $col = '4' ) {
-	return esc_attr( apply_filters( 'wpsp_grid_class', 'col-md-'. $col ) );
+if ( ! function_exists('bootstrap_grid_class') ) :
+function bootstrap_grid_class( $col = '4' ) {
+	$bootstrap_grid = 12;
+	return esc_attr( apply_filters( 'bootstrap_grid_class', 'col-md-'. ($bootstrap_grid/$col) ) );
 }
 endif;
