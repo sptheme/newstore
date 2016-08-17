@@ -17,14 +17,17 @@ class WPSP_Theme_Setup {
 		// Define theme info
 		add_action( 'after_setup_theme', array( $this, 'theme_info' ), 0 );
 
-		// Register sidebar
-		add_action( 'widgets_init', array( $this, 'register_sidebar' ), 1 );
+		// Defines hooks and runs actions
+		add_action( 'init', array( $this, 'hooks_actions' ), 0 );
+
+		// Load the scripts in WP Admin
+		add_action( 'admin_enqueue_scripts', array( $this, 'wpsp_admin_scripts' ) );
 
 		// Load theme js
 		add_action( 'wp_enqueue_scripts', array( $this, 'theme_scripts' ) );
 
-		// Load the scripts in WP Admin
-		add_action( 'admin_enqueue_scripts', array( $this, 'wpsp_admin_scripts' ) );
+		// Register sidebar
+		add_action( 'widgets_init', array( $this, 'register_sidebar' ), 1 );
 
 		// Load all core theme function files
 		add_action( 'after_setup_theme', array( $this, 'wpsp_include_functions' ), 2 );
@@ -52,14 +55,32 @@ class WPSP_Theme_Setup {
 	}
 
 	/**
-	 * Register widget area.
+	 * Defines all theme hooks and runs all needed actions for theme hooks.
 	 *
-	 * @link http://codex.wordpress.org/Function_Reference/register_sidebar
-	 *
-	 * @version 1.0.0
+	 * @since 1.0.0
 	 */
-	public static function register_sidebar() {
-		require_once( get_template_directory() . '/inc/widgets.php' );
+	public static function hooks_actions() {
+
+		// Register hooks (needed in admin for Custom Actions panel)
+		require_once( get_template_directory() .'/inc/hooks/hooks.php' );
+
+		// Front-end stuff
+		if ( ! is_admin() ) {
+			require_once( get_template_directory() .'/inc/hooks/actions.php' );
+			require_once( get_template_directory() .'/inc/hooks/partials.php' );
+		}
+
+	}
+
+	/**
+	 * Load custom admin scripts
+	 *
+	 * @since 1.0.0
+	 */
+	public static function wpsp_admin_scripts( $hook ) {
+	    if ( !in_array($hook, array('post.php','post-new.php')) )
+	    return;
+	    wp_enqueue_script( 'admin-scripts', get_template_directory_uri() . '/js/admin-scripts.js', array( 'jquery' ) );
 	}
 
 	/**
@@ -99,14 +120,14 @@ class WPSP_Theme_Setup {
 	}
 
 	/**
-	 * Load custom admin scripts
+	 * Register widget area.
 	 *
-	 * @since 1.0.0
+	 * @link http://codex.wordpress.org/Function_Reference/register_sidebar
+	 *
+	 * @version 1.0.0
 	 */
-	public static function wpsp_admin_scripts( $hook ) {
-	    if ( !in_array($hook, array('post.php','post-new.php')) )
-	    return;
-	    wp_enqueue_script( 'admin-scripts', get_template_directory_uri() . '/js/admin-scripts.js', array( 'jquery' ) );
+	public static function register_sidebar() {
+		require_once( get_template_directory() . '/inc/widgets.php' );
 	}
 
 	/**
