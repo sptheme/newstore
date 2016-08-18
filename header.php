@@ -22,14 +22,14 @@
 
 <body <?php body_class(); ?><?php wpsp_schema_markup( 'body' ); ?>>
 
-<?php wpsp_page_before(); ?>
+<?php wpsp_hook_page_before(); ?>
 
 <div id="page" class="hfeed site">
 
-    <?php wpsp_page_top(); ?>
+    <?php wpsp_hook_page_top(); ?>
     
-    <?php wpsp_wrapper_content_before(); ?>
+    <?php wpsp_hook_wrapper_content_before(); ?>
 
     <div class="wrapper-content" id="wrapper-content">
 
-        <?php wpsp_wrapper_content_top(); ?>
+        <?php wpsp_hook_wrapper_content_top(); ?>

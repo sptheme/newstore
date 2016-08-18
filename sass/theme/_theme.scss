@@ -14,3 +14,11 @@ body.full-width .wrapper .content-area,
 body.full-screen .wrapper { width: 100% !important; max-width: none !important; }
 body.full-screen .wrapper .container,
 .full-screen .container { float: none; padding: 0; width: 100% !important; max-width: none !important; }
+
+// Header
+
+// Header > full-width
+.wpsp-full-width .container { 
+	width: 100% !important; 
+	max-width: none !important; 
+}

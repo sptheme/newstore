@@ -86,18 +86,18 @@
     
 </div><!-- wrapper end -->
 
-    <?php wpsp_wrapper_content_bottom(); ?>
+    <?php wpsp_hook_wrapper_content_bottom(); ?>
 
     </div> <!-- .wrapper-content -->
 
-    <?php wpsp_wrapper_content_after(); ?>
+    <?php wpsp_hook_wrapper_content_after(); ?>
 
     
-    <?php wpsp_page_bottom(); ?>
+    <?php wpsp_hook_page_bottom(); ?>
 
 </div><!-- #page -->
 
-<?php wpsp_page_after(); ?>
+<?php wpsp_hook_page_after(); ?>
 
 <?php wp_footer(); ?>
 

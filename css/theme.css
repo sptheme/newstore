@@ -7217,3 +7217,7 @@ body.full-screen .wrapper .container,
   padding: 0;
   width: 100% !important;
   max-width: none !important; }
+
+.wpsp-full-width .container {
+  width: 100% !important;
+  max-width: none !important; }

@@ -11,7 +11,19 @@
 
     <a class="skip-link screen-reader-text sr-only" href="#content"><?php _e( 'Skip to content', 'newstore' ); ?></a>
 
+    <?php wpsp_hook_header_before(); ?>
+
     <header id="site-header" class="site-header <?php echo wpsp_header_classes(); ?>"<?php wpsp_schema_markup( 'header' ); ?> role="banner">
+
+        <?php wpsp_hook_header_top(); ?>
+
+        <div id="site-header-inner" class="container">
+
+            <?php wpsp_hook_header_inner(); ?>
+
+        </div> <!-- .container .clear -->
+
+        <?php wpsp_hook_header_bottom(); ?>
 
         <nav class="navbar navbar-dark bg-inverse site-navigation" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
                             
@@ -53,5 +65,7 @@
         </nav><!-- .site-navigation -->
 
     </header> <!-- .site-header -->   
+
+    <?php wpsp_hook_header_after(); ?>
     
 </div><!-- .wrapper-navbar end -->

@@ -20,3 +20,12 @@ function wpsp_header() {
 		get_template_part( 'partials/header/header-layout' );	
 	}
 }
+
+/**
+ * Get the header logo template part.
+ *
+ * @since 1.0.0
+ */
+function wpsp_header_logo() {
+	get_template_part( 'partials/header/header-logo' );
+}

@@ -106,6 +106,16 @@
 
     $header_styles = header_styles();
 
+    // Header styles
+    $header_styles = apply_filters( 'wpsp_header_styles', array(
+        'one' => esc_html__( 'One - Left Logo & Right Navbar','wpsp-redux-framework' ),
+        'two' => esc_html__( 'Two - Bottom Navbar','wpsp-redux-framework' ),
+        'three' => esc_html__( 'Three - Bottom Navbar Centered','wpsp-redux-framework' ),
+        'four' => esc_html__( 'Four - Top Navbar Centered','wpsp-redux-framework' ),
+        'five' => esc_html__( 'Five - Centered Inline Logo','wpsp-redux-framework' ),
+        'six' => esc_html__( 'Six - Vertical','wpsp-redux-framework' ),
+    ) );
+
     /*
      * ---> END OTHER VARIABLE
      */
@@ -355,9 +365,10 @@
         'customizer_width' => '400px',
         'icon'             => 'el el-tasks'
     ) );
+    // Header > General
     Redux::setSection( $opt_name, array(
         'title'      => __( 'General', 'wpsp-redux-framework' ),
-        'id'         => 'general-header-tab',
+        'id'         => 'header-general',
         'subsection' => true,
         //'desc'       => __( 'Use for any post that do not have post featured image with landscape, portrait and square', 'wpsp-redux-framework' ),
         'fields'     => array(
@@ -372,6 +383,42 @@
                 'type'     => 'checkbox',
                 'title'    => __( 'Full width', 'wpsp-redux-framework' ),
                 'default'  => '0'// 1 = on | 0 = off
+            ),
+            array(
+                'id'       => 'header-style',
+                'type'     => 'select',
+                'title'    => __( 'Style', 'wpsp-redux-framework' ),
+                'subtitle' => __( 'Style header menu left, bottom and center', 'wpsp-redux-framework' ),
+                'options'  => $header_styles,
+                'default'  => 'one',
+            ),
+            array(
+                'id'       => 'vertical-header-style',
+                'type'     => 'select',
+                'required' => array( 'header-style', '=', 'six' ),
+                'title'    => __( 'Vertical Header Style', 'wpsp-redux-framework' ),
+                'options'  => array(
+                        ''         => 'Default',
+                        'fixed'    => 'Fixed',
+                ),
+            ),
+        )
+    ) );
+    // Header > logo
+    Redux::setSection( $opt_name, array(
+        'title'      => __( 'Logo', 'wpsp-redux-framework' ),
+        'id'         => 'header-logo',
+        'subsection' => true,
+        //'desc'       => __( 'Use for any post that do not have post featured image with landscape, portrait and square', 'wpsp-redux-framework' ),
+        'fields'     => array(
+            array(
+                'id'       => 'theme-logo',
+                'type'     => 'media',
+                'title'    => __( 'Main logo', 'wpsp-redux-framework' ),
+                'subtitle' => __( 'Upload main image logo', 'wpsp-redux-framework' ),
+                'default'  => array(
+                    'url'=> get_template_directory_uri() . '/images/logo.png'
+                ),
             ),
         )
     ) );
@@ -453,7 +500,7 @@
     // blog > general
     Redux::setSection( $opt_name, array(
         'title'      => __( 'General', 'wpsp-redux-framework' ),
-        'id'         => 'blog-general-option',
+        'id'         => 'blog-general',
         'subsection' => true,
         //'desc'       => __( 'Use for any post that do not have post featured image with landscape, portrait and square', 'wpsp-redux-framework' ),
         'fields'     => array(
@@ -474,7 +521,7 @@
     // blog > single 
     Redux::setSection( $opt_name, array(
         'title'      => __( 'Single', 'wpsp-redux-framework' ),
-        'id'         => 'blog-single-option',
+        'id'         => 'blog-single',
         'subsection' => true,
         //'desc'       => __( 'Use for any post that do not have post featured image with landscape, portrait and square', 'wpsp-redux-framework' ),
         'fields'     => array(
@@ -521,7 +568,7 @@
     // Blog > Archive
     Redux::setSection( $opt_name, array(
         'title'      => __( 'Archive', 'wpsp-redux-framework' ),
-        'id'         => 'blog-archive-option',
+        'id'         => 'blog-archive',
         'subsection' => true,
         //'desc'       => __( 'Use for any post that do not have post featured image with landscape, portrait and square', 'wpsp-redux-framework' ),
         'fields'     => array(
@@ -607,7 +654,7 @@
     // Layout
     Redux::setSection( $opt_name, array(
         'title'            => __( 'Layout', 'wpsp-redux-framework' ),
-        'id'               => 'basic-layout',
+        'id'               => 'layout-option',
         'desc'             => __( 'These are general setting for layout', 'wpsp-redux-framework' ),
         'customizer_width' => '400px',
         'icon'             => 'el el-screen'
@@ -615,7 +662,7 @@
 
     Redux::setSection( $opt_name, array(
         'title'      => __( 'General', 'wpsp-redux-framework' ),
-        'id'         => 'general-layout',
+        'id'         => 'layout-general',
         'subsection' => true,
         'desc'       => __( 'Manage page layout with fullwide and responsive', 'wpsp-redux-framework' ),
         'fields'     => array(
