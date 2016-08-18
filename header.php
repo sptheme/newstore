@@ -22,7 +22,11 @@
 
 <body <?php body_class(); ?>>
 
+<?php wpsp_page_before(); ?>
+
 <div id="page" class="hfeed site">
+
+    <?php wpsp_page_top(); ?>
     
     <!-- ******************* The Navbar Area ******************* -->
     <div class="wrapper-fluid wrapper-navbar" id="wrapper-navbar">
@@ -70,8 +74,8 @@
         
     </div><!-- .wrapper-navbar end -->
 
+    <?php wpsp_wrapper_content_before(); ?>
 
+    <div class="wrapper-content" id="wrapper-content">
 
-
-
-
+        <?php wpsp_wrapper_content_top(); ?>
