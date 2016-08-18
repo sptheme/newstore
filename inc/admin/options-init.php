@@ -347,6 +347,35 @@
         )
     ) );
 
+    // Header
+    Redux::setSection( $opt_name, array(
+        'title'            => __( 'Header', 'wpsp-redux-framework' ),
+        'id'               => 'header-options',
+        'desc'             => __( '', 'wpsp-redux-framework' ),
+        'customizer_width' => '400px',
+        'icon'             => 'el el-tasks'
+    ) );
+    Redux::setSection( $opt_name, array(
+        'title'      => __( 'General', 'wpsp-redux-framework' ),
+        'id'         => 'general-header-tab',
+        'subsection' => true,
+        //'desc'       => __( 'Use for any post that do not have post featured image with landscape, portrait and square', 'wpsp-redux-framework' ),
+        'fields'     => array(
+            array(
+                'id'       => 'is-enable-header',
+                'type'     => 'checkbox',
+                'title'    => __( 'Enable', 'wpsp-redux-framework' ),
+                'default'  => '1'// 1 = on | 0 = off
+            ),
+            array(
+                'id'       => 'is-full-width-header',
+                'type'     => 'checkbox',
+                'title'    => __( 'Full width', 'wpsp-redux-framework' ),
+                'default'  => '0'// 1 = on | 0 = off
+            ),
+        )
+    ) );
+
     // Footer
     Redux::setSection( $opt_name, array(
         'title'            => __( 'Footer', 'wpsp-redux-framework' ),

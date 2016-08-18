@@ -5,3 +5,18 @@
  *
  * @package newstore
  */
+
+/*-------------------------------------------------------------------------------*/
+/* #  Header
+/*-------------------------------------------------------------------------------*/
+
+/**
+ * Get the header template part if enable 
+ *
+ * @version 1.0.0
+ */
+function wpsp_header() {
+	if ( wpsp_get_redux( 'is-enable-header' ) ) {
+		get_template_part( 'partials/header/header-layout' );	
+	}
+}

@@ -141,6 +141,8 @@ class WPSP_Theme_Setup {
 		require_once( get_template_directory() . '/inc/arrays.php' );
 		require_once( get_template_directory() . '/inc/layout.php' );
 		require_once( get_template_directory() . '/inc/security.php' );
+		require_once( get_template_directory() . '/inc/sanitize-data.php' );
+		require_once( get_template_directory() . '/inc/header-functions.php' );
 	}
 
 	/**
