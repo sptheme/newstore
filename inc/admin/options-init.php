@@ -104,6 +104,13 @@
      * ---> OTHER VARIABLE
      */
 
+    $sites_sharing = array( 
+        'twitter'       => esc_html__( 'Twitter', 'wpsp-redux-framework' ),
+        'facebook'      => esc_html__( 'Facebook', 'wpsp-redux-framework' ),
+        'google_plus'   => esc_html__( 'Google+', 'wpsp-redux-framework' ),
+        'pinterest'     => esc_html__( 'Pinterest', 'wpsp-redux-framework' ),
+        );
+
     $header_styles = header_styles();
 
     // Header styles
@@ -161,6 +168,70 @@
         'customizer_width' => '400px',
         'icon'             => 'el el-cog'
     ) );
+    Redux::setSection( $opt_name, array(
+        'title'      => __( 'Social Sharing', 'wpsp-redux-framework' ),
+        'id'         => 'social-sharing',
+        'subsection' => true,
+        //'desc'       => __( 'Use for any post that do not have post featured image with landscape, portrait and square', 'wpsp-redux-framework' ),
+        'fields'     => array(
+            array(
+                'id'       => 'social-share-sites',
+                'type'     => 'checkbox',
+                'multi'    => true,
+                'title'    => __( 'Social share site', 'wpsp-redux-framework' ),
+                'subtitle' => __( 'checked website to be display', 'wpsp-redux-framework' ),
+                'options'  => $sites_sharing,
+                'default'  => array('twitter' => '1', 'facebook' => '1', 'google_plus' => '1'),
+            ),
+            array(
+                'id'       => 'social-share-position',
+                'type'     => 'select',
+                'title'    => __( 'Position', 'wpsp-redux-framework' ),
+                'options'  => array(
+                        'horizontal'   => esc_html__( 'Horizontal', 'wpsp-redux-framework' ),
+                        'vertical'   => esc_html__( 'Vertical', 'wpsp-redux-framework' ),
+                    ),
+                'default' => 'horizontal',
+            ),
+            array(
+                'id'       => 'is-social-share-heading',
+                'type'     => 'switch',
+                'title'    => __( 'Enable/disable heading', 'wpsp-redux-framework' ),
+                'default'  => true,
+            ),
+            array(
+                'id'       => 'social-share-heading',
+                'type'     => 'text',
+                'required' => array( 'is-social-share-heading', '=', '1' ),
+                'title'    => __( 'Heading on Posts', 'wpsp-redux-framework' ),
+                'default'  => __( 'Please Share This', 'wpsp-redux-framework' ),
+            ),
+            array(
+                'id'       => 'social-share-style',
+                'type'     => 'select',
+                'title'    => __( 'Style', 'wpsp-redux-framework' ),
+                'options'  => array(
+                        'flat'   => esc_html__( 'Flat', 'wpsp-redux-framework' ),
+                        'minimal'   => esc_html__( 'Minimal', 'wpsp-redux-framework' ),
+                        'three-d'   => esc_html__( '3D', 'wpsp-redux-framework' ),
+                    ),
+                'default' => 'flat',
+            ),
+            array(
+                'id'       => 'social-share-twitter-handle',
+                'type'     => 'text',
+                'title'    => __( 'Twitter Handle', 'wpsp-redux-framework' ),
+                'subtitle' => __( 'Twitter user name/id', 'wpsp-redux-framework' ),
+            ),
+            array(
+                'id'       => 'social-share-pages',
+                'type'     => 'switch',
+                'title'    => __( 'Enable for Pages', 'wpsp-redux-framework' ),
+                'subtitle' => __( 'Enable/disable for page', 'wpsp-redux-framework' ),
+                'default'  => '0'// 1 = on | 0 = off
+            ),
+        )
+    ) );
     // General > Pages
     Redux::setSection( $opt_name, array(
         'title'      => __( 'Pages', 'wpsp-redux-framework' ),
@@ -204,25 +275,24 @@
                 'type'     => 'select',
                 'data'     => 'sidebar',
                 'title'    => __( 'Sidebar', 'wpsp-redux-framework' ),
-                'subtitle' => __( 'Sidebar for all Pages', 'wpsp-redux-framework' ),
+                'subtitle' => __( 'Widget will apply on all pages', 'wpsp-redux-framework' ),
                 'desc'     => __( 'Other sidebar will override this option if they are set', 'wpsp-redux-framework' ),
             ),
             array(
                 'id'       => 'is-pages-custom-sidebar',
-                'type'     => 'checkbox',
+                'type'     => 'switch',
                 'title'    => __( 'Enable/Disable page sidebar', 'wpsp-redux-framework' ),
-                'desc'     => __( 'Show page sidebar on/off', 'wpsp-redux-framework' ),
                 'default'  => '0'// 1 = on | 0 = off
             ),
             array(
                 'id'       => 'is-page-comments',
-                'type'     => 'checkbox',
+                'type'     => 'switch',
                 'title'    => __( 'Enable/Disable comment on pages', 'wpsp-redux-framework' ),
                 'default'  => '0'// 1 = on | 0 = off
             ),
             array(
                 'id'       => 'is-page-featured-image',
-                'type'     => 'checkbox',
+                'type'     => 'switch',
                 'title'    => __( 'Display Featured Images', 'wpsp-redux-framework' ),
                 'default'  => '0'// 1 = on | 0 = off
             ),
@@ -343,14 +413,14 @@
             ),
             array(
                 'id'       => 'is-search-custom-sidebar',
-                'type'     => 'checkbox',
+                'type'     => 'switch',
                 'title'    => __( 'Enable/Disable search sidebar', 'wpsp-redux-framework' ),
                 'desc'     => __( 'Show search sidebar on/off', 'wpsp-redux-framework' ),
                 'default'  => '0'// 1 = on | 0 = off
             ),
             array(
                 'id'       => 'is-main-search',
-                'type'     => 'checkbox',
+                'type'     => 'switch',
                 'title'    => __( 'Enable/Disable main search on header', 'wpsp-redux-framework' ),
                 'default'  => '1'// 1 = on | 0 = off
             ),
@@ -374,13 +444,13 @@
         'fields'     => array(
             array(
                 'id'       => 'is-enable-header',
-                'type'     => 'checkbox',
+                'type'     => 'switch',
                 'title'    => __( 'Enable', 'wpsp-redux-framework' ),
                 'default'  => '1'// 1 = on | 0 = off
             ),
             array(
                 'id'       => 'is-full-width-header',
-                'type'     => 'checkbox',
+                'type'     => 'switch',
                 'title'    => __( 'Full width', 'wpsp-redux-framework' ),
                 'default'  => '0'// 1 = on | 0 = off
             ),
@@ -440,7 +510,7 @@
         'fields'     => array(
             array(
                 'id'       => 'is-footer-widgets',
-                'type'     => 'checkbox',
+                'type'     => 'switch',
                 'title'    => __( 'Enable footer', 'wpsp-redux-framework' ),
                 'desc'     => __( 'Switch footer on/off', 'wpsp-redux-framework' ),
                 'default'  => '0'// 1 = on | 0 = off
@@ -481,7 +551,7 @@
             ),
             array(
                 'id'       => 'is-footer-reveal',
-                'type'     => 'checkbox',
+                'type'     => 'switch',
                 'title'    => __( 'Footer Reveal', 'wpsp-redux-framework' ),
                 'desc'     => __( 'Enable the footer reveal style. The footer will be placed in a fixed postion and display on scroll. This setting is for the "Full-Width" layout only and desktops only.', 'wpsp-redux-framework' ),
                 'default'  => '0'// 1 = on | 0 = off
