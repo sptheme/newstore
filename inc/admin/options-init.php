@@ -696,6 +696,51 @@
         )
     ) );
 
+    // Branding
+    Redux::setSection( $opt_name, array(
+        'title'            => __( 'Branding', 'wpsp-redux-framework' ),
+        'id'               => 'branding-options',
+        'desc'             => __( '', 'wpsp-redux-framework' ),
+        'customizer_width' => '400px',
+        'icon'             => 'el el-flag'
+    ) );
+    Redux::setSection( $opt_name, array(
+        'title'      => __( 'Custom login', 'wpsp-redux-framework' ),
+        'id'         => 'custom-login',
+        'subsection' => true,
+        //'desc'       => __( 'Use for any post that do not have post featured image with landscape, portrait and square', 'wpsp-redux-framework' ),
+        'fields'     => array(
+            array(
+                'id'       => 'custom-login-logo',
+                'type'     => 'media',
+                'title'    => __( 'Custom login logo', 'wpsp-redux-framework' ),
+                'default'  => array(
+                    'url'=> get_template_directory_uri() . '/images/icons/posh-logo.png'
+                ),
+            ),
+            array(
+                'id'       => 'custom-admin-favicon',
+                'type'     => 'media',
+                'title'    => __( 'Custom favicon', 'wpsp-redux-framework' ),
+                'default'  => array(
+                    'url'=> get_template_directory_uri() . '/images/icons/favicon-16x16.png'
+                ),
+            ),
+            array(
+                'id'       => 'login-logo-height',
+                'type'     => 'text',
+                'title'    => __( 'Logo height', 'wpsp-redux-framework' ),
+                'desc'     => __( 'Default: 84px', 'wpsp-redux-framework' ),
+            ),
+            array(
+                'id'       => 'login-bg-color',
+                'type'     => 'color',
+                'title'    => __( 'Background color', 'wpsp-redux-framework' ),
+                'default'  => '#ffffff',
+                'validate' => 'color',
+            ),
+        )
+    ) );
 
     /*
      * <--- END SECTIONS
