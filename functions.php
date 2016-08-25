@@ -138,9 +138,10 @@ class WPSP_Theme_Setup {
 	 */
 	public static function wpsp_include_functions() {
 		require_once( get_template_directory() . '/inc/core-functions.php' );
-		require_once( get_template_directory() . '/inc/arrays.php' );
 		require_once( get_template_directory() . '/inc/security.php' );
 		require_once( get_template_directory() . '/inc/sanitize-data.php' );
+		require_once( get_template_directory() . '/inc/arrays.php' );
+		require_once( get_template_directory() . '/inc/wpml.php' );
 		require_once( get_template_directory() . '/inc/custom-login.php' );
 		require_once( get_template_directory() . '/inc/layout.php' );
 		require_once( get_template_directory() . '/inc/header-functions.php' );

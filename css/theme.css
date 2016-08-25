@@ -7194,12 +7194,25 @@ a.skip-link {
     .owl-theme .owl-dots .owl-dot.active span, .owl-theme .owl-dots .owl-dot:hover span {
       background: #869791; }
 
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+
+# STRUCTURE AND LAYOUT
+# ADDON ELEMENTS
+	## Social Sharing
+-------------------------------------------------------------*/
+/*-------------------------------------------------------------- 
+ # STRUCTURE AND LAYOUT
+-------------------------------------------------------------*/
+/* Layout & Widths > Left Sidebar */
 body.left-sidebar .wrapper .content-area {
   float: right; }
 
 body.left-sidebar .wrapper .widget-area {
   float: left; }
 
+/* Layout & Widths > Full-Width & Full-Screen */
 body.full-screen .wrapper,
 .full-screen {
   width: 100% !important;
@@ -7218,6 +7231,205 @@ body.full-screen .wrapper .container,
   width: 100% !important;
   max-width: none !important; }
 
+/* HEADER */
+/* Header > full-width */
 .wpsp-full-width .container {
   width: 100% !important;
   max-width: none !important; }
+
+/*-------------------------------------------------------------- 
+ # ADDON ELEMENTS
+-------------------------------------------------------------*/
+/*-------------------------------------------------------------- 
+ ## Social Sharing
+-------------------------------------------------------------*/
+/* Social Sharing > Core */
+ul.wpsp-social-share {
+  list-style: none; }
+
+.social-share-button-text {
+  font-size: 13px; }
+
+/* Dont use em here !! */
+.wpsp-social-share li,
+.wpsp-social-share a {
+  display: block;
+  text-decoration: none; }
+
+.wpsp-social-share a:hover {
+  text-decoration: none; }
+
+/* Social Sharing > Add margin when needed */
+.single-portfolio.no-composer .social-share-wrap.position-horizontal {
+  margin: 40px 0 0; }
+
+/* Social Sharing > Vertical */
+.social-share-wrap.position-vertical .social-share-title {
+  display: none; }
+
+.wpsp-social-share.position-vertical {
+  position: absolute;
+  top: 40px;
+  left: -55px;
+  z-index: 9;
+  width: 35px;
+  list-style: none;
+  margin: 0; }
+
+.left-sidebar .wpsp-social-share.position-vertical {
+  right: -55px;
+  left: auto; }
+
+.wpsp-social-share.position-vertical li {
+  float: left; }
+
+.wpsp-social-share.position-vertical li:first-child {
+  border-top: 1px solid #e4e4e4; }
+
+.wpsp-social-share.position-vertical .social-share-button-text {
+  display: none; }
+
+/* Social Sharing > Horizontal */
+.wpsp-social-share.position-horizontal {
+  margin: 0 0 40px; }
+
+.wpsp-social-share.position-horizontal li {
+  float: left;
+  margin: 0 5px 5px 0;
+  border: none; }
+
+.wpsp-social-share.position-horizontal li a {
+  color: #999;
+  width: auto;
+  padding: 0 10px;
+  height: 30px;
+  line-height: 30px;
+  border: 1px solid #e4e4e4;
+  font-weight: normal; }
+
+.wpsp-social-share.position-horizontal li .fa {
+  margin-right: 5px; }
+
+/* Social Sharing > Minimal */
+.wpsp-social-share li a {
+  color: #999;
+  width: 35px;
+  height: 35px;
+  line-height: 35px;
+  border: 1px solid #e4e4e4;
+  border-top: none;
+  text-align: center;
+  font-size: 1.077em;
+  transition: all .15s ease-in-out; }
+
+.wpsp-social-share li a:hover {
+  background: #f7f7f7; }
+
+.wpsp-social-share li.share-twitter a:hover {
+  color: #00aced; }
+
+.wpsp-social-share li.share-facebook a:hover {
+  color: #3b5998; }
+
+.wpsp-social-share li.share-pinterest a:hover {
+  color: #cb2027; }
+
+.wpsp-social-share li.share-googleplus a:hover {
+  color: #dd4b39; }
+
+.wpsp-social-share li.share-linkedin a:hover {
+  color: #4875B4; }
+
+/* Social Sharing > Flat */
+.wpsp-social-share.style-flat li li:first-child {
+  border: none; }
+
+.wpsp-social-share.position-vertical.style-flat li:first-child {
+  border-top: none; }
+
+.wpsp-social-share.style-flat li a {
+  color: #fff !important;
+  border: none !important;
+  border-radius: 2px; }
+
+.wpsp-social-share.style-flat li.share-twitter a {
+  background: #00aced; }
+
+.wpsp-social-share.style-flat li.share-twitter a:hover {
+  background: #0093cb; }
+
+.wpsp-social-share.style-flat li.share-facebook a {
+  background: #3b5998; }
+
+.wpsp-social-share.style-flat li.share-facebook a:hover {
+  background: #324b80; }
+
+.wpsp-social-share.style-flat li.share-pinterest a {
+  background: #cb2027; }
+
+.wpsp-social-share.style-flat li.share-pinterest a:hover {
+  background: #ae1b21; }
+
+.wpsp-social-share.style-flat li.share-googleplus a {
+  background: #dd4b39; }
+
+.wpsp-social-share.style-flat li.share-googleplus a:hover {
+  background: #d03724; }
+
+.wpsp-social-share.style-flat li.share-linkedin a {
+  background: #4875B4; }
+
+.wpsp-social-share.style-flat li.share-linkedin a:hover {
+  background: #3e659c; }
+
+.wpsp-social-share.style-flat li {
+  margin-bottom: 3px; }
+
+/* Social Sharing > 3D */
+.wpsp-social-share.style-three-d li li:first-child {
+  border: none; }
+
+.wpsp-social-share.position-vertical.style-three-d li:first-child {
+  border-top: none; }
+
+.wpsp-social-share.style-three-d li a {
+  color: #fff !important;
+  border: none;
+  border-bottom: 3px solid rgba(0, 0, 0, 0.25);
+  border-radius: 2px; }
+
+.wpsp-social-share.style-three-d li a:active {
+  border-bottom-color: transparent; }
+
+.wpsp-social-share.style-three-d li.share-twitter a {
+  background: #00aced; }
+
+.wpsp-social-share.style-three-d li.share-twitter a:hover {
+  background: #0093cb; }
+
+.wpsp-social-share.style-three-d li.share-facebook a {
+  background: #3b5998; }
+
+.wpsp-social-share.style-three-d li.share-facebook a:hover {
+  background: #324b80; }
+
+.wpsp-social-share.style-three-d li.share-pinterest a {
+  background: #cb2027; }
+
+.wpsp-social-share.style-three-d li.share-pinterest a:hover {
+  background: #ae1b21; }
+
+.wpsp-social-share.style-three-d li.share-googleplus a {
+  background: #dd4b39; }
+
+.wpsp-social-share.style-three-d li.share-googleplus a:hover {
+  background: #d03724; }
+
+.wpsp-social-share.style-three-d li.share-linkedin a {
+  background: #4875B4; }
+
+.wpsp-social-share.style-three-d li.share-linkedin a:hover {
+  background: #3e659c; }
+
+.wpsp-social-share.style-three-d li {
+  margin-bottom: 3px; }

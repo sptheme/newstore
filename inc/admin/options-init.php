@@ -224,7 +224,7 @@
                 'subtitle' => __( 'Twitter user name/id', 'wpsp-redux-framework' ),
             ),
             array(
-                'id'       => 'social-share-pages',
+                'id'       => 'is-social-share-pages',
                 'type'     => 'switch',
                 'title'    => __( 'Enable for Pages', 'wpsp-redux-framework' ),
                 'subtitle' => __( 'Enable/disable for page', 'wpsp-redux-framework' ),
