@@ -26,6 +26,9 @@ class WPSP_Theme_Setup {
 		// Load theme js
 		add_action( 'wp_enqueue_scripts', array( $this, 'theme_scripts' ) );
 
+		// Outputs custom CSS to the head
+		add_action( 'wp_head', array( $this, 'custom_css' ), 9999 );
+
 		// Register sidebar
 		add_action( 'widgets_init', array( $this, 'register_sidebar' ), 1 );
 
@@ -120,6 +123,32 @@ class WPSP_Theme_Setup {
 	}
 
 	/**
+	 * All theme functions hook into the wpex_head_css filter for this function.
+	 * This way all dynamic CSS is minified and outputted in one location in the site header.
+	 *
+	 * @since 1.0.0
+	 */
+	public static function custom_css( $output = NULL ) {
+
+		global $redux_wpsp;
+
+		// Add filter for adding custom css via other functions
+		$output = apply_filters( 'wpsp_head_css', $output );
+
+		// Page header
+		$bg = $redux_wpsp['page-title-background-img']['url'];
+		if ( $bg ) {
+			$output .= '.page-header.wpsp-supports-mods{background-image:url('. $bg .');}';
+		}
+
+		// Minify and output CSS in the wp_head
+		if ( ! empty( $output ) ) {
+			echo "<!-- Custom CSS -->\n<style type=\"text/css\">\n" . wp_strip_all_tags( wpsp_minify_css( $output ) ) . "\n</style>";
+		}
+
+	}
+
+	/**
 	 * Register widget area.
 	 *
 	 * @link http://codex.wordpress.org/Function_Reference/register_sidebar
@@ -144,7 +173,8 @@ class WPSP_Theme_Setup {
 		require_once( get_template_directory() . '/inc/wpml.php' );
 		require_once( get_template_directory() . '/inc/custom-login.php' );
 		require_once( get_template_directory() . '/inc/layout.php' );
-		require_once( get_template_directory() . '/inc/header-functions.php' );
+		require_once( get_template_directory() . '/inc/header-functions.php' ); // main navigation style
+		require_once( get_template_directory() . '/inc/page-header.php' ); // page title style
 	}
 
 	/**

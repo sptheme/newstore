@@ -232,6 +232,47 @@
             ),
         )
     ) );
+    // General Pages title
+    Redux::setSection( $opt_name, array(
+        'title'      => __( 'Page title', 'wpsp-redux-framework' ),
+        'id'         => 'page-title',
+        'subsection' => true,
+        //'desc'       => __( 'Use for any post that do not have post featured image with landscape, portrait and square', 'wpsp-redux-framework' ),
+        'fields'     => array(
+            array(
+                'id'       => 'page-title-style',
+                'type'     => 'select',
+                'title'    => __( 'Style', 'wpsp-redux-framework' ),
+                'options'  => array(
+                    ''                  => esc_html__( 'Default', 'wpsp-redux-framework' ),
+                    'centered'          => esc_html__( 'Centered', 'wpsp-redux-framework' ),
+                    'centered-minimal'  => esc_html__( 'Centered Minimal', 'wpsp-redux-framework' ),
+                    'hidden'            => esc_html__( 'Hidden', 'wpsp-redux-framework' ),
+                ),
+            ),
+            array(
+                'id'       => 'page-title-background-img',
+                'type'     => 'media',
+                'title'    => __( 'Background image', 'wpsp-redux-framework' ),
+                'subtitle' => __( 'Upload image', 'wpsp-redux-framework' ),
+            ),
+            array(
+                'id'       => 'page-title-background-img-position',
+                'type'     => 'select',
+                'title'    => __( 'Background Image Position', 'wpsp-redux-framework' ),
+                'options'  => array(
+                    'stretched'     => 'Stretched',
+                    'repeat'        => 'Repeat',
+                    'fixed-top'     => 'Fixed Top',
+                    'fixed'         => 'Fixed Center',
+                    'fixed-bottom'  => 'Fixed Bottom',
+                    'repeat-x'      => 'Repeat-x',
+                    'repeat-y'      => 'Repeat-y',
+                ),
+                'default' => 'fixed',
+            ),
+        )
+    ) );
     // General > Pages
     Redux::setSection( $opt_name, array(
         'title'      => __( 'Pages', 'wpsp-redux-framework' ),

@@ -3,13 +3,14 @@
 ----------------------------------------------------------------
 
 # STRUCTURE AND LAYOUT
+# PAGE TITLE
 # ADDON ELEMENTS
 	## Social Sharing
--------------------------------------------------------------*/
+--------------------------------------------------------------*/
 
 /*-------------------------------------------------------------- 
  # STRUCTURE AND LAYOUT
--------------------------------------------------------------*/
+--------------------------------------------------------------*/
 
 /* Layout & Widths > Left Sidebar */
 body.left-sidebar .wrapper .content-area { float: right }
@@ -33,12 +34,57 @@ body.full-screen .wrapper .container,
 }
 
 /*-------------------------------------------------------------- 
+ # PAGE TITLE
+--------------------------------------------------------------*/
+
+/* Page Header > Main */
+.page-header { margin: 0 0 40px; padding: 20px 0; position: relative; background-color: #f7f7f7; border-top: 1px solid #eee; border-bottom: 1px solid #eee; }
+.no-header-margin .page-header { margin-bottom: 0 }
+.page-header .container { position: relative }
+.page-header-title { display: block; font-size: 21px; line-height: 1.4em; font-weight: normal; font-weight: 400; margin: 0px; color: #000; }
+body.breadcrumbs-position-default .page-header-title { max-width: 70% }
+.page-subheading { font-size: 1.077em; margin: 0; color: #999; }
+.page-subheading p:last-child { margin: 0 }
+.centered-page-header .page-header-title,
+.centered-minimal-page-header .page-header-title { max-width: 100% !important }
+
+/* Page Header > Centered */
+.centered-page-header { text-align: center; padding: 30px 0; }
+.centered-page-header .page-header-title { font-size: 32px }
+.centered-page-header .page-subheading { font-size: 1.385em; font-weight: 300; }
+
+/* Page Header > Minimal Centered */
+.centered-minimal-page-header { text-align: center; padding: 30px 0; background: #fff; border-color: #eee; }
+.centered-minimal-page-header .page-header-title { font-size: 32px }
+.centered-minimal-page-header .page-subheading { font-size: 1.385em; font-weight: 300; }
+
+/* Page Header > Solid Color */
+.solid-color-page-header .page-header-title { color: #fff !important }
+.solid-color-page-header .site-breadcrumbs,
+.solid-color-page-header .site-breadcrumbs a { color: #fff !important }
+.solid-color-page-header .page-subheading { color: #fff }
+
+/* Page Header > Archive Description */
+.archive-description { margin-bottom: 30px }
+
+/* Page Header > Background Image */
+.background-image-page-header { width: 100%; border: none; background: #000; }
+.page-header-table { display: table; width: 100%; height: 400px; }
+.page-header-table-cell { display: table-cell; vertical-align: middle; text-align: center; padding: 0 30px; }
+.page-header.background-image-page-header .page-header-title { position: relative; z-index: 2; color: #fff; max-width: 100%; font-size: 3.231em; font-weight: 400; max-width: 100% !important; }
+.page-header.background-image-page-header .page-subheading { position: relative; z-index: 2; color: #fff; font-size: 1.846em; font-weight: 300; }
+.background-image-page-header-overlay { display: block; position: absolute; top: 0; left: 0; height: 100%; width: 100%; background: #000; z-index: 1; opacity: 0.5; }
+.background-image-page-header-overlay.style-dotted { background: rgba(0,0,0,0.3) url(images/dotted-overlay.png) repeat }
+.background-image-page-header-overlay.style-dashed { background: rgba(0,0,0,0.3) url(images/dashed-overlay.png) repeat }
+
+
+/*-------------------------------------------------------------- 
  # ADDON ELEMENTS
--------------------------------------------------------------*/
+--------------------------------------------------------------*/
 
 /*-------------------------------------------------------------- 
  ## Social Sharing
--------------------------------------------------------------*/
+--------------------------------------------------------------*/
 
 /* Social Sharing > Core */
 ul.wpsp-social-share { list-style: none }

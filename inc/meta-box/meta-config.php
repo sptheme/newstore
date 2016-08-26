@@ -55,14 +55,10 @@
 			),
 			array(
 				'name'  => __( 'Title', 'wpsp-meta-box' ), 
-				'id'    => $prefix . "disable_title",
+				'id'    => $prefix . "is_page_title",
 				'desc'	=> __( 'Enable or disable this element on this page or post.', 'wpsp-meta-box' ), 
-				'type'  => 'select',
-				'options'     => array(
-					'' => __( 'Default', 'wpsp-meta-box' ),
-					'on' => __( 'Enable', 'wpsp-meta-box' ),
-					'off' => __( 'Disable', 'wpsp-meta-box' ),
-					),
+				'type'  => 'checkbox',
+				'std'  => 1,
 			),
 			array(
 				'name'  => __( 'Custom Title', 'wpsp-meta-box' ), 
@@ -73,13 +69,9 @@
 			array(
 				'name'  => __( 'Title Margin', 'wpsp-meta-box' ), 
 				'id'    => $prefix . "disable_header_margin",
-				'desc'	=> __( 'Enable or disable this element on this page or post.', 'wpsp-meta-box' ), 
-				'type'  => 'select',
-				'options'     => array(
-					'' => __( 'Default', 'wpsp-meta-box' ),
-					'on' => __( 'Enable', 'wpsp-meta-box' ),
-					'off' => __( 'Disable', 'wpsp-meta-box' ),
-					),
+				'desc'	=> __( 'Enable or disable margin.', 'wpsp-meta-box' ), 
+				'type'  => 'checkbox',
+				'std'  => 1,
 			),
 			array(
 				'name'  => __( 'Subheading', 'wpsp-meta-box' ), 
@@ -139,7 +131,7 @@
 			array(
 				'name'  => __( 'Title: Background Overlay Opacity', 'wpsp-meta-box' ), 
 				'id'    => $prefix . "post_title_background_overlay_opacity",
-				'desc'	=> __( 'Enter a custom opacity for your title background overlay.', 'wpsp-meta-box' ), 
+				'desc'	=> __( 'Enter a custom opacity for your title background overlay. e.g: 0.5 and max 1', 'wpsp-meta-box' ), 
 				'type'  => 'text',
 				'class' => 'post_title_background_overlay_opacity'
 			),
