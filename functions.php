@@ -191,6 +191,9 @@ class WPSP_Theme_Setup {
 		// Included Metabox.io framework as meta boxes of theme core
 		require_once( get_template_directory() . '/inc/meta-box/meta-box.php' );
 		require_once( get_template_directory() . '/inc/meta-box/meta-config.php' );
+
+		// Add shortcode supports
+		require_once( get_template_directory() . '/inc/shortcodes/shortcodes.php' );		
 	}
 }
 

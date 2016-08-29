@@ -7214,8 +7214,8 @@ body.left-sidebar .wrapper .widget-area {
   float: left; }
 
 /* Layout & Widths > Full-Width & Full-Screen */
-body.full-screen .wrapper,
-.full-screen {
+body.full-screen .wrapper .content-area,
+.full-screen .content-area {
   width: 100% !important;
   max-width: none !important; }
 
