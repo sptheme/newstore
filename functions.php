@@ -64,7 +64,7 @@ class WPSP_Theme_Setup {
 	 */
 	public static function hooks_actions() {
 
-		// Register hooks (needed in admin for Custom Actions panel)
+		// Register hooks
 		require_once( get_template_directory() .'/inc/hooks/hooks.php' );
 
 		// Front-end stuff

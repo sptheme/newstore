@@ -15,7 +15,7 @@ function wpsp_theme_layout_class( $classes ) {
 	global $post;
 
 	// Save some vars
-	$main_layout  = wpsp_get_redux( 'main-layout' );
+	$main_layout  = wpsp_get_redux( 'layout-global' );
 	$header_style = wpsp_get_redux( 'header-style' );
 	$post_layout  = wpsp_post_layout();
 	$global_layout = wpsp_get_redux( 'layout-global' );
