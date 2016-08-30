@@ -7214,21 +7214,15 @@ body.left-sidebar .wrapper .widget-area {
   float: left; }
 
 /* Layout & Widths > Full-Width & Full-Screen */
-body.full-screen .wrapper .content-area,
-.full-screen .content-area {
-  width: 100% !important;
-  max-width: none !important; }
-
 body.full-width .wrapper .content-area,
-.full-width .content-area,
-body.full-screen .wrapper {
+.full-width .content-area {
   width: 100% !important;
   max-width: none !important; }
 
-body.full-screen .wrapper .container,
-.full-screen .container {
+body.full-screen #content,
+.full-screen #content,
+body.full-screen .wrapper .content-area {
   float: none;
-  padding: 0;
   width: 100% !important;
   max-width: none !important; }
 
