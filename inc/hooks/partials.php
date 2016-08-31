@@ -31,6 +31,50 @@ function wpsp_header_logo() {
 }
 
 /*-------------------------------------------------------------------------------*/
+/* # Menu
+/*-------------------------------------------------------------------------------*/
+
+/**
+ * Outputs the main header menu
+ *
+ * @since 1.0.0
+ */
+function wpsp_header_menu() {
+
+	// Set vars
+	$header_style = wpsp_get_redux( 'header-style' );
+	$filter       = current_filter();
+	$get          = false;
+
+	// Header Inner Hook
+	if ( 'wpsp_hook_header_inner' == $filter ) {
+		if ( ( 'one' == $header_style || 'five' == $header_style || 'six' == $header_style ) ) {
+			$get = true;
+		}
+	}
+
+	// Header Top Hook
+	elseif ( 'wpsp_hook_header_top' == $filter ) {
+		if (  'four' == $header_style ) {
+			$get = true;
+		}
+	}
+
+	// Header bottom hook
+	elseif ( 'wpsp_hook_header_bottom' == $filter ) {
+		if ( ( 'two' == $header_style || 'three' == $header_style ) ) {
+			$get = true;
+		}
+	}
+
+	// Get menu template part
+	if ( $get ) {
+		get_template_part( 'partials/header/header-menu' );
+	}
+
+}
+
+/*-------------------------------------------------------------------------------*/
 /* #  Page Header
 /*-------------------------------------------------------------------------------*/
 

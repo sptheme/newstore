@@ -3,6 +3,15 @@
 ----------------------------------------------------------------
 
 # STRUCTURE AND LAYOUT
+# HEADER
+# NAVIGATION
+	## Main navigation
+	## Header one - Left logo & Right Navbar
+	## Header two - Bottom Navbar
+	## Header three - Bottom Navbar Centered
+	## Header four - Top Navbar Centered
+	## Header Five - Centered Inline Logo
+	## Header Six - Verticle
 # PAGE TITLE
 # ADDON ELEMENTS
 	## Social Sharing
@@ -30,6 +39,439 @@ body.full-screen .wrapper .content-area { float: none; width: 100% !important; m
 	width: 100% !important; 
 	max-width: none !important; 
 }
+
+/*--------------------------------------------------------------
+# HEADER
+--------------------------------------------------------------*/
+#site-header { padding: 0 !important; } /* no padding should be added here, add to header-inner please*/
+#site-header-inner { 
+	position: relative; 
+	padding-top: 30px; 
+	padding-bottom: 30px; 
+	height: 100%; 
+}
+
+/*--------------------------------------------------------------
+# NAVIGATION
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+## Superfish + Core menu
+--------------------------------------------------------------*/
+.sf-menu,
+.sf-menu * { 
+	margin: 0; 
+	padding: 0; 
+	list-style: none; 
+}
+.sf-menu li { 
+	position: relative 
+}
+.sf-menu ul { 
+	position: absolute; 
+	display: none; 
+	top: 100%; 
+	left: 0; 
+	z-index: 10001; 
+}
+.sf-menu > li { float: left; }
+.sf-menu li:hover > ul,
+.sf-menu li.sfHover > ul { display: block; }
+.sf-menu a { 
+	display: block; 
+	position: relative; 
+}
+.sf-menu ul ul { 
+	top: 0; 
+	left: 100%; 
+}
+.sf-menu { float: left }
+.sf-menu ul { 
+	min-width: 140px; 
+	*width: 140px; 
+}
+.sf-menu a { zoom: 1 }
+.sf-menu li { 
+	position: relative; 
+	white-space: nowrap; 
+	*white-space: normal; 
+}
+.sf-menu li:hover,
+.sf-menu li.sfHover { transition: none }
+.sf-menu .sf-mega { 
+	position: absolute; 
+	display: none; 
+	top: 100%; 
+	left: 0; 
+	z-index: 99; 
+}
+.sf-menu li:hover > .sf-mega,
+.sf-menu li.sfHover > .sf-mega { display: block }
+.sf-menu ul img { 
+	display: block; 
+	float: none; 
+	max-width: 100%; 
+}
+
+/*--------------------------------------------------------------
+## Main navigation
+--------------------------------------------------------------*/
+#site-navigation.container { position: relative; }
+#site-navigation a { text-decoration: none }
+#site-navigation .wpsp-dropdown-menu li a .fa { margin-right: 8px }
+#site-navigation .wpsp-dropdown-menu li.no-icon-margin a .fa { margin-right: 0 }
+#site-navigation .wpsp-dropdown-menu .site-search-toggle .fa { margin: 0 }
+.menu-button.menu-button-rounded span.link-inner { border-radius: 40px !important }
+
+/* Menu > Main > Arrows */
+#site-navigation .wpsp-dropdown-menu li a .nav-arrow { 
+	margin-left: 4px; 
+	margin-right: 0; 
+}
+#site-navigation .wpsp-dropdown-menu ul a.sf-with-ul { padding-right: 25px }
+#site-navigation .sf-menu > li ul li .nav-arrow { 
+	position: absolute; 
+	top: 50%; 
+	right: 10px; 
+	height: 10px; 
+	line-height: 10px; 
+	margin-top: -5px; 
+}
+
+/* Menu > Main > Dropdowns */
+#site-navigation .wpsp-dropdown-menu ul { 
+	background: #fff; 
+	border: 1px solid #eee; 
+}
+#site-navigation .wpsp-dropdown-menu ul ul { 
+	margin-left: 0; 
+	text-align: left; 
+}
+#site-navigation .wpsp-dropdown-menu ul li:first-child ul { margin-top: 0 }
+#site-navigation .wpsp-dropdown-menu ul li { padding: 0 }
+#site-navigation .wpsp-dropdown-menu ul a { 
+	display: block; 
+	float: none; 
+	padding: 8px 12px; 
+	height: auto; 
+	margin: 0px; 
+	border: 0px; 
+	line-height: 1.4em; 
+	color: #666; 
+	font-size: 0.923em; 
+	border-bottom: 1px solid #eee; 
+}
+#site-navigation .wpsp-dropdown-menu ul li:last-child > a { border-bottom: none }
+#site-navigation .wpsp-dropdown-menu ul a:hover { background: #f7f7f7 }
+
+/* Menu > Main > Left Dropdowns */
+#site-navigation .wpsp-dropdown-menu li.left-dropdowns ul ul { 
+	left: auto; 
+	right: 100%; 
+}
+body #site-navigation .sf-menu li.left-dropdowns ul a.sf-with-ul { 
+	padding-left: 25px; 
+	padding-right: 12px; 
+}
+#site-navigation .wpsp-dropdown-menu li.left-dropdowns ul .fa-angle-right { 
+	left: 9px; 
+	right: auto; 
+}
+#site-navigation .wpsp-dropdown-menu li.left-dropdowns ul .fa-angle-right:before { content: "\f104" }
+
+/* Menu > Main > Animate Links */
+#site-navigation .wpsp-dropdown-menu > li > a > span.link-inner { 
+	transition: background 0.15s ease-in-out, color 0.15s ease-in-out; 
+	-moz-transition: background 0.15s ease-in-out, color 0.15s ease-in-out; 
+	-webkit-transition: background 0.15s ease-in-out, color 0.15s ease-in-out; 
+}
+#site-navigation .wpsp-dropdown-menu ul a { 
+	transition: all 0.15s ease-in-out;
+	-moz-transition: all 0.15s ease-in-out; 
+	-webkit-transition: all 0.15s ease-in-out; 
+}
+
+@media only screen and (min-width: 992px) {
+	#site-navigation { display: block; }
+}
+
+/*--------------------------------------------------------------
+## Header one - Left logo & Right Navbar
+--------------------------------------------------------------*/
+.header-one #site-logo { 
+	float: left; 
+	height: 100%; 
+}
+
+/* Header > One > Navbar */
+.navbar-style-one { 
+	position: absolute; 
+	right: -12px; 
+	top: 50%; 
+	margin-top: -25px; 
+	height: 50px; 
+}
+body.navbar-has-inner-span-bg .navbar-style-one { right: -4px; }
+.navbar-style-one .wpsp-dropdown-menu > li:last-child.menu-button { margin-right: 12px; }
+.navbar-style-one .wpsp-dropdown-menu > li > a { 
+	display: block; 
+	height: 50px; 
+	line-height: 50px; 
+	padding: 0 4px; 
+	color: #555; 
+}
+.navbar-style-one .wpsp-dropdown-menu > li > a > span.link-inner { 
+	display: inline-block; 
+	line-height: 1; 
+	padding: 0.5em 0.8em; 
+	border-radius: 3px; 
+}
+
+/*--------------------------------------------------------------
+## Header two - Bottom Navbar
+--------------------------------------------------------------*/
+.header-two { background: #fff }
+.header-two-aside { 
+	float: right; 
+	font-size: 1.077em; 
+	text-align: right; 
+}
+
+/* Header > Two > Logo */
+.header-two-logo { float: left }
+
+/* Header > Two > Search */
+#header-two-search { margin-top: 10px }
+#header-two-search { float: right }
+#header-two-search input#header-two-search-input { 
+	font-size: 0.923em; 
+	width: 160px; 
+	float: left; 
+	border: 1px solid #ddd; 
+	height: 32px; 
+	padding: 0 10px; 
+	border: 1px solid #e4e4e4; 
+	background: #f7f7f7; 
+}
+#header-two-search-submit { 
+	height: 32px; 
+	line-height: 32px; 
+	width: 35px; 
+	text-align: center; 
+	padding: 0; 
+	outline: none; 
+	margin-left: 5px; 
+	cursor: pointer; 
+	font-size: 12px; 
+}
+
+/* Header > Two > Navbar */
+.navbar-style-two { background: #fff; }
+.navbar-style-two .wpsp-dropdown-menu { width: 100%; }
+.navbar-style-two { 
+	border-top: 1px solid #eee; 
+	border-bottom: 1px solid #eee; 
+	position: relative; 
+}
+body.page-header-disabled .navbar-style-two { border-bottom: 1px solid #eee; }
+.navbar-style-two .wpsp-dropdown-menu { 
+	border-left: 1px solid #eee; 
+	border-right: 1px solid #eee; 
+}
+.navbar-style-two .wpsp-dropdown-menu li { border-right: 1px solid #eee; }
+.navbar-style-two .wpsp-dropdown-menu li li { border-right: 0; }
+.navbar-style-two .wpsp-dropdown-menu > li > a { 
+	display: block; 
+	height: 50px; 
+	line-height: 50px; 
+	color: #555; 
+	font-weight: normal; 
+	padding: 0 20px; 
+}
+.navbar-style-two .wpsp-dropdown-menu .woo-menu-icon,
+.navbar-style-two .wpsp-dropdown-menu .search-toggle-li { 
+	float: right; 
+	border-left: 1px solid #eee; 
+	border-right: 0; 
+}
+
+/*--------------------------------------------------------------
+## Header three - Bottom Navbar Centered
+--------------------------------------------------------------*/
+.header-three-logo { 
+	float: none; 
+	text-align: center; 
+	margin: 0 auto; 
+}
+.header-three-logo a { 
+	display: inline; 
+	display: inline-block; 
+	float: none; 
+}
+.header-three-aside { 
+	float: none; 
+	text-align: center; 
+	width: 100%; 
+	margin-top: 10px; 
+}
+.navbar-style-three { 
+	background: #fff; 
+	border-top: 1px solid #eee; 
+	position: relative; 
+}
+body.page-header-disabled .navbar-style-three { border-bottom: 1px solid #eee; }
+.navbar-style-three .container { position: relative; }
+.navbar-style-three .sf-menu { text-align: center; float: none; }
+.navbar-style-three .wpsp-dropdown-menu > li { display: inline-block; float: none; }
+.navbar-style-three .wpsp-dropdown-menu > li > a { 
+	display: block; 
+	height: 50px; 
+	line-height: 50px; 
+	color: #555; 
+	font-weight: normal; 
+	padding: 0 5px; 
+}
+.navbar-style-three .wpsp-dropdown-menu > li > a > span.link-inner { 
+	display: inline-block; 
+	line-height: 1; 
+	padding: 0.5em 0.8em; 
+	border-radius: 3px; 
+}
+.navbar-style-three .wpsp-dropdown-menu ul { text-align: left }
+
+/*--------------------------------------------------------------
+## Header four - Top Navbar Centered
+--------------------------------------------------------------*/
+.header-four-logo { 
+	float: none; 
+	text-align: center; 
+	margin: 0 auto; 
+}
+.header-four-logo a { 
+	display: inline-block; 
+	float: none; 
+}
+.header-four-aside { 
+	float: none; 
+	text-align: center; 
+	width: 100%; 
+	margin-top: 10px; 
+}
+.navbar-style-four { 
+	background: #fff; 
+	position: relative; 
+	border-bottom: 1px solid #eee; 
+}
+.navbar-style-four .container { position: relative; }
+.navbar-style-four .sf-menu { 
+	text-align: center; 
+	float: none; 
+}
+.navbar-style-four .wpsp-dropdown-menu > li { 
+	display: inline-block; 
+	float: none; 
+}
+.navbar-style-four .wpsp-dropdown-menu > li > a { 
+	display: block; 
+	height: 50px; 
+	line-height: 50px; 
+	color: #555; 
+	font-weight: normal; 
+	padding: 0 15px; 
+}
+.navbar-style-four .wpsp-dropdown-menu ul { text-align: left; }
+
+/*--------------------------------------------------------------
+## Header Five - Centered Inline Logo
+--------------------------------------------------------------*/
+#site-logo.header-five-logo { 
+	display: none; 
+	float: none; 
+	margin: 0; 
+	padding: 0; 
+	transition: all 0.3s; 
+}
+#site-logo.header-five-logo.display { display: table; }
+.menu-item-logo { padding: 0 40px; }
+#site-navigation-wrap.navbar-style-five,
+.navbar-style-five #site-navigation { height: 100%; }
+.navbar-style-five .container { position: relative; }
+.navbar-style-five .wpsp-dropdown-menu { 
+	text-align: center; 
+	float: none; 
+	display: table; 
+	height: 100%; 
+	margin: 0 auto; 
+}
+.navbar-style-five .wpsp-dropdown-menu > li { 
+	height: 100%; 
+	display: table-cell; 
+	vertical-align: middle; 
+	float: none; 
+}
+.navbar-style-five .wpsp-dropdown-menu > li > a { 
+	display: block; 
+	height: 50px; 
+	line-height: 50px; 
+	color: #555; 
+	font-weight: normal; 
+	padding: 0 4px; 
+}
+.navbar-style-five .wpsp-dropdown-menu ul { text-align: left }
+.navbar-style-five .wpsp-dropdown-menu > li > a > span.link-inner { 
+	display: inline-block; 
+	line-height: 1; 
+	padding: 0.5em 0.8em; 
+	border-radius: 3px; 
+}
+
+/*--------------------------------------------------------------
+## Header Six - Verticle
+--------------------------------------------------------------*/
+@media only screen and ( min-width: 960px ) {
+
+	/* Header Vertical > Main */
+	body.wpsp-has-vertical-header { position: relative; }
+	body.wpsp-has-vertical-header #page { padding-left: 280px; }
+	body.wpsp-has-vertical-header #site-header { background: #fff; position: absolute; z-index: 99; top: 0; left: 0; width: 280px; height: 100%; box-shadow: 0 0 7px rgba(0,0,0,0.1); }
+	body.wpsp-fixed-vertical-header #site-header { position: fixed; overflow: visible; }
+	body.wpsp-has-vertical-header #site-header .container { width: 100%; max-width: 100%; }
+
+	/* Boxed Layout */
+	body.boxed-main-layout.wpsp-has-vertical-header #page { padding-left: 280px; }
+	body.wpsp-has-vertical-header.boxed-main-layout.wpsp-site-header-disabled #page { padding-left: 0; }
+	body.boxed-main-layout.wpsp-has-vertical-header #site-header .container { padding-left: 0 !important; padding-right: 0 !important; }
+
+	/* Header Vertical > Logo */
+	body.wpsp-has-vertical-header #site-logo { display: block; padding: 0 30px 30px 30px; }
+	body.wpsp-has-vertical-header #site-logo-inner { display: block; }
+	body.wpsp-has-vertical-header #site-logo img { display: block; margin: 0 auto; }
+
+	/* Header Vertical > Navbar */
+	.navbar-style-six #site-navigation { border-top: 1px solid #eee; }
+	.navbar-style-six .wpsp-dropdown-menu > li { display: block; width: 100%; height: auto; border-bottom: 1px solid #eee; }
+	.navbar-style-six .wpsp-dropdown-menu > li > a { display: block; color: #555; font-weight: normal; padding: 1em 30px; }
+	.navbar-style-six .wpsp-dropdown-menu > li.menu-item-has-children > a { padding-right: 50px; }
+	.navbar-style-six .wpsp-dropdown-menu a:hover { background: #f9f9f9; }
+	.navbar-style-six .wpsp-dropdown-menu > .current-menu-item > a,
+	.navbar-style-six .wpsp-dropdown-menu > .current-menu-parent > a { background: #4a97c2; color: #fff !important; transition: all 0.3s ease-in-out; }
+	.navbar-style-six .wpsp-dropdown-menu > li > a > span.link-inner { display: block; padding: 0; transition: none; }
+	.navbar-style-six .wpsp-dropdown-menu .nav-arrow.top-level { position: absolute; right: 28px; top: 50%; height: 20px; line-height: 20px; margin-top: -10px; font-size: 11px; opacity: 0.4; }
+	body.wpsp-has-vertical-header .wpsp-menu-search-text { display: inline-block; padding-left: 20px; }
+
+	/* Header Vertical > Navbar > Dropdowns */
+	body.wpsp-has-vertical-header #site-navigation .sf-menu ul { top: 0; left: 100%; text-align: left }
+	body.wpsp-has-vertical-header #site-navigation .sf-menu ul a { padding: 1em 20px; }
+
+	/* Header Vertical > Navbar > Megamenu */
+	body.wpsp-has-vertical-header #site-navigation .wpsp-dropdown-menu li.megamenu { position: relative; }
+	body.wpsp-has-vertical-header #site-navigation .wpsp-dropdown-menu li.megamenu ul { left: 100%; width: 750px }
+
+	/* Header Vertical > Title */
+	body.wpsp-has-vertical-header .page-header { border-top: 0; }
+
+}
+
 
 /*-------------------------------------------------------------- 
  # PAGE TITLE

@@ -21,9 +21,18 @@ add_action( 'wpsp_hook_page_top', 'wpsp_header' );
 /* #  Header
 /*-------------------------------------------------------------------------------*/
 
+/* Header > Top
+-------------------------------------------------------------------------------*/
+add_action( 'wpsp_hook_header_top', 'wpsp_header_menu' );
+
 /* Header > Inner
 -------------------------------------------------------------------------------*/
 add_action( 'wpsp_hook_header_inner', 'wpsp_header_logo' );
+add_action( 'wpsp_hook_header_inner', 'wpsp_header_menu' );
+
+/* Header > Bottom
+-------------------------------------------------------------------------------*/
+add_action( 'wpsp_hook_header_bottom', 'wpsp_header_menu' );
 
 /*-------------------------------------------------------------------------------*/
 /* #  Content

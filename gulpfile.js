@@ -91,6 +91,9 @@ gulp.task('scripts', function() {
   gulp.src([
     basePaths.dev + 'js/owl.carousel.min.js', // Must be loaded before BS4
     basePaths.dev + 'js/tether.js', // Must be loaded before BS4
+    basePaths.dev + 'js/hoverIntent',
+    basePaths.dev + 'js/superfish',
+    basePaths.dev + 'js/supersubs',
 
     // Start - All BS4 stuff
     basePaths.dev + 'js/bootstrap4/bootstrap.js', 
@@ -106,6 +109,9 @@ gulp.task('scripts', function() {
   gulp.src([
     basePaths.dev + 'js/owl.carousel.min.js', // Must be loaded before BS4
     basePaths.dev + 'js/tether.js', // Must be loaded before BS4
+    basePaths.dev + 'js/hoverIntent',
+    basePaths.dev + 'js/superfish',
+    basePaths.dev + 'js/supersubs',
 
     // Start - All BS4 stuff
     basePaths.dev + 'js/bootstrap4/bootstrap.js', 
@@ -172,4 +178,12 @@ gulp.task('copy-assets', function() {
 // Copy Tether CSS files
     gulp.src(basePaths.bower + 'tether/dist/css/*.css')
         .pipe(gulp.dest(basePaths.dev + '/css'));
+
+// Copy Superfish JS files
+    gulp.src(basePaths.bower + 'superfish/dist/js/*.js')
+        .pipe(gulp.dest(basePaths.dev + '/js'));
+
+// Copy Superfish CSS files
+    gulp.src(basePaths.bower + 'superfish/dist/css/*.css')
+        .pipe(gulp.dest(basePaths.dev + '/css'));        
 });

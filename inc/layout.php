@@ -15,7 +15,6 @@ function wpsp_theme_layout_class( $classes ) {
 	global $post;
 
 	// Save some vars
-	$main_layout  = wpsp_get_redux( 'layout-global' );
 	$header_style = wpsp_get_redux( 'header-style' );
 	$post_layout  = wpsp_post_layout();
 	$global_layout = wpsp_get_redux( 'layout-global' );
@@ -34,22 +33,12 @@ function wpsp_theme_layout_class( $classes ) {
 	// Main class
 	$classes[] = 'wpsp-theme';
 
-	// Layout Style
-	$classes[] = $main_layout .'-main-layout';
-	
 	// Vertical header style
 	if ( 'six' == $header_style) {
 		$classes[] = 'wpsp-has-vertical-header';
 		if ( 'fixed' == wpsp_get_redux( 'vertical-header-style' ) ) {
 			$classes[] = 'wpsp-fixed-vertical-header';
 		}
-	}
-
-	// Boxed Layout dropshadow
-	if ( 'boxed' == $main_layout
-		&& wpsp_get_redux( 'boxed-dropdshadow' )
-	) {
-		$classes[] = 'wrap-boxshadow';
 	}
 
 	// Sidebar enabled

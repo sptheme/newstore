@@ -96,6 +96,12 @@ class WPSP_Theme_Setup {
 
 	    wp_enqueue_style( 'styles', get_stylesheet_directory_uri() . '/css/theme.min.css', array(), '0.4.6');
 	    wp_enqueue_script('jquery'); 
+
+	    // Superfish used for menu dropdowns
+		wp_enqueue_script( 'wpsp-superfish', get_stylesheet_directory_uri() .'/js/vendors/superfish.js', array( 'jquery' ), THEME_VERSION, true );
+		wp_enqueue_script( 'wpsp-supersubs', get_stylesheet_directory_uri() .'/js/vendors/supersubs.js', array( 'jquery' ), THEME_VERSION, true );
+		wp_enqueue_script( 'wpsp-hoverintent', get_stylesheet_directory_uri() .'/js/vendors/hoverintent.js', array( 'jquery' ), THEME_VERSION, true );
+
 	    wp_enqueue_script( 'scripts', get_template_directory_uri() . '/js/theme.min.js', array(), '0.4.6', true );
 
 	    if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
@@ -115,11 +121,23 @@ class WPSP_Theme_Setup {
 	 * @version 1.0.0
 	 */
 	public static function localize_array() {
-		$arrays = array(
-	        'my_custom_localize'    => 'test',
+
+		$header_style      = wpsp_get_redux( 'header-style' );
+
+		$array = array(
+			'siteHeaderStyle'       => $header_style,
+	        'isRTL'                 => is_rtl(),
+			'superfishDelay'        => 600,
+			'superfishSpeed'        => 'fast',
+			'superfishSpeedOut'     => 'fast',			
 	    );
 
-		return apply_filters( 'wpsp_localize_array', $arrays );
+	    // Header five
+		if ( 'five' == $header_style ) {
+			$array['headerFiveSplitOffset'] = 1;
+		}
+
+		return apply_filters( 'wpsp_localize_array', $array );
 	}
 
 	/**
