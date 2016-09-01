@@ -7208,9 +7208,12 @@ a.skip-link {
 	## Header four - Top Navbar Centered
 	## Header Five - Centered Inline Logo
 	## Header Six - Verticle
+# SEARCH
+# WIDGETS
 # PAGE TITLE
 # ADDON ELEMENTS
 	## Social Sharing
+	## Lean Modal
 --------------------------------------------------------------*/
 /*-------------------------------------------------------------- 
  # STRUCTURE AND LAYOUT
@@ -7926,6 +7929,142 @@ body.breadcrumbs-position-default .page-header-title {
   background: rgba(0, 0, 0, 0.3) url(images/dashed-overlay.png) repeat; }
 
 /*--------------------------------------------------------------
+# SEARCH
+--------------------------------------------------------------*/
+#searchform-dropdown {
+  position: relative; }
+
+#searchform-dropdown .searchform-submit {
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  height: 20px;
+  line-height: 20px;
+  margin: -10px 0 0;
+  background: none;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  color: #000;
+  font-size: 11px;
+  opacity: 0.5; }
+
+/* Header search dropdown */
+#searchform-dropdown {
+  z-index: 10000;
+  position: absolute;
+  right: 0;
+  background: #fff;
+  top: 100%;
+  padding: 15px;
+  width: 260px;
+  border-top: 3px solid transparent;
+  box-shadow: 0 2px 7px rgba(0, 0, 0, 0.1);
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.25s ease-in-out; }
+
+#searchform-dropdown input {
+  display: block;
+  outline: none;
+  border: none;
+  width: 100%;
+  background: #f4f4f4;
+  -webkit-appearance: none;
+  border-radius: 0; }
+
+#searchform-dropdown button {
+  display: none; }
+
+/* Header search overlay - modal*/
+#searchform-overlay {
+  display: none;
+  width: 350px;
+  top: 120px;
+  -webkit-transform: scale(0.5);
+  -moz-transform: scale(0.5);
+  -ms-transform: scale(0.5);
+  transform: scale(0.5);
+  -webkit-transition: transform 0.4s;
+  -moz-transition: transform 0.4s;
+  transition: transform 0.4s; }
+
+#searchform-overlay.active {
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1); }
+
+#searchform-overlay-title {
+  font-size: 2.154em;
+  margin: 0 0 20px;
+  font-weight: 400;
+  color: #fff;
+  text-align: center;
+  text-transform: capitalize; }
+
+#searchform-overlay input {
+  font-size: 1.077em;
+  padding-left: 20px;
+  height: 45px;
+  color: #000;
+  font-weight: 400;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.7); }
+
+#searchform-overlay button {
+  height: 45px; }
+
+/* Header search replace*/
+#searchform-header-replace {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: #fff;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.25s ease-in-out; }
+
+#searchform-header-replace form {
+  height: 100%;
+  width: 100%; }
+
+#searchform-header-replace input {
+  height: 100%;
+  width: 100%;
+  outline: 0;
+  border: 0;
+  -webkit-appearance: none;
+  border-radius: 0;
+  -moz-border-radius: none;
+  -webkit-border-radius: none;
+  font-size: 32px;
+  text-transform: uppercase;
+  color: #bbb;
+  background: none; }
+
+#searchform-header-replace-close {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  margin-top: -20px;
+  height: 40px;
+  line-height: 40px;
+  font-size: 26px;
+  color: #bbb;
+  cursor: pointer; }
+
+#searchform-header-replace-close:hover {
+  color: #000; }
+
+/*display search on click*/
+#searchform-dropdown.show,
+#searchform-header-replace.show {
+  visibility: visible;
+  opacity: 1; }
+
+/*--------------------------------------------------------------
 # WIDGETS
 --------------------------------------------------------------*/
 .widget {
@@ -8370,3 +8509,16 @@ ul.wpsp-social-share {
 
 .wpsp-social-share.style-three-d li {
   margin-bottom: 3px; }
+
+/*--------------------------------------------------------------
+## Lean Modal
+--------------------------------------------------------------*/
+#lean_overlay {
+  position: fixed;
+  z-index: 10002;
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  width: 100%;
+  background: #000;
+  display: none; }

@@ -39,6 +39,7 @@
 			self.config.$document.on( 'ready', function() {
 				self.superFish();
 				self.inlineHeaderLogo();
+				self.menuSearch();
 				self.customMenuWidgetAccordion();
 			} );
 
@@ -164,6 +165,109 @@
 					} );
 				} );
 			} );
+
+		},
+
+		/**
+		 * Header Search
+		 *
+		 * @since 1.0.0
+		 */
+		menuSearch: function() {
+
+			var self = this;
+
+			/**** Menu Search > Dropdown ****/
+			if ( 'drop_down' == wpspLocalize.menuSearchStyle ) {
+
+				var $searchDropdownToggle = $( 'a.search-dropdown-toggle' );
+				var $searchDropdownForm   = $( '#searchform-dropdown' );
+
+				$searchDropdownToggle.click( function( event ) {
+					// Display search form
+					$searchDropdownForm.toggleClass( 'show' );
+					// Active menu item
+					$( this ).parent( 'li' ).toggleClass( 'active' );
+					// Focus
+					var $transitionDuration = $searchDropdownForm.css( 'transition-duration' );
+					$transitionDuration = $transitionDuration.replace( 's', '' ) * 1000;
+					if ( $transitionDuration ) {
+						console.log('test');
+						setTimeout( function() {
+							$searchDropdownForm.find( 'input[type="search"]' ).focus();
+						}, $transitionDuration );
+					}
+					// Hide other things
+					$( 'div#current-shop-items-dropdown' ).removeClass( 'show' );
+					$( 'li.wcmenucart-toggle-dropdown' ).removeClass( 'active' );
+					// Return false
+					return false;
+				} );
+
+				// Close on doc click
+				self.config.$document.on( 'click', function( event ) {
+					if ( ! $( event.target ).closest( '#searchform-dropdown.show' ).length ) {
+						$searchDropdownToggle.parent( 'li' ).removeClass( 'active' );
+						$searchDropdownForm.removeClass( 'show' );
+					}
+				} );
+
+			}
+
+			/**** Menu Search > Overlay Modal ****/
+			else if ( 'overlay' == wpspLocalize.menuSearchStyle ) {
+
+				if ( ! $.fn.leanerModal ) {
+					return;
+				}
+
+				var $searchOverlayToggle = $( 'a.search-overlay-toggle' );
+
+				$searchOverlayToggle.leanerModal( {
+					'id'      : '#searchform-overlay',
+					'top'     : 100,
+					'overlay' : 0.8,
+				} );
+
+				$searchOverlayToggle.click( function() {
+					$( '#site-searchform input' ).focus();
+				} );
+
+			}
+
+			/**** Menu Search > Header Replace ****/
+			else if ( 'header_replace' == wpspLocalize.menuSearchStyle ) {
+
+				// Show
+				var $headerReplace = $( '#searchform-header-replace' );
+				$( 'a.search-header-replace-toggle' ).click( function( event ) {
+					// Display search form
+					$headerReplace.toggleClass( 'show' );
+					// Focus
+					var $transitionDuration =  $headerReplace.css( 'transition-duration' );
+					$transitionDuration = $transitionDuration.replace( 's', '' ) * 1000;
+					if ( $transitionDuration ) {
+						setTimeout( function() {
+							$headerReplace.find( 'input[type="search"]' ).focus();
+						}, $transitionDuration );
+					}
+					// Return false
+					return false;
+				} );
+
+				// Close on click
+				$( '#searchform-header-replace-close' ).click( function() {
+					$headerReplace.removeClass( 'show' );
+					return false;
+				} );
+
+				// Close on doc click
+				self.config.$document.on( 'click', function( event ) {
+					if ( ! $( event.target ).closest( $( '#searchform-header-replace.show' ) ).length ) {
+						$headerReplace.removeClass( 'show' );
+					}
+				} );
+			}
 
 		},
 	}

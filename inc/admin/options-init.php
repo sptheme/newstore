@@ -533,6 +533,28 @@
             ),
         )
     ) );
+    // Header > search icon
+    Redux::setSection( $opt_name, array(
+        'title'      => __( 'Search icon', 'wpsp-redux-framework' ),
+        'id'         => 'header-search-icon',
+        'subsection' => true,
+        //'desc'       => __( 'Use for any post that do not have post featured image with landscape, portrait and square', 'wpsp-redux-framework' ),
+        'fields'     => array(
+            array(
+                'id'       => 'menu-search-style',
+                'type'     => 'select',
+                'title'    => __( 'Search Icon Style', 'wpsp-redux-framework' ),
+                'subtitle' => __( 'Vertical header styles only support the disabled and overlay styles.', 'wpsp-redux-framework' ),
+                'options'  => array(
+                    'disabled'          => 'Disabled',
+                    'drop_down'         => 'Dropdown',
+                    'overlay'           => 'Overlay',
+                    'header_replace'    => 'Header Replace',
+                ),
+                'default'   => 'drop_down',
+            ),
+        )
+    ) );
 
     // Footer
     Redux::setSection( $opt_name, array(

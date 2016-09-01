@@ -30,6 +30,67 @@ function wpsp_header_logo() {
 	get_template_part( 'partials/header/header-logo' );
 }
 
+/**
+ * Get header search dropdown template part.
+ *
+ * @since 1.0.0
+ */
+function wpsp_search_dropdown() {
+
+	// Make sure site is set to dropdown style
+	if ( 'drop_down' != wpsp_get_redux( 'menu-search-style' ) ) {
+		return;
+	}
+
+	// Get header style
+	$header_style = wpsp_get_redux( 'header-style' );
+
+	// Get current filter
+	$filter = current_filter();
+
+	// Set get variable to false by default
+	$get = false;
+
+	// Check current filter against header style
+	if ( 'wpsp_hook_header_inner' == $filter ) {
+		if ( 'one' == $header_style || 'five' == $header_style ) {
+			$get = true;
+		}
+	} elseif ( 'wpsp_hook_main_menu_bottom' == $filter ) {
+		if ( 'two' == $header_style || 'three' == $header_style || 'four' == $header_style ) {
+			$get = true;
+		}
+	}
+
+	// Get search dropdown template part
+	if ( $get ) {
+		get_template_part( 'partials/header/header-search-dropdown' );
+	}
+
+}
+
+/**
+ * Get header search replace template part.
+ *
+ * @since 1.0.0
+ */
+function wpsp_search_header_replace() {
+	if ( 'header_replace' == wpsp_get_redux( 'menu-search-style' ) ) {
+		get_template_part( 'partials/header/header-search-replace' );
+	}
+}
+
+/**
+ * Gets header search overlay template part.
+ *
+ * @since 1.0.0
+ */
+function wpsp_search_overlay() {
+	if ( 'overlay' == wpsp_get_redux( 'menu-search-style' ) ) {
+		get_template_part( 'partials/header/header-search-overlay' );
+	}
+}
+
 /*-------------------------------------------------------------------------------*/
 /* # Menu
 /*-------------------------------------------------------------------------------*/
