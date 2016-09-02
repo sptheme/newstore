@@ -124,20 +124,47 @@ class WPSP_Theme_Setup {
 	public static function localize_array() {
 
 		$header_style      = wpsp_get_redux( 'header-style' );
+		$sticky_header     = wpsp_get_redux( 'is-fixed-header' );
+		$has_fixed_header  = wpsp_has_fixed_header();
+		$fixed_header_style = wpsp_fixed_header_style();
+		$wpsp_shrink_fixed_header = wpsp_shrink_fixed_header();
 
 		$array = array(
 			'isRTL'                 => is_rtl(),
+			'menuSearchStyle'       => wpsp_get_redux( 'menu-search-style' ),
+			'hasStickyHeader'       => $sticky_header,	        
 			'siteHeaderStyle'       => $header_style,
-			'menuSearchStyle'       => wpsp_get_redux( 'menu-search-style' ),	        
 			'superfishDelay'        => 600,
 			'superfishSpeed'        => 'fast',
 			'superfishSpeedOut'     => 'fast',			
 	    );
 
-	    // Header five
-		if ( 'five' == $header_style ) {
-			$array['headerFiveSplitOffset'] = 1;
-		}
+	    // Header params 
+		if ( 'disabled' != $header_style ) {
+
+			// Sticky Header
+			if ( $has_fixed_header ) {
+				$array['hasStickyHeader'] = true;
+				$array['stickyHeaderStyle']      = $fixed_header_style;
+				$array['hasStickyMobileHeader']  = wpsp_get_redux( 'is-fixed-header-mobile' );
+				$array['overlayHeaderStickyTop'] = 0;
+				$array['stickyHeaderBreakPoint'] = 960;
+
+				// Shrink sticky header > used for local-scroll offset
+				if ( $wpsp_shrink_fixed_header ) {
+					$height = intval( wpsp_get_redux( 'fixed-header-shrink-end-height', 50 ) );
+					$height = $height ? $height + 20 : 70;
+					$array['shrinkHeaderHeight'] = $height;
+				}
+				
+			}
+
+			// Header five
+			if ( 'five' == $header_style ) {
+				$array['headerFiveSplitOffset'] = 1;
+			}
+
+		} // End header params
 
 		return apply_filters( 'wpsp_localize_array', $array );
 	}

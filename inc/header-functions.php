@@ -76,6 +76,23 @@ function wpsp_header_classes() {
 		$classes[] = 'wpsp-full-width';
 	}
 
+	// Sticky Header
+	if ( wpsp_has_fixed_header() ) {
+
+		// Fixed header style
+		$fixed_header_style = wpsp_fixed_header_style();
+
+		// Main fixed class
+		$classes['fixed_scroll'] = 'fixed-scroll'; // @todo rename this at some point?
+		if ( wpsp_shrink_fixed_header() ) {
+			$classes['shrink-sticky-header'] = 'shrink-sticky-header';
+			if ( 'shrink_animated' == $fixed_header_style ) {
+				$classes['anim-shrink-header'] = 'anim-shrink-header';
+			}
+		}
+
+	}
+
 	// Clearfix class
 	$classes[] = 'clearfix';
 
@@ -88,6 +105,52 @@ function wpsp_header_classes() {
 	$classes = apply_filters( 'wpsp_header_classes', $classes );
 
 	return $classes;
+}
+
+/**
+ * Fixed header style
+ *
+ * @since 1.0.0
+ */
+function wpsp_fixed_header_style() {
+	$style = wpsp_get_redux( 'fixed-header-style', 'standard' );
+	$style = $style ? $style : 'standard';
+	return $style;
+}
+
+/**
+ * Check if has fixed header
+ *
+ * @since 1.0.0
+ */
+function wpsp_has_fixed_header() {
+	$return = false;
+	if (
+		'disabled' != wpsp_fixed_header_style()
+		&& ( 'one' == $header_style || 'five' == $header_style )
+	) {
+		$return = true;
+	}
+	if ( 'six' == $header_style ) {
+		$return = false; // disabled for header six
+	}
+	return apply_filters( 'wpsp_has_fixed_header', $return );
+}
+
+/**
+ * Check if shrink fixed header is enabled
+ * Only enabled for header styles one and five
+ *
+ * @since 1.0.0
+ */
+function wpsp_shrink_fixed_header() {
+	if ( ( 'shrink' == wpsp_fixed_header_style() || 'shrink_animated' == wpsp_fixed_header_style() )
+		&& ( 'one' == wpsp_fixed_header_style() || 'five' == wpsp_fixed_header_style() )
+	) {
+		return true;
+	} else {
+		return false;
+	}
 }
 
 

@@ -21,13 +21,57 @@
 		config : function() {
 
 			this.config = {
+				// Main
 				$window                 : $( window ),
 				$document               : $( document ),
 				$windowWidth            : $( window ).width(),
 				$windowHeight           : $( window ).height(),
 				$windowTop              : $( window ).scrollTop(),
 				$body                   : $( 'body' ),
+				$viewportWidth          : '',
+				$is_rtl                 : false,
+				$wpAdminBar             : null,
+
+				// Mobile
+				$isMobile               : false,
+				$mobileMenuStyle        : null,
+				$mobileMenuToggleStyle  : null,
 				$mobileMenuBreakpoint   : 960,
+
+				// Header
+				$siteHeader             : null,
+				$siteHeaderStyle        : null,
+				$siteHeaderHeight       : 0,
+				$siteHeaderTop          : 0,
+				$siteHeaderBottom       : 0,
+				$verticalHeaderActive   : false,
+				$hasHeaderOverlay       : false,
+				$hasStickyHeader        : false,
+				$hasStickyMobileHeader  : false,
+				$hasStickyNavbar        : false,
+
+				// Logo
+				$siteLogo               : null,
+				$siteLogoHeight         : 0,
+				$siteLogoSrc            : null,
+				$siteNavWrap            : null,
+				$siteNavDropdowns       : null,
+
+				// Local Scroll
+				$localScrollTargets     : 'li.local-scroll a, a.local-scroll, .local-scroll-link',
+				$localScrollOffset      : 0,
+				$localScrollSpeed       : 600,
+				$localScrollSections    : [],	
+
+				// Topbar
+				$hasTopBar              : false,
+				$hasStickyTopBar        : false,
+				$stickyTopBar           : null,
+				$hasStickyTopBarMobile  : false,
+
+				// Footer
+				$hasFixedFooter         : false,
+				$hasFooterReveal        : false
 			};
 
 		},
@@ -37,16 +81,142 @@
 
 			// Run on document ready
 			self.config.$document.on( 'ready', function() {
+
+				// Update vars on init
+				self.initUpdateConfig();
+
+				// Main nav dropdowns
 				self.superFish();
+
+				// Header 5 logo
 				self.inlineHeaderLogo();
+
+				// Menu search toggle,overlay,header replace
 				self.menuSearch();
+
+				// Custom menu widget accordion
 				self.customMenuWidgetAccordion();
 			} );
 
 			// Run on Window Load
 			self.config.$window.on( 'load', function() {
+				var $headerStyle = self.config.$siteHeaderStyle;
+
+				// Update config on window load
+				self.windowLoadUpdateConfig();
+
+				// Setup flush dropdowns
 				self.flushDropdownsTop();
+
+				// Sticky Header
+				if ( self.config.$hasStickyHeader ) {
+					var $stickyStyle = wpspLocalize.stickyHeaderStyle;
+					if ( 'standard' == $stickyStyle
+						|| 'shrink' == $stickyStyle
+						|| 'shrink_animated' == $stickyStyle
+					) {
+						self.stickyHeader();
+						self.shrinkStickyHeader();
+					}
+				}
+
 			} );
+		},
+
+		/**
+		 * Updates config on doc ready
+		 *
+		 * @since 1.0.0
+		 */
+		initUpdateConfig: function() {
+
+			// Get Viewport width
+			this.config.$viewportWidth = this.viewportWidth();
+
+			// Define header
+			var $siteHeader = $( '#site-header' );
+			if ( $siteHeader.length ) {
+				this.config.$siteHeaderStyle = wpspLocalize.siteHeaderStyle;
+				this.config.$siteHeader = $( '#site-header' );
+			}
+
+			// Define logo
+			var $siteLogo = $( '#site-logo img' );
+			if ( $siteLogo.length ) {
+				this.config.$siteLogo = $siteLogo;
+				this.config.$siteLogoSrc = this.config.$siteLogo.attr( 'src' );
+			}
+
+			// Sticky Header => Mobile Check (must check first)
+			if ( 'toggle' == this.config.$mobileMenuStyle ) {
+				this.config.$hasStickyMobileHeader = false;
+			} else {
+				this.config.$hasStickyMobileHeader = wpspLocalize.hasStickyMobileHeader;
+			}
+
+			// Check if sticky header is enabled
+			if ( this.config.$siteHeader && wpspLocalize.hasStickyHeader ) {
+				this.config.$hasStickyHeader = true;
+			}
+		},
+
+		/**
+		 * Updates config on window load
+		 *
+		 * @since 1.0.0
+		 */
+		windowLoadUpdateConfig: function() {
+
+			// Header bottom position
+			if ( this.config.$siteHeader ) {
+				var $siteHeaderTop = this.config.$siteHeader.offset().top;
+				this.config.$windowHeight = this.config.$window.height();
+				this.config.$siteHeaderHeight = this.config.$siteHeader.outerHeight();
+				this.config.$siteHeaderBottom = $siteHeaderTop + this.config.$siteHeaderHeight;
+				this.config.$siteHeaderTop = $siteHeaderTop;
+				if ( this.config.$siteLogo ) {
+					this.config.$siteLogoHeight = this.config.$siteLogo.height();
+				}
+			}
+
+			// Set localScrollOffset after site is loaded to make sure it includes dynamic items
+			this.config.$localScrollOffset = this.parseLocalScrollOffset();
+
+		},
+
+		/**
+		 * Updates config whenever the window is resized
+		 *
+		 * @since 1.0.0
+		 */
+		resizeUpdateConfig: function() {
+
+			// Update main configs
+			this.config.$windowHeight  = this.config.$window.height();
+			this.config.$windowWidth   = this.config.$window.width();
+			this.config.$windowTop     = this.config.$window.scrollTop();
+			this.config.$viewportWidth = this.viewportWidth();
+
+			// Update header height
+			if ( this.config.$siteHeader ) {
+				this.config.$siteHeaderHeight = this.config.$siteHeader.outerHeight();
+			}
+
+			// Get logo height
+			if ( this.config.$siteLogo ) {
+				this.config.$siteLogoHeight = this.config.$siteLogo.height();
+			}
+
+			// Vertical Header
+			if ( this.config.$windowWidth < 960 ) {
+				this.config.$verticalHeaderActive = false;
+			} else if ( this.config.$body.hasClass( 'wpsp-has-vertical-header' ) ) {
+				this.config.$verticalHeaderActive = true;
+			}
+
+			// Local scroll offset => update last
+			this.config.$localScrollOffset = this.parseLocalScrollOffset();
+
 		},
 
 		/**
@@ -268,6 +438,57 @@
 					}
 				} );
 			}
+
+		},
+
+		/**
+		 * New Sticky Header
+		 *
+		 * @since 3.4.0
+		 */
+		stickyHeader : function() {
+			var $isSticky = false;
+			var self      = this;
+
+			// Return if sticky is disabled
+			if ( ! self.config.$hasStickyHeader ) return;
+
+			// Define header vars
+			var $header      = self.config.$siteHeader;
+			var $headerStyle = self.config.$siteHeaderStyle;
+
+			// Add sticky wrap
+			var $stickyWrap = $( '<div id="site-header-sticky-wrapper" class="wpsp-sticky-header-holder not-sticky"></div>' );
+			$header.wrapAll( $stickyWrap );
+
+			// Define main vars for sticky function
+			var $window               = self.config.$window;
+			var $brkPoint             = wpspLocalize.stickyHeaderBreakPoint;
+			var $stickyWrap           = $( '#site-header-sticky-wrapper' );
+			var $headerHeight         = self.config.$siteHeaderHeight;
+			var $hasShrinkFixedHeader = $header.hasClass( 'shrink-sticky-header' );
+			var $mobileSupport        = self.config.$hasStickyMobileHeader;
+
+			// Custom shrink logo
+			var $stickyLogo    = wpspLocalize.stickyheaderCustomLogo;
+			var $headerLogo    = self.config.$siteLogo;
+			var $headerLogoSrc = self.config.$siteLogoSrc;
+
+		},
+
+		/**
+		 * Sticky Header
+		 *
+		 * @since 1.0.0
+		 */
+		shrinkStickyHeader: function( event ) {
+
+			var $isShrunk = false;
+
+			// Define header element
+			var self     = this,
+				$header  = self.config.$siteHeader,
+				$enabled = $header.hasClass( 'shrink-sticky-header' );
 
 		},
 	}

@@ -533,6 +533,68 @@
             ),
         )
     ) );
+    // Header > Sticky
+    Redux::setSection( $opt_name, array(
+        'title'      => __( 'Sticky Header', 'wpsp-redux-framework' ),
+        'id'         => 'header-sticky-header',
+        'subsection' => true,
+        'fields'     => array(   
+            array(
+                'id'       => 'fixed-header-style',
+                'type'     => 'select',
+                'title'    => __( 'Style', 'wpsp-redux-framework' ),
+                'options'  => array(
+                        'disabled' => 'Disabled',
+                        'standard'    => 'Standard',
+                        'shrink'    => 'Shrink',
+                        'shrink_animated'    => 'Animated Shrink',
+                ),
+                'default'  => 'disabled'// 1 = on | 0 = off
+            ),
+            array(
+                'id'       => 'fixed-header-shrink-start-height',
+                'type'     => 'text',
+                'required' => array( 'fixed-header-style', 'equals', array( 'shrink', 'shrink_animated' ) ),
+                'title'    => __( 'Logo Start Height', 'wpsp-redux-framework' ),
+                'subtitle' => __( 'In order to properly animate the header with CSS3 it is important to apply a fixed height to the header logo by default.', 'wpsp-redux-framework' ),
+                'validate' => 'preg_replace',
+                'preg'     => array(
+                    'pattern'     => '/[^0-9]/s',
+                    'replacement' => 'Allow only number'
+                ),
+            ),
+            array(
+                'id'       => 'fixed-header-shrink-end-height',
+                'type'     => 'text',
+                'required' => array( 'fixed-header-style', 'equals', array( 'shrink', 'shrink_animated' ) ),
+                'title'    => __( 'Logo Shrunk Height', 'wpsp-redux-framework' ),
+                'subtitle' => __( 'Your shrink header height will be set to your Logo Shrunk Height plus 20px for a top and bottom padding of 20px.', 'wpsp-redux-framework' ),
+                'validate' => 'preg_replace',
+                'preg'     => array(
+                    'pattern'     => '/[^0-9]/s',
+                    'replacement' => 'Allow only number'
+                ),
+            ),
+            array(
+                'id'       => 'is-fixed-header-mobile',
+                'type'     => 'switch',
+                'required' => array( 'fixed-header-style', 'equals', array( 'standard', 'shrink', 'shrink_animated' ) ),
+                'title'    => __( 'Sticky Header On Mobile', 'wpsp-redux-framework' ),
+                'default'  => '1'// 1 = on | 0 = off
+            ),
+            array(
+                'id'       => 'fixed-header-opacity',
+                'type'     => 'text',
+                'required' => array( 'fixed-header-style', 'equals', array( 'standard', 'shrink', 'shrink_animated' ) ),
+                'title'    => __( 'Sticky header Opacity', 'wpsp-redux-framework' ),
+                'validate' => 'preg_replace',
+                'preg'     => array(
+                    'pattern'     => '/[^0-9]/s',
+                    'replacement' => 'Allow only number'
+                ),
+            ),
+        )
+    ) );
     // Header > search icon
     Redux::setSection( $opt_name, array(
         'title'      => __( 'Search icon', 'wpsp-redux-framework' ),
