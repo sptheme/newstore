@@ -124,7 +124,6 @@ class WPSP_Theme_Setup {
 	public static function localize_array() {
 
 		$header_style      = wpsp_get_redux( 'header-style' );
-		$sticky_header     = wpsp_get_redux( 'is-fixed-header' );
 		$has_fixed_header  = wpsp_has_fixed_header();
 		$fixed_header_style = wpsp_fixed_header_style();
 		$wpsp_shrink_fixed_header = wpsp_shrink_fixed_header();
@@ -132,11 +131,10 @@ class WPSP_Theme_Setup {
 		$array = array(
 			'isRTL'                 => is_rtl(),
 			'menuSearchStyle'       => wpsp_get_redux( 'menu-search-style' ),
-			'hasStickyHeader'       => $sticky_header,	        
 			'siteHeaderStyle'       => $header_style,
 			'superfishDelay'        => 600,
 			'superfishSpeed'        => 'fast',
-			'superfishSpeedOut'     => 'fast',			
+			'superfishSpeedOut'     => 'fast',	
 	    );
 
 	    // Header params 
@@ -157,6 +155,16 @@ class WPSP_Theme_Setup {
 					$array['shrinkHeaderHeight'] = $height;
 				}
 				
+			}
+
+			// Sticky Navbar
+			if ( 'two' == $header_style || 'three' == $header_style || 'four' == $header_style ) {
+				$enabled = wpsp_get_redux( 'fixed-header-menu', true );
+				$array['hasStickyNavbar'] = $enabled;
+				if ( $enabled ) {
+					$array['hasStickyNavbarMobile']  = wpsp_get_redux( 'fixed-header-menu-mobile' );
+					$array['stickyNavbarBreakPoint'] = 960;
+				}
 			}
 
 			// Header five

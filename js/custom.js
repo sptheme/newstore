@@ -120,6 +120,16 @@
 					}
 				}
 
+				// Sticky Navbar
+				if ( self.config.$hasStickyNavbar ) {
+					self.stickyHeaderMenu();
+				}
+
+				// Scroll to hash
+				window.setTimeout( function() {
+					self.scrollToHash( self )
+				}, 500 );
+
 			} );
 		},
 
@@ -145,6 +155,33 @@
 			if ( $siteLogo.length ) {
 				this.config.$siteLogo = $siteLogo;
 				this.config.$siteLogoSrc = this.config.$siteLogo.attr( 'src' );
+			}
+
+			// Menu Stuff
+			var $siteNavWrap = $( '#site-navigation-wrap' );
+			if ( $siteNavWrap.length ) {
+
+				// Define menu
+				this.config.$siteNavWrap = $siteNavWrap;
+
+				// Check if sticky menu is enabled
+				if ( wpspLocalize.hasStickyNavbar ) {
+					this.config.$hasStickyNavbar = true;
+				}
+
+				// Store dropdowns
+				var $siteNavDropdowns = $( '#site-navigation-wrap .dropdown-menu > .menu-item-has-children > ul' );
+				if ( $siteNavWrap.length ) {
+					this.config.$siteNavDropdowns = $siteNavDropdowns;
+				}
+
+				// Mobile menu Style
+				this.config.$mobileMenuStyle       = wpspLocalize.mobileMenuStyle;
+				this.config.$mobileMenuToggleStyle = wpspLocalize.mobileMenuToggleStyle;
+
+				// Mobile menu breakpoint
+				this.config.$mobileMenuBreakpoint   = wpspLocalize.mobileMenuBreakpoint;
+
 			}
 
 			// Sticky Header => Mobile Check (must check first)
@@ -216,6 +253,107 @@
 
 			// Local scroll offset => update last
 			this.config.$localScrollOffset = this.parseLocalScrollOffset();
+
+		},
+
+		/**
+		 * Viewport width
+		 *
+		 * @since 1.0.0
+		 */
+		viewportWidth: function() {
+			var e = window, a = 'inner';
+			if ( !( 'innerWidth' in window ) ) {
+				a = 'client';
+				e = document.documentElement || document.body;
+			}
+			return e[ a+'Width' ];
+		},
+
+		/**
+		 * Local Scroll Offset
+		 *
+		 * @since 1.0.0
+		 */
+		parseLocalScrollOffset: function() {
+			var self    = this;
+			var $offset = 0;
+
+			// Return custom offset
+			if ( wpspLocalize.localScrollOffset ) {
+				return wpspLocalize.localScrollOffset;
+			}
+
+			// Fixed header
+			if ( self.config.$hasStickyHeader ) {
+
+				// Return 0 for small screens if mobile fixed header is disabled
+				if ( ! self.config.$hasStickyMobileHeader && self.config.$windowWidth <= wpspLocalize.stickyHeaderBreakPoint ) {
+					$offset = 0;
+				}
+
+				// Return header height
+				else {
+
+					// Shrink header
+					if ( self.config.$siteHeader.hasClass( 'shrink-sticky-header' ) ) {
+						$offset = wpspLocalize.shrinkHeaderHeight;
+					}
+
+					// Standard header
+					else {
+						$offset = self.config.$siteHeaderHeight;
+					}
+
+				}
+
+			}
+
+			// Fixed Nav
+			if ( self.config.$hasStickyNavbar ) {
+				if ( self.config.$windowWidth >= wpspLocalize.stickyHeaderBreakPoint ) {
+					$offset = parseInt( $offset ) + parseInt( $( '#site-navigation-wrap' ).outerHeight() );
+				}
+			}
+
+			// Add wp toolbar
+			if ( $( '#wpadminbar' ).length ) {
+				$offset = parseInt( $offset ) +  parseInt( $( '#wpadminbar' ).outerHeight() );
+			}
+
+			// Add 1 extra decimal to prevent cross browser rounding issues
+			$offset = $offset ? $offset - 1 : 0;
+
+			// Return offset
+			return $offset;
+		},
+
+		/**
+		 * Scroll to Hash
+		 *
+		 * @since 1.0.0
+		 */
+		scrollToHash: function( $this ) {
+
+			// Declare function vars
+			var self  = $this,
+				$hash = location.hash;
+
+			// Hash needed
+			if ( ! $hash ) {
+				return;
+			}
+
+			// Scroll to hash for localscroll links
+			if ( $hash.indexOf( 'localscroll-' ) != -1 ) {
+				self.scrollTo( $hash.replace( 'localscroll-', '' ) );
+				return;
+			}
+
+			// Check elements with data attributes
+			else if ( $( '[data-ls_id="'+ $hash +'"]' ).length ) {
+				self.scrollTo( $hash );
+			}
 
 		},
 
@@ -442,6 +580,37 @@
 		},
 
 		/**
+		 * Get correct sticky header offset / Used for header and menu so keep outside
+		 *
+		 * @since 1.0.0
+		 */
+		stickyOffset: function() {
+			var self          = this;
+			var $offset       = 0;
+			var $mobileMenu   = $( '#wpex-mobile-menu-fixed-top' );
+			var $stickyTopbar = self.config.$stickyTopBar;
+
+			// Offset mobile menu
+			if ( $mobileMenu.is( ':visible' ) ) {
+				$offset = $offset + $mobileMenu.outerHeight();
+			}
+
+			// Offset adminbar
+			if ( this.config.$wpAdminBar ) {
+				$offset = $offset + this.config.$wpAdminBar.outerHeight();
+			}
+
+			// Added offset via child theme
+			if ( wpspLocalize.addStickyHeaderOffset ) {
+				$offset = $offset + wpspLocalize.addStickyHeaderOffset;
+			}
+
+			// Return correct offset
+			return $offset;
+
+		},
+
+		/**
 		 * New Sticky Header
 		 *
 		 * @since 3.4.0
@@ -451,7 +620,7 @@
 			var self      = this;
 
 			// Return if sticky is disabled
-			if ( ! self.config.$hasStickyHeader ) return;
+			if ( ! self.config.$hasStickyHeader ) return;			
 
 			// Define header vars
 			var $header      = self.config.$siteHeader;
@@ -474,6 +643,142 @@
 			var $headerLogo    = self.config.$siteLogo;
 			var $headerLogoSrc = self.config.$siteLogoSrc;
 
+			// Custom shrink logo retina
+			if ( $stickyLogo
+				&& wpspLocalize.stickyheaderCustomLogoRetina
+				&& self.config.$isRetina
+			) {
+				$stickyLogo = wpspLocalize.stickyheaderCustomLogoRetina;
+			}
+
+			// Add offsets
+			var $stickyWrapTop = $stickyWrap.offset().top;
+			var $stickyOffset  = self.stickyOffset();
+			var $setStickyPos  = $stickyWrapTop - $stickyOffset;
+
+			// Set sticky
+			function setSticky() {
+
+				// Already stuck
+				if ( $isSticky ) return;
+
+				// Custom Sticky logo
+				if ( $stickyLogo && $headerLogo ) {
+					$headerLogo.attr( 'src', $stickyLogo );
+					self.config.$siteLogoHeight = self.config.$siteLogo.height();
+				}
+
+				// Add wrap class and toggle sticky class
+				$stickyWrap
+					.css( 'height', $headerHeight )
+					.removeClass( 'not-sticky' )
+					.addClass( 'is-sticky' );
+
+				// Tweak header
+				$header.removeClass( 'dyn-styles').css( {
+					'top'   : self.stickyOffset(),
+					'width' : $stickyWrap.width()
+				} );
+
+				// Set sticky to true
+				$isSticky = true;
+
+			}
+
+			// Destroy sticky
+			function destroySticky() {
+
+				// Already unstuck
+				if ( ! $isSticky ) return;
+
+				// Reset logo
+				if ( $stickyLogo && $headerLogo ) {
+					$headerLogo.attr( 'src', $headerLogoSrc );
+					self.config.$siteLogoHeight = self.config.$siteLogo.height();
+				}
+
+				// Remove sticky wrap height and toggle sticky class
+				$stickyWrap.removeClass( 'is-sticky' ).addClass( 'not-sticky' );
+
+				// Do not remove height on sticky header for shrink header incase animation isn't done yet
+				if ( ! $header.hasClass( 'shrink-sticky-header' ) ) {
+					$stickyWrap.css( 'height', '' );
+				}
+
+				// Reset header
+				$header.addClass( 'dyn-styles').css( {
+					'width' : '',
+					'top'   : ''
+				} );
+
+				// Set sticky to false
+				$isSticky = false;
+
+			}
+
+			// On scroll function
+			function stickyCheck() {
+
+				// Disable on mobile devices
+				if ( ! $mobileSupport && ( self.config.$viewportWidth < $brkPoint ) ) {
+					return;
+				}
+
+				// Add and remove sticky classes and sticky logo
+				if ( self.config.$windowTop >= $setStickyPos && 0 !== self.config.$windowTop ) {
+				 	setSticky();
+				} else {
+					destroySticky();
+				}
+
+			}
+
+			// On resize function
+			function onResize() {
+
+				// Check if header is disabled on mobile if not destroy on resize
+				if ( ! $mobileSupport && ( self.config.$viewportWidth < $brkPoint ) ) {
+					destroySticky();
+				} else {
+
+					// Update sticky
+					if ( $isSticky ) {
+
+						// Update Height
+						if ( ! $header.hasClass( 'shrink-sticky-header' ) ) {
+							$stickyWrap.css( 'height', self.config.$siteHeaderHeight );
+						}
+
+						// Update width and top
+						$header.css( {
+							'top'   : self.stickyOffset(),
+							'width' : $stickyWrap.width()
+						} );
+
+					}
+
+					// Add sticky
+					else {
+						stickyCheck();
+					}
+
+				}
+
+			} // End onResize
+
+			// Fire on init
+			stickyCheck();
+
+			// Fire onscroll event
+			$window.scroll( function() {
+				stickyCheck();
+			} );
+
+			// Fire onResize
+			$window.resize( function() {
+				onResize();
+			} );
+
 		},
 
 		/**
@@ -489,6 +794,217 @@
 			var self     = this,
 				$header  = self.config.$siteHeader,
 				$enabled = $header.hasClass( 'shrink-sticky-header' );
+
+			// Return if shrink header disabled
+			if ( ! $enabled ) return;
+
+			// Define window and sticky wrap
+			var $window     = self.config.$window,
+				$brkPoint   = wpspLocalize.stickyHeaderBreakPoint,
+				$stickyWrap = $( '#site-header-sticky-wrapper' );
+			if ( ! $stickyWrap.length ) return;
+
+			// Check if enabled on mobile
+			var $mobileSupport = self.config.$hasStickyMobileHeader;
+
+			// Get correct header offet
+			var $headerHeight       = self.config.$siteHeaderHeight,
+				$stickyWrapTop      = $stickyWrap.offset().top,
+				$shrinkHeaderOffset = $stickyWrapTop + $headerHeight;
+
+			// Mobile checks
+			var $mtStyle = self.config.$mobileMenuToggleStyle;
+			if ( $mobileSupport && ( 'icon_buttons' == $mtStyle || 'fixed_top' == $mtStyle ) ) {
+				var $hasShrinkHeaderOnMobile = true;
+			} else {
+				var $hasShrinkHeaderOnMobile = false;
+			}
+
+			// Shrink header function
+			function shrinkHeader() {
+
+				// Already shrunk or not sticky
+				if ( $isShrunk || ! $stickyWrap.hasClass( 'is-sticky' ) ) return;
+
+				// Add shrunk class
+				$header.addClass( 'sticky-header-shrunk' );
+
+				// Update shrunk var
+				$isShrunk = true;
+
+			}
+
+			// Un-Shrink header function
+			function unShrinkHeader() {
+
+				// Not shrunk
+				if ( ! $isShrunk ) return;
+
+				// Remove shrunk class
+				$header.removeClass( 'sticky-header-shrunk' );
+
+				// Update shrunk var
+				$isShrunk = false;
+
+			}
+
+			// On scroll function
+			function shrinkCheck() {
+
+				// Disable on mobile devices
+				if ( ! $hasShrinkHeaderOnMobile && ( self.config.$viewportWidth < $brkPoint ) ) {
+					return;
+				}
+
+				// Shrink sticky header
+				if ( self.config.$windowTop >= $shrinkHeaderOffset ) {
+					shrinkHeader();
+				} else {
+					unShrinkHeader();
+				}
+
+			}
+
+			// On resize function
+			function onResize() {
+
+				// Check if header is disabled on mobile if not destroy
+				if ( ! $hasShrinkHeaderOnMobile && ( self.config.$viewportWidth < $brkPoint ) ) {
+					unShrinkHeader();
+				} else {
+					shrinkCheck();
+				}
+
+			}
+
+			// Fire on init
+			shrinkCheck();
+
+			// Fire onscroll event
+			$window.scroll( function() {
+				shrinkCheck();
+			} );
+
+			// Fire onResize
+			$window.resize( function() {
+				onResize();
+			} );
+		},
+
+		/**
+		 * Sticky Header Menu
+		 *
+		 * @since 1.0.0
+		 */
+		stickyHeaderMenu: function() {
+			var self           = this;
+			var $navWrap       = self.config.$siteNavWrap;
+			var $isSticky      = false;
+			var $window        = self.config.$window;
+			var $mobileSupport = wpspLocalize.hasStickyNavbarMobile;
+
+			// Add sticky wrap
+			var $stickyWrap = $( '<div id="site-navigation-sticky-wrapper" class="wpsp-sticky-navigation-holder not-sticky"></div>' );
+			$navWrap.wrapAll( $stickyWrap );
+			$stickyWrap = $( '#site-navigation-sticky-wrapper' );
+
+			// Add offsets
+			var $stickyWrapTop = $stickyWrap.offset().top;
+			var $stickyOffset  = self.stickyOffset();
+			var $setStickyPos  = $stickyWrapTop - $stickyOffset;
+
+			// Shrink header function
+			function setSticky() {
+
+				// Already sticky
+				if ( $isSticky ) return;
+
+				// Add wrap class and toggle sticky class
+				$stickyWrap
+					.css( 'height', self.config.$siteNavWrap.outerHeight() )
+					.removeClass( 'not-sticky' )
+					.addClass( 'is-sticky' );
+
+				// Add CSS to topbar
+				$navWrap.css( {
+					'top'   : self.stickyOffset(),
+					'width' : $stickyWrap.width()
+				} );
+				
+				// Update shrunk var
+				$isSticky = true;
+
+			}
+
+			// Un-Shrink header function
+			function destroySticky() {
+
+				// Not shrunk
+				if ( ! $isSticky ) return;
+
+				// Remove sticky wrap height and toggle sticky class
+				$stickyWrap
+					.css( 'height', '' )
+					.removeClass( 'is-sticky' )
+					.addClass( 'not-sticky' );
+
+				// Remove navbar width
+				$navWrap.css( {
+					'width' : '',
+					'top'   : ''
+				} );
+
+				// Update shrunk var
+				$isSticky = false;
+
+			}
+
+			// Sticky check / enable-disable
+			function stickyCheck() {
+
+				// Disable on mobile devices
+				if ( self.config.$viewportWidth <= wpspLocalize.stickyNavbarBreakPoint ) {
+					return;
+				}
+
+				// Sticky menu
+				if ( self.config.$windowTop >= $setStickyPos && 0 !== self.config.$windowTop ) {
+					setSticky();
+				} else {
+					destroySticky();
+				}
+
+			}
+
+			// On resize function
+			function onResize() {
+
+				// Check if sticky is disabled on mobile if not destroy on resize
+				if ( self.config.$viewportWidth <= wpspLocalize.stickyNavbarBreakPoint ) {
+					destroySticky();
+				}
+
+				// Update width
+				if ( $isSticky ) {
+					$navWrap.css( 'width', $stickyWrap.width() );
+				} else {
+					stickyCheck();
+				}
+
+			}
+
+			// Fire on init
+			stickyCheck();
+
+			// Fire onscroll event
+			$window.scroll( function() {
+				stickyCheck();
+			} );
+
+			// Fire onResize
+			$window.resize( function() {
+				onResize();
+			} );
 
 		},
 	}

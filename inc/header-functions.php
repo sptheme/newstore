@@ -124,11 +124,10 @@ function wpsp_fixed_header_style() {
  * @since 1.0.0
  */
 function wpsp_has_fixed_header() {
+
+	$header_style = wpsp_get_redux( 'header-style' );
 	$return = false;
-	if (
-		'disabled' != wpsp_fixed_header_style()
-		&& ( 'one' == $header_style || 'five' == $header_style )
-	) {
+	if ( 'disabled' != wpsp_fixed_header_style() && ( 'one' == $header_style || 'five' == $header_style ) ) {
 		$return = true;
 	}
 	if ( 'six' == $header_style ) {

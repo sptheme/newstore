@@ -7200,6 +7200,8 @@ a.skip-link {
 
 # STRUCTURE AND LAYOUT
 # HEADER
+	## Header main logo
+	## Sticky Header
 # NAVIGATION
 	## Main navigation
 	## Header one - Left logo & Right Navbar
@@ -7238,12 +7240,6 @@ body.full-screen .wrapper .content-area {
   width: 100% !important;
   max-width: none !important; }
 
-/* HEADER */
-/* Header > full-width */
-.wpsp-full-width .container {
-  width: 100% !important;
-  max-width: none !important; }
-
 /*--------------------------------------------------------------
 # HEADER
 --------------------------------------------------------------*/
@@ -7256,6 +7252,110 @@ body.full-screen .wrapper .content-area {
   padding-top: 30px;
   padding-bottom: 30px;
   height: 100%; }
+
+/*--------------------------------------------------------------
+## Header main logo
+--------------------------------------------------------------*/
+#site-logo {
+  display: table; }
+
+#site-logo-inner {
+  display: table-cell;
+  vertical-align: middle; }
+
+#site-logo a {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  text-decoration: none; }
+
+#site-logo a.site-logo-text {
+  color: #222;
+  font-size: 24px;
+  font-weight: bold; }
+
+#site-logo-fa-icon {
+  margin-right: 10px; }
+
+#site-logo-fa-icon.fa-wpsp-hidden {
+  margin-right: 0; }
+
+#site-logo a:hover {
+  text-decoration: none; }
+
+#site-logo img {
+  display: inline;
+  vertical-align: middle;
+  height: auto;
+  width: auto;
+  max-height: 100%;
+  max-width: 100%; }
+
+/* Header > Main > Full-Width */
+@media only screen and (min-width: 960px) {
+  #site-header.wpsp-full-width .container {
+    width: 100% !important;
+    max-width: none !important; }
+  #site-header.wpsp-full-width > .container {
+    padding-left: 30px; }
+  #site-header.wpsp-full-width .navbar-style-one {
+    right: 30px; }
+  #site-header.wpsp-full-width.header-one #searchform-dropdown,
+  #site-header.wpsp-full-width.header-one #current-shop-items-dropdown {
+    right: 30px; }
+  #site-header.wpsp-full-width .header-two-aside {
+    margin-right: 30px; } }
+
+/*--------------------------------------------------------------
+## Sticky Header
+--------------------------------------------------------------*/
+#site-header-sticky-wrapper.is-sticky #site-header {
+  position: fixed;
+  overflow: visible !important;
+  z-index: 999;
+  background: #fff;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); }
+
+#site-header-sticky-wrapper.is-sticky #site-header-inner {
+  z-index: 999; }
+
+/* Sticky Header > Shrink */
+#site-header.shrink-sticky-header {
+  width: 100%;
+  transition: opacity 0.3s; }
+
+#site-header.shrink-sticky-header.sticky-header-shrunk #site-logo {
+  padding-top: 0;
+  padding-bottom: 0; }
+
+/* shrink with animation*/
+.anim-shrink-header #site-header-sticky-wrapper,
+.anim-shrink-header #site-header,
+.anim-shrink-header #site-header-inner,
+.anim-shrink-header .navbar-style-five,
+.anim-shrink-header .navbar-style-five #site-navigation,
+.anim-shrink-header #site-logo,
+.anim-shrink-header #site-logo-inner,
+.anim-shrink-header #site-logo a,
+.anim-shrink-header #site-logo img {
+  transition: all 0.3s linear; }
+
+.anim-shrink-header #site-logo img {
+  max-height: none;
+  backface-visibility: hidden;
+  transform: translate3d(0, 0, 0); }
+
+.anim-shrink-header #site-navigation-wrap {
+  transition: top 0.3s linear; }
+
+.sticky-header-shrunk #site-header-inner {
+  height: 70px;
+  padding-top: 10px !important;
+  padding-bottom: 10px !important; }
+
+.shrink-sticky-header.sticky-header-shrunk .navbar-style-five .dropdown-menu > li > a,
+.shrink-sticky-header.sticky-header-shrunk #site-logo img {
+  height: 50px; }
 
 /*--------------------------------------------------------------
 # NAVIGATION
