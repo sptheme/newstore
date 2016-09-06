@@ -190,11 +190,21 @@ class WPSP_Theme_Setup {
 		// Add filter for adding custom css via other functions
 		$output = apply_filters( 'wpsp_head_css', $output );
 
+		// Header shrink
+		if ( wpsp_shrink_fixed_header() ) {
+			if ( wpsp_get_redux('fixed-header-shrink-start-height') ) {
+				$output .= '.shrink-sticky-header #site-logo img{height:'. wpsp_get_redux('fixed-header-shrink-start-height') .'px}';
+			}
+			if ( wpsp_get_redux('fixed-header-shrink-end-height') ) {
+			$output .= '.shrink-sticky-header.sticky-header-shrunk #site-logo img,.shrink-sticky-header.sticky-header-shrunk .navbar-style-five .dropdown-menu >li >a{height:'. wpsp_get_redux('fixed-header-shrink-end-height') .'px}';
+			}
+		}
+
 		// Page header
 		$bg = $redux_wpsp['page-title-background-img']['url'];
 		if ( $bg ) {
 			$output .= '.page-header.wpsp-supports-mods{background-image:url('. $bg .');}';
-		}
+		}		
 
 		// Minify and output CSS in the wp_head
 		if ( ! empty( $output ) ) {

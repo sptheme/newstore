@@ -131,6 +131,11 @@
 				}, 500 );
 
 			} );
+
+			// Run on Scroll
+			self.config.$window.scroll( function() {
+				self.config.$windowTop = self.config.$window.scrollTop();				
+			} );
 		},
 
 		/**
@@ -143,6 +148,12 @@
 			// Get Viewport width
 			this.config.$viewportWidth = this.viewportWidth();
 
+			// Define Wp admin bar
+			var $wpAdminBar = $( '#wpadminbar' );
+			if ( $wpAdminBar.length ) {
+				this.config.$wpAdminBar = $wpAdminBar;
+			}
+			
 			// Define header
 			var $siteHeader = $( '#site-header' );
 			if ( $siteHeader.length ) {
@@ -587,8 +598,7 @@
 		stickyOffset: function() {
 			var self          = this;
 			var $offset       = 0;
-			var $mobileMenu   = $( '#wpex-mobile-menu-fixed-top' );
-			var $stickyTopbar = self.config.$stickyTopBar;
+			var $mobileMenu   = $( '#wpsp-mobile-menu-fixed-top' );
 
 			// Offset mobile menu
 			if ( $mobileMenu.is( ':visible' ) ) {
@@ -642,14 +652,6 @@
 			var $stickyLogo    = wpspLocalize.stickyheaderCustomLogo;
 			var $headerLogo    = self.config.$siteLogo;
 			var $headerLogoSrc = self.config.$siteLogoSrc;
-
-			// Custom shrink logo retina
-			if ( $stickyLogo
-				&& wpspLocalize.stickyheaderCustomLogoRetina
-				&& self.config.$isRetina
-			) {
-				$stickyLogo = wpspLocalize.stickyheaderCustomLogoRetina;
-			}
 
 			// Add offsets
 			var $stickyWrapTop = $stickyWrap.offset().top;
@@ -724,7 +726,7 @@
 					return;
 				}
 
-				// Add and remove sticky classes and sticky logo
+				// Add and remove sticky classes and sticky logo				
 				if ( self.config.$windowTop >= $setStickyPos && 0 !== self.config.$windowTop ) {
 				 	setSticky();
 				} else {

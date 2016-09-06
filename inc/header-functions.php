@@ -93,6 +93,14 @@ function wpsp_header_classes() {
 
 	}
 
+	// Reposition cart and search dropdowns
+	if ( 'three' == $header_style || 'five' == $header_style ) {
+		$classes[] = 'wpsp-reposition-cart-search-drops';
+	}
+
+	// Dynamic style class
+	$classes[] = 'dyn-styles';
+
 	// Clearfix class
 	$classes[] = 'clearfix';
 
@@ -143,8 +151,9 @@ function wpsp_has_fixed_header() {
  * @since 1.0.0
  */
 function wpsp_shrink_fixed_header() {
+	$header_style = wpsp_get_redux( 'header-style' );
 	if ( ( 'shrink' == wpsp_fixed_header_style() || 'shrink_animated' == wpsp_fixed_header_style() )
-		&& ( 'one' == wpsp_fixed_header_style() || 'five' == wpsp_fixed_header_style() )
+		&& ( 'one' == $header_style || 'five' == $header_style )
 	) {
 		return true;
 	} else {

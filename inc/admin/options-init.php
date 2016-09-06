@@ -556,7 +556,7 @@
                 'type'     => 'text',
                 'required' => array( 'fixed-header-style', 'equals', array( 'shrink', 'shrink_animated' ) ),
                 'title'    => __( 'Logo Start Height', 'wpsp-redux-framework' ),
-                'subtitle' => __( 'In order to properly animate the header with CSS3 it is important to apply a fixed height to the header logo by default.', 'wpsp-redux-framework' ),
+                'subtitle' => __( 'In order to properly animate the header with CSS3 it is important to apply a fixed height to the header logo by default. e.g:40px', 'wpsp-redux-framework' ),
                 'validate' => 'preg_replace',
                 'preg'     => array(
                     'pattern'     => '/[^0-9]/s',
@@ -568,7 +568,7 @@
                 'type'     => 'text',
                 'required' => array( 'fixed-header-style', 'equals', array( 'shrink', 'shrink_animated' ) ),
                 'title'    => __( 'Logo Shrunk Height', 'wpsp-redux-framework' ),
-                'subtitle' => __( 'Your shrink header height will be set to your Logo Shrunk Height plus 20px for a top and bottom padding of 20px.', 'wpsp-redux-framework' ),
+                'subtitle' => __( 'Your shrink header height will be set to your Logo Shrunk Height plus 20px for a top and bottom padding of 20px. e.g:60px', 'wpsp-redux-framework' ),
                 'validate' => 'preg_replace',
                 'preg'     => array(
                     'pattern'     => '/[^0-9]/s',
