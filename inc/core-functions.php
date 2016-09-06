@@ -63,6 +63,47 @@ function wpsp_get_redux( $id, $default = '' ) {
 endif;
 
 /**
+ * Store current post ID
+ *
+ * @since 1.0.0
+ */
+function post_id() {
+
+	// If singular get_the_ID
+	if ( is_singular() ) {
+		return get_the_ID();
+	}
+
+	// Get ID of WooCommerce product archive
+	/*elseif ( WPEX_WOOCOMMERCE_ACTIVE && is_shop() ) {
+		$shop_id = wc_get_page_id( 'shop' );
+		if ( isset( $shop_id ) ) {
+			return $shop_id;
+		}
+	}*/
+
+	// Tribe events
+	/*elseif( function_exists( 'tribe_is_month' )
+		&& tribe_is_month()
+		&& $page_id = wpex_get_tribe_events_main_page_id()
+	) {
+		return $page_id;
+	}*/
+
+	// Posts page
+	elseif ( is_home() && $page_for_posts = get_option( 'page_for_posts' ) ) {
+		return $page_for_posts;
+	}
+
+	// Return nothing
+	else {
+		return NULL;
+	}
+
+}
+
+
+/**
  * Echo the post URL
  *
  * @since 1.0.0

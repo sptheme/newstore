@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 	<?php wpsp_hook_page_header_top(); ?>
 
-	<div class="page-header-inner container clear">
+	<div class="page-header-inner container">
 
 		<?php wpsp_hook_page_header_inner(); // All default content added via this hook ?>
 

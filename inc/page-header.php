@@ -15,14 +15,14 @@
  */
 function wpsp_page_header_style() {
 
-	global $post;
-
 	// Get default page header style defined in theme option
 	$style = wpsp_get_redux( 'page-title-style' );
 
 	// Get for header style defined in page settings
-	if ( $meta = get_post_meta( $post->ID, 'wpsp_post_title_style', true ) ) {
-		$style = $meta;
+	if ( is_singular() ) {	
+		if ( $meta = get_post_meta( get_the_ID(), 'wpsp_post_title_style', true ) ) {
+			$style = $meta;
+		}
 	}
 
 	// Sanitize data
@@ -52,7 +52,7 @@ function wpsp_has_page_header() {
 	}
 
 	// Return if page header is disabled via custom field
-	if ( $post->ID ) {
+	if ( $post_id ) {
 
 		// Get page meta setting
 		$meta = get_post_meta( $post->ID, 'wpsp_is_page_title', true );
@@ -111,13 +111,13 @@ function wpsp_has_page_header_subheading() {
  */
 function wpsp_get_page_subheading() {
 
-	global $post;
+	$post_id = post_id();
 
 	// Subheading is NULL by default
 	$subheading = NULL;
 
 	// Posts & Pages
-	if ( $meta = get_post_meta( $post->ID, 'wpsp_post_subheading', true ) ) {
+	if ( $meta = get_post_meta( $post_id, 'wpsp_post_subheading', true ) ) {
 		$subheading = $meta;
 	}
 
@@ -381,13 +381,11 @@ add_filter( 'wpsp_head_css', 'wpsp_page_header_css' );
  */
 function wpsp_title() {
 
-	global $post;
-
 	// Default title is null
 	$title = NULL;
 	
 	// Get post ID from global object
-	$post_id = $post->ID;
+	$post_id = post_id();
 	
 	// Homepage - display blog description if not a static page
 	if ( is_front_page() && ! is_singular( 'page' ) ) {
@@ -395,7 +393,7 @@ function wpsp_title() {
 		if ( get_bloginfo( 'description' ) ) {
 			$title = get_bloginfo( 'description' );
 		} else {
-			return esc_html__( 'Recent Posts', 'wpsp-blog' );
+			return esc_html__( 'Recent Posts', 'newstore' );
 		}
 
 	// Homepage posts page
@@ -408,7 +406,7 @@ function wpsp_title() {
 	// Search => NEEDS to go before archives
 	elseif ( is_search() ) {
 		global $wp_query;
-		$title = '<span id="search-results-count">'. $wp_query->found_posts .'</span> '. esc_html__( 'Search Results Found', 'wpsp-blog' );
+		$title = '<span id="search-results-count">'. $wp_query->found_posts .'</span> '. esc_html__( 'Search Results Found', 'newstore' );
 	}
 		
 	// Archives
@@ -417,7 +415,7 @@ function wpsp_title() {
 		// Author
 		if ( is_author() ) {
 			/*$title = sprintf(
-				esc_html__( 'All posts by%s', 'wpsp-blog' ),': <span class="vcard">' . get_the_author() . '</span>'
+				esc_html__( 'All posts by%s', 'newstore' ),': <span class="vcard">' . get_the_author() . '</span>'
 			);*/
 			$title = get_the_archive_title();
 		}
@@ -429,17 +427,17 @@ function wpsp_title() {
 
 		// Daily archive title
 		elseif ( is_day() ) {
-			$title = sprintf( esc_html__( 'Daily Archives: %s', 'wpsp-blog' ), get_the_date() );
+			$title = sprintf( esc_html__( 'Daily Archives: %s', 'newstore' ), get_the_date() );
 		}
 
 		// Monthly archive title
 		elseif ( is_month() ) {
-			$title = sprintf( esc_html__( 'Monthly Archives: %s', 'wpsp-blog' ), get_the_date( 'F Y' ) );
+			$title = sprintf( esc_html__( 'Monthly Archives: %s', 'newstore' ), get_the_date( 'F Y' ) );
 		}
 
 		// Yearly archive title
 		elseif ( is_year() ) {
-			$title = sprintf( esc_html__( 'Yearly Archives: %s', 'wpsp-blog' ), get_the_date( 'Y' ) );
+			$title = sprintf( esc_html__( 'Yearly Archives: %s', 'newstore' ), get_the_date( 'Y' ) );
 		}
 
 		// Categories/Tags/Other
@@ -462,8 +460,7 @@ function wpsp_title() {
 	elseif ( is_404() ) {
 
 		$title = wpsp_get_translated_theme_mod( 'error_page_title' );
-		$title = $title ? $title : esc_html__( '404: Page Not Found', 'wpsp-blog' );
-
+		$title = $title ? $title : esc_html__( '404: Page Not Found', 'newstore' );
 	}
 	
 	// Anything else with a post_id defined
@@ -480,7 +477,7 @@ function wpsp_title() {
 			$display = $display ? $display : 'custom_text';
 			if ( 'custom_text' == $display ) {
 				$title = wpsp_get_redux( 'blog-single-header-custom-text' );
-				$title = $title ? $title : esc_html__( 'Blog', 'wpsp-blog' );
+				$title = $title ? $title : esc_html__( 'Blog', 'newstore' );
 			} elseif ( 'first_category' == $display ) {
 				$title = wpsp_get_first_term_name();
 			} else {

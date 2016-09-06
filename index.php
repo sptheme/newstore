@@ -13,18 +13,6 @@
 
 get_header(); ?>
 
-    <?php
-    if ( is_front_page() && is_home() ) {
-
-        get_sidebar('hero'); 
-
-        get_sidebar('statichero');
-        
-    } else {
-    // Do nothing...or?
-    }
-    ?>
-
     <div class="wrapper" id="wrapper-index">
         
 	   <div id="content" class="container">

@@ -249,6 +249,7 @@
                     'centered-minimal'  => esc_html__( 'Centered Minimal', 'wpsp-redux-framework' ),
                     'hidden'            => esc_html__( 'Hidden', 'wpsp-redux-framework' ),
                 ),
+                'default' => '',
             ),
             array(
                 'id'       => 'page-title-background-img',
