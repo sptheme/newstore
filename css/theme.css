@@ -7220,6 +7220,9 @@ a.skip-link {
 /*-------------------------------------------------------------- 
  # STRUCTURE AND LAYOUT
 --------------------------------------------------------------*/
+#page {
+  overflow: hidden; }
+
 /* Layout & Widths > Left Sidebar */
 body.left-sidebar .wrapper .content-area {
   float: right; }
@@ -7514,6 +7517,11 @@ body #site-navigation .sf-menu li.left-dropdowns ul a.sf-with-ul {
 
 #site-navigation .wpsp-dropdown-menu li.left-dropdowns ul .fa-angle-right:before {
   content: "\f104"; }
+
+/* Reset .menu-item from Boostrap */
+#site-navigation .wpsp-dropdown-menu ul.sub-menu li.menu-item {
+  float: none;
+  display: block; }
 
 /* Menu > Main > Animate Links */
 #site-navigation .wpsp-dropdown-menu > li > a > span.link-inner {
