@@ -36,7 +36,10 @@ class WPSP_Theme_Setup {
 		add_action( 'after_setup_theme', array( $this, 'wpsp_include_functions' ), 2 );
 
 		// Load configuration classes (post types & 3rd party plugins)
-		add_action( 'after_setup_theme', array( $this, 'configs'), 3 );
+		add_action( 'after_setup_theme', array( $this, 'configs' ), 3 );
+
+		// Load wooCommerce custom and helper functions
+		add_action( 'after_setup_theme', array( $this, 'wpsp_bootstrap_helper' ), 4 );
 
 	}
 
@@ -242,6 +245,13 @@ class WPSP_Theme_Setup {
 		require_once( get_template_directory() . '/inc/page-header.php' ); // page title style
 	}
 
+	public static function wpsp_bootstrap_helper() {
+		require get_template_directory() . '/inc/custom-comments.php';
+		require get_template_directory() . '/inc/bootstrap-wp-navwalker.php'; 
+		require get_template_directory() . '/inc/bootstrap-wp-gallery.php';
+		require get_template_directory() . '/inc/woocommerce.php'; // Load WooCommerce helper functions 
+	}
+
 	/**
 	 * Configs for post types and 3rd party plugins.
 	 * 
@@ -273,24 +283,3 @@ require get_template_directory() . '/inc/setup.php';
  * Custom template tags for this theme.
  */
 require get_template_directory() . '/inc/template-tags.php';
-
-/**
- * Customizer additions.
- */
-require get_template_directory() . '/inc/custom-comments.php';
-
-/**
-* Load custom WordPress nav walker.
-*/
-require get_template_directory() . '/inc/bootstrap-wp-navwalker.php';
-
-/**
-* Load custom WordPress gallery.
-*/
-require get_template_directory() . '/inc/bootstrap-wp-gallery.php';
-
-
-/**
-* Load WooCommerce functions.
-*/
-require get_template_directory() . '/inc/woocommerce.php';
