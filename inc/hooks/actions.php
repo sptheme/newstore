@@ -29,6 +29,7 @@ add_action( 'wpsp_hook_header_top', 'wpsp_header_menu' );
 -------------------------------------------------------------------------------*/
 add_action( 'wpsp_hook_header_inner', 'wpsp_header_logo' );
 add_action( 'wpsp_hook_header_inner', 'wpsp_header_menu' );
+add_action( 'wpsp_hook_header_inner', 'wpsp_mobile_menu_icons' );
 add_action( 'wpsp_hook_header_inner', 'wpsp_search_dropdown' );
 add_action( 'wpsp_hook_header_inner', 'wpsp_search_header_replace' );
 

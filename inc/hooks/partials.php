@@ -16,7 +16,7 @@
  * @version 1.0.0
  */
 function wpsp_header() {
-	if ( wpsp_get_redux( 'is-enable-header' ) ) {
+	if ( has_header() ) {
 		get_template_part( 'partials/header/header-layout' );	
 	}
 }
@@ -133,6 +133,24 @@ function wpsp_header_menu() {
 		get_template_part( 'partials/header/header-menu' );
 	}
 
+}
+
+/*-------------------------------------------------------------------------------*/
+/* -  Menu > Mobile
+/*-------------------------------------------------------------------------------*/
+
+/**
+ * Gets the template part for the "icons" style mobile menu.
+ *
+ * @since 1.0.0
+ */
+function wpsp_mobile_menu_icons() {
+	$style = wpsp_get_redux( 'mobile-menu-toggle-style' );
+	$is_has_mobile_menu = has_mobile_menu();
+	if ( $is_has_mobile_menu && ( 'icon_buttons' == $style || 'icon_buttons_under_logo' == $style )
+	) {
+		get_template_part( 'partials/header/header-menu-mobile-icons' );
+	}
 }
 
 /*-------------------------------------------------------------------------------*/

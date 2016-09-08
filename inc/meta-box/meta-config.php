@@ -51,6 +51,17 @@
 			
 			array(
 				'type' => 'heading',
+				'name' => esc_html__( 'Header', 'wpsp-meta-box' ),
+			),
+			array(
+				'name'  => __( 'Header', 'wpsp-meta-box' ), 
+				'id'    => $prefix . "is_display_header",
+				'desc'	=> __( 'Enable or disable header logo and main navigation on this page or post.', 'wpsp-meta-box' ), 
+				'type'  => 'checkbox',
+				'std'  => 1,
+			),
+			array(
+				'type' => 'heading',
 				'name' => esc_html__( 'Title', 'wpsp-meta-box' ),
 			),
 			array(

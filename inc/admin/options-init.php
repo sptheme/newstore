@@ -702,7 +702,7 @@
                 'required' => array( 'mobile-menu-style', '=', 'sidr' ),
                 'title'    => __( 'Displace', 'wpsp-redux-framework' ),
                 'desc'     => __( 'Do not push sidebar', 'wpsp-redux-framework' ),
-                'default'  => '0'// 1 = on | 0 = off
+                'default'  => '1'// 1 = on | 0 = off
             ),
             array(
                 'id'       => 'full-screen-mobile-menu-style',
