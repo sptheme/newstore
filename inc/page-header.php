@@ -84,7 +84,7 @@ function wpsp_has_page_header_title() {
 
 	// Disable title if the page header is disabled via meta (ignore filter)
 	$meta = get_post_meta( $post_id, 'wpsp_is_page_title', true );
-	if ( !$meta && !is_404() && !is_search() ) {
+	if ( !$meta && !is_404() && !is_search() && !is_archive() && !is_category() ) {
 		return false;
 	}
 	
