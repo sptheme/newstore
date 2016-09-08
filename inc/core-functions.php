@@ -70,7 +70,7 @@ endif;
 function post_id() {
 
 	// If singular get_the_ID
-	if ( is_singular() ) {
+	if ( is_singular() || is_home() ) {
 		return get_the_ID();
 	}
 

@@ -15,14 +15,14 @@
  */
 function wpsp_page_header_style() {
 
+	$post_id = post_id();
+
 	// Get default page header style defined in theme option
 	$style = wpsp_get_redux( 'page-title-style' );
 
 	// Get for header style defined in page settings
-	if ( is_singular() ) {	
-		if ( $meta = get_post_meta( get_the_ID(), 'wpsp_post_title_style', true ) ) {
-			$style = $meta;
-		}
+	if ( $meta = get_post_meta( $post_id, 'wpsp_post_title_style', true ) ) {
+		$style = $meta;
 	}
 
 	// Sanitize data
@@ -40,11 +40,10 @@ function wpsp_page_header_style() {
  */
 function wpsp_has_page_header() {
 	
-	global $post;
-
 	// Define vars
 	$return = true;
 	$style  = wpsp_page_header_style();
+	$post_id = post_id();
 
 	// Check if page header style is set to hidden
 	if ( 'hidden' == $style ) {
@@ -55,7 +54,7 @@ function wpsp_has_page_header() {
 	if ( $post_id ) {
 
 		// Get page meta setting
-		$meta = get_post_meta( $post->ID, 'wpsp_is_page_title', true );
+		$meta = get_post_meta( $post_id, 'wpsp_is_page_title', true );
 
 		// Return true if enabled via page settings
 		if ( $meta ) {
@@ -81,15 +80,16 @@ function wpsp_has_page_header() {
  */
 function wpsp_has_page_header_title() {
 
-	global $post;
+	$post_id = post_id();
 
 	// Disable title if the page header is disabled via meta (ignore filter)
-	if ( ! get_post_meta( $post->ID, 'wpsp_is_page_title', true ) ) {
+	$meta = get_post_meta( $post_id, 'wpsp_is_page_title', true );
+	if ( !$meta && !is_404() && !is_search() ) {
 		return false;
 	}
-
+	
 	// Apply filters and return
-	return apply_filters( 'wpsp_has_page_header_title', true );
+	return apply_filters( 'has_page_header_title', true );
 
 }
 
