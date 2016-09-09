@@ -7210,6 +7210,8 @@ a.skip-link {
 	## Header four - Top Navbar Centered
 	## Header Five - Centered Inline Logo
 	## Header Six - Verticle
+# MOBILE MENU	
+	## Mobile Menu Icon Button
 # SEARCH
 # WIDGETS
 # PAGE TITLE
@@ -8035,6 +8037,42 @@ body.breadcrumbs-position-default .page-header-title {
 
 .background-image-page-header-overlay.style-dashed {
   background: rgba(0, 0, 0, 0.3) url(images/dashed-overlay.png) repeat; }
+
+/*--------------------------------------------------------------
+# MOBILE MENU
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+## Mobile Menu Icon Button
+--------------------------------------------------------------*/
+#mobile-menu {
+  height: 40px;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  margin-top: -20px; }
+
+#mobile-menu a {
+  display: block;
+  float: left;
+  color: #666;
+  font-size: 18px;
+  height: 40px;
+  width: 40px;
+  line-height: 40px;
+  border: 1px solid #eee;
+  border-radius: 3px;
+  text-align: center;
+  margin-left: 10px;
+  background: #f7f7f7;
+  transition: all .15s ease-in-out; }
+
+#mobile-menu a:first-child {
+  margin-left: 0; }
+
+#mobile-menu a:hover {
+  text-decoration: none;
+  background: #f1f1f1;
+  color: #333; }
 
 /*--------------------------------------------------------------
 # SEARCH

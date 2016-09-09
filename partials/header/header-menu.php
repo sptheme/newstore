@@ -30,7 +30,7 @@ if ( has_nav_menu( $menu_location ) ) :
 
 	<?php wpsp_hook_main_menu_before(); ?>
 
-	<div id="site-navigation-wrap" class="<?php echo $wrap_classes; ?>">
+	<div id="site-navigation-wrap" class="hidden-md-down <?php echo $wrap_classes; ?>">
 
 		<nav id="site-navigation" class="main-navigation <?php echo $inner_classes; ?>"<?php wpsp_schema_markup( 'site_navigation' ); ?> role="navigation">
 

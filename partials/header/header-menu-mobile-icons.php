@@ -6,7 +6,7 @@
  */  
  ?>
 
-<div id="mobile-menu" class="clr wpsp-mobile-menu-toggle wpsp-hidden">
+<div id="mobile-menu" class="hidden-lg-up">
 	<?php
 	// Toggle only needed if main menu is defined
 	$menu_location  = apply_filters( 'wpsp_main_menu_location', 'primary' );
