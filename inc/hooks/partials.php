@@ -140,6 +140,46 @@ function wpsp_header_menu() {
 /*-------------------------------------------------------------------------------*/
 
 /**
+ * Gets the template part for the navbar mobile menu_style
+ *
+ * @since 1.0.0
+ */
+function wpsp_mobile_menu_navbar() {
+
+	// Get var
+	$get = false;
+
+	// Current filter
+	$filter = current_filter();
+
+	if ( $filter == 'wpsp_hook_header_bottom' ) {
+		$get = true;
+	}
+
+	// Get mobile menu navbar
+	if ( $get
+		&& has_mobile_menu()
+		&& 'navbar' == wpsp_get_redux( 'mobile-menu-toggle-style' )
+	) {
+		get_template_part( 'partials/header/header-menu-mobile-navbar' );
+	}
+
+}
+
+/**
+ * Gets the template part for the fixed top mobile menu style
+ *
+ * @since 1.0.0
+ */
+function wpsp_mobile_menu_fixed_top() {
+	if ( has_mobile_menu()
+		&& 'fixed_top' == wpsp_get_redux( 'mobile-menu-toggle-style' )
+	) {
+		get_template_part( 'partials/header/header-menu-mobile-fixed-top' );
+	}
+}
+
+/**
  * Gets the template part for the "icons" style mobile menu.
  *
  * @since 1.0.0

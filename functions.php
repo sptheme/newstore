@@ -130,13 +130,18 @@ class WPSP_Theme_Setup {
 		$has_fixed_header  = wpsp_has_fixed_header();
 		$fixed_header_style = wpsp_fixed_header_style();
 		$wpsp_shrink_fixed_header = wpsp_shrink_fixed_header();
+		$mobile_style = wpsp_get_redux('mobile-menu-style');
+		$mobile_toggle_style = wpsp_get_redux('mobile-menu-toggle-style');
+		$mobile_breakpoint = intval( wpsp_get_redux( 'mobile-menu-breakpoint' ) );
 		
 		$array = array(
 			'isRTL'                 => is_rtl(),
 			'menuSearchStyle'       => wpsp_get_redux( 'menu-search-style' ),
 			'siteHeaderStyle'       => $header_style,
 			'superfishDelay'        => 600,
-			
+			'mobileMenuBreakpoint'  => $mobile_breakpoint ? $mobile_breakpoint : '992',
+			'mobileMenuStyle'       => $mobile_style,
+			'mobileMenuToggleStyle' => $mobile_toggle_style,
 			'superfishSpeed'        => 'fast',
 			'superfishSpeedOut'     => 'fast',	
 	    );
@@ -193,6 +198,14 @@ class WPSP_Theme_Setup {
 
 		// Add filter for adding custom css via other functions
 		$output = apply_filters( 'wpsp_head_css', $output );
+
+		// Mobile menu
+		/* Mobile menu > Toggle button icons */
+		if ( has_mobile_menu()
+			&& ( 'fixed_top' == wpsp_get_redux( 'mobile-menu-toggle-style' ) || 'navbar' == wpsp_get_redux( 'mobile-menu-toggle-style' ) )
+		) {
+			$output .= '#wpsp-mobile-menu-fixed-top, #wpsp-mobile-menu-navbar{background:'. wpsp_get_redux('mobile-menu-toggle-fixed-top-bg') .'}';
+		}
 
 		// Header shrink
 		if ( wpsp_shrink_fixed_header() ) {

@@ -11,7 +11,8 @@
 
 /* Page > Before
 -------------------------------------------------------------------------------*/
-
+//add_action( 'wpsp_hook_page_before', 'wpsp_mobile_menu_navbar' ); // @TODO: has_overlay_header
+add_action( 'wpsp_hook_page_before', 'wpsp_mobile_menu_fixed_top' );
 
 /* Page > Top
 -------------------------------------------------------------------------------*/
@@ -36,6 +37,10 @@ add_action( 'wpsp_hook_header_inner', 'wpsp_search_header_replace' );
 /* Header > Bottom
 -------------------------------------------------------------------------------*/
 add_action( 'wpsp_hook_header_bottom', 'wpsp_header_menu' );
+add_action( 'wpsp_hook_header_bottom', 'wpsp_mobile_menu_navbar' );
+
+/* Menu > Bottom
+-------------------------------------------------------------------------------*/
 add_action( 'wpsp_hook_main_menu_bottom', 'wpsp_search_dropdown' );
 
 /*-------------------------------------------------------------------------------*/

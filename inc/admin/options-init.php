@@ -628,7 +628,7 @@
                 'id'       => 'mobile-menu-breakpoint',
                 'type'     => 'text',
                 'title'    => __( 'Mobile Menu Breakpoint', 'wpsp-redux-framework' ),
-                'desc'     => __( 'Default: 959px', 'wpsp-redux-framework' ),
+                'desc'     => __( 'Default: 992px. Follow Bootstrap responsive breakpoint', 'wpsp-redux-framework' ),
                 'validate' => 'preg_replace',
                 'preg'     => array(
                     'pattern'     => '/[^0-9]/s',
