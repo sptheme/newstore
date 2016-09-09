@@ -57,12 +57,12 @@ function wpsp_has_page_header() {
 		$meta = get_post_meta( $post_id, 'wpsp_is_page_title', true );
 
 		// Return true if enabled via page settings
-		if ( $meta ) {
+		if ( 'on' == $meta ) {
 			$return = true;
 		}
 
 		// Return if page header is disabled and there isn't a page header background defined
-		elseif ( !$meta && 'background-image' != $style ) {
+		elseif ( 'off' == $meta && 'background-image' != $style ) {
 			$return	= false;
 		}
 
@@ -84,7 +84,7 @@ function wpsp_has_page_header_title() {
 
 	// Disable title if the page header is disabled via meta (ignore filter)
 	$meta = get_post_meta( $post_id, 'wpsp_is_page_title', true );
-	if ( !$meta && !is_404() && !is_search() && !is_archive() && !is_category() ) {
+	if ( 'off' == $meta ) {
 		return false;
 	}
 	

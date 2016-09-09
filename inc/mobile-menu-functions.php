@@ -16,16 +16,18 @@
  */
 function has_header() {
 
+	$post_id = post_id();
+
 	// Return true by default
 	$return = wpsp_get_redux( 'is-enable-header', true );
 
 	// Check meta
-	$meta = get_post_meta( get_the_ID(), 'wpsp_is_display_header', true );
+	$meta = get_post_meta( $post_id, 'wpsp_is_display_header', true );
 
 	// Check if disabled via meta option
-	if ( $meta ) {
+	if ( 'on' == $meta ) {
 		$return = true;
-	} elseif ( !$meta ) {
+	} elseif ( 'off' == $meta ) {
 		$return = false;
 	}
 

@@ -57,8 +57,12 @@
 				'name'  => __( 'Header', 'wpsp-meta-box' ), 
 				'id'    => $prefix . "is_display_header",
 				'desc'	=> __( 'Enable or disable header logo and main navigation on this page or post.', 'wpsp-meta-box' ), 
-				'type'  => 'checkbox',
-				'std'  => 1,
+				'type'  => 'select',
+				'options' => array(
+					'on' => __( 'Enable', 'wpsp-meta-box' ),
+					'off' => __( 'Disable', 'wpsp-meta-box' ),
+					),
+				'std'  => 'on',
 			),
 			array(
 				'type' => 'heading',
@@ -68,8 +72,12 @@
 				'name'  => __( 'Title', 'wpsp-meta-box' ), 
 				'id'    => $prefix . "is_page_title",
 				'desc'	=> __( 'Enable or disable this element on this page or post.', 'wpsp-meta-box' ), 
-				'type'  => 'checkbox',
-				'std'  => 1,
+				'type'  => 'select',
+				'options' => array(
+					'on' => __( 'Enable', 'wpsp-meta-box' ),
+					'off' => __( 'Disable', 'wpsp-meta-box' ),
+					),
+				'std'  => 'on',
 			),
 			array(
 				'name'  => __( 'Custom Title', 'wpsp-meta-box' ), 

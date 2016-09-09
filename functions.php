@@ -130,12 +130,13 @@ class WPSP_Theme_Setup {
 		$has_fixed_header  = wpsp_has_fixed_header();
 		$fixed_header_style = wpsp_fixed_header_style();
 		$wpsp_shrink_fixed_header = wpsp_shrink_fixed_header();
-
+		
 		$array = array(
 			'isRTL'                 => is_rtl(),
 			'menuSearchStyle'       => wpsp_get_redux( 'menu-search-style' ),
 			'siteHeaderStyle'       => $header_style,
 			'superfishDelay'        => 600,
+			
 			'superfishSpeed'        => 'fast',
 			'superfishSpeedOut'     => 'fast',	
 	    );
