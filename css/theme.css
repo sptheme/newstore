@@ -8046,10 +8046,7 @@ body.breadcrumbs-position-default .page-header-title {
 --------------------------------------------------------------*/
 #mobile-menu {
   height: 40px;
-  position: absolute;
-  right: 4%;
-  top: 50%;
-  margin-top: -20px; }
+  float: right; }
 
 #mobile-menu a {
   display: block;
@@ -8090,11 +8087,6 @@ body.breadcrumbs-position-default .page-header-title {
   float: none; }
 
 .wpsp-mobile-toggle-menu-icon_buttons_under_logo #mobile-menu {
-  position: relative;
-  top: auto;
-  right: auto !important;
-  left: auto !important;
-  margin: 0;
   float: none;
   text-align: center;
   padding-top: 20px;
