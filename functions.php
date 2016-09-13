@@ -100,12 +100,6 @@ class WPSP_Theme_Setup {
 	    wp_enqueue_style( 'styles', get_stylesheet_directory_uri() . '/css/theme.min.css', array(), '0.4.6');
 	    wp_enqueue_script('jquery'); 
 
-	    // Superfish used for menu dropdowns
-		wp_enqueue_script( 'wpsp-superfish', get_stylesheet_directory_uri() .'/js/vendors/superfish.js', array( 'jquery' ), THEME_VERSION, true );
-		wp_enqueue_script( 'wpsp-supersubs', get_stylesheet_directory_uri() .'/js/vendors/supersubs.js', array( 'jquery' ), THEME_VERSION, true );
-		wp_enqueue_script( 'wpsp-hoverintent', get_stylesheet_directory_uri() .'/js/vendors/hoverintent.js', array( 'jquery' ), THEME_VERSION, true );
-		wp_enqueue_script( 'wpsp-leanner-modal', get_stylesheet_directory_uri() .'/js/vendors/leanner-modal.js', array( 'jquery' ), THEME_VERSION, true );
-
 	    wp_enqueue_script( 'scripts', get_template_directory_uri() . '/js/theme.min.js', array(), '0.4.6', true );
 
 	    if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {

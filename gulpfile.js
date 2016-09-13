@@ -30,9 +30,52 @@ var uglify = require('gulp-uglify');
 var merge2 = require('merge2');
 var ignore = require('gulp-ignore');
 var rimraf = require('gulp-rimraf');
+var clone = require('gulp-clone');
+var merge = require('gulp-merge');
 var sourcemaps = require('gulp-sourcemaps');
 var browserSync = require('browser-sync').create();
 var reload = browserSync.reload;
+
+
+// Run: 
+// gulp sass + cssnano + rename
+// Prepare the min.css for production (with 2 pipes to be sure that "child-theme.css" == "child-theme.min.css")
+gulp.task('scss-for-prod', function() {
+    var source =  gulp.src('./sass/*.scss')
+        .pipe(plumber())
+        .pipe(sourcemaps.init({loadMaps: true}))
+        .pipe(sass());
+
+    var pipe1 = source.pipe(clone())
+        .pipe(sourcemaps.write(undefined, { sourceRoot: null }))
+        .pipe(gulp.dest('./css'));
+
+    var pipe2 = source.pipe(clone())
+        .pipe(cssnano())
+        .pipe(rename({suffix: '.min'})) 
+        .pipe(gulp.dest('./css'));
+
+    return merge(pipe1, pipe2);
+});
+
+
+// Run: 
+// gulp sourcemaps + sass + reload(browserSync)
+// Prepare the child-theme.css for the developpment environment
+gulp.task('scss-for-dev', function() {
+    gulp.src('./sass/*.scss')
+        .pipe(plumber())
+        .pipe(sourcemaps.init({loadMaps: true}))
+        .pipe(sass())
+        .pipe(sourcemaps.write(undefined, { sourceRoot: null }))
+        .pipe(gulp.dest('./css'))
+        .pipe(reload({stream: true}));
+});
+
+gulp.task('watch-scss', ['browser-sync'], function () {
+    gulp.watch('./sass/**/*.scss', ['scss-for-dev']);
+});
+
 
 // Run: 
 // gulp sass
@@ -89,11 +132,13 @@ gulp.task('watch-bs', ['browser-sync', 'watch', 'cssnano'], function () { });
 // Uglifies and concat all JS files into one
 gulp.task('scripts', function() {
   gulp.src([
+    basePaths.dev + 'js/superfish.min.js',
+    basePaths.dev + 'js/supersubs.js',
+    basePaths.dev + 'js/hoverIntent.js',
     basePaths.dev + 'js/owl.carousel.min.js', // Must be loaded before BS4
+    basePaths.dev + 'js/leanner-modal.js',
+    basePaths.dev + 'js/jquery.sidr.min.js',
     basePaths.dev + 'js/tether.js', // Must be loaded before BS4
-    basePaths.dev + 'js/hoverIntent',
-    basePaths.dev + 'js/superfish',
-    basePaths.dev + 'js/supersubs',
 
     // Start - All BS4 stuff
     basePaths.dev + 'js/bootstrap4/bootstrap.js', 
@@ -107,11 +152,13 @@ gulp.task('scripts', function() {
     .pipe(gulp.dest('./js/'));
 
   gulp.src([
+    basePaths.dev + 'js/superfish.js',
+    basePaths.dev + 'js/supersubs.js',
+    basePaths.dev + 'js/hoverIntent.js',
     basePaths.dev + 'js/owl.carousel.min.js', // Must be loaded before BS4
+    basePaths.dev + 'js/leanner-modal.js',
+    basePaths.dev + 'js/jquery.sidr.js',
     basePaths.dev + 'js/tether.js', // Must be loaded before BS4
-    basePaths.dev + 'js/hoverIntent',
-    basePaths.dev + 'js/superfish',
-    basePaths.dev + 'js/supersubs',
 
     // Start - All BS4 stuff
     basePaths.dev + 'js/bootstrap4/bootstrap.js', 
@@ -183,7 +230,19 @@ gulp.task('copy-assets', function() {
     gulp.src(basePaths.bower + 'superfish/dist/js/*.js')
         .pipe(gulp.dest(basePaths.dev + '/js'));
 
-// Copy Superfish CSS files
-    gulp.src(basePaths.bower + 'superfish/dist/css/*.css')
+// Copy Sidr JS files
+    gulp.src(basePaths.bower + 'sidr/dist/*.js')
+        .pipe(gulp.dest(basePaths.dev + '/js'));
+
+// Copy Sidr CSS files
+    gulp.src(basePaths.bower + 'sidr/dist/stylesheets/*.css')
         .pipe(gulp.dest(basePaths.dev + '/css'));        
+
+});
+
+
+// Run // gulp dist // Copies the files to the dist folder for distributon 
+gulp.task('dist', function() { 
+    gulp.src(['!sass','!bower_components', '!node_modules','!src','!dist','!bower.json', '!gulpfile.js', '!package.json', '*']) 
+    .pipe(gulp.dest('dist/')) 
 });
