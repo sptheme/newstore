@@ -193,6 +193,28 @@ function wpsp_mobile_menu_icons() {
 	}
 }
 
+/**
+ * Sidr Close button
+ *
+ * @since 1.0.0
+ */
+function wpsp_sidr_close() { ?>
+	<?php if ( 'sidr' == mobile_menu_style() ) : ?>
+		<div id="sidr-close"><a href="#sidr-close" class="toggle-sidr-close"></a></div>
+	<?php endif; ?>
+<?php }
+
+/**
+ * Adds a hidden searchbox in the footer for use with the mobile menu
+ *
+ * @since 1.0.0
+ */
+function wpsp_mobile_searchform() {
+	if ( wpsp_get_redux( 'is-mobile-menu-search', true ) ) {
+		get_template_part( 'partials/header/mobile-searchform' );
+	}
+}
+
 /*-------------------------------------------------------------------------------*/
 /* #  Page Header
 /*-------------------------------------------------------------------------------*/

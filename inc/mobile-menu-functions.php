@@ -65,3 +65,44 @@ function has_mobile_menu() {
 		return true;
 	}
 }
+
+/**
+ * Returns sidebar menu source
+ *
+ * @since 1.0.0
+ */
+function sidr_menu_source() {
+
+	// Only needed for sidr menu style
+	if ( 'sidr' != mobile_menu_style() ) {
+		return false;
+	}
+
+	// Define array of items
+	$items = array();
+
+	// Add close button
+	$items['sidrclose'] = '#sidr-close';
+
+	// Add mobile menu alternative if defined
+	if ( has_nav_menu( 'mobile_menu_alt' ) ) {
+		$items['nav'] = '#mobile-menu-alternative';
+	}
+
+	// If mobile menu alternative is not defined add main navigation
+	else {
+		$items['nav'] = '#site-navigation';
+	}
+
+	// Add search form
+	if ( wpsp_get_redux( 'is-mobile-menu-search', true ) ) {
+		$items['search'] = '#mobile-menu-search';
+	}
+
+	// Apply filters for child theming
+	$items = apply_filters( 'wpsp_mobile_menu_source', $items );
+
+	// Turn items into comma seperated list and return
+	return implode( ', ', $items );
+
+}

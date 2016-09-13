@@ -19,6 +19,14 @@ if ( has_nav_menu( $menu_location ) ) :
 	$text = $text ? $text : esc_html__( 'Menu', 'newstore' );
 	$text = apply_filters( 'wpsp_mobile_menu_navbar_open_text', $text ); ?>
 
+	<?php
+	// Closing toggle for the sidr mobile menu style
+	if ( 'sidr' == mobile_menu_style() ) : ?>
+
+		<div id="sidr-close"><a href="#sidr-close" class="toggle-sidr-close"></a></div>
+
+	<?php endif; ?>
+
 	<div id="wpsp-mobile-menu-navbar" class="hidden-lg-up">
 		<div class="container">
 			<a href="#mobile-menu" class="mobile-menu-toggle" title="<?php echo $text; ?>"><?php echo $icon; ?><span class="wpsp-text"><?php echo $text; ?></span></a>

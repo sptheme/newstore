@@ -177,6 +177,15 @@ class WPSP_Theme_Setup {
 
 		} // End header params
 
+		// Sidr settings
+		if ( 'sidr' == $mobile_style ) {
+			$array['sidrSource']         = sidr_menu_source();
+			$array['sidrDisplace']       = wpsp_get_redux( 'mobile-menu-sidr-displace', true ) ?  true : false;
+			$array['sidrSide']           = wpsp_get_redux( 'mobile-menu-sidr-direction', 'left' );
+			$array['sidrSpeed']          = 300;
+			$array['sidrDropdownTarget'] = 'arrow';
+		}
+
 		return apply_filters( 'wpsp_localize_array', $array );
 	}
 

@@ -88,6 +88,12 @@
 				// Main nav dropdowns
 				self.superFish();
 
+				// Mobile menu
+				self.mobileMenu();
+
+				// Prevent menu item click
+				self.navNoClick();
+
 				// Header 5 logo
 				self.inlineHeaderLogo();
 
@@ -166,6 +172,11 @@
 			if ( $siteLogo.length ) {
 				this.config.$siteLogo = $siteLogo;
 				this.config.$siteLogoSrc = this.config.$siteLogo.attr( 'src' );
+			}
+
+			// RTL
+			if ( wpspLocalize.isRTL ) {
+				this.config.$isRTL = true;
 			}
 
 			// Menu Stuff
@@ -485,6 +496,253 @@
 				} );
 			} );
 
+		},
+
+		/**
+		 * Mobile Menu
+		 *
+		 * @since 1.0.0
+		 */
+		mobileMenu: function( event ) {
+
+			var self = this;
+
+			/***** Sidr Mobile Menu ****/
+			if ( 'sidr' == this.config.$mobileMenuStyle && typeof wpspLocalize.sidrSource !== 'undefined' ) {
+
+				var self = this;
+
+				// Add sidr
+				$( 'a.mobile-menu-toggle, li.mobile-menu-toggle > a' ).sidr( {
+					name     : 'sidr-main',
+					source   : wpspLocalize.sidrSource,
+					side     : wpspLocalize.sidrSide,
+					displace : wpspLocalize.sidrDisplace,
+					speed    : parseInt( wpspLocalize.sidrSpeed ),
+					renaming : true,
+					onOpen   : function() {
+						
+						// Add extra classname
+						$( '#sidr-main' ).addClass( 'wpsp-mobile-menu' );
+
+						// Prevent body scroll
+						self.config.$body.addClass( 'wpsp-noscroll' );
+
+						// Declare useful vars
+						var $hasChildren = $( '.sidr-class-menu-item-has-children' );
+
+						// Add dropdown toggle (arrow)
+						$hasChildren.children( 'a' ).append( '<span class="sidr-class-dropdown-toggle"></span>' );
+
+						// Toggle dropdowns
+						var $sidrDropdownTarget = $( '.sidr-class-dropdown-toggle' );
+
+						// Check localization
+						if ( wpspLocalize.sidrDropdownTarget == 'li' ) {
+							$sidrDropdownTarget = $( '.sidr-class-sf-with-ul' );
+						}
+
+						// Add toggle click event
+						$sidrDropdownTarget.on( 'click', function( event ) {
+
+							// Define toggle vars
+							if ( wpspLocalize.sidrDropdownTarget == 'li' ) {
+								var $toggleParentLi = $( this ).parent( 'li' );
+							} else {
+								var $toggleParentLink = $( this ).parent( 'a' ),
+									$toggleParentLi   = $toggleParentLink.parent( 'li' );
+							}
+
+							// Get parent items and dropdown
+							var $allParentLis = $toggleParentLi.parents( 'li' ),
+								$dropdown     = $toggleParentLi.children( 'ul' );
+
+							// Toogle items
+							if ( ! $toggleParentLi.hasClass( 'active' ) ) {
+								$hasChildren.not( $allParentLis ).removeClass( 'active' ).children( 'ul' ).slideUp( 'fast' );
+								$toggleParentLi.addClass( 'active' ).children( 'ul' ).slideDown( 'fast' );
+							} else {
+								$toggleParentLi.removeClass( 'active' ).children( 'ul' ).slideUp( 'fast' );
+							}
+
+							// Return false
+							return false;
+
+						} );
+
+						// Add dark overlay to content
+						self.config.$body.append( '<div class="wpsp-sidr-overlay wpsp-hidden"></div>' );
+						$( '.wpsp-sidr-overlay' ).fadeIn( wpspLocalize.sidrSpeed );
+
+						/* Bind scroll - buggy
+						$( '#sidr-main' ).bind( 'mousewheel DOMMouseScroll', function ( e ) {
+							var e0 = e.originalEvent,
+								delta = e0.wheelDelta || -e0.detail;
+							this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+							e.preventDefault();
+						} );*/
+
+						// Close sidr when clicking toggle
+						$( 'a.sidr-class-toggle-sidr-close' ).on( 'click', function( event ) {
+							$.sidr( 'close', 'sidr-main' );
+							return false;
+						} );
+
+						// Close sidr when clicking on overlay
+						$( '.wpsp-sidr-overlay' ).on( 'click', function( event ) {
+							$.sidr( 'close', 'sidr-main' );
+							return false;
+						} );
+
+						// Close on resize
+						self.config.$window.resize( function() {
+							if ( self.config.$windowWidth >= self.config.$mobileMenuBreakpoint ) {
+								$.sidr( 'close', 'sidr-main' );
+							}
+						} );
+
+					},
+					onClose : function() {
+
+						// Allow body scroll
+						self.config.$body.removeClass( 'wpsp-noscroll' );
+
+						// Remove active dropdowns
+						$( '.sidr-class-menu-item-has-children.active' ).removeClass( 'active' ).children( 'ul' ).hide();
+						
+						// FadeOut overlay
+						$( '.wpsp-sidr-overlay' ).fadeOut( wpspLocalize.sidrSpeed, function() {
+							$( this ).remove();
+						} );
+					}
+
+				} );
+
+				// Close when clicking local scroll link
+				$( 'li.sidr-class-local-scroll > a' ).click( function() {
+					var $hash = this.hash;
+					if ( $.inArray( $hash, self.config.$localScrollSections ) > -1 ) {
+						$.sidr( 'close', 'sidr-main' );
+						self.scrollTo( $hash );
+						return false;
+					}
+				} );
+
+			}
+
+			/***** Toggle Mobile Menu ****/
+			else if ( 'toggle' == self.config.$mobileMenuStyle && self.config.$siteHeader ) {
+
+				var $classes = 'mobile-toggle-nav wpsp-mobile-menu clearfix';
+
+				// Insert nav
+				if ( $( '#wpsp-mobile-menu-fixed-top' ).length ) {
+					$( '#wpsp-mobile-menu-fixed-top' ).append( '<nav class="'+ $classes +'"></nav>' );
+				}
+
+				// Overlay header
+				else if ( self.config.$hasHeaderOverlay && $( '#overlay-header-wrap' ).length ) {
+					$( '<nav class="'+ $classes +'"></nav>' ).insertBefore( "#overlay-header-wrap" );
+				}
+
+				// Normal toggle insert
+				else {
+					$( '<nav class="'+ $classes +'"></nav>' ).insertAfter( self.config.$siteHeader );
+				}
+
+				// Grab all content from menu and add into mobile-toggle-nav element
+				if ( $( '#mobile-menu-alternative' ).length ) {
+					var mobileMenuContents = $( '#mobile-menu-alternative .dropdown-menu' ).html();
+				} else {
+					var mobileMenuContents = $( '#site-navigation .dropdown-menu' ).html();
+				}
+				$( '.mobile-toggle-nav' ).html( '<ul class="mobile-toggle-nav-ul">' + mobileMenuContents + '</ul>' );
+
+				// Remove all styles
+				$( '.mobile-toggle-nav-ul, .mobile-toggle-nav-ul *' ).children().each( function() {
+					var attributes = this.attributes;
+					$( this ).removeAttr( 'style' );
+				} );
+
+				// Add classes where needed
+				$( '.mobile-toggle-nav-ul' ).addClass( 'container' );
+
+				// Show/Hide
+				$( '.mobile-menu-toggle' ).on( self.config.$isMobile ? 'touchstart' : 'click', function( event ) {
+					if ( wpspLocalize.animateMobileToggle ) {
+						$( '.mobile-toggle-nav' ).stop(true,true).slideToggle( 'fast' ).toggleClass( 'visible' );
+					} else {
+						$( '.mobile-toggle-nav' ).toggle().toggleClass( 'visible' );
+					}
+					return false;
+				} );
+
+				// Close on resize
+				self.config.$window.resize( function() {
+					if ( self.config.$windowWidth >= self.config.$mobileMenuBreakpoint && $( '.mobile-toggle-nav' ).length ) {
+						$( '.mobile-toggle-nav' ).hide().removeClass( 'visible' );
+					}
+				} );
+
+				// Add search to toggle menu
+				var $mobileSearch = $( '#mobile-menu-search' );
+				if ( $mobileSearch.length ) {
+					$( '.mobile-toggle-nav' ).append( '<div class="mobile-toggle-nav-search container"></div>' );
+					$( '.mobile-toggle-nav-search' ).append( $mobileSearch );
+				}
+
+			}
+
+			/***** Full-Screen Overlay Mobile Menu ****/
+			else if ( 'full_screen' == self.config.$mobileMenuStyle && self.config.$siteHeader ) {
+
+				// Style
+				var $style = wpspLocalize.fullScreenMobileMenuStyle ? wpspLocalize.fullScreenMobileMenuStyle : false;
+
+				// Insert new nav
+				self.config.$body.append( '<div class="full-screen-overlay-nav wpsp-mobile-menu wpsp-clr '+ $style +'"><span class="full-screen-overlay-nav-close"></span><nav class="full-screen-overlay-nav-ul-wrapper"><ul class="full-screen-overlay-nav-ul"></ul></nav></div>' );
+
+				// Grab all content from menu and add into mobile-toggle-nav element
+				if ( $( '#mobile-menu-alternative' ).length ) {
+					var mobileMenuContents = $( '#mobile-menu-alternative .dropdown-menu' ).html();
+				} else {
+					var mobileMenuContents = $( '#site-navigation .dropdown-menu' ).html();
+				}
+				$( '.full-screen-overlay-nav-ul' ).html( mobileMenuContents );
+
+				// Remove all styles
+				$( '.full-screen-overlay-nav, .full-screen-overlay-nav *' ).children().each( function() {
+					var attributes = this.attributes;
+					$( this ).removeAttr( 'style' );
+				} );
+
+				// Show
+				$( '.mobile-menu-toggle' ).on( self.config.$isMobile ? 'touchstart' : 'click', function( event ) {
+					$( '.full-screen-overlay-nav' ).addClass( 'visible' );
+					self.config.$body.addClass( 'wpsp-noscroll' );
+					return false;
+				} );
+
+				// Hide
+				$( '.full-screen-overlay-nav-close' ).on( self.config.$isMobile ? 'touchstart' : 'click', function( event ) {
+					$( '.full-screen-overlay-nav' ).removeClass( 'visible' );
+					self.config.$body.removeClass( 'wpsp-noscroll' );
+					return false;
+				} );
+
+			}
+
+		},
+
+		/**
+		 * Prevent clickin on links
+		 *
+		 * @since 1.0.0
+		 */
+		navNoClick: function() {
+			$( 'li.nav-no-click > a, li.sidr-class-nav-no-click > a' ).live( 'click', function() {
+				return false;
+			} );
 		},
 
 		/**

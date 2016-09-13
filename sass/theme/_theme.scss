@@ -601,6 +601,51 @@ body.breadcrumbs-position-default .page-header-title { max-width: 70% }
 #wpsp-mobile-menu-fixed-top .mobile-menu-toggle .fa { margin-right: 10px; }
 
 /*--------------------------------------------------------------
+## Mobile Menu Style > Sidebar (Sidr)
+--------------------------------------------------------------*/
+
+/* Mobile Menus > Sidr */
+.sidr{display:block;position:fixed;top:0;height:100%;z-index:999999;width:300px;overflow-x:hidden;overflow-y:auto; padding-bottom: 30px; background: #262626; color: #fff; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; -webkit-overflow-scrolling: touch;}
+.sidr.right { left: auto; right: -300px; }
+.sidr.left { left: -300px; right: auto; }
+.sidr a { color: #707070 }
+.sidr a:hover,
+.sidr-class-dropdown-toggle:hover,
+.sidr-class-menu-item-has-children.active > a,
+.sidr-class-menu-item-has-children.active > a > .sidr-class-dropdown-toggle { color: #fff; text-decoration: none; }
+a.sidr-class-toggle-sidr-close { position: relative; margin: 0 auto; display: block; height: 50px; line-height: 50px; font-size: 18px; color: #fff; background: rgba(0,0,0,0.1); }
+.sidr-class-toggle-sidr-close:before { font-family: "FontAwesome"; content: "\f0c9"; position: absolute; top: 0; left: 20px; height: 50px; line-height: 50px; }
+.sidr-class-wpsp-dropdown-menu, 
+.sidr-class-wpsp-dropdown-menu ul { list-style: none; padding:0; margin: 0; }
+.sidr-class-wpsp-dropdown-menu ul { display: none; border-top: 1px solid rgba( 255, 255, 255, 0.035 ); margin-left: 0; background: rgba(255,255,255,0.02); }
+.sidr-class-wpsp-dropdown-menu li { border-bottom: 1px solid rgba( 255, 255, 255, 0.035 ) }
+.sidr-class-wpsp-dropdown-menu > li:first-child { border-top: 1px solid rgba( 255, 255, 255, 0.035 ) }
+.sidr-class-wpsp-dropdown-menu li a { padding: 12px 20px; display: block; position: relative; }
+.sidr-class-wpsp-dropdown-menu li a.sidr-class-sf-with-ul { padding-right: 40px }
+.sidr-class-wpsp-dropdown-menu ul li:last-child { border: none }
+.sidr-class-menu-item-has-children { position: relative }
+.sidr-class-wpsp-dropdown-menu li.sidr-class-menu-item-has-children > a { padding-right: 60px }
+.sidr-class-dropdown-toggle { font-size: 11px; height: 100%; width: 60px; position: absolute; right: 0; top: 0; cursor: pointer; color: #707070; text-align: right; padding-right: 20px; text-align: center; }
+.sidr-class-dropdown-toggle:before { font-family: "FontAwesome"; content: "\f054"; position: absolute; height: 30px; line-height: 30px; width: 30px; top: 50%; left: 50%; margin-top: -15px; margin-left: -15px; }
+.sidr-class-wpsp-dropdown-menu li.active > a > .sidr-class-dropdown-toggle:before { content: "\f078" }
+.sidr-class-wpsp-dropdown-menu ul a:before { font-family: "FontAwesome"; content: "\f0da"; display: inline-block; margin: 0 10px; }
+.sidr-class-wpsp-dropdown-menu ul ul a:before { margin-left: 20px }
+.sidr-class-wpsp-dropdown-menu ul ul ul a:before { margin-left: 40px }
+.sidr-class-wpsp-dropdown-menu a .fa { margin-right: 10px }
+.sidr #searchform-header-replace-close,
+.sidr .nav-arrow { display: none !important }
+.sidr-class-wcmenucart { display: none !important }
+
+/* Mobile Menus > Sidr > Overlay */
+.wpsp-sidr-overlay { position: fixed; top: 0; left: 0; height: 100%; width: 100%; background: rgba(0,0,0,0.6); z-index: 9999; }
+
+/* Mobile Menus > Sidr > Search */
+#sidr-id-searchform-overlay-title { display: none }
+.sidr-class-mobile-menu-searchform { margin: 30px 20px 0; }
+.sidr-class-mobile-menu-searchform input { width: 100%; background: #fff; background: rgba(255,255,255,0.06); line-height: 1.4em; border-radius: 3px; color: #fff; color: rgba(255,255,255,0.5); font-size: 1em; font-weight: 400; transition: all 0.3s; }
+.sidr-class-mobile-menu-searchform input:focus { color: #fff; }
+
+/*--------------------------------------------------------------
 # SEARCH
 --------------------------------------------------------------*/
 #searchform-dropdown { position: relative }
