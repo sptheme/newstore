@@ -186,6 +186,11 @@ class WPSP_Theme_Setup {
 			$array['sidrDropdownTarget'] = 'arrow';
 		}
 
+		// Toggle mobile menu
+		if ( 'toggle' == $mobile_style ) {
+			$array['animateMobileToggle'] = true;
+		}
+
 		return apply_filters( 'wpsp_localize_array', $array );
 	}
 

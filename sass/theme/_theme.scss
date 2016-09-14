@@ -646,6 +646,35 @@ a.sidr-class-toggle-sidr-close { position: relative; margin: 0 auto; display: bl
 .sidr-class-mobile-menu-searchform input:focus { color: #fff; }
 
 /*--------------------------------------------------------------
+## Mobile Menu Style > Toggle
+--------------------------------------------------------------*/
+.mobile-toggle-nav { margin-top: 0; display: none; background: #fff; }
+.mobile-toggle-nav { z-index: 9999; height: auto; line-height: inherit; }
+.mobile-toggle-nav a { color: #555; display: block; padding: 10px 0; position: relative; border-top: 1px solid #eee; }
+.mobile-toggle-nav a:hover { color: #000 }
+.mobile-toggle-nav a:hover { text-decoration: none }
+.mobile-toggle-nav a .fa { margin-right: 10px }
+.mobile-toggle-nav .nav-arrow { display: none }
+.mobile-toggle-nav li.menu-item { float: none; display:block; }
+.mobile-toggle-nav ul.sub-menu { margin: 0; padding: 0; }
+.mobile-toggle-nav .wpsp-mobile-dropdown-icon { z-index: 2; cursor: pointer; position: absolute; right: 0; top: 50%; height: 30px; line-height: 30px; width: 60px; text-align: center; margin-top: -15px; font-weight: 400; font-size: 10px; text-align: right; }
+.mobile-toggle-nav .menu-item-has-children ul a { padding-left: 20px }
+.mobile-toggle-nav .menu-item-has-children ul ul a { padding-left: 40px }
+.mobile-toggle-nav .menu-item-has-children ul ul ul a { padding-left: 60px }
+.mobile-toggle-nav .menu-item-has-children ul ul ul a { padding-left: 80px }
+
+.wpsp-mobile-toggle-menu-fixed_top .mobile-toggle-nav { background: #222; }
+.wpsp-mobile-toggle-menu-fixed_top .mobile-toggle-nav a { border-color: #333; color: #aaa; }
+.wpsp-mobile-toggle-menu-fixed_top .mobile-toggle-nav a:hover { color: #fff; }
+
+.mobile-toggle-nav #mobile-menu-search { display: block; margin-bottom: 20px; position: relative; }
+
+/* Mobile Menus > Hide Things */
+.sidr-class-search-toggle-li,
+#sidr-id-searchform-dropdown,
+.mobile-toggle-nav-ul li.search-toggle-li { display: none; }
+
+/*--------------------------------------------------------------
 # SEARCH
 --------------------------------------------------------------*/
 #searchform-dropdown { position: relative }

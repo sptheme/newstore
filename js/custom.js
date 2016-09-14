@@ -633,7 +633,7 @@
 			/***** Toggle Mobile Menu ****/
 			else if ( 'toggle' == self.config.$mobileMenuStyle && self.config.$siteHeader ) {
 
-				var $classes = 'mobile-toggle-nav wpsp-mobile-menu clearfix';
+				var $classes = 'mobile-toggle-nav wpsp-mobile-menu hidden-lg-up clearfix';
 
 				// Insert nav
 				if ( $( '#wpsp-mobile-menu-fixed-top' ).length ) {
@@ -652,9 +652,9 @@
 
 				// Grab all content from menu and add into mobile-toggle-nav element
 				if ( $( '#mobile-menu-alternative' ).length ) {
-					var mobileMenuContents = $( '#mobile-menu-alternative .dropdown-menu' ).html();
+					var mobileMenuContents = $( '#mobile-menu-alternative .wpsp-dropdown-menu' ).html();
 				} else {
-					var mobileMenuContents = $( '#site-navigation .dropdown-menu' ).html();
+					var mobileMenuContents = $( '#site-navigation .wpsp-dropdown-menu' ).html();
 				}
 				$( '.mobile-toggle-nav' ).html( '<ul class="mobile-toggle-nav-ul">' + mobileMenuContents + '</ul>' );
 
@@ -680,7 +680,8 @@
 				// Close on resize
 				self.config.$window.resize( function() {
 					if ( self.config.$windowWidth >= self.config.$mobileMenuBreakpoint && $( '.mobile-toggle-nav' ).length ) {
-						$( '.mobile-toggle-nav' ).hide().removeClass( 'visible' );
+						//console.log(self.config.$windowWidth + ' : ' + self.config.$mobileMenuBreakpoint);
+						$( '.mobile-toggle-nav' ).hide().removeClass( 'visible' );						
 					}
 				} );
 
