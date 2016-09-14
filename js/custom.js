@@ -36,7 +36,7 @@
 				$isMobile               : false,
 				$mobileMenuStyle        : null,
 				$mobileMenuToggleStyle  : null,
-				$mobileMenuBreakpoint   : 960,
+				$mobileMenuBreakpoint   : 992,
 
 				// Header
 				$siteHeader             : null,
