@@ -706,7 +706,7 @@
 				var $mobileSearch = $( '#mobile-menu-search' );
 				if ( $mobileSearch.length ) {
 					$( '.mobile-toggle-nav' ).append( '<div class="mobile-toggle-nav-search container"></div>' );
-					$( '.mobile-toggle-nav-search' ).append( $mobileSearch );
+					$( '.mobile-toggle-nav-search' ).append( $mobileSearch );					
 				}
 
 			}

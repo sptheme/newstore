@@ -215,6 +215,19 @@ function wpsp_mobile_searchform() {
 	}
 }
 
+/**
+ * Get mobile menu alternative if enabled.
+ *
+ * @since 1.0.0
+ */
+function wpsp_mobile_menu_alt() {
+	if ( has_mobile_menu()
+		&& has_nav_menu( 'mobile_menu_alt' )
+	) {
+		get_template_part( 'partials/header/header-menu-mobile-alt' );
+	}
+}
+
 /*-------------------------------------------------------------------------------*/
 /* #  Page Header
 /*-------------------------------------------------------------------------------*/

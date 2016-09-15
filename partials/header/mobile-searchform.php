@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 } ?>
 
-<div id="mobile-menu-search" class="clearfix wpsp-hidden">
+<div id="mobile-menu-search" class="clearfix">
 	<form method="get" id="searchform" action="<?php echo esc_url( home_url( '/' ) ); ?>" role="search" class="mobile-menu-searchform">
 		<div class="input-group">
 			<input type="search" class="field form-control" name="s" id="s" placeholder="<?php esc_attr_e( 'Search &hellip;', 'newstore' ); ?>" />

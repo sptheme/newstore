@@ -8,7 +8,7 @@
  */
 ?>
 
-<div id="searchform-header-replace" class="header-searchform-wrap clear">
+<div id="searchform-header-replace" class="header-searchform-wrap clearfix">
 	<form method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>" class="header-searchform">
 		<input type="search" name="s" autocomplete="off" placeholder="<?php echo esc_html__( 'Type then hit enter to search...', 'newstore' ); ?>" />
 		<?php if ( defined( 'ICL_LANGUAGE_CODE' ) ) { ?>
