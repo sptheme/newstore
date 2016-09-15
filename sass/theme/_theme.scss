@@ -566,8 +566,8 @@ body.breadcrumbs-position-default .page-header-title { max-width: 70% }
 .page-header.background-image-page-header .page-header-title { position: relative; z-index: 2; color: #fff; max-width: 100%; font-size: 3.231em; font-weight: 400; max-width: 100% !important; }
 .page-header.background-image-page-header .page-subheading { position: relative; z-index: 2; color: #fff; font-size: 1.846em; font-weight: 300; }
 .background-image-page-header-overlay { display: block; position: absolute; top: 0; left: 0; height: 100%; width: 100%; background: #000; z-index: 1; opacity: 0.5; }
-.background-image-page-header-overlay.style-dotted { background: rgba(0,0,0,0.3) url(images/dotted-overlay.png) repeat }
-.background-image-page-header-overlay.style-dashed { background: rgba(0,0,0,0.3) url(images/dashed-overlay.png) repeat }
+.background-image-page-header-overlay.style-dotted { background: rgba(0,0,0,0.3) url(../images/dotted-overlay.png) repeat }
+.background-image-page-header-overlay.style-dashed { background: rgba(0,0,0,0.3) url(../images/dashed-overlay.png) repeat }
 
 /*--------------------------------------------------------------
 # MOBILE MENU
@@ -673,6 +673,31 @@ a.sidr-class-toggle-sidr-close { position: relative; margin: 0 auto; display: bl
 .sidr-class-search-toggle-li,
 #sidr-id-searchform-dropdown,
 .mobile-toggle-nav-ul li.search-toggle-li { display: none; }
+
+/*--------------------------------------------------------------
+## Mobile Menu Style > Full Screen Fade Overlay
+--------------------------------------------------------------*/
+.full-screen-overlay-nav { z-index: -1; position: fixed; width: 100%; height: 100%; top: 0; left: 0; visibility: hidden; opacity: 0; transition: all 0.4s; display: block; overflow-y: auto; font-weight: 300; font-size: 2.462em; }
+.full-screen-overlay-nav.visible { z-index: 99999; visibility: visible; opacity: 1; }
+.full-screen-overlay-nav .full-screen-overlay-nav-close { position: fixed; top: 20px; right: 20px; width: 58px; height: 58px; cursor: pointer; opacity: 0.5; transition: all 0.3s; }
+.full-screen-overlay-nav .full-screen-overlay-nav-close:hover { opacity: 1; }
+.full-screen-overlay-nav-ul-wrapper { display: table; width: 100%; height: 100%; text-align: center; }
+.full-screen-overlay-nav-ul { display: table-cell; vertical-align: middle; height: 100%; width: 100%; padding: 80px; }
+.full-screen-overlay-nav-ul ul { display: block; list-style: none; padding: 0; margin: 0; }
+.full-screen-overlay-nav-ul ul.sub-menu { font-size: 0.7em; }
+.full-screen-overlay-nav-ul li { display: block; float: none; }
+.full-screen-overlay-nav-ul li a { display: inline-block; color: #000; transition: all 0.3s; margin-bottom: 20px; }
+.full-screen-overlay-nav-ul li a .fa { margin-right: 10px; }
+.full-screen-overlay-nav-ul li a:hover { text-decoration: none; opacity: 0.4; }
+.full-screen-overlay-nav-ul li.wpsp-menu-extra { display: none !important; }
+.full-screen-overlay-nav-ul .nav-arrow { display: none; }
+
+.full-screen-overlay-nav.white { background: #fff; }
+.full-screen-overlay-nav.white .full-screen-overlay-nav-close { background: url( '../images/full-screen-overlay-nav-close-black.png' ) no-repeat; }
+.full-screen-overlay-nav.black { background: #000; }
+.full-screen-overlay-nav.black .full-screen-overlay-nav-close { background: url( '../images/full-screen-overlay-nav-close-white.png' ) no-repeat; }
+.full-screen-overlay-nav.black li a { color: #fff; opacity: 0.4; }
+.full-screen-overlay-nav.black li a:hover { opacity: 1; }
 
 /*--------------------------------------------------------------
 # SEARCH

@@ -191,6 +191,11 @@ class WPSP_Theme_Setup {
 			$array['animateMobileToggle'] = true;
 		}
 
+		// Full screen mobile menu style
+		if ( 'full_screen' == $mobile_style ) {
+			$array['fullScreenMobileMenuStyle'] = wpsp_get_redux( 'full-screen-mobile-menu-style', 'white' );
+		}
+
 		return apply_filters( 'wpsp_localize_array', $array );
 	}
 

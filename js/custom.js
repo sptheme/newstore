@@ -154,6 +154,12 @@
 			// Get Viewport width
 			this.config.$viewportWidth = this.viewportWidth();
 
+			// Mobile check & add mobile class to the header
+			if ( this.mobileCheck() ) {
+				this.config.$isMobile = true;
+				this.config.$body.addClass( 'wpsp-is-mobile-device' );
+			}
+
 			// Define Wp admin bar
 			var $wpAdminBar = $( '#wpadminbar' );
 			if ( $wpAdminBar.length ) {
@@ -276,6 +282,17 @@
 			// Local scroll offset => update last
 			this.config.$localScrollOffset = this.parseLocalScrollOffset();
 
+		},
+
+		/**
+		 * Mobile Check
+		 *
+		 * @since 1.0.0
+		 */
+		mobileCheck: function() {
+			if ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test( navigator.userAgent ) ) {
+				return true;
+			}
 		},
 
 		/**
@@ -701,13 +718,13 @@
 				var $style = wpspLocalize.fullScreenMobileMenuStyle ? wpspLocalize.fullScreenMobileMenuStyle : false;
 
 				// Insert new nav
-				self.config.$body.append( '<div class="full-screen-overlay-nav wpsp-mobile-menu wpsp-clr '+ $style +'"><span class="full-screen-overlay-nav-close"></span><nav class="full-screen-overlay-nav-ul-wrapper"><ul class="full-screen-overlay-nav-ul"></ul></nav></div>' );
+				self.config.$body.append( '<div class="full-screen-overlay-nav wpsp-mobile-menu clearfix '+ $style +'"><span class="full-screen-overlay-nav-close"></span><nav class="full-screen-overlay-nav-ul-wrapper"><ul class="full-screen-overlay-nav-ul"></ul></nav></div>' );
 
 				// Grab all content from menu and add into mobile-toggle-nav element
 				if ( $( '#mobile-menu-alternative' ).length ) {
-					var mobileMenuContents = $( '#mobile-menu-alternative .dropdown-menu' ).html();
+					var mobileMenuContents = $( '#mobile-menu-alternative .wpsp-dropdown-menu' ).html();
 				} else {
-					var mobileMenuContents = $( '#site-navigation .dropdown-menu' ).html();
+					var mobileMenuContents = $( '#site-navigation .wpsp-dropdown-menu' ).html();
 				}
 				$( '.full-screen-overlay-nav-ul' ).html( mobileMenuContents );
 
