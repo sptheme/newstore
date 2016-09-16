@@ -56,3 +56,18 @@ function has_footer_widgets() {
 	return apply_filters( 'wpsp_display_footer_widgets', $return );
 
 }
+
+/**
+ * Checks if footer bottom are enabled
+ *
+ * @since 1.0.0
+ */
+function has_footer_bottom() {
+
+	// Check if enabled via the customizer
+	$return = wpsp_get_redux( 'is-footer-bottom', true );
+
+	// Apply filters and return
+	return apply_filters( 'wpsp_display_footer_bottom', $return );
+
+}

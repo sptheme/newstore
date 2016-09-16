@@ -6,7 +6,7 @@
  */
 ?>
 
-<div class="wrapper" id="wrapper-footer-widget">
+<div id="wrapper-footer-widget" class="wrapper-footer-widget">
     <div class="container">
         <?php // Get footer widgets columns
         $columns    = wpsp_get_redux( 'footer-widgets-columns', '4' );

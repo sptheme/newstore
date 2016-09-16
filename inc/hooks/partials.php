@@ -312,3 +312,14 @@ function wpsp_footer_widgets() {
 		get_template_part( 'partials/footer/footer-widgets' );	
 	}
 }
+
+/**
+ * Gets the footer bottom template part.
+ *
+ * @since 1.0.0
+ */
+function wpsp_footer_bottom() {
+	if ( has_footer_bottom() ) {
+		get_template_part( 'partials/footer/footer-bottom' );
+	}
+}

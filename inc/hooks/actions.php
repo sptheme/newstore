@@ -80,7 +80,7 @@ add_action( 'wpsp_hook_footer_inner', 'wpsp_footer_widgets' );
 
 /* Footer > After
 -------------------------------------------------------------------------------*/
-//add_action( 'wpsp_hook_footer_after', 'wpsp_footer_bottom' );
+add_action( 'wpsp_hook_footer_after', 'wpsp_footer_bottom' );
 
 
 /* WP_Footer

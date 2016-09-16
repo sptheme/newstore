@@ -781,12 +781,84 @@
                 'desc'     => __( 'This setting will not "fix" your footer per-se but will add a min-height to your #main container to keep your footer always at the bottom of the page.', 'wpsp-redux-framework' ),
                 'default'  => '0'// 1 = on | 0 = off
             ),
+        )
+    ) );
+    // Footer > bottom 
+    Redux::setSection( $opt_name, array(
+        'title'      => __( 'Footer Bottom', 'wpsp-redux-framework' ),
+        'id'         => 'footer-bottom',
+        'subsection' => true,
+        //'desc'       => __( 'Use for any post that do not have post featured image with landscape, portrait and square', 'wpsp-redux-framework' ),
+        'fields'     => array(
             array(
-                'id'       => 'is-footer-reveal',
+                'id'       => 'is-footer-bottom',
                 'type'     => 'switch',
-                'title'    => __( 'Footer Reveal', 'wpsp-redux-framework' ),
-                'desc'     => __( 'Enable the footer reveal style. The footer will be placed in a fixed postion and display on scroll. This setting is for the "Full-Width" layout only and desktops only.', 'wpsp-redux-framework' ),
-                'default'  => '0'// 1 = on | 0 = off
+                'title'    => __( 'Enable footer bottom', 'wpsp-redux-framework' ),
+                'desc'     => __( 'Switch footer bottom on/off', 'wpsp-redux-framework' ),
+                'default'  => '1'// 1 = on | 0 = off
+            ),
+            array(
+                'id'       => 'footer-copyright-text',
+                'type'     => 'textarea',
+                'required' => array( 'is-footer-bottom', '=', '1' ),
+                'title'    => __( 'Copyright', 'wpsp-redux-framework' ),
+                'default'  => __( 'Copyright <a href="#">Your Business LLC.</a> - All Rights Reserved', 'wpsp-redux-framework' ),
+            ),
+            array(
+                'id'       => 'bottom-footer-text-align',
+                'type'     => 'select',
+                'required' => array( 'is-footer-bottom', '=', '1' ),
+                'title'    => __( 'Text align', 'wpsp-redux-framework' ),
+                'options'  => array(
+                    'default' => esc_html__( 'Default', 'wpsp-redux-framework' ),
+                    'left' => esc_html__( 'Left','wpsp-redux-framework' ),
+                    'right' => esc_html__( 'Right','wpsp-redux-framework' ),
+                    'center' => esc_html__( 'Center','wpsp-redux-framework' ),
+                ),
+                'default'  => 'default',
+            ),
+            array(
+                'id'       => 'bottom-footer-padding',
+                'type'     => 'text',
+                'required' => array( 'is-footer-bottom', '=', '1' ),
+                'title'    => __( 'Padding', 'wpsp-redux-framework' ),
+                'subtitle' => __( 'Format: top right bottom left.', 'wpsp-redux-framework' ),
+            ),
+            array(
+                'id'       => 'bottom-footer-background',
+                'type'     => 'color',
+                'required' => array( 'is-footer-bottom', '=', '1' ),
+                'title'    => __( 'Background', 'wpsp-redux-framework' ),
+                'subtitle' => __( 'Footer bottom background color', 'wpsp-redux-framework' ),
+                'default'  => '#ffffff',
+                'validate' => 'color',
+            ),
+            array(
+                'id'       => 'bottom-footer-color',
+                'type'     => 'color',
+                'required' => array( 'is-footer-bottom', '=', '1' ),
+                'title'    => __( 'Color', 'wpsp-redux-framework' ),
+                'subtitle' => __( 'Footer bottom text color', 'wpsp-redux-framework' ),
+                'default'  => '#ffffff',
+                'validate' => 'color',
+            ),
+            array(
+                'id'       => 'bottom-footer-link-color',
+                'type'     => 'color',
+                'required' => array( 'is-footer-bottom', '=', '1' ),
+                'title'    => __( 'Link', 'wpsp-redux-framework' ),
+                'subtitle' => __( 'Footer bottom link color', 'wpsp-redux-framework' ),
+                'default'  => '#ffffff',
+                'validate' => 'color',
+            ),
+            array(
+                'id'       => 'bottom-footer-link-color-hover',
+                'type'     => 'color',
+                'required' => array( 'is-footer-bottom', '=', '1' ),
+                'title'    => __( 'Link', 'wpsp-redux-framework' ),
+                'subtitle' => __( 'Footer bottom link color hover', 'wpsp-redux-framework' ),
+                'default'  => '#ffffff',
+                'validate' => 'color',
             ),
         )
     ) );

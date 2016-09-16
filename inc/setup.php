@@ -47,6 +47,7 @@ function wpsp_setup() {
 	register_nav_menus( array(
 		'primary' => __( 'Primary Menu', 'newstore' ),
 		'mobile_menu_alt' => esc_html__( 'Mobile Menu Alternative', 'newstore' ),
+		'footer_menu' => esc_html__( 'Footer Menu', 'newstore' ),
 	) );
 
 	/*

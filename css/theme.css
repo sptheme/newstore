@@ -7191,10 +7191,14 @@ a.skip-link {
 	## Header Five - Centered Inline Logo
 	## Header Six - Verticle
 # MOBILE MENU	
-	## Mobile Menu Icon Button
+	## Mobile Menu Toggles Icon Button
+	## Mobile Menu Style > Sidebar (Sidr)
+	## Mobile Menu Style > Toggle
+	## Mobile Menu Style > Full Screen Fade Overlay
+# PAGE TITLE	
 # SEARCH
 # WIDGETS
-# PAGE TITLE
+# FOOTER
 # ADDON ELEMENTS
 	## Social Sharing
 	## Lean Modal
@@ -7885,139 +7889,6 @@ body.page-header-disabled .navbar-style-three {
   body.wpsp-has-vertical-header .page-header {
     border-top: 0; } }
 
-/*-------------------------------------------------------------- 
- # PAGE TITLE
---------------------------------------------------------------*/
-/* Page Header > Main */
-.page-header {
-  margin: 0 0 40px;
-  padding: 20px 0;
-  position: relative;
-  background-color: #f7f7f7;
-  border-top: 1px solid #eee;
-  border-bottom: 1px solid #eee; }
-
-.no-header-margin .page-header {
-  margin-bottom: 0; }
-
-.page-header .container {
-  position: relative; }
-
-.page-header-title {
-  display: block;
-  font-size: 21px;
-  line-height: 1.4em;
-  font-weight: normal;
-  font-weight: 400;
-  margin: 0px;
-  color: #000; }
-
-body.breadcrumbs-position-default .page-header-title {
-  max-width: 70%; }
-
-.page-subheading {
-  font-size: 1.077em;
-  margin: 0;
-  color: #999; }
-
-.page-subheading p:last-child {
-  margin: 0; }
-
-.centered-page-header .page-header-title,
-.centered-minimal-page-header .page-header-title {
-  max-width: 100% !important; }
-
-/* Page Header > Centered */
-.centered-page-header {
-  text-align: center;
-  padding: 30px 0; }
-
-.centered-page-header .page-header-title {
-  font-size: 32px; }
-
-.centered-page-header .page-subheading {
-  font-size: 1.385em;
-  font-weight: 300; }
-
-/* Page Header > Minimal Centered */
-.centered-minimal-page-header {
-  text-align: center;
-  padding: 30px 0;
-  background: #fff;
-  border-color: #eee; }
-
-.centered-minimal-page-header .page-header-title {
-  font-size: 32px; }
-
-.centered-minimal-page-header .page-subheading {
-  font-size: 1.385em;
-  font-weight: 300; }
-
-/* Page Header > Solid Color */
-.solid-color-page-header .page-header-title {
-  color: #fff !important; }
-
-.solid-color-page-header .site-breadcrumbs,
-.solid-color-page-header .site-breadcrumbs a {
-  color: #fff !important; }
-
-.solid-color-page-header .page-subheading {
-  color: #fff; }
-
-/* Page Header > Archive Description */
-.archive-description {
-  margin-bottom: 30px; }
-
-/* Page Header > Background Image */
-.background-image-page-header {
-  width: 100%;
-  border: none;
-  background: #000; }
-
-.page-header-table {
-  display: table;
-  width: 100%;
-  height: 400px; }
-
-.page-header-table-cell {
-  display: table-cell;
-  vertical-align: middle;
-  text-align: center;
-  padding: 0 30px; }
-
-.page-header.background-image-page-header .page-header-title {
-  position: relative;
-  z-index: 2;
-  color: #fff;
-  max-width: 100%;
-  font-size: 3.231em;
-  font-weight: 400;
-  max-width: 100% !important; }
-
-.page-header.background-image-page-header .page-subheading {
-  position: relative;
-  z-index: 2;
-  color: #fff;
-  font-size: 1.846em;
-  font-weight: 300; }
-
-.background-image-page-header-overlay {
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  background: #000;
-  z-index: 1;
-  opacity: 0.5; }
-
-.background-image-page-header-overlay.style-dotted {
-  background: rgba(0, 0, 0, 0.3) url(../images/dotted-overlay.png) repeat; }
-
-.background-image-page-header-overlay.style-dashed {
-  background: rgba(0, 0, 0, 0.3) url(../images/dashed-overlay.png) repeat; }
-
 /*--------------------------------------------------------------
 # MOBILE MENU
 --------------------------------------------------------------*/
@@ -8379,7 +8250,8 @@ a.sidr-class-toggle-sidr-close {
 /* Mobile Menus > Hide Things */
 .sidr-class-search-toggle-li,
 #sidr-id-searchform-dropdown,
-.mobile-toggle-nav-ul li.search-toggle-li {
+.mobile-toggle-nav-ul li.search-toggle-li,
+#mobile-menu-alternative {
   display: none; }
 
 /*--------------------------------------------------------------
@@ -8481,6 +8353,139 @@ a.sidr-class-toggle-sidr-close {
 
 .full-screen-overlay-nav.black li a:hover {
   opacity: 1; }
+
+/*-------------------------------------------------------------- 
+ # PAGE TITLE
+--------------------------------------------------------------*/
+/* Page Header > Main */
+.page-header {
+  margin: 0 0 40px;
+  padding: 20px 0;
+  position: relative;
+  background-color: #f7f7f7;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee; }
+
+.no-header-margin .page-header {
+  margin-bottom: 0; }
+
+.page-header .container {
+  position: relative; }
+
+.page-header-title {
+  display: block;
+  font-size: 21px;
+  line-height: 1.4em;
+  font-weight: normal;
+  font-weight: 400;
+  margin: 0px;
+  color: #000; }
+
+body.breadcrumbs-position-default .page-header-title {
+  max-width: 70%; }
+
+.page-subheading {
+  font-size: 1.077em;
+  margin: 0;
+  color: #999; }
+
+.page-subheading p:last-child {
+  margin: 0; }
+
+.centered-page-header .page-header-title,
+.centered-minimal-page-header .page-header-title {
+  max-width: 100% !important; }
+
+/* Page Header > Centered */
+.centered-page-header {
+  text-align: center;
+  padding: 30px 0; }
+
+.centered-page-header .page-header-title {
+  font-size: 32px; }
+
+.centered-page-header .page-subheading {
+  font-size: 1.385em;
+  font-weight: 300; }
+
+/* Page Header > Minimal Centered */
+.centered-minimal-page-header {
+  text-align: center;
+  padding: 30px 0;
+  background: #fff;
+  border-color: #eee; }
+
+.centered-minimal-page-header .page-header-title {
+  font-size: 32px; }
+
+.centered-minimal-page-header .page-subheading {
+  font-size: 1.385em;
+  font-weight: 300; }
+
+/* Page Header > Solid Color */
+.solid-color-page-header .page-header-title {
+  color: #fff !important; }
+
+.solid-color-page-header .site-breadcrumbs,
+.solid-color-page-header .site-breadcrumbs a {
+  color: #fff !important; }
+
+.solid-color-page-header .page-subheading {
+  color: #fff; }
+
+/* Page Header > Archive Description */
+.archive-description {
+  margin-bottom: 30px; }
+
+/* Page Header > Background Image */
+.background-image-page-header {
+  width: 100%;
+  border: none;
+  background: #000; }
+
+.page-header-table {
+  display: table;
+  width: 100%;
+  height: 400px; }
+
+.page-header-table-cell {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  padding: 0 30px; }
+
+.page-header.background-image-page-header .page-header-title {
+  position: relative;
+  z-index: 2;
+  color: #fff;
+  max-width: 100%;
+  font-size: 3.231em;
+  font-weight: 400;
+  max-width: 100% !important; }
+
+.page-header.background-image-page-header .page-subheading {
+  position: relative;
+  z-index: 2;
+  color: #fff;
+  font-size: 1.846em;
+  font-weight: 300; }
+
+.background-image-page-header-overlay {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: #000;
+  z-index: 1;
+  opacity: 0.5; }
+
+.background-image-page-header-overlay.style-dotted {
+  background: rgba(0, 0, 0, 0.3) url(../images/dotted-overlay.png) repeat; }
+
+.background-image-page-header-overlay.style-dashed {
+  background: rgba(0, 0, 0, 0.3) url(../images/dashed-overlay.png) repeat; }
 
 /*--------------------------------------------------------------
 # SEARCH
@@ -8866,6 +8871,96 @@ a.sidr-class-toggle-sidr-close {
 
 .sidebar-widget-icons .widget_meta a:before {
   content: "\f178 "; }
+
+/*-------------------------------------------------------------- 
+ # FOOTER
+--------------------------------------------------------------*/
+.site-footer {
+  background: #262626;
+  color: #777; }
+
+.site-footer .container {
+  padding-top: 45px; }
+
+.site-footer ul {
+  margin: 0; }
+
+/* Footer > Typography */
+.wrapper-footer-widget .widget-title {
+  display: block;
+  line-height: 1.5;
+  color: #fff;
+  font-weight: 600;
+  font-size: 1.077em;
+  margin: 0 0 20px; }
+
+.site-footer p {
+  color: #777; }
+
+.site-footer a,
+.site-footer strong {
+  color: #999; }
+
+.site-footer a:hover {
+  color: #fff;
+  text-decoration: none; }
+
+/* Footer > Bottom */
+#footer-bottom {
+  background: #222;
+  color: #999;
+  font-size: 0.923em; }
+
+#footer-bottom-inner {
+  position: relative; }
+
+#footer-bottom p {
+  color: #999; }
+
+#footer-bottom p:last-child {
+  margin: 0; }
+
+#footer-bottom-inner {
+  padding-top: 20px;
+  padding-bottom: 20px; }
+
+#footer-bottom a {
+  color: #aaa; }
+
+#footer-bottom a:hover {
+  color: #fff;
+  text-decoration: none; }
+
+/* Footer > Copyright */
+#footer-copyright {
+  font-size: 0.923em;
+  font-weight: 400; }
+
+#footer-copyright p:last-child {
+  margin: 0; }
+
+/* Footer > Social */
+#footer-bottom-menu {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  margin-top: -20px;
+  height: 40px;
+  line-height: 40px; }
+
+#footer-bottom-menu ul {
+  list-style: none;
+  margin: 0; }
+
+#footer-bottom-menu ul li {
+  float: left;
+  margin-left: 20px; }
+
+#footer-bottom-menu ul li:first-child {
+  margin-left: 0; }
+
+#footer-bottom-menu ul li .fa {
+  margin-right: 7px; }
 
 /*-------------------------------------------------------------- 
  # ADDON ELEMENTS
