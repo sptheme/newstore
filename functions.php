@@ -236,6 +236,26 @@ class WPSP_Theme_Setup {
 			$output .= '.page-header.wpsp-supports-mods{background-image:url('. $bg .');}';
 		}		
 
+		// Footer
+		if ( has_footer() ) {
+			$footer_bottom_padding = wpsp_get_redux( 'bottom-footer-padding' );
+			$footer_bottom_text_align = wpsp_get_redux( 'bottom-footer-text-align' );
+			$footer_bottom_bg = wpsp_get_redux( 'bottom-footer-background' );
+			$footer_bottom_color = wpsp_get_redux( 'bottom-footer-color' );
+			$footer_bottom_link = wpsp_get_redux( 'bottom-footer-link-color' );
+			$footer_bottom_hover = wpsp_get_redux( 'bottom-footer-link-color-hover' );
+			if ( $footer_bottom_padding 
+				|| $footer_bottom_text_align || $footer_bottom_bg
+				|| $footer_bottom_color || $footer_bottom_link || $footer_bottom_hover ) {
+				$output .= '#footer-bottom{background:'. $footer_bottom_bg .'; text-align:'. $footer_bottom_text_align .'; color:'. $footer_bottom_color .'}';
+				$output .= '#footer-bottom-inner{padding:'. $footer_bottom_padding .';}';
+				$output .= '#footer-bottom p{color:'. $footer_bottom_color .'}';
+				$output .= '#footer-bottom a{color:'. $footer_bottom_link .'}';
+				$output .= '#footer-bottom a:hover{color:'. $footer_bottom_hover .'}';
+			}
+			
+		}
+
 		// Minify and output CSS in the wp_head
 		if ( ! empty( $output ) ) {
 			echo "<!-- Custom CSS -->\n<style type=\"text/css\">\n" . wp_strip_all_tags( wpsp_minify_css( $output ) ) . "\n</style>";
