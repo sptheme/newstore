@@ -736,8 +736,8 @@
             array(
                 'id'       => 'is-footer-widgets',
                 'type'     => 'switch',
-                'title'    => __( 'Enable footer', 'wpsp-redux-framework' ),
-                'desc'     => __( 'Switch footer on/off', 'wpsp-redux-framework' ),
+                'title'    => __( 'Enable footer widget', 'wpsp-redux-framework' ),
+                'desc'     => __( 'Switch footer widget on/off', 'wpsp-redux-framework' ),
                 'default'  => '0'// 1 = on | 0 = off
             ),
             array(
@@ -773,6 +773,13 @@
                     '60' => esc_html__( '60px','wpsp-redux-framework' ),
                 ),
                 'default'  => 'default',
+            ),
+            array(
+                'id'       => 'is-fixed-footer',
+                'type'     => 'switch',
+                'title'    => __( 'Fixed Footer', 'wpsp-redux-framework' ),
+                'desc'     => __( 'This setting will not "fix" your footer per-se but will add a min-height to your #main container to keep your footer always at the bottom of the page.', 'wpsp-redux-framework' ),
+                'default'  => '0'// 1 = on | 0 = off
             ),
             array(
                 'id'       => 'is-footer-reveal',

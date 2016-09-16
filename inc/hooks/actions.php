@@ -66,6 +66,23 @@ add_action( 'wpsp_hook_page_header_inner', 'wpsp_page_header_title_table_wrap_cl
 -------------------------------------------------------------------------------*/
 add_action( 'wpsp_hook_page_header_bottom', 'wpsp_page_header_overlay' ); // @see page-header.php
 
+/* Wrap > Bottom
+-------------------------------------------------------------------------------*/
+add_action( 'wpsp_hook_wrapper_content_bottom', 'wpsp_footer' );
+
+/* Footer > Before
+-------------------------------------------------------------------------------*/
+//add_action( 'wpsp_hook_footer_before', 'wpsp_footer_subscripe' );
+
+/* Footer > Inner
+-------------------------------------------------------------------------------*/
+add_action( 'wpsp_hook_footer_inner', 'wpsp_footer_widgets' );
+
+/* Footer > After
+-------------------------------------------------------------------------------*/
+//add_action( 'wpsp_hook_footer_after', 'wpsp_footer_bottom' );
+
+
 /* WP_Footer
 -------------------------------------------------------------------------------*/
 add_action( 'wp_footer', 'wpsp_mobile_menu_alt' );

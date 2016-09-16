@@ -286,3 +286,29 @@ function wpsp_page_header_title_table_wrap_close() {
 		echo '</div></div>';
 	}
 }
+
+/*-------------------------------------------------------------------------------*/
+/* -  Footer
+/*-------------------------------------------------------------------------------*/
+
+/**
+ * Gets the footer layout template part.
+ *
+ * @since 1.0.0
+ */
+function wpsp_footer() {
+	if ( has_footer() ) {
+		get_template_part( 'partials/footer/footer-layout' );
+	}
+}
+
+/**
+ * Get the footer widgets template part.
+ *
+ * @since 1.0.0
+ */
+function wpsp_footer_widgets() {
+	if ( has_footer_widgets() ) {
+		get_template_part( 'partials/footer/footer-widgets' );	
+	}
+}

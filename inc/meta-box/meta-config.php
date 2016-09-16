@@ -181,6 +181,32 @@
 					'full-screen'   => get_template_directory_uri() . '/images/admin/full-screen.png',
 				),
 			),
+			array(
+				'type' => 'heading',
+				'name' => esc_html__( 'Footer', 'wpsp-meta-box' ),
+			),
+			array(
+				'name'  => __( 'Footer', 'wpsp-meta-box' ), 
+				'id'    => $prefix . "is_display_footer",
+				'desc'	=> __( 'Enable or disable this element on this page or post.', 'wpsp-meta-box' ), 
+				'type'  => 'select',
+				'options' => array(
+					'on' => __( 'Enable', 'wpsp-meta-box' ),
+					'off' => __( 'Disable', 'wpsp-meta-box' ),
+					),
+				'std'  => 'on',
+			),
+			array(
+				'name'  => __( 'Footer widgets', 'wpsp-meta-box' ), 
+				'id'    => $prefix . "is_display_footer_widgets",
+				'desc'	=> __( 'Enable or disable this element on this page or post.', 'wpsp-meta-box' ), 
+				'type'  => 'select',
+				'options' => array(
+					'on' => __( 'Enable', 'wpsp-meta-box' ),
+					'off' => __( 'Disable', 'wpsp-meta-box' ),
+					),
+				'std'  => 'on',
+			),
 		)
 	);
 

@@ -270,6 +270,7 @@ class WPSP_Theme_Setup {
 		require_once( get_template_directory() . '/inc/custom-login.php' );
 		require_once( get_template_directory() . '/inc/layout.php' );
 		require_once( get_template_directory() . '/inc/header-functions.php' ); // main navigation style
+		require_once( get_template_directory() . '/inc/footer-functions.php' );
 		require_once( get_template_directory() . '/inc/mobile-menu-functions.php' );
 		require_once( get_template_directory() . '/inc/page-header.php' ); // page title style
 	}

@@ -66,6 +66,27 @@ function wpsp_hook_header_after() {
 }
 
 /**
+ * Footer Hooks
+ *
+ * @since 1.0.0
+ */
+function wpsp_hook_footer_before() {
+	do_action( 'wpsp_hook_footer_before' );
+}
+function wpsp_hook_footer_top() {
+	do_action( 'wpsp_hook_footer_top' );
+}
+function wpsp_hook_footer_inner() {
+	do_action( 'wpsp_hook_footer_inner' );
+}
+function wpsp_hook_footer_bottom() {
+	do_action( 'wpsp_hook_footer_bottom' );
+}
+function wpsp_hook_footer_after() {
+	do_action( 'wpsp_hook_footer_after' );
+}
+
+/**
  * Main Menu Hooks
  *
  * @since 1.0.0

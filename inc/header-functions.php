@@ -6,6 +6,33 @@
  */
 
 /**
+ * Checks if header is enabled
+ *
+ * @since 1.0.0
+ */
+function has_header() {
+
+	$post_id = post_id();
+
+	// Return true by default
+	$return = wpsp_get_redux( 'is-enable-header', true );
+
+	// Check meta
+	$meta = get_post_meta( $post_id, 'wpsp_is_display_header', true );
+
+	// Check if disabled via meta option
+	if ( 'on' == $meta ) {
+		$return = true;
+	} elseif ( 'off' == $meta ) {
+		$return = false;
+	}
+
+	// Apply filters and return
+	return apply_filters( 'wpsp_display_header', $return );
+
+}
+
+/**
  * Returns header logo title
  *
  * @since 1.0.0
