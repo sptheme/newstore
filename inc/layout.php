@@ -94,6 +94,11 @@ function wpsp_theme_layout_class( $classes ) {
 		$classes[] = 'has-mobile-menu';
 	}
 
+	// Fixed Footer - adds min-height to main wraper
+	if ( wpsp_get_redux( 'is-fixed-footer', false ) ) {
+		$classes[] = 'wpsp-has-fixed-footer';
+	}
+
 	// Navbar inner span bg
 	if ( wpsp_get_redux( 'menu-link-span-background' ) ) {
 		$classes[] = 'navbar-has-inner-span-bg';

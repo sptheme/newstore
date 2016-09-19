@@ -70,8 +70,7 @@
 				$hasStickyTopBarMobile  : false,
 
 				// Footer
-				$hasFixedFooter         : false,
-				$hasFooterReveal        : false
+				$hasFixedFooter         : false
 			};
 
 		},
@@ -131,6 +130,9 @@
 					self.stickyHeaderMenu();
 				}
 
+				// Fixed Footer
+				self.fixedFooter();
+
 				// Scroll to hash
 				window.setTimeout( function() {
 					self.scrollToHash( self )
@@ -138,9 +140,32 @@
 
 			} );
 
+			// Run on Window Resize
+			self.config.$window.resize( function() {
+
+				// Window width change
+				if ( self.config.$window.width() != self.config.$windowWidth ) {
+					self.resizeUpdateConfig(); // update vars
+					self.inlineHeaderLogo();
+					self.fixedFooter();
+				}
+
+				// Window height change
+				if ( self.config.$window.height() != self.config.$windowHeight ) {
+					self.fixedFooter();
+				}
+
+			} );
+
 			// Run on Scroll
 			self.config.$window.scroll( function() {
 				self.config.$windowTop = self.config.$window.scrollTop();				
+			} );
+
+			// On orientation change
+			self.config.$window.on( 'orientationchange',function() {
+				self.resizeUpdateConfig();
+				self.inlineHeaderLogo();
 			} );
 		},
 
@@ -210,6 +235,11 @@
 				// Mobile menu breakpoint
 				this.config.$mobileMenuBreakpoint   = wpspLocalize.mobileMenuBreakpoint;
 
+			}
+
+			// Check if fixed footer is enabled
+			if ( this.config.$body.hasClass( 'wpsp-has-fixed-footer' ) ) {
+				this.config.$hasFixedFooter = true;
 			}
 
 			// Sticky Header => Mobile Check (must check first)
@@ -1284,6 +1314,42 @@
 				onResize();
 			} );
 
+		},
+
+		/**
+		 * Set min height on main container to prevent issue with extra space below footer
+		 *
+		 * @since 1.0.0
+		 */
+		fixedFooter: function() {
+
+			// Return if disabled
+			if ( ! this.config.$hasFixedFooter ) {
+				return;
+			}
+
+			// Get main wrapper
+			var $main = $( '#page-wrapper' );
+
+			// Make sure main exists
+			if ( $main.length ) {
+
+				// Set main vars
+				var $mainHeight = $( '#page-wrapper' ).outerHeight(),
+					$htmlHeight = $( 'html' ).height();
+					//$adminHeight = $().height();
+
+				// Check for footerReveal and add min height
+				var $minHeight = $mainHeight + ( this.config.$window.height() - $htmlHeight );
+
+				if ( this.config.$wpAdminBar ) {
+					$minHeight = $minHeight - this.config.$wpAdminBar.outerHeight();
+				}
+
+				// Add min height
+				$main.css( 'min-height', $minHeight );
+
+			}
 		},
 	}
 

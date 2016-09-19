@@ -8251,7 +8251,8 @@ a.sidr-class-toggle-sidr-close {
 .sidr-class-search-toggle-li,
 #sidr-id-searchform-dropdown,
 .mobile-toggle-nav-ul li.search-toggle-li,
-#mobile-menu-alternative {
+#mobile-menu-alternative,
+#mobile-menu-search {
   display: none; }
 
 /*--------------------------------------------------------------
