@@ -24,6 +24,7 @@
 # WIDGETS
 # FOOTER
 # ADDON ELEMENTS
+	## Scroll to top
 	## Social Sharing
 	## Lean Modal
 --------------------------------------------------------------*/
@@ -170,7 +171,7 @@ body.full-screen .wrapper .content-area { float: none; width: 100% !important; m
 ## Main navigation
 --------------------------------------------------------------*/
 #site-navigation.container { position: relative; }
-#site-navigation a { text-decoration: none }
+#site-navigation a { text-decoration: none; }
 #site-navigation .wpsp-dropdown-menu li a .fa { margin-right: 8px }
 #site-navigation .wpsp-dropdown-menu li.no-icon-margin a .fa { margin-right: 0 }
 #site-navigation .wpsp-dropdown-menu .site-search-toggle .fa { margin: 0 }
@@ -245,6 +246,12 @@ body #site-navigation .sf-menu li.left-dropdowns ul a.sf-with-ul {
 	transition: all 0.15s ease-in-out;
 	-moz-transition: all 0.15s ease-in-out; 
 	-webkit-transition: all 0.15s ease-in-out; 
+}
+
+#site-navigation .wpsp-dropdown-menu .current-menu-item > a,
+#site-navigation .wpsp-dropdown-menu a:hover,
+#site-navigation .wpsp-dropdown-menu .current-menu-parent > a, {
+	color:$brand-primary;
 }
 
 @media only screen and (min-width: 992px) {
@@ -928,6 +935,13 @@ body.breadcrumbs-position-default .page-header-title { max-width: 70% }
 /*-------------------------------------------------------------- 
  # ADDON ELEMENTS
 --------------------------------------------------------------*/
+
+/*-------------------------------------------------------------- 
+ ## Scroll to top
+--------------------------------------------------------------*/
+#site-scroll-top { position: fixed; right: 40px; bottom: 40px; color: #898989; height: 35px; line-height: 35px; width: 35px; font-size: 16px; border-radius: 50%; background: #f7f7f7; border: 3px solid #fff; text-align: center; z-index: 999; visibility: hidden; opacity: 0; transition: all 0.25s ease-in-out; box-sizing: content-box; -moz-box-sizing: content-box; -webkit-box-sizing: content-box; }
+#site-scroll-top:hover { border-color: transparent; text-decoration: none; background: $brand-primary; color: #fff; }
+#site-scroll-top.show { display: block; visibility: visible; opacity: 1; }
 
 /*-------------------------------------------------------------- 
  ## Social Sharing

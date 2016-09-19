@@ -89,3 +89,4 @@ add_action( 'wp_footer', 'wpsp_mobile_menu_alt' );
 add_action( 'wp_footer', 'wpsp_search_overlay' );
 add_action( 'wp_footer', 'wpsp_sidr_close' );
 add_action( 'wp_footer', 'wpsp_mobile_searchform' );
+add_action( 'wp_footer', 'wpsp_scroll_top' );

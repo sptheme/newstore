@@ -136,6 +136,8 @@ class WPSP_Theme_Setup {
 			'mobileMenuBreakpoint'  => $mobile_breakpoint ? $mobile_breakpoint : '992',
 			'mobileMenuStyle'       => $mobile_style,
 			'mobileMenuToggleStyle' => $mobile_toggle_style,
+			'localScrollSpeed'      => 800,
+			'windowScrollTopSpeed'  => 800,
 			'superfishSpeed'        => 'fast',
 			'superfishSpeedOut'     => 'fast',	
 	    );

@@ -468,6 +468,104 @@
             ),
         )
     ) );
+    // General > Scroll to top
+    Redux::setSection( $opt_name, array(
+        'title'      => __( 'Scroll to top', 'wpsp-redux-framework' ),
+        'id'         => 'scroll-to-top',
+        'subsection' => true,
+        //'desc'       => __( 'Use for any post that do not have post featured image with landscape, portrait and square', 'wpsp-redux-framework' ),
+        'fields'     => array(
+            array(
+                'id'       => 'is-scroll-top',
+                'type'     => 'switch',
+                'title'    => __( 'Enable/Disable Scroll Up Button', 'wpsp-redux-framework' ),
+                'default'  => '1'// 1 = on | 0 = off
+            ),
+            array(
+                'id'       => 'scroll-top-arrow',
+                'type'     => 'select',
+                'required' => array( 'is-scroll-top', '=', '1' ),
+                'title'    => __( 'Arrow', 'wpsp-redux-framework' ),
+                'options'  => array(
+                        'chevron-up' => 'chevron-up',
+                        'caret-up'    => 'caret-up',
+                        'angle-up'    => 'angle-up',
+                        'angle-double-up'    => 'angle-double-up',
+                        'long-arrow-up' => 'long-arrow-up',
+                        'arrow-circle-o-up'    => 'arrow-circle-o-up',
+                        'arrow-up'    => 'arrow-up',
+                        'caret-square-o-up'    => 'caret-square-o-up',
+                        'level-up'    => 'level-up',
+                        'sort-up'    => 'sort-up',
+                        'toggle-up'    => 'toggle-up',
+                ),
+                'default'  => 'chevron-up'
+            ),
+            array(
+                'id'       => 'scroll-top-size',
+                'type'     => 'text',
+                'required' => array( 'is-scroll-top', '=', '1' ),
+                'title'    => __( 'Button Size', 'wpsp-redux-framework' ),
+                'subtitle' => __( 'Enter a value in pixels. e.g:20px', 'wpsp-redux-framework' ),                
+            ),
+            array(
+                'id'       => 'scroll-top-icon-size',
+                'type'     => 'text',
+                'required' => array( 'is-scroll-top', '=', '1' ),
+                'title'    => __( 'Icon Size', 'wpsp-redux-framework' ),
+                'subtitle' => __( 'Enter a value in pixels. e.g:16px', 'wpsp-redux-framework' ),                
+            ),
+            array(
+                'id'       => 'scroll-top-border-radius',
+                'type'     => 'text',
+                'required' => array( 'is-scroll-top', '=', '1' ),
+                'title'    => __( 'Button Radius', 'wpsp-redux-framework' ),
+                'subtitle' => __( 'Enter a value in pixels. e.g:24px', 'wpsp-redux-framework' ),                
+            ),
+            array(
+                'id'       => 'scroll-top-color',
+                'type'     => 'color',
+                'required' => array( 'is-scroll-top', '=', '1' ),
+                'title'    => __( 'Color', 'wpsp-redux-framework' ),
+                'validate' => 'color',
+            ),
+            array(
+                'id'       => 'scroll-top-color-hover',
+                'type'     => 'color',
+                'required' => array( 'is-scroll-top', '=', '1' ),
+                'title'    => __( 'Color: Hover', 'wpsp-redux-framework' ),
+                'validate' => 'color',
+            ),
+            array(
+                'id'       => 'scroll-top-bg',
+                'type'     => 'color',
+                'required' => array( 'is-scroll-top', '=', '1' ),
+                'title'    => __( 'Background', 'wpsp-redux-framework' ),
+                'validate' => 'color',
+            ),
+            array(
+                'id'       => 'scroll-top-bg-hover',
+                'type'     => 'color',
+                'required' => array( 'is-scroll-top', '=', '1' ),
+                'title'    => __( 'Background: Hover', 'wpsp-redux-framework' ),
+                'validate' => 'color',
+            ),
+            array(
+                'id'       => 'scroll-top-border',
+                'type'     => 'color',
+                'required' => array( 'is-scroll-top', '=', '1' ),
+                'title'    => __( 'Border', 'wpsp-redux-framework' ),
+                'validate' => 'color',
+            ),
+            array(
+                'id'       => 'scroll-top-border-hover',
+                'type'     => 'color',
+                'required' => array( 'is-scroll-top', '=', '1' ),
+                'title'    => __( 'Border: Hover', 'wpsp-redux-framework' ),
+                'validate' => 'color',
+            ),
+        )
+    ) );
 
     // Header
     Redux::setSection( $opt_name, array(
@@ -557,24 +655,14 @@
                 'type'     => 'text',
                 'required' => array( 'fixed-header-style', 'equals', array( 'shrink', 'shrink_animated' ) ),
                 'title'    => __( 'Logo Start Height', 'wpsp-redux-framework' ),
-                'subtitle' => __( 'In order to properly animate the header with CSS3 it is important to apply a fixed height to the header logo by default. e.g:40px', 'wpsp-redux-framework' ),
-                'validate' => 'preg_replace',
-                'preg'     => array(
-                    'pattern'     => '/[^0-9]/s',
-                    'replacement' => 'Allow only number'
-                ),
+                'subtitle' => __( 'In order to properly animate the header with CSS3 it is important to apply a fixed height to the header logo by default. e.g:40px', 'wpsp-redux-framework' ),                
             ),
             array(
                 'id'       => 'fixed-header-shrink-end-height',
                 'type'     => 'text',
                 'required' => array( 'fixed-header-style', 'equals', array( 'shrink', 'shrink_animated' ) ),
                 'title'    => __( 'Logo Shrunk Height', 'wpsp-redux-framework' ),
-                'subtitle' => __( 'Your shrink header height will be set to your Logo Shrunk Height plus 20px for a top and bottom padding of 20px. e.g:60px', 'wpsp-redux-framework' ),
-                'validate' => 'preg_replace',
-                'preg'     => array(
-                    'pattern'     => '/[^0-9]/s',
-                    'replacement' => 'Allow only number'
-                ),
+                'subtitle' => __( 'Your shrink header height will be set to your Logo Shrunk Height plus 20px for a top and bottom padding of 20px. e.g:60px', 'wpsp-redux-framework' ),                
             ),
             array(
                 'id'       => 'is-fixed-header-mobile',

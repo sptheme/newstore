@@ -323,3 +323,14 @@ function wpsp_footer_bottom() {
 		get_template_part( 'partials/footer/footer-bottom' );
 	}
 }
+
+/**
+ * Gets the scroll to top button template part.
+ *
+ * @since 1.0.0
+ */
+function wpsp_scroll_top() {
+	if ( wpsp_get_redux( 'is-scroll-top', true ) ) {
+		get_template_part( 'partials/scroll-top' );
+	}
+}

@@ -101,6 +101,9 @@
 
 				// Custom menu widget accordion
 				self.customMenuWidgetAccordion();
+
+				// Back to top link
+				self.backTopLink();
 			} );
 
 			// Run on Window Load
@@ -1350,6 +1353,40 @@
 				$main.css( 'min-height', $minHeight );
 
 			}
+		},
+
+		/**
+		 * Back to top link
+		 *
+		 * @since 1.0.0
+		 */
+		backTopLink: function() {
+
+			var self = this,
+				$scrollTopLink = $( 'a#site-scroll-top' );
+
+			if ( $scrollTopLink.length ) {
+
+				var $speed = wpspLocalize.windowScrollTopSpeed ? wpspLocalize.windowScrollTopSpeed : 2000,
+					$speed = parseInt( $speed );
+
+				this.config.$window.scroll( function() {
+					if ( $( this ).scrollTop() > 100 ) {
+						$scrollTopLink.addClass( 'show' );
+					} else {
+						$scrollTopLink.removeClass( 'show' );
+					}
+				} );
+
+				$scrollTopLink.on( self.config.$isMobile ? 'touchstart' : 'click', function( event ) {
+					$( 'html, body' ).stop(true,true).animate( {
+						scrollTop : 0
+					}, $speed );
+					return false;
+				} );
+
+			}
+
 		},
 	}
 

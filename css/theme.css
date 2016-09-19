@@ -7200,6 +7200,7 @@ a.skip-link {
 # WIDGETS
 # FOOTER
 # ADDON ELEMENTS
+	## Scroll to top
 	## Social Sharing
 	## Lean Modal
 --------------------------------------------------------------*/
@@ -7519,6 +7520,11 @@ body #site-navigation .sf-menu li.left-dropdowns ul a.sf-with-ul {
   transition: all 0.15s ease-in-out;
   -moz-transition: all 0.15s ease-in-out;
   -webkit-transition: all 0.15s ease-in-out; }
+
+#site-navigation .wpsp-dropdown-menu .current-menu-item > a,
+#site-navigation .wpsp-dropdown-menu a:hover,
+#site-navigation .wpsp-dropdown-menu .current-menu-parent > a {
+  color: #d108b2; }
 
 @media only screen and (min-width: 992px) {
   #site-navigation {
@@ -8966,6 +8972,41 @@ body.breadcrumbs-position-default .page-header-title {
 /*-------------------------------------------------------------- 
  # ADDON ELEMENTS
 --------------------------------------------------------------*/
+/*-------------------------------------------------------------- 
+ ## Scroll to top
+--------------------------------------------------------------*/
+#site-scroll-top {
+  position: fixed;
+  right: 40px;
+  bottom: 40px;
+  color: #898989;
+  height: 35px;
+  line-height: 35px;
+  width: 35px;
+  font-size: 16px;
+  border-radius: 50%;
+  background: #f7f7f7;
+  border: 3px solid #fff;
+  text-align: center;
+  z-index: 999;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.25s ease-in-out;
+  box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box; }
+
+#site-scroll-top:hover {
+  border-color: transparent;
+  text-decoration: none;
+  background: #d108b2;
+  color: #fff; }
+
+#site-scroll-top.show {
+  display: block;
+  visibility: visible;
+  opacity: 1; }
+
 /*-------------------------------------------------------------- 
  ## Social Sharing
 --------------------------------------------------------------*/
