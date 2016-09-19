@@ -1092,6 +1092,145 @@
         )
     ) );
 
+    // Image
+    Redux::setSection( $opt_name, array(
+        'title'            => __( 'Image sizes', 'wpsp-redux-framework' ),
+        'id'               => 'image-option',
+        'desc'             => __( 'These are general setting for images', 'wpsp-redux-framework' ),
+        'customizer_width' => '400px',
+        'icon'             => 'el el-resize-full'
+    ) );
+    // Image > General
+    Redux::setSection( $opt_name, array(
+        'title'      => __( 'General', 'wpsp-redux-framework' ),
+        'id'         => 'image-general',
+        'subsection' => true,
+        'desc'       => __( 'Manage image sizes and cropping', 'wpsp-redux-framework' ),
+        'fields'     => array(
+            array(
+                'id'       => 'image-resizing',
+                'type'     => 'checkbox',
+                'title'    => __( 'Image resizing', 'wpsp-redux-framework' ),
+                'desc'     => __( 'If enabled whenever you upload a new image it will NOT be cropped into all the different sizes defined below, but rather cropped when loaded on the front-end (cropped once then saved to your uploads directory), thus saving precious server space.', 'wpsp-redux-framework' ),
+                'default'  => '1',
+            ),
+        )
+    ) );  
+    // Image > Blog entry size
+    Redux::setSection( $opt_name, array(
+        'title'      => __( 'Blog entry', 'wpsp-redux-framework' ),
+        'id'         => 'blog-entry-image-general',
+        'subsection' => true,
+        'desc'       => __( 'Manage image sizes and cropping for blog entry or post archive', 'wpsp-redux-framework' ),
+        'fields'     => array(
+            array(
+                'id'       => 'blog-entry-image-width',
+                'type'     => 'text',
+                'title'    => __( 'Blog entry width', 'wpsp-redux-framework' ),
+                'desc'     => __( 'Number only.', 'wpsp-redux-framework' ),
+            ),
+            array(
+                'id'       => 'blog-entry-image-height',
+                'type'     => 'text',
+                'title'    => __( 'Blog entry height', 'wpsp-redux-framework' ),
+                'desc'     => __( 'Number only.', 'wpsp-redux-framework' ),
+            ),
+            array(
+                'id'       => 'blog-entry-crop-location',
+                'type'     => 'select',
+                'title'    => __( 'Crop location', 'wpsp-redux-framework' ),
+                'options'  => array(
+                    'default' => esc_html__( 'Default', 'wpsp-redux-framework' ),
+                    'left-top' => esc_html__( 'Top Left','wpsp-redux-framework' ),
+                    'right-top' => esc_html__( 'Top Right','wpsp-redux-framework' ),
+                    'center-top' => esc_html__( 'Top Center','wpsp-redux-framework' ),
+                    'left-center' => esc_html__( 'Center Left','wpsp-redux-framework' ),
+                    'right-center' => esc_html__( 'Center Right','wpsp-redux-framework' ),
+                    'center-center' => esc_html__( 'Center Center','wpsp-redux-framework' ),
+                    'left-bottom' => esc_html__( 'Bottom Left','wpsp-redux-framework' ),
+                    'right-bottom' => esc_html__( 'Bottom Right','wpsp-redux-framework' ),
+                    'center-bottom' => esc_html__( 'Bottom Center','wpsp-redux-framework' ),
+                ),               
+            ),
+        )
+    ) ); 
+    // Image > Blog post size
+    Redux::setSection( $opt_name, array(
+        'title'      => __( 'Blog post', 'wpsp-redux-framework' ),
+        'id'         => 'blog-post-image-general',
+        'subsection' => true,
+        'desc'       => __( 'Manage image sizes and cropping for single post', 'wpsp-redux-framework' ),
+        'fields'     => array(
+            array(
+                'id'       => 'blog-post-image-width',
+                'type'     => 'text',
+                'title'    => __( 'Blog post width', 'wpsp-redux-framework' ),
+                'desc'     => __( 'Number only.', 'wpsp-redux-framework' ),
+            ),
+            array(
+                'id'       => 'blog-post-image-height',
+                'type'     => 'text',
+                'title'    => __( 'Blog post height', 'wpsp-redux-framework' ),
+                'desc'     => __( 'Number only.', 'wpsp-redux-framework' ),
+            ),
+            array(
+                'id'       => 'blog-post-crop-location',
+                'type'     => 'select',
+                'title'    => __( 'Crop location', 'wpsp-redux-framework' ),
+                'options'  => array(
+                    'default' => esc_html__( 'Default', 'wpsp-redux-framework' ),
+                    'left-top' => esc_html__( 'Top Left','wpsp-redux-framework' ),
+                    'right-top' => esc_html__( 'Top Right','wpsp-redux-framework' ),
+                    'center-top' => esc_html__( 'Top Center','wpsp-redux-framework' ),
+                    'left-center' => esc_html__( 'Center Left','wpsp-redux-framework' ),
+                    'right-center' => esc_html__( 'Center Right','wpsp-redux-framework' ),
+                    'center-center' => esc_html__( 'Center Center','wpsp-redux-framework' ),
+                    'left-bottom' => esc_html__( 'Bottom Left','wpsp-redux-framework' ),
+                    'right-bottom' => esc_html__( 'Bottom Right','wpsp-redux-framework' ),
+                    'center-bottom' => esc_html__( 'Bottom Center','wpsp-redux-framework' ),
+                ),               
+            ),
+        )
+    ) ); 
+    // Image > Blog related size
+    Redux::setSection( $opt_name, array(
+        'title'      => __( 'Blog related', 'wpsp-redux-framework' ),
+        'id'         => 'blog-related-image-general',
+        'subsection' => true,
+        'desc'       => __( 'Manage image sizes and cropping for single related', 'wpsp-redux-framework' ),
+        'fields'     => array(
+            array(
+                'id'       => 'blog-related-image-width',
+                'type'     => 'text',
+                'title'    => __( 'Blog related width', 'wpsp-redux-framework' ),
+                'desc'     => __( 'Number only.', 'wpsp-redux-framework' ),
+            ),
+            array(
+                'id'       => 'blog-related-image-height',
+                'type'     => 'text',
+                'title'    => __( 'Blog related height', 'wpsp-redux-framework' ),
+                'desc'     => __( 'Number only.', 'wpsp-redux-framework' ),
+            ),
+            array(
+                'id'       => 'blog-related-crop-location',
+                'type'     => 'select',
+                'title'    => __( 'Crop location', 'wpsp-redux-framework' ),
+                'options'  => array(
+                    'default' => esc_html__( 'Default', 'wpsp-redux-framework' ),
+                    'left-top' => esc_html__( 'Top Left','wpsp-redux-framework' ),
+                    'right-top' => esc_html__( 'Top Right','wpsp-redux-framework' ),
+                    'center-top' => esc_html__( 'Top Center','wpsp-redux-framework' ),
+                    'left-center' => esc_html__( 'Center Left','wpsp-redux-framework' ),
+                    'right-center' => esc_html__( 'Center Right','wpsp-redux-framework' ),
+                    'center-center' => esc_html__( 'Center Center','wpsp-redux-framework' ),
+                    'left-bottom' => esc_html__( 'Bottom Left','wpsp-redux-framework' ),
+                    'right-bottom' => esc_html__( 'Bottom Right','wpsp-redux-framework' ),
+                    'center-bottom' => esc_html__( 'Bottom Center','wpsp-redux-framework' ),
+                ),               
+            ),
+        )
+    ) );      
+
     // Layout
     Redux::setSection( $opt_name, array(
         'title'            => __( 'Layout', 'wpsp-redux-framework' ),
