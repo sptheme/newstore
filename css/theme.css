@@ -7993,6 +7993,10 @@ body.page-header-disabled .navbar-style-three {
 #wpsp-mobile-menu-fixed-top .mobile-menu-toggle .fa {
   margin-right: 10px; }
 
+@media only screen and (min-width: 992px) {
+  .wpsp-mobile-toggle-menu-icon_buttons_under_logo #site-header #site-logo {
+    text-align: left; } }
+
 /*--------------------------------------------------------------
 ## Mobile Menu Style > Sidebar (Sidr)
 --------------------------------------------------------------*/
