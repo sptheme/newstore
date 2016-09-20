@@ -111,17 +111,9 @@
         'pinterest'     => esc_html__( 'Pinterest', 'wpsp-redux-framework' ),
         );
 
-    $header_styles = header_styles();
-
-    // Header styles
-    $header_styles = apply_filters( 'wpsp_header_styles', array(
-        'one' => esc_html__( 'One - Left Logo & Right Navbar','wpsp-redux-framework' ),
-        'two' => esc_html__( 'Two - Bottom Navbar','wpsp-redux-framework' ),
-        'three' => esc_html__( 'Three - Bottom Navbar Centered','wpsp-redux-framework' ),
-        'four' => esc_html__( 'Four - Top Navbar Centered','wpsp-redux-framework' ),
-        'five' => esc_html__( 'Five - Centered Inline Logo','wpsp-redux-framework' ),
-        'six' => esc_html__( 'Six - Vertical','wpsp-redux-framework' ),
-    ) );
+    $header_styles_array = header_styles_array();
+    $wpsp_overlay_styles_array = wpsp_overlay_styles_array();
+    
 
     /*
      * ---> END OTHER VARIABLE
@@ -599,7 +591,7 @@
                 'type'     => 'select',
                 'title'    => __( 'Style', 'wpsp-redux-framework' ),
                 'subtitle' => __( 'Style header menu left, bottom and center', 'wpsp-redux-framework' ),
-                'options'  => $header_styles,
+                'options'  => $header_styles_array,
                 'default'  => 'one',
             ),
             array(
@@ -1088,6 +1080,80 @@
                 'title'    => __( 'Sidebar — Category', 'wpsp-redux-framework' ),
                 'subtitle' => __( 'Sidebar for each categories', 'wpsp-redux-framework' ),
                 'desc'     => __( '[ is_category ] Primary', 'wpsp-redux-framework' ),
+            ),
+            array(
+                'id'       => 'blog-entry-style',
+                'type'     => 'select',
+                'title'    => __( 'Blog entry style', 'wpsp-redux-framework' ),
+                'options'  => array(
+                    '' => esc_html__( 'Default', 'wpsp-redux-framework' ),
+                    'large-image-entry-style' => esc_html__( 'Large Image','wpsp-redux-framework' ),
+                    'thumbnail-entry-style' => esc_html__( 'Left Thumbnail','wpsp-redux-framework' ),
+                    'grid-entry-style' => esc_html__( 'Grid','wpsp-redux-framework' ),
+                ),
+                'default'  => 'large-image-entry-style'
+            ),
+            array(
+                'id'       => 'blog-grid-columns',
+                'type'     => 'select',
+                'required' => array( 'blog-entry-style', '=', 'grid-entry-style' ),
+                'title'    => __( 'Grid columns', 'wpsp-redux-framework' ),
+                'options'  => array(
+                    '' => esc_html__( 'Default', 'wpsp-redux-framework' ),
+                    '6' => esc_html__( '6','wpsp-redux-framework' ),
+                    '5' => esc_html__( '5','wpsp-redux-framework' ),
+                    '4' => esc_html__( '4','wpsp-redux-framework' ),
+                    '3' => esc_html__( '3','wpsp-redux-framework' ),
+                    '2' => esc_html__( '2','wpsp-redux-framework' ),
+                ),
+            ),
+            array(
+                'id'       => 'blog-grid-style',
+                'type'     => 'select',
+                'required' => array( 'blog-entry-style', '=', 'grid-entry-style' ),
+                'title'    => __( 'Grid style', 'wpsp-redux-framework' ),
+                'options'  => array(
+                    '' => esc_html__( 'Default', 'wpsp-redux-framework' ),
+                    'fit-rows' => esc_html__( 'Fit Rows','wpsp-redux-framework' ),
+                    'masonry' => esc_html__( 'Masonry','wpsp-redux-framework' ),
+                ),
+            ),
+            array(
+                'id'       => 'blog-archive-grid-equal-heights',
+                'type'     => 'checkbox',
+                'title'    => __( 'Equal Heights', 'wpsp-redux-framework' ),
+                'default'  => 0,
+            ),
+            array(
+                'id'       => 'blog-entry-overlay',
+                'type'     => 'select',
+                'title'    => __( 'Overlay Style', 'wpsp-redux-framework' ),
+                'subtitle' => __( 'set overlay style for each entry post thumbnails', 'wpsp-redux-framework' ),
+                'options'  => $wpsp_overlay_styles_array,
+            ),
+            array(
+                'id'       => 'blog-entry-block',
+                'type'     => 'sortable',
+                'mode'     => 'checkbox', // checkbox or text
+                'title'    => __( 'Entry Layout Elements', 'wpsp-redux-framework' ),
+                'subtitle' => __( 'Click and drag and drop elements to re-order them.', 'wpsp-redux-framework' ),
+                'label'    => true,
+                'options'  => array(
+                    'featured_media'  => esc_html__( 'Media', 'wpsp-redux-framework' ),
+                    'title'           => esc_html__( 'Title', 'wpsp-redux-framework' ),
+                    'meta'            => esc_html__( 'Meta', 'wpsp-redux-framework' ),
+                    'excerpt_content' => esc_html__( 'Excerpt', 'wpsp-redux-framework' ),
+                    'readmore'        => esc_html__( 'Read More', 'wpsp-redux-framework' ),
+                    'social_share'    => esc_html__( 'Social Share', 'wpsp-redux-framework' ),
+                ),
+                'default'  => array(
+                    'featured_media'  => true,
+                    'title'           => true,
+                    'meta'            => true,
+                    'excerpt_content' => true,
+                    'readmore'        => true,
+                    'social_share'    => false,
+                )
             ),
         )
     ) );

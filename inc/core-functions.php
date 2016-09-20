@@ -515,6 +515,109 @@ endif;
 /*-------------------------------------------------------------------------------*/
 
 /**
+ * Echo animation classes for entries
+ *
+ * @since 1.0.0
+ */
+function wpsp_entry_image_animation_classes() {
+	echo wpsp_get_entry_image_animation_classes();
+}
+
+/**
+ * Returns animation classes for entries
+ *
+ * @since 1.0.0
+ */
+function wpsp_get_entry_image_animation_classes() {
+
+	// Empty by default
+	$classes = '';
+
+	// Only used for standard posts now
+	if ( 'post' != get_post_type( get_the_ID() ) ) {
+		return;
+	}
+
+	// Get blog classes
+	if ( wpsp_get_redux( 'blog-entry-image-hover-animation' ) ) {
+		$classes = ' wpsp-image-hover '. wpsp_get_redux( 'blog-entry-image-hover-animation' );
+	}
+
+	// Apply filters
+	return apply_filters( 'wpsp_entry_image_animation_classes', $classes );
+
+}
+
+/**
+ * Returns attachment data
+ *
+ * @since 1.0.0
+ */
+function wpsp_get_attachment_data( $attachment = '', $return = '' ) {
+
+	// Return if no attachment
+	if ( ! $attachment ) {
+		return;
+	}
+
+	// Return if return equals none
+	if ( 'none' == $return ) {
+		return;
+	}
+
+	// Create array of attachment data
+	$array = array(
+		'url'         => get_post_meta( $attachment, '_wp_attachment_url', true ),
+		'src'         => wp_get_attachment_url( $attachment ),
+		'alt'         => get_post_meta( $attachment, '_wp_attachment_image_alt', true ),
+		'title'       => get_the_title( $attachment),
+		'caption'     => get_post_field( 'post_excerpt', $attachment ),
+		'description' => get_post_field( 'post_content', $attachment ),
+		'video'       => esc_url( get_post_meta( $attachment, '_video_url', true ) ),
+	);
+
+	// Set alt to title if alt not defined
+	$array['alt'] = $array['alt'] ? $array['alt'] : $array['title'];
+
+	// Return data
+	if ( $return ) {
+		return $array[$return];
+	} else {
+		return $array;
+	}
+
+}
+
+/**
+ * Checks if a featured image has a caption
+ *
+ * @since 1.0.0
+ */
+function wpsp_featured_image_caption( $post_id = '' ) {
+	$post_id = $post_id ? $post_id : get_the_ID();
+	return get_post_field( 'post_excerpt', get_post_thumbnail_id( $post_id ) );
+}
+
+/**
+ * Echo post thumbnail url
+ *
+ * @since 1.0.0
+ */
+function wpsp_post_thumbnail_url( $args = array() ) {
+	echo wpsp_get_post_thumbnail_url( $args );
+}
+
+/**
+ * Return post thumbnail url
+ *
+ * @since 1.0.0
+ */
+function wpsp_get_post_thumbnail_url( $args = array() ) {
+	$args['return'] = 'url';
+	return wpsp_get_post_thumbnail( $args );
+}
+
+/**
  * Outputs the img HTMl thubmails used in the Total VC modules
  *
  * @since 1.0.0
@@ -636,7 +739,7 @@ function wpsp_get_post_thumbnail( $args = array() ) {
 			$class = ' class="'. $class .'"';
 		}
 
-		// If size is defined and not equal to wpex_custom
+		// If size is defined and not equal to wpsp_custom
 		if ( $size && 'wpsp_custom' != $size ) {
 			$dims   = wpsp_get_thumbnail_sizes( $size );
 			$width  = $dims['width'];
