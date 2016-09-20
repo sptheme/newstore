@@ -246,16 +246,52 @@ class WPSP_Theme_Setup {
 			$footer_bottom_color = wpsp_get_redux( 'bottom-footer-color' );
 			$footer_bottom_link = wpsp_get_redux( 'bottom-footer-link-color' );
 			$footer_bottom_hover = wpsp_get_redux( 'bottom-footer-link-color-hover' );
-			if ( $footer_bottom_padding 
-				|| $footer_bottom_text_align || $footer_bottom_bg
-				|| $footer_bottom_color || $footer_bottom_link || $footer_bottom_hover ) {
-				$output .= '#footer-bottom{background:'. $footer_bottom_bg .'; text-align:'. $footer_bottom_text_align .'; color:'. $footer_bottom_color .'}';
+			if ( $footer_bottom_color || $footer_bottom_padding || $footer_bottom_link || $footer_bottom_hover ) {
+				
+				$output .= '#footer-bottom{';
+				if ( $footer_bottom_color ) $output .='color:'. $footer_bottom_color . ';';
+				if ( $footer_bottom_bg ) $output .='background:'. $footer_bottom_bg . ';';
+				if ( $footer_bottom_text_align ) $output .='text-align:'. $footer_bottom_text_align . ';';
+				$output .= '}';
+				
 				$output .= '#footer-bottom-inner{padding:'. $footer_bottom_padding .';}';
 				$output .= '#footer-bottom p{color:'. $footer_bottom_color .'}';
 				$output .= '#footer-bottom a{color:'. $footer_bottom_link .'}';
 				$output .= '#footer-bottom a:hover{color:'. $footer_bottom_hover .'}';
 			}
-			
+		}
+
+		if ( wpsp_get_redux('is-scroll-top') ) {
+			$scroll_top_size = wpsp_get_redux('scroll-top-size');
+			$scroll_icon_size = wpsp_get_redux('scroll-top-icon-size');
+			$scroll_top_border_radius = wpsp_get_redux('scroll-top-border-radius');
+			$scroll_top_color = wpsp_get_redux('scroll-top-color');
+			$scroll_top_color_hover = wpsp_get_redux('scroll-top-color-hover');
+			$scroll_top_bg = wpsp_get_redux('scroll-top-bg');
+			$scroll_top_bg_hover = wpsp_get_redux('scroll-top-bg-hover');
+			$scroll_top_border = wpsp_get_redux('scroll-top-border');
+			$scroll_top_border_hover = wpsp_get_redux('scroll-top-border-hover');
+			if ( $scroll_top_size || $scroll_icon_size || $scroll_top_border_radius
+				|| $scroll_top_color || $scroll_top_bg || $scroll_top_border ){
+				
+				$output .= '#site-scroll-top{';
+				if ( $scroll_top_size ) $output .='width:'. $scroll_top_size . '; height:'. $scroll_top_size . '; line-height:'. $scroll_top_size . ';';
+				if ( $scroll_icon_size ) $output .='font-size:'. $scroll_icon_size . ';';
+				if ( $scroll_top_border_radius ) $output .='border-radius:'. $scroll_top_border_radius . ';';
+				if ( $scroll_top_color ) $output .='color:'. $scroll_top_color . ';';
+				if ( $scroll_top_bg ) $output .='background-color:'. $scroll_top_bg . ';';
+				if ( $scroll_top_border ) $output .='border-color:'. $scroll_top_border . ';';
+				$output .= '}';
+			}
+
+			if ( $scroll_top_color_hover || $scroll_top_bg_hover || $scroll_top_border_hover ){
+				
+				$output .= '#site-scroll-top:hover{';
+				if ( $scroll_top_color_hover ) $output .='color:'. $scroll_top_color_hover . ';';
+				if ( $scroll_top_bg_hover ) $output .='background-color:'. $scroll_top_bg_hover . ';';
+				if ( $scroll_top_border_hover ) $output .='border-color:'. $scroll_top_border_hover . ';';
+				$output .= '}';
+			}
 		}
 
 		// Minify and output CSS in the wp_head
@@ -297,9 +333,9 @@ class WPSP_Theme_Setup {
 
 		require_once( get_template_directory() . '/inc/blog-functions.php' ); 
 		require_once( get_template_directory() . '/inc/header-functions.php' ); // main navigation style
+		require_once( get_template_directory() . '/inc/page-header.php' ); // page title style
 		require_once( get_template_directory() . '/inc/footer-functions.php' );
 		require_once( get_template_directory() . '/inc/mobile-menu-functions.php' );
-		require_once( get_template_directory() . '/inc/page-header.php' ); // page title style
 	}
 
 	public static function wpsp_bootstrap_helper() {
