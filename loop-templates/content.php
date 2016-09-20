@@ -20,7 +20,14 @@
         
 	</header><!-- .entry-header -->
 
-       <?php echo get_the_post_thumbnail( $post->ID, 'large' ); ?> 
+        <?php // Display media if thumbnail exists
+			if ( $thumbnail = wpsp_get_blog_entry_thumbnail() ) :?> 
+		<div class="blog-entry-media entry-media">
+			<a href="<?php the_permalink(); ?>" title="<?php echo esc_attr( the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark" class="blog-entry-media-link">
+				<?php echo $thumbnail; ?>
+			</a><!-- .blog-entry-media-link -->
+		</div>	
+		<?php endif; ?>
     
 		<div class="entry-content">
 

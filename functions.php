@@ -291,6 +291,11 @@ class WPSP_Theme_Setup {
 		require_once( get_template_directory() . '/inc/wpml.php' );
 		require_once( get_template_directory() . '/inc/custom-login.php' );
 		require_once( get_template_directory() . '/inc/layout.php' );
+		
+		require_once( get_template_directory() . '/inc/image-sizes.php' ); // Add image sizes
+		require_once( get_template_directory() .'/inc/image-resize.php' ); // Image Resize
+
+		require_once( get_template_directory() . '/inc/blog-functions.php' ); 
 		require_once( get_template_directory() . '/inc/header-functions.php' ); // main navigation style
 		require_once( get_template_directory() . '/inc/footer-functions.php' );
 		require_once( get_template_directory() . '/inc/mobile-menu-functions.php' );

@@ -15,3 +15,18 @@ function header_styles() {
         'six' => esc_html__( 'Six - Vertical','newstore' ),
     ) );
 }
+
+function wpsp_image_crop_locations() {
+	return array(
+		''              => esc_html__( 'Default', 'wpsp-blog' ),
+		'left-top'      => esc_html__( 'Top Left', 'wpsp-blog' ),
+		'right-top'     => esc_html__( 'Top Right', 'wpsp-blog' ),
+		'center-top'    => esc_html__( 'Top Center', 'wpsp-blog' ),
+		'left-center'   => esc_html__( 'Center Left', 'wpsp-blog' ),
+		'right-center'  => esc_html__( 'Center Right', 'wpsp-blog' ),
+		'center-center' => esc_html__( 'Center Center', 'wpsp-blog' ),
+		'left-bottom'   => esc_html__( 'Bottom Left', 'wpsp-blog' ),
+		'right-bottom'  => esc_html__( 'Bottom Right', 'wpsp-blog' ),
+		'center-bottom' => esc_html__( 'Bottom Center', 'wpsp-blog' ),
+	);
+}
