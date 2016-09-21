@@ -19,7 +19,9 @@
 	## Mobile Menu Style > Sidebar (Sidr)
 	## Mobile Menu Style > Toggle
 	## Mobile Menu Style > Full Screen Fade Overlay
-# PAGE TITLE	
+# PAGE TITLE
+# POST META
+# BLOG	
 # SEARCH
 # WIDGETS
 # FOOTER
@@ -714,6 +716,64 @@ body.breadcrumbs-position-default .page-header-title { max-width: 70% }
 .background-image-page-header-overlay { display: block; position: absolute; top: 0; left: 0; height: 100%; width: 100%; background: #000; z-index: 1; opacity: 0.5; }
 .background-image-page-header-overlay.style-dotted { background: rgba(0,0,0,0.3) url(../images/dotted-overlay.png) repeat }
 .background-image-page-header-overlay.style-dashed { background: rgba(0,0,0,0.3) url(../images/dashed-overlay.png) repeat }
+
+/*--------------------------------------------------------------
+# POST META
+--------------------------------------------------------------*/
+.meta,
+.entry .meta { font-size: 0.923em; color: #777; list-style: none; margin: 0 0 10px; }
+.meta li,
+.entry .meta li { float: left; margin: 0 20px 5px 0; }
+.meta li:last-child,
+.entry .meta li:last-child { margin-right: 0 }
+.meta li .fa { margin-right: 8px }
+.meta a { color: #777; text-decoration: none; }
+.meta a:hover { color: #000; text-decoration: none; }
+.meta time { display: inline; }
+
+/*--------------------------------------------------------------
+# BLOG
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+## Blog entry
+--------------------------------------------------------------*/
+.blog-entry a.blog-entry-media-link { display: block; margin: 0 auto; }
+.blog-entry-media img { display: block; margin: 0 auto; width: 100%; }
+.single-post .blog-entry.grid-entry-style.format-quote { width: 100%; margin: 0; }
+.format-quote { overflow: hidden }
+.blog-entry .social-share-title { display: none }
+.blog-entry-excerpt p:last-child { margin: 0 }
+
+/* Blog > post entry */
+.blog-entry-title { font-size: 1.846em; margin: 0 0 10px; font-weight: 400; }
+.blog-entry-media,
+.blog-entry-excerpt,
+.blog-entry-readmore { margin-bottom: 20px }
+
+/* Blog Entry > Avatar */
+.entry-has-avatar .blog-entry-header { position: relative; padding-left: 100px; min-height: 74px; margin-bottom: 20px; }
+.blog-entry-author-avatar { position: absolute; left: 0; top: 0; }
+.blog-entry-author-avatar { height: 74px; width: 74px; }
+.blog-entry-author-avatar a,
+.blog-entry-author-avatar img { display: block; width: 100%; height: 100%; }
+
+.entry-has-avatar.large-image-entry-style { position: relative; }
+
+/* Blog > entry thumbnail */
+.entries.left-thumbs .blog-entry.thumbnail-entry-style { margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid #eee; }
+.blog-entry.thumbnail-entry-style .blog-entry-title { margin: 0 0 5px }
+
+/*--------------------------------------------------------------
+## Blog entry style
+--------------------------------------------------------------*/
+/* Entries > Left Thumbnail Style */
+@media only screen and (min-width: 768px) {
+	.entries.left-thumbs .blog-entry { border: 0 }
+	.entries.left-thumbs .blog-entry .entry-media { float: left; margin: 0; width: 25%; }
+	.entries.left-thumbs .blog-entry .entry-details { background: none; border: none; float: right; width: 73%; padding: 0; }
+	.entries.left-thumbs .blog-entry:not(.has-media) .entry-details { width: 100% }
+}
 
 /*--------------------------------------------------------------
 # SEARCH

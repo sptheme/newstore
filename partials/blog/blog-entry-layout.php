@@ -26,6 +26,45 @@ $blocks = wpsp_blog_entry_layout_blocks(); ?>
 			// Get media
 			get_template_part( 'partials/blog/media/blog-entry', $post_format ); ?>
 
+			<div class="blog-entry-content entry-details">
+
+				<?php 
+				// Loop through entry blocks
+				foreach ( $blocks as $key => $value ) : 
+
+					// Display the entry title
+					if ( 'title' == $key && !empty($value) ) { 
+						get_template_part( 'partials/blog/blog-entry-title' );
+					} 
+
+					// Display the entry meta
+					elseif ( 'meta' == $key && !empty($value) ) { 
+						get_template_part( 'partials/blog/blog-entry-meta' ); 
+					} 
+
+					// Display the entry excerpt or content
+					elseif ( 'excerpt_content' == $key && !empty($value) ) { 
+						get_template_part( 'partials/blog/blog-entry-content' ); 
+					} 
+
+					// Display the readmore button
+					elseif ( 'readmore' == $key && !empty($value) ) { 
+						if ( wpsp_get_redux( 'is-auto-excerpt', true ) ) { 
+							get_template_part( 'partials/blog/blog-entry-readmore' ); 
+						}
+					} 
+
+					// Display the readmore button
+					elseif ( 'social_share' == $key && !empty($value) ) { 
+						get_template_part( 'partials/social-share' ); 
+					} ?>
+
+				<?php
+				// End block loop
+				endforeach; ?>	
+
+			</div><!-- blog-entry-content -->
+
 		<?php
 
 		// Other entry styles
@@ -40,7 +79,34 @@ $blocks = wpsp_blog_entry_layout_blocks(); ?>
 
 					<?php get_template_part( 'partials/blog/media/blog-entry', $post_format ); ?>
 
-				<?php } ?>
+				<?php } 
+
+				// Display the entry header
+				elseif ( 'title' == $key && !empty($value) ) { 
+					get_template_part( 'partials/blog/blog-entry-title' );
+				} 
+
+				// Display the entry meta
+				elseif ( 'meta' == $key && !empty($value) ) { 
+					get_template_part( 'partials/blog/blog-entry-meta' ); 
+				} 
+
+				// Display the entry excerpt or content
+				elseif ( 'excerpt_content' == $key && !empty($value) ) { 
+					get_template_part( 'partials/blog/blog-entry-content' ); 
+				}  
+
+				// Display the readmore button
+				elseif ( 'readmore' == $key && !empty($value) ) { 
+					if ( wpsp_get_redux( 'is-auto-excerpt', true ) ) { 
+						get_template_part( 'partials/blog/blog-entry-readmore' ); 
+					}
+				} 
+
+				// Display the readmore button
+				elseif ( 'social_share' == $key && !empty($value) ) { 
+					get_template_part( 'partials/social-share' );
+				} ?>
 				
 			<?php
 			// End block loop

@@ -325,7 +325,7 @@ function wpsp_get_excerpt( $args = array() ) {
 	if ( $readmore ) :
 
 		$read_more_text = isset( $args['read_more_text'] ) ? $args['read_more_text'] : esc_html__( 'Read more', 'newstore' );
-		$output .= '<a href="'. get_permalink( $post_id ) .'" title="'.$read_more_text .'" rel="bookmark" class="wpsp-readmore theme-button">'. $read_more_text .' <span class="wpsp-readmore-rarr">&rarr;</span></a>';
+		$output .= '<a href="'. get_permalink( $post_id ) .'" title="'.$read_more_text .'" rel="bookmark" class="btn btn-secondary newstore-read-more-link">'. $read_more_text .' <span class="wpsp-readmore-rarr">&rarr;</span></a>';
 
 	endif;
 
@@ -656,7 +656,7 @@ function wpsp_get_post_thumbnail( $args = array() ) {
 	extract( $args );
 
 	// Return dummy image
-	if ( '' == $attachment || $placeholder ) {
+	if ( 'dummy' == $attachment || $placeholder ) {
 		return '<img src="'. wpsp_placeholder_img_src() .'" />';
 	}
 
@@ -864,8 +864,6 @@ function wpsp_get_thumbnail_sizes( $size = '' ) {
 	return $sizes;
 }
 
-
-
 /*-------------------------------------------------------------------------------*/
 /* [ Schema Markup ]
 /*-------------------------------------------------------------------------------*/
@@ -1030,6 +1028,44 @@ function wpsp_social_share_heading() {
 /*-------------------------------------------------------------------------------*/
 /* [ Other ]
 /*-------------------------------------------------------------------------------*/
+
+/**
+ * Returns correct theme button classes based on args
+ *
+ * @since 1.0.0
+ */
+function wpsp_get_button_classes( $style = '', $outline = '', $size = '', $align = '' ) {
+
+	// Extract if style is an array of arguments
+	if ( is_array( $style ) ) {
+		extract( $style );
+	}
+
+	// Main classes
+	if ( $style ) {
+		$classes = 'btn ' . $style;
+	} else {
+		$classes = 'btn btn-link';
+	}
+
+	// Outline
+	if ( $outline ) {
+		$classes .= ' '. $outline;
+	}
+
+	// Size
+	if ( $size ) {
+		$classes .= ' '. $size;
+	}
+
+	// Align
+	if ( $align ) {
+		$classes .= ' align-'. $align;
+	}
+
+	// Apply filters and return classes
+	return apply_filters( 'wpsp_get_theme_button_classes', $classes, $style, $color, $size, $align );
+}
 
 /**
  * Minify CSS

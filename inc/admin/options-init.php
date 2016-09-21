@@ -996,6 +996,24 @@
                 'subtitle' => __( 'Sidebar for single post', 'wpsp-redux-framework' ),
                 'desc'     => __( '[ is_single ] Primary - If a single post has a unique sidebar, it will override this.', 'wpsp-redux-framework' ),
             ),
+            array(
+                'id'       => 'blog-single-header',
+                'type'     => 'select',
+                'title'    => __( 'Header Displays', 'wpsp-redux-framework' ),
+                'options'  => array(
+                    'custom_text' => 'Custom Text',
+                    'post_title' => 'Post title',
+                    'first_category' => 'First Category',
+                ),
+                'default'  => 'custom_text'
+            ),
+            array(
+                'id'       => 'blog-single-header-custom-text',
+                'type'     => 'text',
+                'required' => array( 'blog-single-header', '=', 'custom_text' ),
+                'title'    => __( 'Header Custom Text', 'wpsp-redux-framework' ),
+                'default'  => __( 'Blog', 'wpsp-redux-framework' ),
+            ),
         )
     ) );
     // Blog > Archive
@@ -1125,11 +1143,84 @@
                 'default'  => 0,
             ),
             array(
+                'id'       => 'blog-pagination-style',
+                'type'     => 'select',
+                'title'    => __( 'Pagination Style', 'wpsp-redux-framework' ),
+                'options'  => array(
+                    '' => esc_html__( 'Default', 'wpsp-redux-framework' ),
+                    'standard' => esc_html__( 'Standard','wpsp-redux-framework' ),
+                    'infinite_scroll' => esc_html__( 'Infinite Scroll','wpsp-redux-framework' ),
+                    'next_prev' => esc_html__( 'Next/Prev','wpsp-redux-framework' ),
+                ),
+            ),
+            array(
                 'id'       => 'blog-entry-overlay',
                 'type'     => 'select',
                 'title'    => __( 'Overlay Style', 'wpsp-redux-framework' ),
                 'subtitle' => __( 'set overlay style for each entry post thumbnails', 'wpsp-redux-framework' ),
                 'options'  => $wpsp_overlay_styles_array,
+            ),
+            array(
+                'id'       => 'is-auto-excerpt',
+                'type'     => 'switch',
+                'title'    => __( 'Auto Excerpts', 'wpsp-redux-framework' ),
+                'default'  => true,
+            ),
+            array(
+                'id'       => 'blog-excerpt-length',
+                'type'     => 'text',
+                'required' => array( 'is-auto-excerpt', '=', '1' ),
+                'title'    => __( 'Related Posts Excerpt Length', 'wpsp-redux-framework' ),
+                'validate' => 'preg_replace',
+                'preg'     => array(
+                    'pattern'     => '/[^0-9]/s',
+                    'replacement' => 'Allow only number'
+                ),
+                'default'  => '40'// 1 = on | 0 = off
+            ),
+            array(
+                'id'       => 'blog-entry-readmore-text',
+                'type'     => 'text',
+                'required' => array( 'is-auto-excerpt', '=', '1' ),
+                'title'    => __( 'Read More Button Text', 'wpsp-redux-framework' ),
+                'validate' => 'preg_replace',
+                'preg'     => array(
+                    'pattern'     => '/[^a-zA-Z_ -]/s',
+                    'replacement' => 'Allow only text'
+                ),
+                'default'  => 'Read More'// 1 = on | 0 = off
+            ),
+            array(
+                'id'       => 'blog-entry-meta-sections',
+                'type'     => 'checkbox',
+                'title'    => __( 'Entry Meta', 'wpsp-redux-framework' ),
+                'subtitle' => __( 'checked meta filed to be display', 'wpsp-redux-framework' ),
+                'options'  => array(
+                    'date'       => esc_html__( 'Date', 'wpsp-redux-framework' ),
+                    'author'     => esc_html__( 'Author', 'wpsp-redux-framework' ),
+                    'categories' => esc_html__( 'Categories', 'wpsp-redux-framework' ),
+                    'comments'   => esc_html__( 'Comments', 'wpsp-redux-framework' ),
+                    ),
+                'default'  => array(
+                    'date'          => true,
+                    'author'        => true,
+                    'categories'    => true,
+                    'comments'      => true,
+                )
+            ),
+            array(
+                'id'       => 'blog-entry-video-output',
+                'type'     => 'checkbox',
+                'title'    => __( 'Display Featured Videos?', 'wpsp-redux-framework' ),
+                'subtitle' => __( 'Show/hide featured video', 'wpsp-redux-framework' ),
+                'default'  => '1'// 1 = on | 0 = off
+            ),
+            array(
+                'id'       => 'blog-entry-author-avatar',
+                'type'     => 'checkbox',
+                'title'    => __( 'Author Avatar', 'wpsp-redux-framework' ),
+                'subtitle' => __( 'Show/hide Author Avatar', 'wpsp-redux-framework' ),
+                'default'  => '1'// 1 = on | 0 = off
             ),
             array(
                 'id'       => 'blog-entry-block',
