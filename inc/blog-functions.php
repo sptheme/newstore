@@ -23,7 +23,7 @@ function wpsp_blog_wrap_classes( $classes = NULL ) {
 		
 	// Isotope classes
 	if ( $style == 'grid-entry-style' ) {
-		$classes[] = 'wpsp-row ';
+		$classes[] = 'row';
 		if ( 'masonry' == wpsp_blog_grid_style() ) {
 			$classes[] = 'blog-masonry-grid ';
 		} else {
@@ -189,8 +189,7 @@ function wpsp_blog_entry_classes() {
 
 	// Add columns for grid style entries
 	if ( $entry_style == 'grid-entry-style' ) {
-		$classes[] = 'col';
-		$classes[] = wpsp_grid_class( wpsp_blog_entry_columns() );
+		$classes[] = bootstrap_grid_class( wpsp_blog_entry_columns() );
 	}
 
 	// No Featured Image Class, don't add if oembed or self hosted meta are defined
@@ -210,7 +209,7 @@ function wpsp_blog_entry_classes() {
 	// Counter
 	global $wpsp_count;
 	if ( $wpsp_count ) {
-		$classes[] = 'post-'. $wpsp_count;
+		$classes[] = 'col-'. $wpsp_count;
 	}
 
 	// Apply filters to entry post class for child theming

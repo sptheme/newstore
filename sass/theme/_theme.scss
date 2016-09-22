@@ -25,6 +25,7 @@
 # SEARCH
 # WIDGETS
 # FOOTER
+# ACCESSIBILITY
 # ADDON ELEMENTS
 	## Scroll to top
 	## Social Sharing
@@ -775,6 +776,33 @@ body.breadcrumbs-position-default .page-header-title { max-width: 70% }
 	.entries.left-thumbs .blog-entry:not(.has-media) .entry-details { width: 100% }
 }
 
+/* Entries > Grid Style */
+.blog-isotope-grid .infinite-scroll-loader { bottom: 0 }
+.blog-entry.grid-entry-style { float: left; margin-bottom: 30px; }
+.blog-entry.grid-entry-style .blog-entry-inner { padding: 0 20px 20px; border: 1px solid #eee; }
+.blog-entry.grid-entry-style .blog-entry-media { margin: 0 -20px }
+.blog-entry.grid-entry-style .wpsp-social-share { display: none !important }
+
+/* Entries > Grid > Title */
+.blog-entry.grid-entry-style header { margin-top: 20px }
+.blog-entry.grid-entry-style .blog-entry-title { font-size: 1.231em }
+
+/* Entries > Grid > Avatar */
+.blog-entry.grid-entry-style .header-with-avatar { padding-left: 80px; min-height: 60px; }
+.blog-entry.grid-entry-style .blog-entry-author-avatar { height: 60px; width: 60px; }
+
+/* Entries > Grid > Gallery */
+.blog-entry.grid-entry-style .sp-fade-arrows { opacity: 1; -moz-opacity: 1; -webkit-opacity: 1; }
+.blog-entry.grid-entry-style .sp-horizontal .sp-arrows { margin-top: -20px }
+.blog-entry.grid-entry-style .wpsp-slider .sp-arrow { height: 40px; width: 25px; line-height: 40px; font-size: 1.077em; background: rgba(0,0,0,.3); }
+.blog-entry.grid-entry-style .wpsp-slider .sp-arrow:hover { background: rgba(0,0,0,1) }
+
+/* Entries > Grid > Excerpt */
+.blog-entry.grid-entry-style .blog-entry-excerpt { margin-top: 10px }
+
+/* Entries > Grid > Readmore */
+.blog-entry.grid-entry-style .blog-entry-readmore { margin-top: 20px }
+
 /*--------------------------------------------------------------
 # SEARCH
 --------------------------------------------------------------*/
@@ -995,6 +1023,16 @@ body.breadcrumbs-position-default .page-header-title { max-width: 70% }
 #footer-bottom-menu ul li { float: left; margin-left: 20px; }
 #footer-bottom-menu ul li:first-child { margin-left: 0 }
 #footer-bottom-menu ul li .fa { margin-right: 7px }
+
+/*-------------------------------------------------------------- 
+ # ACCESSIBILITY
+--------------------------------------------------------------*/
+/* Clear Floats */
+.clear-margin,
+.count-1,
+.col-1,
+.col.first { clear: both; margin-left: 0; }
+.isotope-entry { clear: none }
 
 /*-------------------------------------------------------------- 
  # ADDON ELEMENTS

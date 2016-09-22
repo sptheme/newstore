@@ -387,17 +387,6 @@ function wpsp_custom_excerpt_length( $length ) {
 add_filter( 'excerpt_length', 'wpsp_custom_excerpt_length', 999 );
 
 /**
- * Returns the correct classname for any specific column grid
- *
- * @since 1.0.0
- */
-if ( ! function_exists('wpsp_grid_class') ) :
-function wpsp_grid_class( $col = '4' ) {
-	return esc_attr( apply_filters( 'wpsp_grid_class', 'span_1_of_'. $col ) );
-}
-endif;
-
-/**
  * Outputs a theme heading
  * 
  * @since 1.0.0

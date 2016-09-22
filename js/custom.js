@@ -102,6 +102,9 @@
 				// Custom menu widget accordion
 				self.customMenuWidgetAccordion();
 
+				// Archive masonry grids
+				self.archiveMasonryGrids();
+
 				// Back to top link
 				self.backTopLink();
 			} );
@@ -169,6 +172,7 @@
 			self.config.$window.on( 'orientationchange',function() {
 				self.resizeUpdateConfig();
 				self.inlineHeaderLogo();
+				self.archiveMasonryGrids();
 			} );
 		},
 
@@ -1356,6 +1360,39 @@
 		},
 
 		/**
+		 * Isotope Grids
+		 *
+		 * @since 1.0.0
+		 */
+		archiveMasonryGrids: function() {
+
+			// Define main vars
+			var self      = this,
+				$archives = $( '.blog-masonry-grid' );
+
+			// Loop through archives
+			$archives.each( function() {
+
+				var $this               = $( this ),
+					$data               = $this.data(),
+					$transitionDuration = self.parseData( $data.transitionDuration, '0.0' ),
+					$layoutMode         = self.parseData( $data.layoutMode, 'masonry' );
+
+				// Load isotope after images loaded
+				$this.imagesLoaded( function() {
+					$this.isotope( {
+						itemSelector       : '.isotope-entry',
+						transformsEnabled  : true,
+						isOriginLeft       : self.config.$isRTL ? false : true,
+						transitionDuration : $transitionDuration + 's'
+					} );
+				} );
+
+			} );
+
+		},
+
+		/**
 		 * Back to top link
 		 *
 		 * @since 1.0.0
@@ -1388,6 +1425,24 @@
 			}
 
 		},
+
+		/**
+		 * Parses data to check if a value is defined in the data attribute and if not returns the fallback
+		 *
+		 * @since 1.0.0
+		 */
+		parseData: function( val, fallback ) {
+			return ( typeof val !== 'undefined' ) ? val : fallback;
+		},
+
+		/**
+		 * Returns extension from URL
+		 */
+		getUrlExtension: function( url ) {
+			var ext = url.split( '.' ).pop().toLowerCase(),
+				extra = ext.indexOf( '?' ) !== -1 ? ext.split( '?' ).pop() : '';
+			return ext.replace( extra, '' );
+		}
 	}
 
 	wpspCustom.init();

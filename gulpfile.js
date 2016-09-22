@@ -138,6 +138,8 @@ gulp.task('scripts', function() {
     basePaths.dev + 'js/owl.carousel.min.js', // Must be loaded before BS4
     basePaths.dev + 'js/leanner-modal.js',
     basePaths.dev + 'js/jquery.sidr.min.js',
+    basePaths.dev + 'js/imagesloaded.pkgd.min.js',
+    basePaths.dev + 'js/isotope.pkgd.min.js',
     basePaths.dev + 'js/tether.js', // Must be loaded before BS4
 
     // Start - All BS4 stuff
@@ -157,6 +159,8 @@ gulp.task('scripts', function() {
     basePaths.dev + 'js/hoverIntent.js',
     basePaths.dev + 'js/owl.carousel.min.js', // Must be loaded before BS4
     basePaths.dev + 'js/leanner-modal.js',
+    basePaths.dev + 'js/imagesloaded.pkgd.min.js',
+    basePaths.dev + 'js/isotope.pkgd.min.js',
     basePaths.dev + 'js/jquery.sidr.js',
     basePaths.dev + 'js/tether.js', // Must be loaded before BS4
 
@@ -229,6 +233,14 @@ gulp.task('copy-assets', function() {
 // Copy Superfish JS files
     gulp.src(basePaths.bower + 'superfish/dist/js/*.js')
         .pipe(gulp.dest(basePaths.dev + '/js'));
+
+// Copy ImagesLoaded JS files
+    gulp.src(basePaths.bower + 'imagesloaded/*.js')
+        .pipe(gulp.dest(basePaths.dev + '/js'));
+
+// Copy Isotope JS files
+    gulp.src(basePaths.bower + 'isotope/dist/*.js')
+        .pipe(gulp.dest(basePaths.dev + '/js'));        
 
 // Copy Sidr JS files
     gulp.src(basePaths.bower + 'sidr/dist/*.js')
