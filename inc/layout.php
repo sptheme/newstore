@@ -163,14 +163,18 @@ function wpsp_post_layout() {
 	}
 
 	// Standard Categories
-	elseif ( is_category() && ( wpsp_get_redux('archive-layout') !='inherit' ) ) {
-		$class = wpsp_get_redux( 'archives-layout', 'right-sidebar' );
-		$term  = get_query_var( 'cat' );
-		if ( $term_data = get_option( "category_$term" ) ) {
-			if ( ! empty( $term_data['wpsp_term_layout'] ) ) {
+	elseif ( is_category() ) {
+		if ( 'inherit' != wpsp_get_redux('category-layout') ) {
+			$class = wpsp_get_redux( 'category-layout' );	
+		}
+		
+		$term       = get_query_var( 'cat' );
+		$term_data  = get_option( "category_$term" );
+		if ( $term_data ) {
+			if( 'inherit' != $term_data['wpsp_term_layout'] ) {
 				$class = $term_data['wpsp_term_layout'];
 			}
-		}
+		} 
 	}
 
 	// Archives
@@ -180,7 +184,7 @@ function wpsp_post_layout() {
 		|| is_author()
 		|| ( is_tax( 'post_format' ) && 'post' == get_post_type() ) 
 	) {
-		$class = wpsp_get_redux( 'archives-layout', 'right-sidebar' );
+		$class = wpsp_get_redux( 'archives-layout', 'right-sidebar' );		
 	}
 	
 	// 404 page
@@ -190,10 +194,12 @@ function wpsp_post_layout() {
 
 	// All else
 	else {
-		// Class should never be empty
-		if ( empty( $class ) ) {
-			$class = wpsp_get_redux( 'layout-global', 'right-sidebar' );
-		}
+		$class = 'right-sidebar';	
+	}
+
+	// Class should never be empty
+	if ( empty( $class ) ) {
+		$class = wpsp_get_redux( 'layout-global', 'right-sidebar' );
 	}
 
 	// Apply filters and return
