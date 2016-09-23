@@ -91,10 +91,10 @@ if ( ! function_exists( 'wpsp_pagejump' ) ) :
 		if ( 1 != $pages ) {
 		$output .= '<div class="page-jump clear">';
 			$output .= '<div class="alignleft newer-posts">';
-				$output .= get_previous_posts_link( '&larr; '. esc_html__( 'Newer Posts', 'wpsp-blog' ) );
+				$output .= get_previous_posts_link( '&larr; '. esc_html__( 'Newer Posts', 'newstore' ) );
 			$output .= '</div>';
 			$output .= '<div class="alignright older-posts">';
-				$output .= get_next_posts_link( esc_html__( 'Older Posts', 'wpsp-blog' ) .' &rarr;' );
+				$output .= get_next_posts_link( esc_html__( 'Older Posts', 'newstore' ) .' &rarr;' );
 			$output .= '</div>';
 		$output .= '</div>';
 		}
@@ -112,28 +112,28 @@ if ( ! function_exists( 'wpsp_infinite_scroll' ) ) :
 		
 		// Load infinite scroll js for standard blog style
 		if ( $type == 'standard' ) {
-			wp_enqueue_script( 'wpsp-infinitescroll', WPSP_JS_DIR_URI .'infinite-scroll/infinitescroll.js', array( 'jquery' ), 1.0, true );
-			wp_enqueue_script( 'wpsp-infinitescroll-standard', WPSP_JS_DIR_URI .'infinite-scroll/infinitescroll-standard.js', array( 'jquery' ), 1.0, true );
+			wp_enqueue_script( 'wpsp-infinitescroll', get_stylesheet_directory_uri() .'/js/infinite-scroll/infinitescroll.js', array( 'jquery' ), 1.0, true );
+			wp_enqueue_script( 'wpsp-infinitescroll-standard', get_stylesheet_directory_uri() .'/js/infinite-scroll/infinitescroll-standard.js', array( 'jquery' ), 1.0, true );
 		}
 		
 		// Load infinite scroll js for grid
 		if ( $type == 'standard-grid' ) {
-			wp_enqueue_script( 'wpsp-infinitescroll', WPSP_JS_DIR_URI .'infinite-scroll/infinitescroll.js', array( 'jquery' ), 1.0, true );
-			wp_enqueue_script( 'wpsp-infinitescroll-grid', WPSP_JS_DIR_URI .'infinite-scroll/infinitescroll-standard-grid.js', array( 'jquery' ), 1.0, true );
+			wp_enqueue_script( 'wpsp-infinitescroll', get_stylesheet_directory_uri() .'/js/infinite-scroll/infinitescroll.js', array( 'jquery' ), 1.0, true );
+			wp_enqueue_script( 'wpsp-infinitescroll-grid', get_stylesheet_directory_uri() .'/js/infinite-scroll/infinitescroll-standard-grid.js', array( 'jquery' ), 1.0, true );
 		}
 		
 		// Localize loading text
-		$is_params = array( 'msgText' => esc_html__( 'Loading...', 'wpsp-blog' ) );
+		$is_params = array( 'msgText' => esc_html__( 'Loading...', 'newstore' ) );
 		wp_localize_script( 'wpsp-infinitescroll', 'wpspInfiniteScroll', $is_params );  
 		
 		// Output pagination HTML
 		$output = '';
-		$output .= '<div class="infinite-scroll-nav clear">';
+		$output .= '<div class="infinite-scroll-nav clearfix">';
 			$output .= '<div class="alignleft newer-posts">';
-				$output .= get_previous_posts_link('&larr; '. esc_html__( 'Newer Posts', 'wpsp-blog' ) );
+				$output .= get_previous_posts_link('&larr; '. esc_html__( 'Newer Posts', 'newstore' ) );
 			$output .= '</div>';
 			$output .= '<div class="alignright older-posts">';
-				$output .= get_next_posts_link( esc_html__( 'Older Posts', 'wpsp-blog' ) .' &rarr;');
+				$output .= get_next_posts_link( esc_html__( 'Older Posts', 'newstore' ) .' &rarr;');
 			$output .= '</div>';
 		$output .= '</div>';
 

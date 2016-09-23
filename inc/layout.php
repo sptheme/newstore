@@ -153,13 +153,17 @@ function wpsp_post_layout() {
 	}
 
 	// Home
-	elseif ( is_home() && ( wpsp_get_redux('archive-layout') !='inherit' ) ) {
-		$class = wpsp_get_redux( 'archive-layout', 'right-sidebar' );
+	elseif ( is_home() ) {
+		if ( 'inherit' != wpsp_get_redux('archive-layout') ) {
+			$class = wpsp_get_redux( 'archive-layout', 'right-sidebar' );			
+		}
 	}
 
 	// Search
-	elseif ( is_search() && ( wpsp_get_redux('search-layout') !='inherit' ) ) {
-		$class = get_theme_mod( 'search-layout', 'right-sidebar' );
+	elseif ( is_search() ) {		
+		if ( 'inherit' != wpsp_get_redux('search-layout') ) {
+			$class = wpsp_get_redux( 'search-layout', 'right-sidebar' );			
+		}
 	}
 
 	// Standard Categories
@@ -184,7 +188,9 @@ function wpsp_post_layout() {
 		|| is_author()
 		|| ( is_tax( 'post_format' ) && 'post' == get_post_type() ) 
 	) {
-		$class = wpsp_get_redux( 'archives-layout', 'right-sidebar' );		
+		if ( 'inherit' != wpsp_get_redux('archive-layout') ) {
+			$class = wpsp_get_redux( 'archive-layout', 'right-sidebar' );	
+		}		
 	}
 	
 	// 404 page

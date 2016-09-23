@@ -21,29 +21,29 @@ get_header(); ?>
 
                       <?php if ( have_posts() ) : ?>
 
-                        <div id="blog-entries" class="<?php wpsp_blog_wrap_classes(); ?>">
+                            <div id="blog-entries" class="<?php wpsp_blog_wrap_classes(); ?>">
 
-                        <?php // Define counter for clearing floats
-                        $wpsp_count = 0; ?>
+                                <?php // Define counter for clearing floats
+                                $wpsp_count = 0; ?>
 
-                        <?php while ( have_posts() ) : the_post(); 
-                                // Add to counter
-                                $wpsp_count++; ?>
+                                <?php while ( have_posts() ) : the_post(); 
+                                        // Add to counter
+                                        $wpsp_count++; ?>
 
-                                <?php // Get blog entry layout
-                                    get_template_part( 'partials/blog/blog-entry-layout' ); 
+                                    <?php // Get blog entry layout
+                                        get_template_part( 'partials/blog/blog-entry-layout' ); 
 
-                                    if ( wpsp_blog_entry_columns() == $wpsp_count ) {
-                                        $wpsp_count = 0;
-                                    } ?>
+                                        if ( wpsp_blog_entry_columns() == $wpsp_count ) {
+                                            $wpsp_count = 0;
+                                        } ?>
 
-                            <?php endwhile; ?>
+                                <?php endwhile; ?>
                             
+                            </div> <!-- #blog-entries -->
+
                             <?php
                             // Display post pagination (next/prev - 1,2,3,4..)
                             wpsp_blog_pagination(); ?>
-
-                            </div> <!-- #blog-entries -->
 
                         <?php else : ?>
 

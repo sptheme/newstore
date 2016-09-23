@@ -218,6 +218,7 @@ function wpsp_blog_entry_classes() {
 
 	// Add columns for grid style entries
 	if ( $entry_style == 'grid-entry-style' ) {
+		$classes[] = wpsp_blog_entry_columns() . ' ';
 		$classes[] = bootstrap_grid_class( wpsp_blog_entry_columns() );
 	}
 
@@ -314,6 +315,11 @@ function wpsp_blog_entry_columns() {
 		if ( ! empty ( $term_data['wpsp_term_grid_cols'] ) ) {
 			$columns = $term_data['wpsp_term_grid_cols'];
 		}
+	}
+
+	// Search post per page
+	elseif ( is_search() ) {
+		$columns = wpsp_get_redux( 'search-posts-per-page' );
 	}
 
 	// Sanitize
