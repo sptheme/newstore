@@ -905,7 +905,7 @@ span.page-numbers { line-height: 1; display: block; padding: 0.4em 0.7em; font-s
 .page-numbers:hover { text-decoration: none }
 
 /*infinite scroll*/
-.infinite-scroll-loader { position: absolute; bottom: -120px; left: 50%; margin-left: -100px; height: 120px; line-height: 80px; width: 120px; background: url('../images/loader.gif') center center no-repeat; text-indent: -9999px; }
+.infinite-scroll-loader { position: absolute; bottom: -8px; left: 50%; margin-left: -24px; height: 48px; line-height: 24px; width: 48px; background: url('../images/ring.gif') center center no-repeat; text-indent: -9999px; }
 #infscr-loading img { display: none !important }
 .infinite-scroll-nav { display: none }
 

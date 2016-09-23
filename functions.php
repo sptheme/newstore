@@ -336,7 +336,8 @@ class WPSP_Theme_Setup {
 
 		require_once( get_template_directory() . '/inc/pagination.php' );
 		require_once( get_template_directory() . '/inc/blog-functions.php' ); 
-		require_once( get_template_directory() . '/inc/category-meta.php' ); 
+		require_once( get_template_directory() . '/inc/category-meta.php' );
+		require_once( get_template_directory() . '/inc/term-thumbnails.php' ); 
 
 		require_once( get_template_directory() . '/inc/header-functions.php' ); // main navigation style
 		require_once( get_template_directory() . '/inc/page-header.php' ); // page title style

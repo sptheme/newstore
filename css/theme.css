@@ -8932,13 +8932,13 @@ span.page-numbers {
 /*infinite scroll*/
 .infinite-scroll-loader {
   position: absolute;
-  bottom: -120px;
+  bottom: -8px;
   left: 50%;
-  margin-left: -100px;
-  height: 120px;
-  line-height: 80px;
-  width: 120px;
-  background: url("../images/loader.gif") center center no-repeat;
+  margin-left: -24px;
+  height: 48px;
+  line-height: 24px;
+  width: 48px;
+  background: url("../images/ring.gif") center center no-repeat;
   text-indent: -9999px; }
 
 #infscr-loading img {
