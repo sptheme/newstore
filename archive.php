@@ -21,20 +21,29 @@ get_header(); ?>
 
                       <?php if ( have_posts() ) : ?>
 
-                        <?php /* Start the Loop */ ?>
-                        <?php while ( have_posts() ) : the_post(); ?>
+                        <div id="blog-entries" class="<?php wpsp_blog_wrap_classes(); ?>">
 
+                        <?php // Define counter for clearing floats
+                        $wpsp_count = 0; ?>
+
+                        <?php while ( have_posts() ) : the_post(); 
+                                // Add to counter
+                                $wpsp_count++; ?>
+
+                                <?php // Get blog entry layout
+                                    get_template_part( 'partials/blog/blog-entry-layout' ); 
+
+                                    if ( wpsp_blog_entry_columns() == $wpsp_count ) {
+                                        $wpsp_count = 0;
+                                    } ?>
+
+                            <?php endwhile; ?>
+                            
                             <?php
-                                /* Include the Post-Format-specific template for the content.
-                                 * If you want to override this in a child theme, then include a file
-                                 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
-                                 */
-                                get_template_part( 'loop-templates/content', get_post_format() );
-                            ?>
+                            // Display post pagination (next/prev - 1,2,3,4..)
+                            wpsp_blog_pagination(); ?>
 
-                        <?php endwhile; ?>
-
-                            <?php the_posts_navigation(); ?>
+                            </div> <!-- #blog-entries -->
 
                         <?php else : ?>
 

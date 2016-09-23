@@ -6,6 +6,35 @@
  */
 
 /**
+ * Exclude categories from the blog
+ * This function runs on pre_get_posts
+ *
+ * @since 1.0.0
+ */
+function wpsp_blog_exclude_categories( $deprecated = true ) {
+
+	// Don't run in these places
+	if ( is_admin()
+		|| is_search()
+		|| is_tag()
+		|| is_category()
+	) {
+		return;
+	}
+
+	// Get Cat id's to exclude
+	if ( $cats = wpsp_get_redux( 'blog-cats-exclude' ) ) {
+		if ( ! is_array( $cats ) ) {
+			$cats = explode( ',', $cats ); // Convert to array
+		}
+	}
+
+	// Return ID's
+	return $cats;
+	
+}
+
+/**
  * Adds main classes to blog post entries
  *
  * @since 1.0.0

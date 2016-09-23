@@ -18,21 +18,42 @@ get_header(); ?>
 
                 <?php if ( have_posts() ) : ?>
 
-                    <?php /* Start the Loop */ ?>
-                    <?php while ( have_posts() ) : the_post(); ?>
+                    <div id="search-entries" class="clearfix">
+                        
+                        <?php if ( 'blog' == wpsp_get_redux( 'search-style' ) ) : ?>
+                            <div id="blog-entries" class="<?php wpsp_blog_wrap_classes(); ?>">
+
+                                <?php // Define counter for clearing floats
+                                $wpsp_count = 0; ?>
+
+                                <?php while ( have_posts() ) : the_post(); 
+                                        // Add to counter
+                                        $wpsp_count++; ?>
+
+                                        <?php // Get blog entry layout
+                                        get_template_part( 'partials/blog/blog-entry-layout' ); 
+
+                                        if ( wpsp_blog_entry_columns() == $wpsp_count ) $wpsp_count = 0; ?>
+
+                                <?php endwhile; ?>
+
+                            </div> <!-- #blog-entries -->
+                        <?php // Display custom style for search entries 
+                            else: ?>    
+
+                            <?php while ( have_posts() ) : the_post(); ?>
+
+                                <?php get_template_part( 'partials/search-entry-layout' ); ?>
+
+                            <?php endwhile; ?>
+
+                        <?php endif; ?>
 
                         <?php
-                        /**
-                         * Run the loop for the search to output the results.
-                         * If you want to overload this in a child theme then include a file
-                         * called content-search.php and that will be used instead.
-                         */
-                        get_template_part( 'loop-templates/content', 'search' );
-                        ?>
+                            // Display post pagination (next/prev - 1,2,3,4..)
+                            wpsp_blog_pagination(); ?>
 
-                    <?php endwhile; ?>
-
-                    <?php the_posts_navigation(); ?>
+                    </div><!-- #search-entries -->        
 
                 <?php else : ?>
 

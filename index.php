@@ -37,17 +37,15 @@ get_header(); ?>
                                 <?php // Get blog entry layout
                                 get_template_part( 'partials/blog/blog-entry-layout' ); 
 
-                                if ( wpsp_blog_entry_columns() == $wpsp_count ) {
-                                    $wpsp_count = 0;
-                                } ?>
+                                if ( wpsp_blog_entry_columns() == $wpsp_count ) $wpsp_count = 0; ?>
 
                         <?php endwhile; ?>
                         
-                        <?php
+                        </div> <!-- #blog-entries -->
+
+                         <?php
                         // Display post pagination (next/prev - 1,2,3,4..)
                         wpsp_blog_pagination(); ?>
-
-                        </div> <!-- #blog-entries -->
                         
                     <?php else : ?>
 

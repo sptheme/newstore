@@ -847,6 +847,39 @@ body.breadcrumbs-position-default .page-header-title { max-width: 70% }
 #searchform-dropdown.show,
 #searchform-header-replace.show { visibility: visible; opacity: 1; }
 
+/*entries*/
+.search-entry { 
+	position: relative; 
+	margin-bottom: 20px; 
+	padding-bottom: 20px; 
+	border-bottom: 1px solid #eee; 
+	padding-left: 130px; 
+	min-height: 120px; 
+}
+.search-entry-no-thumb { 
+	padding-left: 0; 
+	min-height: 0; 
+}
+.search-entry h2 { 
+	font-size: 1.313em; 
+	margin: 0 0 10px; 
+	font-weight: 600; 
+}
+.search-entry-thumb { 
+	position: absolute; 
+	top: 0; 
+	left: 0; 
+	width: 100px; 
+	padding: 4px; 
+	border: 1px solid #eee; 
+}
+.search-entry-thumb img { 
+	display: block; 
+	width: 100%; 
+}
+.search-entry-thumb img:hover { opacity: 0.8 }
+.search-entry-text p:last-child { margin: 0 }
+
 /*--------------------------------------------------------------
 # WIDGETS
 --------------------------------------------------------------*/

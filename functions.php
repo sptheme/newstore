@@ -41,6 +41,9 @@ class WPSP_Theme_Setup {
 		// Load wooCommerce custom and helper functions
 		add_action( 'after_setup_theme', array( $this, 'wpsp_bootstrap_helper' ), 4 );
 
+		// Exclude categories from the blog page
+		add_filter( 'pre_get_posts', array( $this, 'pre_get_posts' ) );
+
 	}
 
 	/**
@@ -202,7 +205,7 @@ class WPSP_Theme_Setup {
 	}
 
 	/**
-	 * All theme functions hook into the wpex_head_css filter for this function.
+	 * All theme functions hook into the wpsp_head_css filter for this function.
 	 * This way all dynamic CSS is minified and outputted in one location in the site header.
 	 *
 	 * @since 1.0.0
@@ -365,6 +368,49 @@ class WPSP_Theme_Setup {
 
 		// Add shortcode supports
 		require_once( get_template_directory() . '/inc/shortcodes/shortcodes.php' );		
+	}
+
+	/**
+	 * This function runs before the main query.
+	 *
+	 * @since 1.0.0
+	 */
+	public static function pre_get_posts( $query ) {
+
+		// Lets not break stuff
+		if ( is_admin() || ! $query->is_main_query() ) {
+			return;
+		}
+
+		// Search pagination
+		if ( is_search() ) {
+			$query->set( 'posts_per_page', wpsp_get_redux( 'search-posts-per-page', '10' ) );
+			return;
+		}
+
+		// Exclude categories from the main blog
+		if ( ( is_home() || is_page_template( 'templates/blog.php' ) ) && $cats = wpsp_blog_exclude_categories() ) {
+			set_query_var( 'category__not_in', $cats );
+			return;
+		}
+
+		// Category pagination
+		$terms = get_terms( 'category' );
+		if ( ! empty( $terms ) ) {
+			foreach ( $terms as $term ) {
+				if ( is_category( $term->slug ) ) {
+					$term_id    = $term->term_id;
+					$term_data  = get_option( "category_$term_id" );
+					if ( $term_data ) {
+						if ( ! empty( $term_data['wpsp_term_posts_per_page'] ) ) {
+							$query->set( 'posts_per_page', $term_data['wpsp_term_posts_per_page'] );
+							return;
+						}
+					}
+				}
+			}
+		}
+
 	}
 }
 
