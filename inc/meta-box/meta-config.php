@@ -207,6 +207,33 @@
 					),
 				'std'  => 'on',
 			),
+			array(
+				'type' => 'heading',
+				'name' => esc_html__( 'Media', 'wpsp-meta-box' ),
+			),
+			array(
+				'name'  => __( 'Media Display/Position', 'wpsp-meta-box' ), 
+				'id'    => $prefix . "post_media_position",
+				'desc'	=> __( 'Select your preferred position for your post\'s media (featured image or video).', 'wpsp-meta-box' ), 
+				'type'  => 'select',
+				'options' => array(
+					'above' => __( 'Full-Width Above Content', 'wpsp-meta-box' ),
+					'hidden' => __( 'None (Do Not Display Featured Image/Video)', 'wpsp-meta-box' ),
+					),
+				'std'  => 'above',
+			),
+			array(
+				'name'  => __( 'Self Hosted', 'wpsp-meta-box' ), 
+				'id'    => $prefix . "post_self_hosted_media",
+				'desc'  => __( 'Insert your self hosted video or audio url here. <a href="http://make.wordpress.org/core/2013/04/08/audio-video-support-in-core/" target="_blank">Learn More →</a>', 'wpsp-meta-box'),
+				'type'  => 'file',
+			),
+			array(
+				'name'  => __( 'Embed Code', 'wpsp-meta-box' ), 
+				'id'    => $prefix . "post_video_embed",
+				'desc'  => __( 'Insert your embed/iframe code.', 'wpsp-meta-box'),
+				'type'  => 'oembed',
+			),
 		)
 	);
 

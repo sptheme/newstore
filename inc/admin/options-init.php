@@ -1014,6 +1014,68 @@
                 'title'    => __( 'Header Custom Text', 'wpsp-redux-framework' ),
                 'default'  => __( 'Blog', 'wpsp-redux-framework' ),
             ),
+            array(
+                'id'       => 'is-featured-image-lightbox',
+                'type'     => 'checkbox',
+                'title'    => __( 'Featured image lightbox', 'wpsp-redux-framework' ),
+                'subtitle' => __( 'Enable/disable featured image lightbox', 'wpsp-redux-framework' ),
+                'default'  => '1'// 1 = on | 0 = off
+            ),
+            array(
+                'id'       => 'is-blog-thumbnail-caption',
+                'type'     => 'checkbox',
+                'title'    => __( 'Featured image caption', 'wpsp-redux-framework' ),
+                'subtitle' => __( 'Enable/disable featured image caption', 'wpsp-redux-framework' ),
+                'default'  => '1'// 1 = on | 0 = off
+            ),
+            array(
+                'id'       => 'blog-post-meta-sections',
+                'type'     => 'checkbox',
+                'title'    => __( 'Meta', 'wpsp-redux-framework' ),
+                'subtitle' => __( 'checked meta filed to be display', 'wpsp-redux-framework' ),
+                'options'  => array(
+                    'date'       => esc_html__( 'Date', 'wpsp-redux-framework' ),
+                    'author'     => esc_html__( 'Author', 'wpsp-redux-framework' ),
+                    'categories' => esc_html__( 'Categories', 'wpsp-redux-framework' ),
+                    'comments'   => esc_html__( 'Comments', 'wpsp-redux-framework' ),
+                    ),
+                'default'  => array(
+                    'date'          => true,
+                    'author'        => true,
+                    'categories'    => true,
+                    'comments'      => true,
+                )
+            ),
+            array(
+                'id'       => 'blog-single-block',
+                'type'     => 'sortable',
+                'mode'     => 'checkbox', // checkbox or text
+                'title'    => __( 'Single layout element', 'wpsp-redux-framework' ),
+                'subtitle' => __( 'Click and drag and drop elements to re-order them.', 'wpsp-redux-framework' ),
+                'label'    => true,
+                'options'  => array(
+                    'title' => esc_html__( 'Title', 'wpsp-redux-framework' ),
+                    'meta' => esc_html__( 'Meta', 'wpsp-redux-framework' ),
+                    'featured_media' => esc_html__( 'Featured Media','wpsp-redux-framework' ),
+                    'the_content' => esc_html__( 'Content','wpsp-redux-framework' ),
+                    'post_tags' => esc_html__( 'Post Tags','wpsp-redux-framework' ),
+                    'social_share' => esc_html__( 'Social Share','wpsp-redux-framework' ),
+                    'author_bio' => esc_html__( 'Author Bio','wpsp-redux-framework' ),
+                    'related_posts' => esc_html__( 'Related Posts','wpsp-redux-framework' ),
+                    'comments' => esc_html__( 'Comments','wpsp-redux-framework' ),
+                ),
+                'default'  => array(
+                    'title'           => true,
+                    'meta'            => true,
+                    'featured_media'  => true,
+                    'the_content'     => true,
+                    'post_tags'       => true,
+                    'social_share'    => true,
+                    'author_bio'      => false,
+                    'related_posts'   => true,
+                    'comments'        => false,
+                )
+            ),
         )
     ) );
     // Blog > Archive

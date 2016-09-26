@@ -8689,6 +8689,229 @@ body.breadcrumbs-position-default .page-header-title {
   margin-top: 20px; }
 
 /*--------------------------------------------------------------
+## Blog single
+--------------------------------------------------------------*/
+.single-post .entry {
+  margin-bottom: 40px; }
+
+/* Blog Single > Meta */
+.single-post .meta {
+  margin: 0 0 20px; }
+
+.single-post .meta.meta-with-title {
+  border: none;
+  padding: 0; }
+
+/* Blog Single > Thumbnail */
+#post-media {
+  display: block;
+  position: relative;
+  margin-bottom: 20px; }
+
+#post-media img {
+  display: block;
+  margin: 0 auto;
+  width: 100%; }
+
+.post-media-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px 15px;
+  background: #000;
+  background: rgba(0, 0, 0, 0.75);
+  color: #fff;
+  font-size: 0.923em;
+  font-weight: normal;
+  text-align: center; }
+
+.post-media-caption p {
+  color: #fff; }
+
+.post-media-caption a {
+  color: #fff;
+  text-decoration: underline; }
+
+.post-media-caption p:last-child {
+  margin: 0; }
+
+/* Blog Single > Tags */
+.post-tags {
+  margin-bottom: 40px; }
+
+/* Blog Single > Related Posts */
+.related-posts {
+  margin-bottom: 20px;
+  overflow: hidden; }
+
+.related-posts figure {
+  margin: 0; }
+
+.related-posts li {
+  margin-bottom: 20px; }
+
+.related-posts li:last-child,
+.related-posts li p:last-child {
+  margin-bottom: 0; }
+
+.related-post-thumb {
+  display: block; }
+
+.related-post-thumb img {
+  display: block;
+  width: 100%; }
+
+.related-post-title {
+  margin: 0 0 5px;
+  display: block; }
+
+.related-post-content {
+  padding: 10px;
+  background: #f7f7f7;
+  border: 1px solid #eee; }
+
+.related-post-excerpt {
+  font-size: 0.923em;
+  line-height: 1.7em; }
+
+.related-post-excerpt p:last-child {
+  margin: 0; }
+
+/* Blog Single > Quote */
+.single .format-quote {
+  position: relative;
+  display: block;
+  padding: 20px 30px;
+  font-size: 1.231em;
+  z-index: 2;
+  background: #f7f7f7; }
+
+.single .format-quote p:last-child {
+  margin: 0; }
+
+.single .format-quote .quote-entry-author {
+  margin-top: 15px;
+  font-size: 0.923em;
+  font-weight: 300;
+  text-decoration: underline; }
+
+.single .format-quote .fa-quote-right {
+  position: absolute;
+  right: 15px;
+  bottom: 15px;
+  font-size: 60px;
+  display: block;
+  z-index: 1;
+  opacity: 0.1; }
+
+/*next/previous posts*/
+.post-pagination {
+  border-top: 1px solid #eee;
+  padding: 30px 0;
+  color: #888;
+  list-style: none;
+  font-size: 1.077em;
+  font-weight: 600;
+  margin: 0; }
+
+.post-pagination .post-prev {
+  float: left;
+  width: 48%; }
+
+.post-pagination .post-prev span {
+  margin-right: 5px; }
+
+.post-pagination .post-next {
+  float: right;
+  width: 48%;
+  text-align: right; }
+
+.post-pagination .post-next span {
+  margin-left: 5px; }
+
+.post-pagination a {
+  color: #888; }
+
+.content-full-screen .post-pagination {
+  display: none; }
+
+/*--------------------------------------------------------------
+## Author Bio
+--------------------------------------------------------------*/
+.author-bio {
+  position: relative;
+  margin: 0 0 40px;
+  background: #f7f7f7;
+  border: 1px solid #eee;
+  padding: 25px 25px 25px 125px; }
+
+.author-bio-avatar {
+  position: absolute;
+  top: 20px;
+  left: 20px; }
+
+.author-bio-avatar img {
+  display: block;
+  border-radius: 74px;
+  -moz-border-radius: 74px;
+  -webkit-border-radius: 74px;
+  height: 74px;
+  width: 74px; }
+
+.author-bio-title {
+  font-weight: 600;
+  font-size: 1.077em;
+  margin: 0 0 10px; }
+
+.author-bio-description p:last-child {
+  margin: 0; }
+
+.author-bio-social {
+  margin-top: 15px; }
+
+.author-bio-social a {
+  display: block;
+  float: left;
+  color: #fff;
+  height: 25px;
+  line-height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  text-align: center;
+  margin-right: 4px;
+  font-size: 13px;
+  background: #1e1e1e; }
+
+.author-bio-social a:hover {
+  color: #fff;
+  text-decoration: none;
+  opacity: 0.8; }
+
+.author-bio-social a:active {
+  box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.4); }
+
+.author-bio-social a.twitter {
+  background: #00ACED; }
+
+.author-bio-social a.facebook {
+  background: #3B5998; }
+
+.author-bio-social a.google-plus {
+  background: #D14836; }
+
+.author-bio-social a.pinterest {
+  background: #CB2027; }
+
+.author-bio-social a.linkedin {
+  background: #007FB1; }
+
+.author-bio-social a.instagram {
+  background: #517fa4; }
+
+/*--------------------------------------------------------------
 # SEARCH
 --------------------------------------------------------------*/
 #searchform-dropdown {
