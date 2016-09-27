@@ -1159,6 +1159,12 @@ span.page-numbers { line-height: 1; display: block; padding: 0.4em 0.7em; font-s
 /*-------------------------------------------------------------- 
  # ACCESSIBILITY
 --------------------------------------------------------------*/
+
+/* Theme Heading */
+.theme-heading { height: auto; top: auto !important; font-size: 1.154em; font-weight: 600; color: #000; margin: 0 0 20px; overflow: hidden; position: relative; }
+.theme-heading span.text { display: inline-block; max-width: 90%; position: relative; }
+.theme-heading span.text:after { content: ""; display: block; position: absolute; top: 50%; border-bottom: solid 1px #eee; left: 100%; width: 9999px; margin-top: -1px; margin-left: 15px; }
+
 /* Clear Floats */
 .clear-margin,
 .count-1,
@@ -1189,9 +1195,6 @@ ul.wpsp-social-share { list-style: none }
 .wpsp-social-share li,
 .wpsp-social-share a { display: block; text-decoration: none; }
 .wpsp-social-share a:hover { text-decoration: none }
-
-/* Social Sharing > Add margin when needed */
-.single-portfolio.no-composer .social-share-wrap.position-horizontal { margin: 40px 0 0 }
 
 /* Social Sharing > Vertical */
 .social-share-wrap.position-vertical .social-share-title { display: none }

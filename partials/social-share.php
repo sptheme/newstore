@@ -37,7 +37,7 @@ $summary = wpsp_get_excerpt( array(
 	'ignore_more_tag' => true,
 ) ); ?>
 
-<div class="social-share-wrap">
+<div class="social-share-wrap clearfix">
 	<?php
 	// Display heading if enabled
 	if ( wpsp_get_redux( 'is-social-share-heading' ) && 'horizontal' == $position ) : ?>
@@ -48,7 +48,7 @@ $summary = wpsp_get_excerpt( array(
 
 	<?php endif; ?>
 
-	<ul class="wpsp-social-share position-<?php echo esc_attr( $position ); ?> style-<?php echo esc_attr( $style ); ?> clear">
+	<ul class="wpsp-social-share position-<?php echo esc_attr( $position ); ?> style-<?php echo esc_attr( $style ); ?> clearfix">
 	<?php foreach ( $sites as $key => $value ) : ?>
 		<?php // Twitter
 		if ( 'twitter' == $key && $value == 1 ) {

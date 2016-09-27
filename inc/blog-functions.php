@@ -574,6 +574,17 @@ function wpsp_author_has_social() {
 	}
 }
 
+/**
+ * Gets correct heading for the related blog items
+ *
+ * @since 1.0.0
+ */
+function wpsp_blog_related_heading() {
+	$heading = wpsp_get_translated_theme_mod( 'blog_related_title' );
+	$heading = $heading ? $heading : esc_html__( 'Related Posts', 'newstore' );
+	return $heading;
+}
+
 /*-------------------------------------------------------------------------------*/
 /* [ Taxonomy & Terms ]
 /*-------------------------------------------------------------------------------*/
