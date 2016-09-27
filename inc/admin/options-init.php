@@ -1026,7 +1026,7 @@
                 'type'     => 'checkbox',
                 'title'    => __( 'Featured image caption', 'wpsp-redux-framework' ),
                 'subtitle' => __( 'Enable/disable featured image caption', 'wpsp-redux-framework' ),
-                'default'  => '1'// 1 = on | 0 = off
+                'default'  => true
             ),
             array(
                 'id'       => 'blog-post-meta-sections',
@@ -1045,6 +1045,77 @@
                     'categories'    => true,
                     'comments'      => true,
                 )
+            ),
+            array(
+                'id'       => 'is-related-blog-post',
+                'type'     => 'switch',
+                'title'    => __( 'Enable/disable related posts', 'wpsp-redux-framework' ),
+                'default'  => true,
+            ),
+            array(
+                'id'       => 'related-post-title',
+                'type'     => 'text',
+                'required' => array( 'is-related-blog-post', '=', '1' ),
+                'title'    => __( 'Related Posts Title', 'wpsp-redux-framework' ),
+                'default'  => __( 'Related Posts', 'wpsp-redux-framework' ),
+            ),
+            array(
+                'id'       => 'related-blog-post-count',
+                'type'     => 'select',
+                'required' => array( 'is-related-blog-post', '=', '1' ),
+                'title'    => __( 'Related Posts Count', 'wpsp-redux-framework' ),
+                'subtitle' => __( 'set number of related post', 'wpsp-redux-framework' ),
+                'options'  => array(
+                            '1' => '1', 
+                            '2' => '2', 
+                            '3' => '3', 
+                            '4' => '4', 
+                            '5' => '5', 
+                        ),
+                'default'  => '3'
+            ),
+            array(
+                'id'       => 'related-blog-post-columns',
+                'type'     => 'select',
+                'required' => array( 'is-related-blog-post', '=', '1' ),
+                'title'    => __( 'Related Posts Columns', 'wpsp-redux-framework' ),
+                'subtitle' => __( 'set number of column to display related post', 'wpsp-redux-framework' ),
+                'options'  => array(
+                            '1' => '1', 
+                            '2' => '2', 
+                            '3' => '3', 
+                            '4' => '4', 
+                            '5' => '5', 
+                        ),
+                'default'  => '3'
+            ),
+            array(
+                'id'       => 'blog-related-overlay',
+                'type'     => 'select',
+                'required' => array( 'is-related-blog-post', '=', '1' ),
+                'title'    => __( 'Related Posts Image Overlay', 'wpsp-redux-framework' ),
+                'subtitle' => __( 'set overlay style for each posts', 'wpsp-redux-framework' ),
+                'options'  => $wpsp_overlay_styles_array,
+            ),
+            array(
+                'id'       => 'is-blog-related-excerpt',
+                'type'     => 'switch',
+                'required' => array( 'is-related-blog-post', '=', '1' ),
+                'title'    => __( 'Related Posts Excerpt', 'wpsp-redux-framework' ),
+                'subtitle' => __( 'Show/hide post excerpt', 'wpsp-redux-framework' ),
+                'default'  => true
+            ),
+            array(
+                'id'       => 'blog-related-excerpt-length',
+                'type'     => 'text',
+                'required' => array( 'is-blog-related-excerpt', '=', '1' ),
+                'title'    => __( 'Related Posts Excerpt Length', 'wpsp-redux-framework' ),
+                'validate' => 'preg_replace',
+                'preg'     => array(
+                    'pattern'     => '/[^0-9]/s',
+                    'replacement' => 'Allow only number'
+                ),
+                'default'  => '15'// 1 = on | 0 = off
             ),
             array(
                 'id'       => 'blog-single-block',

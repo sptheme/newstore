@@ -25,7 +25,7 @@
 
 		// Featured Media - featured image, video, gallery, etc
 		elseif ( 'featured_media' == $key && !empty($value) ) {
-			if ( ! $password_required &&  !empty(get_post_meta( get_the_ID(), 'wpsp_post_media_position', true )) ) {
+			if ( ! $password_required &&  'hidden' != (get_post_meta( get_the_ID(), 'wpsp_post_media_position', true )) ) {
 
 				$post_format = $post_format ? $post_format : 'thumbnail';
 				
@@ -52,6 +52,11 @@
 		// Author bio
 		elseif ( 'author_bio' == $key && !empty($value) && ! $password_required ) {
 			get_template_part( 'author-bio' );
+		}
+
+		// Displays related posts
+		elseif ( 'related_posts' == $key && !empty($value) ) {
+			get_template_part( 'partials/blog/blog-single-related' ); 
 		}
 
 		// Get the post comments & comment_form
