@@ -76,6 +76,9 @@ function wpsp_setup() {
 		'default-color' => 'ffffff',
 		'default-image' => '',
 	) ) );
+
+	// Add woocommerce support
+	add_theme_support( 'woocommerce' );
 }
 endif; // wpsp_setup
 add_action( 'after_setup_theme', 'wpsp_setup' );

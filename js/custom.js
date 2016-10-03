@@ -105,6 +105,9 @@
 				// Archive masonry grids
 				self.archiveMasonryGrids();
 
+				// Header cart
+				self.headerCart();
+
 				// Back to top link
 				self.backTopLink();
 			} );
@@ -1389,6 +1392,65 @@
 				} );
 
 			} );
+
+		},
+
+		/**
+		 * Header Cart
+		 *
+		 * @since 1.0.0
+		 */
+		headerCart: function() {
+
+			if ( $( 'a.wcmenucart' ).hasClass( 'go-to-shop' ) ) {
+				return;
+			}
+
+			// Drop-down
+			if ( 'drop_down' == wpexLocalize.wooCartStyle ) {
+
+				// Display cart dropdown
+				$( '.toggle-cart-widget' ).click( function( event ) {
+					$( '#searchform-dropdown' ).removeClass( 'show' );
+					$( 'a.search-dropdown-toggle' ).parent( 'li' ).removeClass( 'active' );
+					$( 'div#current-shop-items-dropdown' ).toggleClass( 'show' );
+					$( this ).toggleClass( 'active' );
+					return false;
+				} );
+
+				// Hide cart dropdown
+				$( 'div#current-shop-items-dropdown' ).click( function( event ) {
+					event.stopPropagation(); 
+				} );
+				this.config.$document.click( function() {
+					$( 'div#current-shop-items-dropdown' ).removeClass( 'show' );
+					$( 'li.wcmenucart-toggle-dropdown' ).removeClass( 'active' );
+				} );
+
+				/* Prevent body scroll on current shop dropdown - seems buggy...
+				$( '#current-shop-items-dropdown' ).bind( 'mousewheel DOMMouseScroll', function ( e ) {
+					var e0 = e.originalEvent,
+						delta = e0.wheelDelta || -e0.detail;
+					this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+					e.preventDefault();
+				} );*/
+
+			}
+
+			// Modal
+			else if ( 'overlay' == wpexLocalize.wooCartStyle ) {
+
+				if ( ! $.fn.leanerModal ) {
+					return;
+				}
+
+				$( '.toggle-cart-widget' ).leanerModal( {
+					id: '#current-shop-items-overlay',
+					top: 100,
+					overlay: 0.8
+				} );
+
+			}
 
 		},
 

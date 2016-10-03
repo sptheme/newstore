@@ -38,7 +38,7 @@ class WPSP_Theme_Setup {
 		// Load configuration classes (post types & 3rd party plugins)
 		add_action( 'after_setup_theme', array( $this, 'configs' ), 3 );
 
-		// Load wooCommerce custom and helper functions
+		// Load bootstrap custom and helper functions
 		add_action( 'after_setup_theme', array( $this, 'wpsp_bootstrap_helper' ), 4 );
 
 		// Exclude categories from the blog page
@@ -98,6 +98,11 @@ class WPSP_Theme_Setup {
 	 * @version 1.0.0
 	 */
 	public function theme_scripts() {
+		
+		if ( is_admin() ) {
+			return;
+		}
+
 		$localize_array = $this->localize_array();
 
 	    wp_enqueue_style( 'styles', get_stylesheet_directory_uri() . '/css/theme.min.css', array(), '0.4.6');
@@ -108,6 +113,11 @@ class WPSP_Theme_Setup {
 	    if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 	        wp_enqueue_script( 'comment-reply' );
 	    }
+
+	    // WooCommerce quanity buttons
+		if ( class_exists( 'woocommerce' ) ) {
+			wp_enqueue_script( 'wc-quantity-increment', get_template_directory_uri() .'/js/wc-quantity-increment.js', array( 'jquery' ), $theme_version, true );
+		}
 
 	    
 	    wp_enqueue_script( 'wpsp-custom-script', get_template_directory_uri() .'/js/custom.js', array( 'jquery' ), THEME_VERSION, true );
@@ -199,6 +209,11 @@ class WPSP_Theme_Setup {
 		// Full screen mobile menu style
 		if ( 'full_screen' == $mobile_style ) {
 			$array['fullScreenMobileMenuStyle'] = wpsp_get_redux( 'full-screen-mobile-menu-style', 'white' );
+		}
+
+		// WooCart
+		if ( class_exists( 'woocommerce' ) ) {
+			$array['wooCartStyle'] = menu_cart_style();
 		}
 
 		return apply_filters( 'wpsp_localize_array', $array );
@@ -348,8 +363,7 @@ class WPSP_Theme_Setup {
 	public static function wpsp_bootstrap_helper() {
 		require get_template_directory() . '/inc/custom-comments.php';
 		require get_template_directory() . '/inc/bootstrap-wp-navwalker.php'; 
-		require get_template_directory() . '/inc/bootstrap-wp-gallery.php';
-		require get_template_directory() . '/inc/woocommerce.php'; // Load WooCommerce helper functions 
+		require get_template_directory() . '/inc/bootstrap-wp-gallery.php';		
 	}
 
 	/**
@@ -369,6 +383,10 @@ class WPSP_Theme_Setup {
 
 		// Add shortcode supports
 		require_once( get_template_directory() . '/inc/shortcodes/shortcodes.php' );		
+
+		if ( class_exists( 'WooCommerce' ) ) {
+			require_once( get_template_directory() .'/inc/woocommerce/woocommerce-config.php' );
+		}
 	}
 
 	/**
