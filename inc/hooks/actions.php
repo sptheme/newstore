@@ -70,6 +70,10 @@ add_action( 'wpsp_hook_page_header_bottom', 'wpsp_page_header_overlay' ); // @se
 -------------------------------------------------------------------------------*/
 add_action( 'wpsp_hook_main_top', 'wpsp_term_description' );
 
+/* Main > Bottom
+-------------------------------------------------------------------------------*/
+add_action( 'wpsp_hook_main_bottom', 'wpsp_next_prev' );
+
 /* Wrap > Bottom
 -------------------------------------------------------------------------------*/
 add_action( 'wpsp_hook_wrapper_content_bottom', 'wpsp_footer' );

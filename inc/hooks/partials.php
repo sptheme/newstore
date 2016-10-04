@@ -301,6 +301,17 @@ function wpsp_term_description() {
 	}
 }
 
+/**
+ * Get next/previous links.
+ *
+ * @since 1.0.0
+ */
+function wpsp_next_prev() {
+	if ( wpsp_has_next_prev() ) {
+		get_template_part( 'partials/next-prev' );
+	}
+}
+
 /*-------------------------------------------------------------------------------*/
 /* -  Footer
 /*-------------------------------------------------------------------------------*/

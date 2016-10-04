@@ -584,3 +584,31 @@ function wpsp_blog_related_heading() {
 	$heading = $heading ? $heading : esc_html__( 'Related Posts', 'newstore' );
 	return $heading;
 }
+
+/**
+ * Check if the next/previous links should display
+ *
+ * @since 1.0.0
+ */
+function wpsp_has_next_prev() {
+
+	// Display by default
+	$return = true;
+
+	// Not needed here
+	if ( ! is_singular() || is_page() || is_singular( 'attachment' ) ) {
+		return false;
+	}
+
+	// Check if it should be enabled on standard posts
+	if ( is_singular( 'post' ) && ! wpsp_get_redux( 'is-blog-next-prev', true ) ) {
+		$return = false;
+	}
+
+	// Apply filters
+	$return = apply_filters( 'wpsp_has_next_prev', $return );
+
+	// Return bool
+	return $return;
+
+}

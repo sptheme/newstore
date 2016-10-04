@@ -1029,6 +1029,12 @@
                 'default'  => true
             ),
             array(
+                'id'       => 'is-blog-next-prev',
+                'type'     => 'switch',
+                'title'    => __( 'Enable/disable Next & Previous Links', 'wpsp-redux-framework' ),
+                'default'  => true,
+            ),
+            array(
                 'id'       => 'blog-post-meta-sections',
                 'type'     => 'checkbox',
                 'title'    => __( 'Meta', 'wpsp-redux-framework' ),
