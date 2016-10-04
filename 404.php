@@ -15,6 +15,8 @@ get_header(); ?>
 
                 <main id="main" class="site-main" role="main">
 
+                    <?php wpsp_hook_main_top(); ?>
+                    
                     <section class="error-404 not-found">
                         
                         <div class="page-content">
@@ -58,6 +60,8 @@ get_header(); ?>
                         </div><!-- .page-content -->
                         
                     </section><!-- .error-404 -->
+
+                    <?php wpsp_hook_main_bottom(); ?>
 
                 </main><!-- #main -->
                 

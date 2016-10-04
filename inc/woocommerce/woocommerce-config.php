@@ -274,7 +274,7 @@ if ( ! class_exists( 'WPSP_WooCommerce_Config' ) ) {
 
 			// Product title
 			elseif ( is_product() ) {
-				$title = wpex_get_translated_theme_mod( 'woo_shop_single_title' );
+				$title = wpsp_get_translated_theme_mod( 'woo_shop_single_title' );
 				$title = $title ? $title : esc_html__( 'Shop', 'newstore' );
 			}
 
@@ -289,7 +289,7 @@ if ( ! class_exists( 'WPSP_WooCommerce_Config' ) ) {
 		}
 
 		/**
-		 * Hooks into the wpex_display_page_header and returns false if page header is disabled via the customizer.
+		 * Hooks into the wpsp_display_page_header and returns false if page header is disabled via the customizer.
 		 *
 		 * @since 1.0.0
 		 */
@@ -308,7 +308,7 @@ if ( ! class_exists( 'WPSP_WooCommerce_Config' ) ) {
 		public static function alter_subheadings( $subheading ) {
 
 			// Woo Taxonomies
-			if ( wpex_is_woo_tax() ) {
+			if ( wpsp_is_woo_tax() ) {
 				if ( 'under_title' == wpsp_get_redux( 'woo-category-description-position', 'under_title' ) ) {
 					$subheading = term_description();
 				} else {
@@ -336,7 +336,7 @@ if ( ! class_exists( 'WPSP_WooCommerce_Config' ) ) {
 		public static function term_description_above_loop( $return ) {
 
 			// Check if enabled
-			if ( wpex_is_woo_tax() && 'above_loop' == wpsp_get_redux( 'woo-category-description-position' ) ) {
+			if ( wpsp_is_woo_tax() && 'above_loop' == wpsp_get_redux( 'woo-category-description-position' ) ) {
 				$return = true;
 			}
 

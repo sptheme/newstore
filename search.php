@@ -16,6 +16,8 @@ get_header(); ?>
             
                 <main id="main" class="site-main" role="main">
 
+                <?php wpsp_hook_main_top(); ?>
+
                 <?php if ( have_posts() ) : ?>
 
                     <div id="search-entries" class="clearfix">
@@ -62,6 +64,8 @@ get_header(); ?>
                 <?php endif; ?>
 
                 </main><!-- #main -->
+
+                <?php wpsp_hook_main_bottom(); ?>
             
             </div><!-- #primary -->
 

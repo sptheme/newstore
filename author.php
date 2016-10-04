@@ -17,6 +17,8 @@ get_header(); ?>
             <div id="primary" class="<?php if ( is_active_sidebar( 'sidebar-1' ) ) : ?>col-md-8<?php else : ?>col-md-12<?php endif; ?> content-area">
                
                 <main id="main" class="site-main" role="main">
+
+                    <?php wpsp_hook_main_top(); ?>
                         
                     <header class="page-header author-header">
                         
@@ -69,6 +71,8 @@ get_header(); ?>
                         <!-- End Loop -->
         
                     </ul>
+
+                    <?php wpsp_hook_main_bottom(); ?>
 
                 </main><!-- #main -->
                

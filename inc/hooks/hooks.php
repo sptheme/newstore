@@ -66,6 +66,18 @@ function wpsp_hook_header_after() {
 }
 
 /**
+ * Main Hooks
+ *
+ * @since 1.0.0
+ */
+function wpsp_hook_main_top() {
+	do_action( 'wpsp_hook_main_top' );
+}
+function wpsp_hook_main_bottom() {
+	do_action( 'wpsp_hook_main_bottom' );
+}
+
+/**
  * Footer Hooks
  *
  * @since 1.0.0
