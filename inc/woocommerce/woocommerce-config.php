@@ -2,7 +2,7 @@
 /**
  * Perform all main WooCommerce configurations for this theme
  *
- * @package Small_Shop
+ * @package newstore
  * @subpackage WooCommerce
  * @version 1.0.0
  */
@@ -19,6 +19,11 @@ if ( ! class_exists( 'WPSP_WooCommerce_Config' ) ) {
 		* Main class constructor
 		*/
 		function __construct(){
+			
+			// Setup wooCommerce options with reduxframework
+			include_once( get_template_directory() . '/inc/woocommerce/woocommerce-options-redux.php' );
+			
+			// WooCommerce helper functions
 			include_once( get_template_directory() . '/inc/woocommerce/woocommerce-helper.php' );
 
 			// These filters/actions must run on init
@@ -167,7 +172,7 @@ if ( ! class_exists( 'WPSP_WooCommerce_Config' ) ) {
 			// Display placeholder
 			else {
 
-				echo '<img src="'. wc_placeholder_img_src() .'" alt="'. esc_html__( 'Placeholder Image', 'smallshop' ) .'" />';
+				echo '<img src="'. wc_placeholder_img_src() .'" alt="'. esc_html__( 'Placeholder Image', 'newstore' ) .'" />';
 
 			}
 
@@ -200,12 +205,12 @@ if ( ! class_exists( 'WPSP_WooCommerce_Config' ) ) {
 
 			// Register new woo_sidebar widget area
 			register_sidebar( array (
-				'name'          => esc_html__( 'WooCommerce Sidebar', 'smallshop' ),
+				'name'          => esc_html__( 'WooCommerce Sidebar', 'newstore' ),
 				'id'            => 'woo_sidebar',
-				'before_widget' => '<div class="widget %2$s clear">',
-				'after_widget'  => '</div>',
-				'before_title'  => '<'. $sidebar_headings .' class="widget-title">',
-				'after_title'   => '</'. $sidebar_headings .'>',
+				'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+				'after_widget'  => '</aside>',
+				'before_title'  => '<h3 class="widget-title">',
+				'after_title'   => '</h3>',
 			) );
 		}
 
@@ -318,7 +323,7 @@ if ( ! class_exists( 'WPSP_WooCommerce_Config' ) ) {
 		public static function add_shop_loop_item_out_of_stock_badge() {
 			if ( function_exists( 'wpsp_woo_product_instock' ) && ! wpsp_woo_product_instock() ) { ?>
 				<div class="outofstock-badge">
-					<?php echo apply_filters( 'wpsp_woo_outofstock_text', esc_html__( 'Out of Stock', 'smallshop' ) ); ?>
+					<?php echo apply_filters( 'wpsp_woo_outofstock_text', esc_html__( 'Out of Stock', 'newstore' ) ); ?>
 				</div><!-- .product-entry-out-of-stock-badge -->
 			<?php }
 		}
@@ -477,7 +482,7 @@ if ( ! class_exists( 'WPSP_WooCommerce_Config' ) ) {
 		 * @since 1.0.0
 		 */
 		public static function woocommerce_sale_flash( $text, $post, $_product ) {
-			return '<span class="onsale">'. esc_html__( 'Sale', 'smallshop' ) .'</span>';
+			return '<span class="onsale">'. esc_html__( 'Sale', 'newstore' ) .'</span>';
 		}
 
 		/**

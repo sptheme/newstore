@@ -1613,7 +1613,7 @@
     ) );
 
     // WooCommerce
-    if ( class_exists( 'woocommerce' ) ) {
+    /*if ( class_exists( 'woocommerce' ) ) {
         Redux::setSection( $opt_name, array(
             'title'            => __( 'WooCommerce', 'wpsp-redux-framework' ),
             'id'               => 'woocommcer-options',
@@ -1621,7 +1621,7 @@
             'customizer_width' => '400px',
             'icon'             => 'el el-shopping-cart'
         ) );
-    }
+    }*/
 
     /*
      * <--- END SECTIONS

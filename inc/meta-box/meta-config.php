@@ -41,7 +41,7 @@
 		// Meta box id, UNIQUE per meta box. Optional since 4.1.5
 		'id'         => 'page-options',
 		'title'      => __( 'Page options', 'wpsp-meta-box' ),
-		'post_types' => array( 'post', 'page' ),
+		'post_types' => array( 'post', 'page', 'product' ),
 		'context'    => 'normal', // Where the meta box appear: normal (default), advanced, side. Optional.
 		'priority'   => 'high', // Order of meta box: high (default), low. Optional.
 		'autosave'   => true, // Auto save: true, false (default). Optional.
