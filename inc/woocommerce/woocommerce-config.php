@@ -377,12 +377,7 @@ if ( ! class_exists( 'WPSP_WooCommerce_Config' ) ) {
 		public static function add_custom_css() {
 
 			// General WooCommerce Custom CSS
-			wp_enqueue_style( 'wpsp-woocommerce', WPSP_CSS_DIR_URI .'wpsp-woocommerce.css' );
-
-			// WooCommerce Responsiveness
-			if ( wpsp_get_redux( 'responsive', true ) ) {
-				wp_enqueue_style( 'wpsp-woocommerce-responsive', WPSP_CSS_DIR_URI .'wpsp-woocommerce-responsive.css', array( 'wpsp-woocommerce' ) );
-			}
+			wp_enqueue_style( 'wpsp-woocommerce', get_template_directory_uri() .'/css/woocommerce.css' );
 
 		}
 

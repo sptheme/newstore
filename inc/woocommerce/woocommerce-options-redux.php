@@ -294,3 +294,14 @@ Redux::setSection( $opt_name, array(
         ),
  	)
 ) );
+
+// Woo > Single
+Redux::setSection( $opt_name, array(
+    'title'      => __( 'Single', 'wpsp-redux-framework' ),
+    'id'         => 'woo-single-options',
+    'subsection' => true,
+    //'desc'       => __( 'Use for any post that do not have post featured image with landscape, portrait and square', 'wpsp-redux-framework' ),
+    'fields'     => array(
+    	
+	)
+) );
