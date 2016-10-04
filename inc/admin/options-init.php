@@ -1157,6 +1157,17 @@
         //'desc'       => __( 'Use for any post that do not have post featured image with landscape, portrait and square', 'wpsp-redux-framework' ),
         'fields'     => array(
             array(
+                'id'       => 'category-description-position',
+                'type'     => 'select',
+                'title'    => __( 'Category Description Position', 'wpsp-redux-framework' ),
+                'options'  => array(
+                    '' => esc_html__( 'Default', 'wpsp-redux-framework' ),
+                    'under_title' => esc_html__( 'Under title','wpsp-redux-framework' ),
+                    'above_loop' => esc_html__( 'Above loop','wpsp-redux-framework' ),
+                    'hidden' => esc_html__( 'Hidden','wpsp-redux-framework' )
+                ),
+            ),
+            array(
                 'id'       => 'archive-layout',
                 'type'     => 'image_select',
                 'title'    => __( 'Archive', 'wpsp-redux-framework' ),

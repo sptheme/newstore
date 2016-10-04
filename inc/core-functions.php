@@ -1177,6 +1177,109 @@ function wpsp_get_post_audio_html( $audio = '' ) {
 }
 
 /*-------------------------------------------------------------------------------*/
+/* [ Taxonomy & Terms ]
+/*-------------------------------------------------------------------------------*/
+
+/**
+ * Returns the "category" taxonomy for a given post type
+ *
+ * @since 1.0.0
+ */
+function wpsp_get_post_type_cat_tax( $post_type = '' ) {
+
+	// Get the post type
+	$post_type = $post_type ? $post_type : get_post_type();
+
+	// Return taxonomy
+	if ( 'post' == $post_type ) {
+		$tax = 'category';
+	} elseif ( 'portfolio' == $post_type ) {
+		$tax = 'portfolio_category';
+	} elseif ( 'staff' == $post_type ) {
+		$tax = 'staff_category';
+	} elseif ( 'testimonials' == $post_type ) {
+		$tax = 'testimonials_category';
+	} elseif ( 'product' == $post_type ) {
+		$tax = 'product_cat';
+	} elseif ( 'tribe_events' == $post_type ) {
+		$tax = 'tribe_events_cat';
+	} elseif ( 'download' == $post_type ) {
+		$tax = 'download_category';
+	} else {
+		$tax = false;
+	}
+
+	// Apply filters & return
+	return apply_filters( 'wpsp_get_post_type_cat_tax', $tax );
+
+}
+
+/**
+ * Check if a post has terms/categories
+ *
+ * This function is used for the next and previous posts so if a post is in a category it
+ * will display next and previous posts from the same category.
+ *
+ * @since 1.0.0
+ */
+function wpsp_post_has_terms( $post_id = '', $post_type = '' ) {
+
+	// Post data
+	$post_id    = $post_id ? $post_id : get_the_ID();
+	$post_type  = $post_type ? $post_type : get_post_type( $post_id );
+
+	// Standard Posts
+	if ( $post_type == 'post' ) {
+		$terms = get_the_terms( $post_id, 'category');
+		if ( $terms ) {
+			return true;
+		}
+	}
+
+	// Portfolio
+	elseif ( 'portfolio' == $post_type ) {
+		$terms = get_the_terms( $post_id, 'portfolio_category');
+		if ( $terms ) {
+			return true;
+		}
+	}
+
+	// Staff
+	elseif ( 'staff' == $post_type ) {
+		$terms = get_the_terms( $post_id, 'staff_category');
+		if ( $terms ) {
+			return true;
+		}
+	}
+
+	// Testimonials
+	elseif ( 'testimonials' == $post_type ) {
+		$terms = get_the_terms( $post_id, 'testimonials_category');
+		if ( $terms ) {
+			return true;
+		}
+	}
+
+}
+
+function wpsp_has_term_description_above_loop( $return = false ) {
+
+	// Return true for tags and categories only
+	if (  'above_loop' == wpsp_get_redux( 'category-description-position' )
+		&& ( is_category() || is_tag() )
+	) {
+		$return = true;
+	}
+
+	// Apply filters
+	$return = apply_filters( 'wpsp_has_term_description_above_loop', $return );
+
+	// Return
+	return $return;
+
+}
+
+/*-------------------------------------------------------------------------------*/
 /* [ Other ]
 /*-------------------------------------------------------------------------------*/
 

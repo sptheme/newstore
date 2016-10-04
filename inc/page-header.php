@@ -128,12 +128,11 @@ function wpsp_get_page_subheading() {
 
 	// Categories
 	elseif ( is_category() ) {
-		/*$position = get_option( 'category_description_position' );
+		$position = wpsp_get_redux( 'category-description-position' );
 		$position = $position ? $position : 'under_title';
 		if ( 'under_title' == $position ) {
 			$subheading = term_description();
-		}*/
-		$subheading = term_description();
+		}
 	}
 
 	// Author
@@ -142,9 +141,9 @@ function wpsp_get_page_subheading() {
 	}
 
 	// All other Taxonomies - TODO: in blog-functions.php
-	/*elseif ( is_tax() && ! wpsp_has_term_description_above_loop() ) {
+	elseif ( is_tax() && ! wpsp_has_term_description_above_loop() ) {
 		$subheading = term_description();
-	}*/
+	}
 
 	// Apply filters and return
 	return apply_filters( 'wpsp_post_subheading', $subheading );

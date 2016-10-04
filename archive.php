@@ -19,6 +19,8 @@ get_header(); ?>
                
             <main id="main" class="site-main" role="main">
 
+                <?php wpsp_hook_main_top(); ?>
+
                       <?php if ( have_posts() ) : ?>
 
                             <div id="blog-entries" class="<?php wpsp_blog_wrap_classes(); ?>">
@@ -50,6 +52,8 @@ get_header(); ?>
                             <?php get_template_part( 'loop-templates/content', 'none' ); ?>
 
                         <?php endif; ?>
+
+                <?php wpsp_hook_main_bottom(); ?>        
 
             </main><!-- #main -->
                

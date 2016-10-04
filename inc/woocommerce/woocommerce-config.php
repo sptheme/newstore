@@ -47,6 +47,9 @@ if ( ! class_exists( 'WPSP_WooCommerce_Config' ) ) {
 
 				// Alter page header subheading
 				add_filter( 'wpsp_post_subheading', array( $this, 'alter_subheadings' ) );
+
+				// Show/hide category description
+				add_filter( 'wpsp_has_term_description_above_loop', array( $this, 'term_description_above_loop' ) );
 			}
 
 			// Scripts
@@ -306,7 +309,7 @@ if ( ! class_exists( 'WPSP_WooCommerce_Config' ) ) {
 
 			// Woo Taxonomies
 			if ( wpex_is_woo_tax() ) {
-				if ( 'under_title' == wpsp_get_redux( 'woo_category_description_position', 'under_title' ) ) {
+				if ( 'under_title' == wpsp_get_redux( 'woo-category-description-position', 'under_title' ) ) {
 					$subheading = term_description();
 				} else {
 					$subheading = NULL;
@@ -322,6 +325,23 @@ if ( ! class_exists( 'WPSP_WooCommerce_Config' ) ) {
 
 			// Return subheading
 			return $subheading;
+
+		}
+
+		/**
+		 * Alters subheading for the shop.
+		 *
+		 * @since 1.0.0
+		 */
+		public static function term_description_above_loop( $return ) {
+
+			// Check if enabled
+			if ( wpex_is_woo_tax() && 'above_loop' == wpsp_get_redux( 'woo-category-description-position' ) ) {
+				$return = true;
+			}
+
+			// Return bool
+			return $return;
 
 		}
 

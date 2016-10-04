@@ -20,8 +20,12 @@ get_header(); ?>
 	   
             <main id="main" class="site-main" role="main">
 
+                <?php wpsp_hook_main_top(); ?>
+                
                 <!-- The WooCommerce loop -->
                 <?php woocommerce_content(); ?>
+
+                <?php wpsp_hook_main_bottom(); ?>
 
             </main><!-- #main -->
            

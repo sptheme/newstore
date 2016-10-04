@@ -66,6 +66,10 @@ add_action( 'wpsp_hook_page_header_inner', 'wpsp_page_header_title_table_wrap_cl
 -------------------------------------------------------------------------------*/
 add_action( 'wpsp_hook_page_header_bottom', 'wpsp_page_header_overlay' ); // @see page-header.php
 
+/* Main > Top
+-------------------------------------------------------------------------------*/
+add_action( 'wpsp_hook_main_top', 'wpsp_term_description' );
+
 /* Wrap > Bottom
 -------------------------------------------------------------------------------*/
 add_action( 'wpsp_hook_wrapper_content_bottom', 'wpsp_footer' );

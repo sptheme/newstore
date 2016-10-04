@@ -22,6 +22,8 @@ get_header(); ?>
     	       <div id="primary" class="<?php if ( is_active_sidebar( 'sidebar-1' ) ) : ?>col-md-8<?php else : ?>col-md-12<?php endif; ?> content-area">
                    
                      <main id="main" class="site-main" role="main">
+
+                     <?php wpsp_hook_main_top(); ?>
                     
                     <?php if ( have_posts() ) : ?>
 
@@ -52,6 +54,8 @@ get_header(); ?>
                         <?php get_template_part( 'loop-templates/content', 'none' ); ?>
                         
                     <?php endif; ?>
+
+                    <?php wpsp_hook_main_bottom(); ?>
 
                     </main><!-- #main -->
                    
