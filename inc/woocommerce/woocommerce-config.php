@@ -38,6 +38,15 @@ if ( ! class_exists( 'WPSP_WooCommerce_Config' ) ) {
 
 				// Set correct post layouts
 				add_filter( 'wpsp_post_layout_class', array( $this, 'layouts' ) );
+
+				// Alter page header title
+				add_filter( 'wpsp_title', array( $this, 'title_config' ) );
+
+				// Show/hide main page header
+				add_filter( 'wpsp_display_page_header', array( $this, 'display_page_header' ) );
+
+				// Alter page header subheading
+				add_filter( 'wpsp_post_subheading', array( $this, 'alter_subheadings' ) );
 			}
 
 			// Scripts
@@ -237,14 +246,83 @@ if ( ! class_exists( 'WPSP_WooCommerce_Config' ) ) {
 		 * @since 1.0.0
 		 */
 		public static function layouts( $class ) {
-			if ( wpsp_is_woo_shop() ) {
+			if ( wpsp_is_woo_shop() && ( wpsp_get_redux('woo-shop-layout') !='inherit' ) ) {
 				$class = wpsp_get_redux( 'woo-shop-layout', 'left-sidebar' );
-			} elseif ( wpsp_is_woo_tax() ) {
+			} elseif ( wpsp_is_woo_tax() && ( wpsp_get_redux('woo-shop-layout') !='inherit' ) ) {
 				$class = wpsp_get_redux( 'woo-shop-layout', 'left-sidebar' );
-			} elseif ( wpsp_is_woo_single() ) {
+			} elseif ( wpsp_is_woo_single() && ( wpsp_get_redux('woo-product-layout') !='inherit' ) ) {
 				$class = wpsp_get_redux( 'woo-product-layout', 'full-width' );
 			}
 			return $class;
+		}
+
+		/**
+		 * Returns correct title for WooCommerce pages.
+		 *
+		 * @since 1.0.0
+		 */
+		public static function title_config( $title ) {
+
+			// Shop title
+			if ( is_shop() ) {
+				$title = get_the_title( wc_get_page_id( 'shop' ) );
+				$title = $title ? $title : $title = esc_html__( 'Shop', 'newstore' );
+			}
+
+			// Product title
+			elseif ( is_product() ) {
+				$title = wpex_get_translated_theme_mod( 'woo_shop_single_title' );
+				$title = $title ? $title : esc_html__( 'Shop', 'newstore' );
+			}
+
+			// Checkout
+			elseif ( is_order_received_page() ) {
+				$title = esc_html__( 'Order Received', 'newstore' );
+			}
+
+			// Return title
+			return $title;
+
+		}
+
+		/**
+		 * Hooks into the wpex_display_page_header and returns false if page header is disabled via the customizer.
+		 *
+		 * @since 1.0.0
+		 */
+		public static function display_page_header( $return ) {
+			if ( is_shop() && ! wpsp_get_redux( 'is-woo-shop-title', true ) ) {
+				$return = false;
+			}
+			return $return;
+		}
+
+		/**
+		 * Alters subheading for the shop.
+		 *
+		 * @since 1.0.0
+		 */
+		public static function alter_subheadings( $subheading ) {
+
+			// Woo Taxonomies
+			if ( wpex_is_woo_tax() ) {
+				if ( 'under_title' == wpsp_get_redux( 'woo_category_description_position', 'under_title' ) ) {
+					$subheading = term_description();
+				} else {
+					$subheading = NULL;
+				}
+			}
+
+			// Orderby, search...etc
+			if ( is_shop() ) {
+				if ( ! empty( $_GET['s'] ) ) {
+					$subheading = esc_html__( 'Search results for:', 'newstore' ) .' <span>&quot;'. $_GET['s'] .'&quot;</span>';
+				}
+			}
+
+			// Return subheading
+			return $subheading;
+
 		}
 
 		/**
@@ -294,7 +372,7 @@ if ( ! class_exists( 'WPSP_WooCommerce_Config' ) ) {
 		 * @since 1.0.0
 		 */
 		public static function add_shop_loop_item_inner_div() {
-			echo '<div class="product-inner clear">';
+			echo '<div class="product-inner clearfix">';
 		}
 
 		/**
@@ -312,7 +390,7 @@ if ( ! class_exists( 'WPSP_WooCommerce_Config' ) ) {
 		 * @since 1.0.0
 		 */
 		public static function clear_summary_floats() {
-			echo '<div class="wpsp-clear-after-summary clear"></div>';
+			echo '<div class="wpsp-clear-after-summary clearfix"></div>';
 		}
 
 		/**

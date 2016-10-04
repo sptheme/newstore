@@ -203,13 +203,13 @@ function wpsp_post_layout() {
 		$class = 'right-sidebar';	
 	}
 
+	// Apply filters and return
+	$class = apply_filters( 'wpsp_post_layout_class', $class );
+
 	// Class should never be empty
 	if ( empty( $class ) ) {
 		$class = wpsp_get_redux( 'layout-global', 'right-sidebar' );
 	}
-
-	// Apply filters and return
-	$class = apply_filters( 'wpsp_post_layout_class', $class );
 
 	// Return correct classname
 	return $class;

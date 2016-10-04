@@ -73,7 +73,7 @@ if ( ! function_exists( 'wpsp_wcmenucart_menu_item' ) ) {
 		
 		// Vars
 		global $woocommerce;
-		$icon_style   = wpsp_get_redux( 'woo-menu-icon-style', 'drop_down' );
+		$icon_style   = wpsp_get_redux( 'woo-menu-icon-style', 'dropdown' );
 		$custom_link  = wpsp_get_redux( 'woo-menu-icon-custom-link' );
 		$header_style = wpsp_get_redux( 'header-style' );
 
@@ -131,7 +131,7 @@ function menu_cart_style() {
 	}
 
 	// Get Menu Icon Style
-	$style = wpsp_get_redux( 'woo-menu-icon-style', 'drop_down' );
+	$style = wpsp_get_redux( 'woo-menu-icon-style', 'dropdown' );
 
 	// Overlay header should use pop-up
 	if ( wpsp_get_redux( 'enable-header' ) && 'six' == wpsp_get_redux( 'header-style' ) ) {
@@ -147,8 +147,8 @@ function menu_cart_style() {
 	$style = apply_filters( 'wpsp_menu_cart_style', $style );
 
 	// Sanitize output so it's not empty
-	if ( 'drop_down' == $style || ! $style ) {
-		$style = 'drop_down';
+	if ( 'dropdown' == $style || ! $style ) {
+		$style = 'dropdown';
 	}
 
 	// Return style
