@@ -29,6 +29,9 @@ if ( ! class_exists( 'WPSP_WooCommerce_Config' ) ) {
 			// These filters/actions must run on init
 			add_action( 'init', array( $this, 'init' ) );
 
+			// Add new image sizes for WooCommerce
+			add_filter( 'wpsp_image_sizes', array( $this, 'add_image_sizes' ), 99 );
+
 			// Register Woo Sidebar
 			add_filter( 'widgets_init', array( $this, 'register_woo_sidebar' ) );
 
@@ -118,6 +121,47 @@ if ( ! class_exists( 'WPSP_WooCommerce_Config' ) ) {
 
 			// Remove coupon from checkout
 			//remove_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_coupon_form', 10 );
+		}
+
+		/**
+		 * Adds image sizes for WooCommerce to the image sizes panel.
+		 *
+		 * @since 1.0.0
+		 */
+		public static function add_image_sizes( $sizes ) {
+			return array_merge( $sizes, array(
+					'shop_catalog' => array(
+						'label'   => esc_html__( 'Product Entry', 'newstore' ),
+						'width'   => 'woo-entry-image-width',
+						'height'  => 'woo-entry-image-height',
+						'crop'    => 'woo-entry-crop-location',
+					),
+					'shop_single' => array(
+						'label'   => esc_html__( 'Product Post', 'newstore' ),
+						'width'   => 'woo-post-image-width',
+						'height'  => 'woo-post-image-height',
+						'crop'    => 'woo-post-crop-location',
+					),
+					'shop_single_thumbnail' => array(
+						'label'   => esc_html__( 'Product Post Thumbnail', 'newstore' ),
+						'width'   => 'woo-post-thumb-width',
+						'height'  => 'woo-post-thumb-height',
+						'crop'    => 'woo-post-thumb-crop-location',
+					),
+					'shop_thumbnail' => array(
+						'label'     => esc_html__( 'Shop & Cart Thumbnail', 'newstore' ),
+						'width'     => 'woo-shop-thumb-width',
+						'height'    => 'woo-shop-thumb-height',
+						'crop'      => 'woo-shop-thumb-crop-location',
+					),
+					'shop_category' => array(
+						'label'     => esc_html__( 'Product Category Entry', 'newstore' ),
+						'width'     => 'woo-cat-entry-width',
+						'height'    => 'woo-cat-entry-height',
+						'crop'      => 'woo-cat-entry-crop-location',
+					)
+				)
+			);
 		}
 
 		/**
