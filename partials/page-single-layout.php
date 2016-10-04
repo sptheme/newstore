@@ -31,7 +31,7 @@
 
 	<?php
 	// Get social sharing template part
-	get_template_part( 'partials/social', 'share' ); ?>
+	get_template_part( 'partials/social-share' ); ?>
 
 </article><!-- #post-## -->
 

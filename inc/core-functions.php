@@ -75,12 +75,12 @@ function post_id() {
 	}
 
 	// Get ID of WooCommerce product archive
-	/*elseif ( WPEX_WOOCOMMERCE_ACTIVE && is_shop() ) {
+	elseif ( class_exists('woocommerce') && is_shop() ) {
 		$shop_id = wc_get_page_id( 'shop' );
 		if ( isset( $shop_id ) ) {
 			return $shop_id;
 		}
-	}*/
+	}
 
 	// Tribe events
 	/*elseif( function_exists( 'tribe_is_month' )
@@ -946,6 +946,8 @@ endif;
  */
 function wpsp_has_social_share() {
 
+	$post_id = post_id();
+
 	// Return false by default
 	$return = false;
 
@@ -962,6 +964,24 @@ function wpsp_has_social_share() {
 	// Check post entries
 	elseif ( 'post' == get_post_type() ) {
 		$return = true; // if disabled by the entry won't matter
+	}
+
+	// Return if page header is disabled via custom field
+	if ( $post_id ) {
+
+		// Get page meta setting
+		$meta = get_post_meta( $post_id, 'wpsp_is_social_share', true );
+
+		// Return true if enabled via page settings
+		if ( 'on' == $meta ) {
+			$return = true;
+		}
+
+		// Return if page header is disabled and there isn't a page header background defined
+		elseif ( 'off' == $meta ) {
+			$return	= false;
+		}
+
 	}
 
 	return apply_filters( 'wpsp_has_social_share', $return );

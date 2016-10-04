@@ -53,15 +53,18 @@ if ( ! class_exists( 'WPSP_WooCommerce_Config' ) ) {
 
 				// Show/hide category description
 				add_filter( 'wpsp_has_term_description_above_loop', array( $this, 'term_description_above_loop' ) );
+
+				// Show/hide social share on products
+				add_filter( 'wpsp_has_social_share', array( $this, 'post_social_share' ) );
+
+				// Show/hide next/prev on products
+				add_filter( 'wpsp_has_next_prev', array( $this, 'next_prev' ) );
 			}
 
 			// Scripts
 			add_action( 'woocommerce_enqueue_styles', array( $this, 'remove_styles' ) );
 			add_action( 'wp_enqueue_scripts', array( $this, 'remove_scripts' ) );
 			add_action( 'wp_enqueue_scripts', array( $this, 'add_custom_css' ) );
-
-			// Social share
-			add_action( 'woocommerce_share', 'wpsp_social_share', 11 );
 
 			// Menu cart
 			add_action( 'wpsp_hook_header_inner', array( $this, 'cart_dropdown' ), 40 );
@@ -387,6 +390,30 @@ if ( ! class_exists( 'WPSP_WooCommerce_Config' ) ) {
 			// Return bool
 			return $return;
 
+		}
+
+		/**
+		 * Enable post social share if enabled.
+		 *
+		 * @since 1.0.0
+		 */
+		public static function post_social_share( $return ) {
+			if ( is_singular( 'product' ) ) {
+				$return = true;
+			}
+			return $return;
+		}
+
+		/**
+		 * Disables the next/previous links if disabled via the customizer.
+		 *
+		 * @since 1.0.0
+		 */
+		public static function next_prev( $return ) {
+			if ( is_singular( 'product' ) && wpsp_get_redux( 'is-woo-next-prev', true ) ) {
+				$return = true;
+			}
+			return $return;
 		}
 
 		/**

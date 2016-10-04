@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 $is_social_share = wpsp_has_social_share();
 if ( ! $is_social_share || post_password_required() ) {
 	return;
-} 
+}
 
 // Get sharing sites
 $sites = wpsp_social_share_sites();

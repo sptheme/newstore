@@ -182,6 +182,17 @@
 				),
 			),
 			array(
+				'name'  => __( 'Social Share', 'wpsp-meta-box' ), 
+				'id'    => $prefix . "is_social_share",
+				'desc'	=> __( 'Enable or disable this element on this page or post.', 'wpsp-meta-box' ), 
+				'type'  => 'select',
+				'options' => array(
+					'on' => __( 'Enable', 'wpsp-meta-box' ),
+					'off' => __( 'Disable', 'wpsp-meta-box' ),
+					),
+				'std'  => 'on',
+			),
+			array(
 				'type' => 'heading',
 				'name' => esc_html__( 'Footer', 'wpsp-meta-box' ),
 			),
