@@ -1407,7 +1407,7 @@
 			}
 
 			// Drop-down
-			if ( 'drop_down' == wpexLocalize.wooCartStyle ) {
+			if ( 'drop_down' == wpspLocalize.wooCartStyle ) {
 
 				// Display cart dropdown
 				$( '.toggle-cart-widget' ).click( function( event ) {
@@ -1438,7 +1438,7 @@
 			}
 
 			// Modal
-			else if ( 'overlay' == wpexLocalize.wooCartStyle ) {
+			else if ( 'overlay' == wpspLocalize.wooCartStyle ) {
 
 				if ( ! $.fn.leanerModal ) {
 					return;

@@ -2,9 +2,18 @@
 /**
  * Single Product Image
  *
- * @author      WooThemes
- * @package     WooCommerce/Templates
- * @version     9999 // this file should never need updating...
+ * This template can be overridden by copying it to yourtheme/woocommerce/single-product/product-image.php.
+ *
+ * HOWEVER, on occasion WooCommerce will need to update template files and you
+ * (the theme developer) will need to copy the new files to your theme to
+ * maintain compatibility. We try to do this as little as possible, but it does
+ * happen. When this occurs the version of the template file will be bumped and
+ * the readme will list any important changes.
+ *
+ * @see 	    https://docs.woocommerce.com/document/template-structure/
+ * @author 		WooThemes
+ * @package 	WooCommerce/Templates
+ * @version     2.6.3
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -33,7 +42,7 @@ if ( $product->has_child() ) {
 }
 $show_slider = apply_filters( 'wpsp_woo_product_slider', $show_slider ); ?>
 
-<div class="images clear">
+<div class="images clearfix">
 
 	<?php
 	// Slider
@@ -88,7 +97,7 @@ $show_slider = apply_filters( 'wpsp_woo_product_slider', $show_slider ); ?>
 
 							<div class="wpsp-slider-slide sp-slide">
 
-								<a href="<?php wpsp_lightbox_image( $attachment ); ?>" title="<?php echo esc_attr( $attachment_alt ); ?>" class="wpsp-lightbox-group-item"><?php echo $thumbnail; ?></a>
+								<a href="<?php //wpsp_lightbox_image( $attachment ); ?>" title="<?php echo esc_attr( $attachment_alt ); ?>" class="wpsp-lightbox-group-item"><?php echo $thumbnail; ?></a>
 
 							</div><!--. wpsp-slider-slide -->
 
@@ -140,7 +149,7 @@ $show_slider = apply_filters( 'wpsp_woo_product_slider', $show_slider ); ?>
 		// Display variation thumbnails
 		if ( $product->has_child() || ! $show_slider ) { ?>
 
-			<div class="product-variation-thumbs clear lightbox-group">
+			<div class="product-variation-thumbs clearfix lightbox-group">
 
 				<?php foreach ( $attachments as $attachment ) : ?>
 					
@@ -157,7 +166,7 @@ $show_slider = apply_filters( 'wpsp_woo_product_slider', $show_slider ); ?>
 
 					<?php if ( $thumbnail ) : ?>
 
-						<a href="#<?php //wpsp_get_lightbox_image( $attachment ); ?>" title="<?php echo esc_attr( $attachment_alt ); ?>" data-title="<?php echo esc_attr( $attachment_alt ); ?>" data-type="image" class="wpsp-lightbox-group-item"><?php echo $thumbnail; ?></a>
+						<a href="#<?php //wpsp_lightbox_image( $attachment ); ?>" title="<?php echo esc_attr( $attachment_alt ); ?>" data-title="<?php echo esc_attr( $attachment_alt ); ?>" data-type="image" class="wpsp-lightbox-group-item"><?php echo $thumbnail; ?></a>
 
 					<?php endif; ?>
 

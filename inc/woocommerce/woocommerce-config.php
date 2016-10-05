@@ -124,6 +124,36 @@ if ( ! class_exists( 'WPSP_WooCommerce_Config' ) ) {
 
 			// Remove coupon from checkout
 			//remove_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_coupon_form', 10 );
+
+			// Remove single meta
+			if ( ! wpsp_get_redux( 'woo-product-meta', true ) ) {
+				remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40 );
+			}
+
+			// Remove upsells if set to 0
+			if ( '0' == wpsp_get_redux( 'woocommerce-upsells-count', '4' ) ) {
+				remove_action( 'woocommerce_after_single_product_summary', 'wpex_woocommerce_output_upsells', 15 );
+			}
+
+			// Remove related products if count is set to 0
+			if ( '0' == wpsp_get_redux( 'woocommerce-related-count', '4' ) ) {
+				remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20 );
+			}
+
+			// Remove crossells if set to 0
+			if ( '0' == wpsp_get_redux( 'woocommerce-cross-sells-count', '4' ) ) {
+				remove_action( 'woocommerce_cart_collaterals', 'woocommerce_cross_sell_display' );
+			}
+
+			// Remove result count if disabled
+			if ( ! wpsp_get_redux( 'is-woo-shop-result-count', true ) ) {
+				remove_action( 'woocommerce_before_shop_loop', 'woocommerce_result_count', 20 );
+			}
+
+			// Remove orderby if disabled
+			if ( ! wpsp_get_redux( 'is-woo-shop-sort', true ) ) {
+				remove_action( 'woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30 );
+			}
 		}
 
 		/**
@@ -245,7 +275,7 @@ if ( ! class_exists( 'WPSP_WooCommerce_Config' ) ) {
 		public static function loop_product_thumbnail() {
 			if ( function_exists( 'wc_get_template' ) ) {
 				// Get entry product media style
-				$style = wpsp_get_redux( 'woo_product_entry_style', 'image-swap' ); // image-swap, featured-image, gallery-slider
+				$style = wpsp_get_redux( 'woo-product-entry-style', 'image-swap' ); // image-swap, featured-image, gallery-slider
 				$style = $style ? $style : 'image-swap';
 				// Get entry product media template part
 				wc_get_template(  'loop/thumbnail/'. $style .'.php' );
@@ -297,11 +327,11 @@ if ( ! class_exists( 'WPSP_WooCommerce_Config' ) ) {
 		 */
 		public static function layouts( $class ) {
 			if ( wpsp_is_woo_shop() && ( wpsp_get_redux('woo-shop-layout') !='inherit' ) ) {
-				$class = wpsp_get_redux( 'woo-shop-layout', 'left-sidebar' );
+				$class = wpsp_get_redux( 'woo-shop-layout', 'right-sidebar' );
 			} elseif ( wpsp_is_woo_tax() && ( wpsp_get_redux('woo-shop-layout') !='inherit' ) ) {
-				$class = wpsp_get_redux( 'woo-shop-layout', 'left-sidebar' );
+				$class = wpsp_get_redux( 'woo-shop-layout', 'right-sidebar' );
 			} elseif ( wpsp_is_woo_single() && ( wpsp_get_redux('woo-product-layout') !='inherit' ) ) {
-				$class = wpsp_get_redux( 'woo-product-layout', 'full-width' );
+				$class = wpsp_get_redux( 'woo-product-layout', 'right-sidebar' );
 			}
 			return $class;
 		}
@@ -476,7 +506,7 @@ if ( ! class_exists( 'WPSP_WooCommerce_Config' ) ) {
 		 * @since 1.0.0
 		 */
 		public static function clear_summary_floats() {
-			echo '<div class="wpsp-clear-after-summary clearfix"></div>';
+			echo '<div class="clearfix"></div>';
 		}
 
 		/**
@@ -626,10 +656,10 @@ if ( ! class_exists( 'WPSP_WooCommerce_Config' ) ) {
 		 */
 		public static function remove_product_settings( $settings ) {
 			$remove = array(
-				/*'image_options',
+				'image_options',
 				'shop_catalog_image_size',
 				'shop_single_image_size',
-				'shop_thumbnail_image_size',*/
+				'shop_thumbnail_image_size',
 				'woocommerce_enable_lightbox'
 			);
 			foreach( $settings as $key => $val ) {
@@ -682,9 +712,9 @@ if ( ! class_exists( 'WPSP_WooCommerce_Config' ) ) {
 				$classes[] = 'col';
 				if (!isset($woocommerce_loop['columns']) || !$woocommerce_loop['columns']) {
 					$woocommerce_loop['columns'] = apply_filters('loop_shop_columns', wpsp_get_redux( 'woocommerce-shop-columns', 3 ) );
-					$classes[] = wpsp_grid_class( $woocommerce_loop['columns'] );
+					$classes[] = bootstrap_grid_class( $woocommerce_loop['columns'] );
 				}
-				$classes[] = wpsp_grid_class( $woocommerce_loop['columns'] );
+				$classes[] = bootstrap_grid_class( $woocommerce_loop['columns'] );
 			}
 			return $classes;
 		}
@@ -697,7 +727,7 @@ if ( ! class_exists( 'WPSP_WooCommerce_Config' ) ) {
 		public static function product_cat_class( $classes ) {
 			global $woocommerce_loop;
 			$classes[] = 'col';
-			$classes[] = wpsp_grid_class( $woocommerce_loop['columns'] );
+			$classes[] = bootstrap_grid_class( $woocommerce_loop['columns'] );
 			return $classes;
 		}
 

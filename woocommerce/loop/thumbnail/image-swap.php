@@ -2,9 +2,7 @@
 /**
  * Image Swap style thumbnail
  *
- * @package Small_Shop
- * @subpackage Templates/WooCommerce
- * @version 1.0.0
+ * @package newstore
  */
 
 // Exit if accessed directly
@@ -43,7 +41,7 @@ if ( ! empty( $attachment_ids ) ) {
 // Return thumbnail
 if ( $secondary_img_id ) : ?>
 
-	<div class="woo-entry-image-swap clear">
+	<div class="woo-entry-image-swap clearfix">
 		<?php
 		// Main IMage
 		wpsp_post_thumbnail( array(

@@ -31,7 +31,7 @@ $next_post_link_title = '%title<span class="fa fa-angle-double-right"></span>';
 $next_post_link_title = apply_filters( 'wpsp_next_post_link_title', $next_post_link_title );
 
 // Get post links
-if ( $has_terms || wpsp_is_post_in_series() ) {
+if ( $has_terms ) {
     $prev_link  = get_previous_post_link( '%link',  $prev_post_link_title, $same_cat, $excluded_terms, $taxonomy );
     $next_link  = get_next_post_link( '%link', $next_post_link_title, $same_cat, $excluded_terms, $taxonomy );
 } else {

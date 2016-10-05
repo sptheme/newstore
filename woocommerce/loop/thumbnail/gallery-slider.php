@@ -2,9 +2,7 @@
 /**
  * Gallery Style WooCommerce
  *
- * @package Small_Shop
- * @subpackage Templates/WooCommerce
- * @version 1.0.0
+ * @package newstore
  */
 
 // Exit if accessed directly

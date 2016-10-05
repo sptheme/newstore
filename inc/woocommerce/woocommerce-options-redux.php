@@ -161,6 +161,18 @@ Redux::setSection( $opt_name, array(
             ),
             'default'  => 'featured-image'
         ),
+        array(
+            'id'       => 'is-woo-shop-sort',
+            'type'     => 'switch',
+            'title'    => __( 'Enable/Disable Shop Sort', 'wpsp-redux-framework' ),
+            'default'  => '1'// 1 = on | 0 = off
+        ),
+        array(
+            'id'       => 'is-woo-shop-result-count',
+            'type'     => 'switch',
+            'title'    => __( 'Enable/Disable Shop Result Count', 'wpsp-redux-framework' ),
+            'default'  => '1'// 1 = on | 0 = off
+        ),
 	)
 ) );
 
