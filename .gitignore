@@ -24,4 +24,6 @@ bower_components
 
 node_modules
 
-newstore.zip
+src
+
+dist
