@@ -1,6 +1,7 @@
 // Defining base pathes
 var basePaths = {
     bower: './bower_components/',
+    node: './node_modules/',
     dev: './src/'
 };
 
@@ -132,14 +133,14 @@ gulp.task('watch-bs', ['browser-sync', 'watch', 'cssnano'], function () { });
 // Uglifies and concat all JS files into one
 gulp.task('scripts', function() {
   gulp.src([
-    basePaths.dev + 'js/superfish.min.js',
-    basePaths.dev + 'js/supersubs.js',
-    basePaths.dev + 'js/hoverIntent.js',
-    basePaths.dev + 'js/owl.carousel.min.js', // Must be loaded before BS4
+    basePaths.dev + 'js/superfish/hoverIntent.js',
+    basePaths.dev + 'js/superfish/superfish.min.js',
+    basePaths.dev + 'js/superfish/supersubs.js',
+    basePaths.dev + 'js/imagesloaded/imagesloaded.pkgd.min.js',
+    basePaths.dev + 'js/isotope/isotope.pkgd.min.js',    
+    basePaths.dev + 'js/sidr/jquery.sidr.min.js',
     basePaths.dev + 'js/leanner-modal.js',
-    basePaths.dev + 'js/jquery.sidr.min.js',
-    basePaths.dev + 'js/imagesloaded.pkgd.min.js',
-    basePaths.dev + 'js/isotope.pkgd.min.js',
+    basePaths.dev + 'js/owl-carousel2/owl.carousel.min.js', // Must be loaded before BS4    
     basePaths.dev + 'js/tether.js', // Must be loaded before BS4
 
     // Start - All BS4 stuff
@@ -154,14 +155,14 @@ gulp.task('scripts', function() {
     .pipe(gulp.dest('./js/'));
 
   gulp.src([
-    basePaths.dev + 'js/superfish.js',
-    basePaths.dev + 'js/supersubs.js',
-    basePaths.dev + 'js/hoverIntent.js',
-    basePaths.dev + 'js/owl.carousel.min.js', // Must be loaded before BS4
+    basePaths.dev + 'js/superfish/hoverIntent.js',
+    basePaths.dev + 'js/superfish/superfish.js',
+    basePaths.dev + 'js/superfish/supersubs.js',
+    basePaths.dev + 'js/imagesloaded/imagesloaded.js',
+    basePaths.dev + 'js/isotope/isotope.pkgd.js',
+    basePaths.dev + 'js/sidr/jquery.sidr.js',
     basePaths.dev + 'js/leanner-modal.js',
-    basePaths.dev + 'js/imagesloaded.pkgd.min.js',
-    basePaths.dev + 'js/isotope.pkgd.min.js',
-    basePaths.dev + 'js/jquery.sidr.js',
+    basePaths.dev + 'js/owl-carousel2/owl.carousel.js', // Must be loaded before BS4
     basePaths.dev + 'js/tether.js', // Must be loaded before BS4
 
     // Start - All BS4 stuff
@@ -186,69 +187,70 @@ gulp.task('copy-assets', function() {
 
 ////////////////// All Bootstrap 4 Assets /////////////////////////
 // Copy all Bootstrap JS files 
-    gulp.src(basePaths.bower + 'bootstrap/dist/js/**/*.js')
+    gulp.src(basePaths.node + 'bootstrap/dist/js/**/*.js')
        .pipe(gulp.dest(basePaths.dev + '/js/bootstrap4'));
 
 // Copy all Bootstrap SCSS files
-    gulp.src(basePaths.bower + 'bootstrap/scss/**/*.scss')
+    gulp.src(basePaths.node + 'bootstrap/scss/**/*.scss')
        .pipe(gulp.dest(basePaths.dev + '/sass/bootstrap4'));
 ////////////////// End Bootstrap 4 Assets /////////////////////////
 
 // Copy all Font Awesome Fonts
-    gulp.src(basePaths.bower + 'fontawesome/fonts/**/*.{ttf,woff,woff2,eof,svg}')
+    gulp.src(basePaths.node + 'fontawesome/fonts/**/*.{ttf,woff,woff2,eof,svg}')
         .pipe(gulp.dest('./fonts'));
 
 // Copy all Font Awesome SCSS files
-    gulp.src(basePaths.bower + 'fontawesome/scss/*.scss')
+    gulp.src(basePaths.node + 'fontawesome/scss/*.scss')
         .pipe(gulp.dest(basePaths.dev + '/sass/fontawesome'));
 
 // owl JS files
-    gulp.src(basePaths.bower + 'OwlCarousel2/dist/*.js')
-        .pipe(gulp.dest(basePaths.dev + '/js'));
+    gulp.src(basePaths.node + 'owl.carousel/dist/*.js')
+        .pipe(gulp.dest(basePaths.dev + '/js/owl-carousel2'));
 
 // Copy all Owl2 SCSS files
-    gulp.src(basePaths.bower + 'OwlCarousel2/src/scss/*.scss')
+    gulp.src(basePaths.node + 'owl.carousel/src/scss/*.scss')
        .pipe(gulp.dest(basePaths.dev + '/sass/owl-carousel2'));
 
 // Copy all Owl2 CSS files
-    gulp.src(basePaths.bower + 'OwlCarousel2/dist/assets/*.css')
+    gulp.src(basePaths.node + 'owl.carousel/dist/assets/*.css')
         .pipe(gulp.dest(basePaths.dev + '/css'));
 
 // Copy jQuery
-    gulp.src(basePaths.bower + 'jquery/dist/*.js')
-        .pipe(gulp.dest(basePaths.dev + '/js'));
-
-// _s JS files
-    gulp.src(basePaths.bower + '_s/js/*.js')
+    gulp.src(basePaths.node + 'jquery/dist/*.js')
         .pipe(gulp.dest(basePaths.dev + '/js'));
 
 // Copy Tether JS files
-    gulp.src(basePaths.bower + 'tether/dist/js/*.js')
+    gulp.src(basePaths.node + 'tether/dist/js/*.js')
         .pipe(gulp.dest(basePaths.dev + '/js'));
 
 // Copy Tether CSS files
-    gulp.src(basePaths.bower + 'tether/dist/css/*.css')
+    gulp.src(basePaths.node + 'tether/dist/css/*.css')
         .pipe(gulp.dest(basePaths.dev + '/css'));
 
 // Copy Superfish JS files
-    gulp.src(basePaths.bower + 'superfish/dist/js/*.js')
-        .pipe(gulp.dest(basePaths.dev + '/js'));
+    gulp.src(basePaths.node + 'superfish/dist/js/*.js')
+        .pipe(gulp.dest(basePaths.dev + '/js/superfish'));
 
 // Copy ImagesLoaded JS files
-    gulp.src(basePaths.bower + 'imagesloaded/*.js')
-        .pipe(gulp.dest(basePaths.dev + '/js'));
+    gulp.src(basePaths.node + 'imagesloaded/*.js')
+        .pipe(ignore('gulpfile.js'))
+        .pipe(gulp.dest(basePaths.dev + '/js/imagesloaded'));
 
 // Copy Isotope JS files
-    gulp.src(basePaths.bower + 'isotope/dist/*.js')
-        .pipe(gulp.dest(basePaths.dev + '/js'));        
+    gulp.src(basePaths.node + 'isotope-layout/dist/*.js')
+        .pipe(gulp.dest(basePaths.dev + '/js/isotope'));        
 
 // Copy Sidr JS files
-    gulp.src(basePaths.bower + 'sidr/dist/*.js')
-        .pipe(gulp.dest(basePaths.dev + '/js'));
+    gulp.src(basePaths.node + 'sidr/dist/*.js')
+        .pipe(gulp.dest(basePaths.dev + '/js/sidr/'));
+
+// Copy Sidr SCSS files
+    gulp.src(basePaths.node + 'sidr/src/scss/**/*.scss')
+        .pipe(gulp.dest(basePaths.dev + '/sass/sidr'));
 
 // Copy Sidr CSS files
-    gulp.src(basePaths.bower + 'sidr/dist/stylesheets/*.css')
-        .pipe(gulp.dest(basePaths.dev + '/css'));        
+    gulp.src(basePaths.node + 'sidr/src/stylesheets/*.css')
+        .pipe(gulp.dest(basePaths.dev + '/css'));      
 
 });
 

@@ -42,6 +42,7 @@
     "gulp-watch": "^4.3.6",
     "imagesloaded": "^4.1.1",
     "isotope": "0.0.1-security",
+    "isotope-layout": "^3.0.1",
     "merge2": "^1.0.2",
     "owl.carousel": "^2.1.4",
     "sidr": "^2.2.1",
