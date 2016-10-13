@@ -254,14 +254,14 @@ del .amount { color: #555 !important }
 .woocommerce div.product .product_title { margin: 0 }
 
 /* Single > Images */
-.woocommerce div.product div.images { float: left; width: 52%; margin-bottom: 0; }
+/*.woocommerce div.product div.images { float: left; width: 52%; margin-bottom: 0; }*/
 
 /* Single > Variation Thumbs */
 .product-variation-thumbs { margin: 0 -3px }
 .product-variation-thumbs a { display: block; float: left; cursor: pointer; height: auto; width: 20%; padding: 3px; margin: 0; }
 
 /* Single > Summary */
-.woocommerce div.product div.summary { float: right; width: 44%; margin-bottom: 2em; }
+/*.woocommerce div.product div.summary { float: right; width: 44%; margin-bottom: 2em; }*/
 
 /* Single > Price */
 .woocommerce div.product form.cart { padding: 20px 0; margin: 0; }

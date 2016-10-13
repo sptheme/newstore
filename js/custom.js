@@ -108,6 +108,9 @@
 				// Header cart
 				self.headerCart();
 
+				// Owl Carousel2 Thumbs
+				self.owlCarouselThumb();
+
 				// Back to top link
 				self.backTopLink();
 			} );
@@ -1452,6 +1455,21 @@
 
 			}
 
+		},
+
+		/*
+		 * Owl Carousel thumbs
+		 *
+		 * @since 1.0.0
+		 */
+		owlCarouselThumb: function() {
+			var owl = $('.owl-carousel');
+		    owl.owlCarousel({
+		        loop: true,
+		        items: 1,
+		        thumbs: true,
+		        thumbsPrerendered: true		        
+		    });
 		},
 
 		/**

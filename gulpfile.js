@@ -140,7 +140,8 @@ gulp.task('scripts', function() {
     basePaths.dev + 'js/isotope/isotope.pkgd.min.js',    
     basePaths.dev + 'js/sidr/jquery.sidr.min.js',
     basePaths.dev + 'js/leanner-modal.js',
-    basePaths.dev + 'js/owl-carousel2/owl.carousel.min.js', // Must be loaded before BS4    
+    basePaths.dev + 'js/owl-carousel2/owl.carousel.min.js', 
+    basePaths.dev + 'js/owl-carousel2/owl.carousel2.thumbs.min.js',// Must be loaded before BS4    
     basePaths.dev + 'js/tether.js', // Must be loaded before BS4
 
     // Start - All BS4 stuff
@@ -162,7 +163,8 @@ gulp.task('scripts', function() {
     basePaths.dev + 'js/isotope/isotope.pkgd.js',
     basePaths.dev + 'js/sidr/jquery.sidr.js',
     basePaths.dev + 'js/leanner-modal.js',
-    basePaths.dev + 'js/owl-carousel2/owl.carousel.js', // Must be loaded before BS4
+    basePaths.dev + 'js/owl-carousel2/owl.carousel.js', 
+    basePaths.dev + 'js/owl-carousel2/owl.carousel2.thumbs.js',// Must be loaded before BS4
     basePaths.dev + 'js/tether.js', // Must be loaded before BS4
 
     // Start - All BS4 stuff
@@ -214,6 +216,10 @@ gulp.task('copy-assets', function() {
 // Copy all Owl2 CSS files
     gulp.src(basePaths.node + 'owl.carousel/dist/assets/*.css')
         .pipe(gulp.dest(basePaths.dev + '/css'));
+
+// owl thumbs JS files
+    gulp.src(basePaths.node + 'owl.carousel2.thumbs/dist/*.js')
+        .pipe(gulp.dest(basePaths.dev + '/js/owl-carousel2'));        
 
 // Copy jQuery
     gulp.src(basePaths.node + 'jquery/dist/*.js')

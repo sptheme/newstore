@@ -41,91 +41,61 @@ if ( $product->has_child() ) {
 	$show_slider = false;
 }
 $show_slider = apply_filters( 'wpsp_woo_product_slider', $show_slider ); ?>
-
-<div class="images clearfix">
+	
+<div class="images">
 
 	<?php
 	// Slider
-	if ( $attachments && $attachements_count > 1 && $show_slider ) :
+	if ( $attachments && $attachements_count > 1 && $show_slider ) : ?>
+	<div class="row">
+		
+		<div class="col-md-4">
+			<div class="owl-thumbs" data-slider-id="1">
+				<?php
+				// Add slider thumbnails
+				foreach ( $attachments as $attachment ) : ?>
+					<button class="owl-thumb-item">
+					
+					<?php wpsp_post_thumbnail( array(
+						'attachment' => $attachment,
+						'size'       => 'shop_single_thumbnail'					
+					) ); ?>
 
-		// Slider data attributes
-		$data_atributes                              = array();
-		$data_atributes['animation-speed']           = 300;
-		$data_atributes['auto-play']                 = 'false';
-		$data_atributes['fade']                      = 'true';
-		$data_atributes['buttons']                   = 'false';
-		$data_atributes['loop']                      = 'false';
-		$data_atributes['thumbnails-height']         = '70';
-		$data_atributes['thumbnails-width']          = '70';
-		$data_atributes['height-animation-duration'] = '0.0';
-		$data_atributes                              = apply_filters( 'wpsp_shop_single_slider_data', $data_atributes );
-		$data_atributes_html                         = '';
-		foreach ( $data_atributes as $key => $val ) {
-			$data_atributes_html .= ' data-'. $key .'="'. $val .'"';
-		} ?>
+					</button>
+				<?php endforeach; ?>
+			</div> <!-- .owl-thumbs -->
+		</div> <!-- .col-md-4 -->
+		
+		<div class="col-md-8">
+			<div class="owl-carousel" data-slider-id="1">
+				<?php
+				// Loop through attachments and display in slider
+				foreach ( $attachments as $attachment ) :
 
-		<div class="wpsp-slider-preloaderimg">
-            <?php
-            // Display first image as a placeholder while the others load
-            wpsp_post_thumbnail( array(
-                'attachment' => $attachments[0],
-                'alt'        => get_post_meta( $attachments[0], '_wp_attachment_image_alt', true ),
-            ) ); ?>
-        </div><!-- .wpsp-slider-preloaderimg -->
+					// Get attachment alt
+					$attachment_alt = get_post_meta( $attachment, '_wp_attachment_image_alt', true );
 
-		<div class="wpsp-slider pro-slider woocommerce-single-product-slider lightbox-group"<?php echo $data_atributes_html; ?>>
+					// Get thumbnail
+					$thumbnail = wpsp_get_post_thumbnail( array(
+						'attachment' => $attachment,
+						'size'       => 'shop_single',
+					) );
 
-			<div class="wpsp-slider-slides sp-slides">
+					// Display thumbnail
+					if ( $thumbnail ) : ?>
 
-				<div class="slides">
+						<div class="item">
+							<a href="<?php //wpsp_lightbox_image( $attachment ); ?>" title="<?php echo esc_attr( $attachment_alt ); ?>" class="wpsp-lightbox-group-item"><?php echo $thumbnail; ?></a>
+						</div><!--. wpsp-slider-slide -->
 
-					<?php
-					// Loop through attachments and display in slider
-					foreach ( $attachments as $attachment ) :
+					<?php endif; ?>
 
-						// Get attachment alt
-						$attachment_alt = get_post_meta( $attachment, '_wp_attachment_image_alt', true );
+				<?php endforeach; ?>
 
-						// Get thumbnail
-						$thumbnail = wpsp_get_post_thumbnail( array(
-							'attachment' => $attachment,
-							'size'       => 'shop_single',
-						) );
-
-						// Display thumbnail
-						if ( $thumbnail ) : ?>
-
-							<div class="wpsp-slider-slide sp-slide">
-
-								<a href="<?php //wpsp_lightbox_image( $attachment ); ?>" title="<?php echo esc_attr( $attachment_alt ); ?>" class="wpsp-lightbox-group-item"><?php echo $thumbnail; ?></a>
-
-							</div><!--. wpsp-slider-slide -->
-
-						<?php endif; ?>
-
-					<?php endforeach; ?>
-
-				</div><!-- .slides -->
-
-				<div class="wpsp-slider-thumbnails sp-thumbnails">
-
-					<?php
-					// Add slider thumbnails
-					foreach ( $attachments as $attachment ) :
-
-						wpsp_post_thumbnail( array(
-							'attachment' => $attachment,
-							'size'       => 'shop_single_thumbnail',
-							'class'      => 'wpsp-slider-thumbnail sp-thumbnail',
-						) );
-
-					endforeach; ?>
-
-				</div><!-- .wpsp-slider-thumbnails -->
-
-			</div><!-- .wpsp-slider-slides -->
-
-		</div><!-- .wpsp-slider -->
+			</div> <!-- .owl-carousel -->
+		</div> <!-- .col-md-8 -->
+		
+	</div> <!-- .row -->	
 
 	<?php elseif ( has_post_thumbnail() || isset( $attachments[0] ) ) : ?>
 
