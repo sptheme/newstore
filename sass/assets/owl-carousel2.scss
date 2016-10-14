@@ -1,2 +1,73 @@
 @import "../../src/sass/owl-carousel2/owl.carousel";
-//@import "../../src/sass/owl-carousel2/theme.default";
+
+/*--------------------------------------------------------------
+## Theme
+--------------------------------------------------------------*/
+.owl-carousel { border: 1px solid #e4e4e4; }
+
+/*--------------------------------------------------------------
+## Thumb
+--------------------------------------------------------------*/
+.owl-thumb-item {
+    display: block;
+    border: none;
+    background: none;
+    padding: 0;
+    opacity: .4;
+}
+
+.owl-thumb-item.active {
+    opacity: 1;
+    outline: none;
+    border: 1px solid #e4e4e4;
+}
+
+.owl-thumb-item img {
+    width: 150px!important;
+    height: auto;
+}
+
+/*--------------------------------------------------------------
+## Owl Dots
+--------------------------------------------------------------*/
+.owl-carousel .owl-dots {
+  margin-bottom: 0;
+  text-align: center;
+  padding-top: 0;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+}
+.owl-carousel .owl-dots .owl-dot {
+  padding: 9px;
+  display: inline-block;
+  cursor: pointer;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+}
+.owl-carousel .owl-dots .owl-dot span {
+  width: 6px;
+  height: 6px;
+  display: block;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  background-color: $brand-primary;
+}
+.owl-carousel .owl-dots .owl-dot.active {
+  cursor: default;
+}
+.owl-carousel .owl-dots .owl-dot.active span {
+  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
+  filter: alpha(opacity=50);
+  -moz-opacity: 0.5;
+  -khtml-opacity: 0.5;
+  opacity: 0.5;
+}

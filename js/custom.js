@@ -1468,7 +1468,17 @@
 		        loop: true,
 		        items: 1,
 		        thumbs: true,
-		        thumbsPrerendered: true		        
+		        thumbsPrerendered: true,
+		        responsiveClass:true,
+			    responsive:{
+			    	// breakpoint from 0 up
+			        0:{
+			            dots:true
+			        },
+			        768:{
+			            dots:false
+			        }
+			    }        
 		    });
 		},
 

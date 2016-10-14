@@ -1266,24 +1266,3 @@ ul.wpsp-social-share { list-style: none }
 	background: #000; 
 	display: none; 
 }
-
-/*--------------------------------------------------------------
-## Owl Carousel2 Thumb
---------------------------------------------------------------*/
-.owl-thumb-item img {
-    width: 150px!important;
-    height: auto;
-}
-
-.owl-thumb-item {
-    display: block;
-    border: none;
-    background: none;
-    padding: 0;
-    opacity: .4;
-}
-
-.owl-thumb-item.active {
-    opacity: 1;
-    outline: none;
-}
