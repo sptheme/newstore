@@ -50,7 +50,7 @@ $show_slider = apply_filters( 'wpsp_woo_product_slider', $show_slider ); ?>
 	<div class="row">
 		
 		<div class="col-md-4">
-			<div class="owl-thumbs" data-slider-id="1">
+			<div class="owl-thumbs hidden-sm-down" data-slider-id="1">
 				<?php
 				// Add slider thumbnails
 				foreach ( $attachments as $attachment ) : ?>
