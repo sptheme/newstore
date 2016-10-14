@@ -94,9 +94,6 @@ gulp.task('sass', function () {
 gulp.task('watch', function () {
     gulp.watch('./sass/**/*.scss', ['sass']);
     gulp.watch('./css/theme.css', ['cssnano']);
-
-    // Support wooCommerce
-    gulp.watch('./css/woocommerce.css', ['cssnano']);
 });
 
 // Run: 
@@ -116,7 +113,6 @@ gulp.task('cssnano', ['cleancss'], function(){
 gulp.task('cleancss', function() {
   return gulp.src('./css/*.min.css', { read: false }) // much faster 
     .pipe(ignore('theme.css'))
-    .pipe(ignore('woocommerce.css'))
     .pipe(rimraf());
 });
 
