@@ -359,3 +359,15 @@ function wpsp_scroll_top() {
 		get_template_part( 'partials/scroll-top' );
 	}
 }
+
+/*-------------------------------------------------------------------------------*/
+/* -  Social
+/*-------------------------------------------------------------------------------*/
+/**
+ * Returns social sharing template part
+ *
+ * @since 2.0.0
+ */
+function wpsp_social_share() {
+	get_template_part( 'partials/social-share' );
+}

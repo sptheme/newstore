@@ -68,6 +68,7 @@ $show_slider = apply_filters( 'wpsp_woo_product_slider', $show_slider ); ?>
 		
 		<div class="col-md-8">
 			<div class="owl-carousel" data-slider-id="1">
+				<div class="image-border">
 				<?php
 				// Loop through attachments and display in slider
 				foreach ( $attachments as $attachment ) :
@@ -91,6 +92,7 @@ $show_slider = apply_filters( 'wpsp_woo_product_slider', $show_slider ); ?>
 					<?php endif; ?>
 
 				<?php endforeach; ?>
+				</div> <!-- .image-border -->
 
 			</div> <!-- .owl-carousel -->
 		</div> <!-- .col-md-8 -->
@@ -111,9 +113,9 @@ $show_slider = apply_filters( 'wpsp_woo_product_slider', $show_slider ); ?>
 		) );
 
 		if ( $product->has_child() ) {
-			echo apply_filters( 'woocommerce_single_product_image_html', sprintf( '<div class="woocommerce-main-image">%s</div>', $image ), $post->ID );
+			echo apply_filters( 'woocommerce_single_product_image_html', sprintf( '<div class="woocommerce-main-image image-border">%s</div>', $image ), $post->ID );
 		} else {
-			echo apply_filters( 'woocommerce_single_product_image_html', sprintf( '<a href="%s" itemprop="image" class="woocommerce-main-image wpsp-lightbox" title="%s" >%s</a>', $image_link, $image_title, $image ), $post->ID );
+			echo apply_filters( 'woocommerce_single_product_image_html', sprintf( '<div class="image-border"><a href="%s" itemprop="image" class="woocommerce-main-image wpsp-lightbox" title="%s" >%s</a></div>', $image_link, $image_title, $image ), $post->ID );
 		}
 
 		// Display variation thumbnails
@@ -135,9 +137,9 @@ $show_slider = apply_filters( 'wpsp_woo_product_slider', $show_slider ); ?>
 					$thumbnail = wpsp_get_post_thumbnail( $args ); ?>
 
 					<?php if ( $thumbnail ) : ?>
-
+						<div class="image-border">
 						<a href="#<?php //wpsp_lightbox_image( $attachment ); ?>" title="<?php echo esc_attr( $attachment_alt ); ?>" data-title="<?php echo esc_attr( $attachment_alt ); ?>" data-type="image" class="wpsp-lightbox-group-item"><?php echo $thumbnail; ?></a>
-
+						</div>
 					<?php endif; ?>
 
 				<?php endforeach; ?>
@@ -147,7 +149,6 @@ $show_slider = apply_filters( 'wpsp_woo_product_slider', $show_slider ); ?>
 		<?php } ?>
 
 	<?php else : ?>
-
 		<?php
 		// Display placeholder image
 		wpsp_woo_placeholder_img(); ?>

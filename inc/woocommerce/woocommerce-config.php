@@ -66,6 +66,9 @@ if ( ! class_exists( 'WPSP_WooCommerce_Config' ) ) {
 			add_action( 'wp_enqueue_scripts', array( $this, 'remove_scripts' ) );
 			add_action( 'wp_enqueue_scripts', array( $this, 'add_custom_css' ) );
 
+			// Social share
+			add_action( 'woocommerce_share', 'wpsp_social_share', 11 );
+
 			// Menu cart
 			add_action( 'wpsp_hook_header_inner', array( $this, 'cart_dropdown' ), 40 );
 			add_action( 'wpsp_hook_main_menu_bottom', array( $this, 'cart_dropdown' ) );

@@ -7131,9 +7131,6 @@ a.skip-link {
 /*--------------------------------------------------------------
 ## Theme
 --------------------------------------------------------------*/
-.owl-carousel {
-  border: 1px solid #e4e4e4; }
-
 /*--------------------------------------------------------------
 ## Thumb
 --------------------------------------------------------------*/
@@ -9579,6 +9576,10 @@ span.page-numbers {
 .isotope-entry {
   clear: none; }
 
+/* Images */
+.image-border {
+  border: 1px solid #e4e4e4; }
+
 /*-------------------------------------------------------------- 
  # ADDON ELEMENTS
 --------------------------------------------------------------*/
@@ -10493,7 +10494,8 @@ Store
   border-top: 1px solid #eee;
   border-bottom: 1px solid #eee;
   padding: 10px 0;
-  color: #787878; }
+  color: #787878;
+  margin-bottom: 20px; }
 
 .product_meta span {
   display: block; }

@@ -215,7 +215,7 @@ gulp.task('copy-assets', function() {
 
 // Copy all Owl2 CSS files
     gulp.src(basePaths.node + 'owl.carousel/dist/assets/*.css')
-        .pipe(gulp.dest(basePaths.dev + '/css'));
+        .pipe(gulp.dest(basePaths.dev + '/css/owl-carousel2'));
 
 // owl thumbs JS files
     gulp.src(basePaths.node + 'owl.carousel2.thumbs/dist/*.js')
@@ -231,11 +231,15 @@ gulp.task('copy-assets', function() {
 
 // Copy Tether CSS files
     gulp.src(basePaths.node + 'tether/dist/css/*.css')
-        .pipe(gulp.dest(basePaths.dev + '/css'));
+        .pipe(gulp.dest(basePaths.dev + '/css/tether'));
 
 // Copy Superfish JS files
     gulp.src(basePaths.node + 'superfish/dist/js/*.js')
         .pipe(gulp.dest(basePaths.dev + '/js/superfish'));
+
+// Copy all Superfish CSS files
+    gulp.src(basePaths.node + 'superfish/dist/css/*.css')
+        .pipe(gulp.dest(basePaths.dev + '/css/superfish'));
 
 // Copy ImagesLoaded JS files
     gulp.src(basePaths.node + 'imagesloaded/*.js')
@@ -255,8 +259,8 @@ gulp.task('copy-assets', function() {
         .pipe(gulp.dest(basePaths.dev + '/sass/sidr'));
 
 // Copy Sidr CSS files
-    gulp.src(basePaths.node + 'sidr/src/stylesheets/*.css')
-        .pipe(gulp.dest(basePaths.dev + '/css'));      
+    gulp.src(basePaths.node + 'sidr/dist/stylesheets/*.css')
+        .pipe(gulp.dest(basePaths.dev + '/css/sidr'));              
 
 });
 
