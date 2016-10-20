@@ -141,7 +141,8 @@ gulp.task('scripts', function() {
     basePaths.dev + 'js/sidr/jquery.sidr.min.js',
     basePaths.dev + 'js/leanner-modal.js',
     basePaths.dev + 'js/owl-carousel2/owl.carousel.min.js', 
-    basePaths.dev + 'js/owl-carousel2/owl.carousel2.thumbs.min.js',// Must be loaded before BS4    
+    basePaths.dev + 'js/owl-carousel2/owl.carousel2.thumbs.min.js',
+    basePaths.dev + 'js/magnific-popup/jquery.magnific-popup.min.js',// Must be loaded before BS4    
     basePaths.dev + 'js/tether.js', // Must be loaded before BS4
 
     // Start - All BS4 stuff
@@ -164,7 +165,8 @@ gulp.task('scripts', function() {
     basePaths.dev + 'js/sidr/jquery.sidr.js',
     basePaths.dev + 'js/leanner-modal.js',
     basePaths.dev + 'js/owl-carousel2/owl.carousel.js', 
-    basePaths.dev + 'js/owl-carousel2/owl.carousel2.thumbs.js',// Must be loaded before BS4
+    basePaths.dev + 'js/owl-carousel2/owl.carousel2.thumbs.js',
+    basePaths.dev + 'js/magnific-popup/jquery.magnific-popup.js',// Must be loaded before BS4
     basePaths.dev + 'js/tether.js', // Must be loaded before BS4
 
     // Start - All BS4 stuff
@@ -260,7 +262,19 @@ gulp.task('copy-assets', function() {
 
 // Copy Sidr CSS files
     gulp.src(basePaths.node + 'sidr/dist/stylesheets/*.css')
-        .pipe(gulp.dest(basePaths.dev + '/css/sidr'));              
+        .pipe(gulp.dest(basePaths.dev + '/css/sidr'));
+
+// Copy Magnific Popup JS files
+    gulp.src(basePaths.node + 'magnific-popup/dist/*.js')
+        .pipe(gulp.dest(basePaths.dev + '/js/magnific-popup/'));
+
+// Copy Magnific Popup SCSS files
+    gulp.src(basePaths.node + 'magnific-popup/src/css/**/*.scss')
+        .pipe(gulp.dest(basePaths.dev + '/sass/magnific-popup'));
+
+// Copy Magnific Popup CSS files
+    gulp.src(basePaths.node + 'magnific-popup/dist/*.css')
+        .pipe(gulp.dest(basePaths.dev + '/css/magnific-popup'));                      
 
 });
 

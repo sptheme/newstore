@@ -853,6 +853,50 @@ function wpsp_get_thumbnail_sizes( $size = '' ) {
 	return $sizes;
 }
 
+/**
+ * Echo lightbox image URL
+ *
+ * @since 1.0.0
+ */
+function wpsp_lightbox_image( $attachment = '' ) {
+	echo wpsp_get_lightbox_image( $attachment );
+}
+
+/**
+ * Returns lightbox image URL.
+ *
+ *  @since 1.0.0
+ */
+function wpsp_get_lightbox_image( $attachment = '' ) {
+
+	// If attachment is empty lets set it to the post thumbnail id
+	if ( ! $attachment ) {
+		$attachment = get_post_thumbnail_id();
+	}
+
+	// If the attachment is an ID lets get the URL
+	if ( is_numeric( $attachment ) ) {
+		$image = $attachment;
+	} elseif ( is_array( $attachment ) ) {
+		return $attachment[0];
+	} else {
+		return $attachment;
+	}
+
+	// Set default size
+	$size = apply_filters( 'wpex_get_lightbox_image_size', 'lightbox' );
+
+	// Sanitize data
+	$image = wpsp_get_post_thumbnail_url( array(
+		'attachment' => $image,
+		'size'       => $size,
+		'retina'     => false,
+	) );
+
+	// Return escaped image
+	return esc_url( $image );
+}
+
 /*-------------------------------------------------------------------------------*/
 /* [ Schema Markup ]
 /*-------------------------------------------------------------------------------*/

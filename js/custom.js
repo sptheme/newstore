@@ -111,6 +111,9 @@
 				// Owl Carousel2 Thumbs
 				self.owlCarouselThumb();
 
+				// Lightbox image with Magnific Poup
+				self.magnificPopup();
+
 				// Back to top link
 				self.backTopLink();
 			} );
@@ -1465,7 +1468,7 @@
 		owlCarouselThumb: function() {
 			var owl = $('.owl-carousel');
 		    owl.owlCarousel({
-		        loop: true,
+		        loop: false,
 		        items: 1,
 		        thumbs: true,
 		        thumbsPrerendered: true,
@@ -1480,6 +1483,66 @@
 			        }
 			    }        
 		    });
+		},
+
+		/**
+		 * magnificPopup
+		 *
+		 * @since 1.0.0
+		 */
+		magnificPopup : function() {
+			// Make sure equal heights function is defined
+			if ( ! $.fn.magnificPopup ) {
+				return;
+			}
+
+			// Setup content a link work with magnificPopup
+		    $('a[href*=".jpg"], a[href*=".jpeg"], a[href*=".png"], a[href*=".gif"]').each(function(){
+	        	if ($(this).parents('.gallery').length == 0) {
+		            $(this).magnificPopup({
+		               type: 'image',
+		               removalDelay: 500,
+		               mainClass: 'mfp-fade'
+		            });
+		        }
+		    });
+
+		    // Setup Woo Commerce product image and post gallery work with magnificPopup
+			$('.lightbox-images').magnificPopup({
+					type: 'image',
+					closeOnContentClick: false,
+					closeBtnInside: false,
+					removalDelay: 300,
+		            mainClass: 'mfp-fade',
+					gallery:{
+						enabled:true
+					}
+			});
+
+			// Setup wp gallery work with magnificPopup
+		    $('.gallery').each(function() {
+		        $(this).magnificPopup({
+		            delegate: 'a',
+		            type: 'image',
+		            removalDelay: 300,
+		            mainClass: 'mfp-fade',
+		            gallery: {
+		            	enabled: true,
+		            	navigateByImgClick: true
+		            }
+		        });
+		    });
+
+		    // Setup video work with magnificPopup
+		    $('.popup-youtube, .popup-vimeo, .popup-gmaps').magnificPopup({
+				disableOn: 700,
+				type: 'iframe',
+				mainClass: 'mfp-fade',
+				removalDelay: 160,
+				preloader: false,
+				fixedContentPos: false
+			});
+
 		},
 
 		/**

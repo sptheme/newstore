@@ -66,10 +66,9 @@ $show_slider = apply_filters( 'wpsp_woo_product_slider', $show_slider ); ?>
 			</div> <!-- .owl-thumbs -->
 		</div> <!-- .col-md-4 -->
 		
-		<div class="col-md-8">
-			<div class="owl-carousel" data-slider-id="1">
-				<div class="image-border">
-				<?php
+		<div class="col-md-8 image-border">
+			<div class="owl-carousel" data-slider-id="1">				
+				<?php $owl_count = 1;
 				// Loop through attachments and display in slider
 				foreach ( $attachments as $attachment ) :
 
@@ -85,15 +84,13 @@ $show_slider = apply_filters( 'wpsp_woo_product_slider', $show_slider ); ?>
 					// Display thumbnail
 					if ( $thumbnail ) : ?>
 
-						<div class="item">
-							<a href="<?php //wpsp_lightbox_image( $attachment ); ?>" title="<?php echo esc_attr( $attachment_alt ); ?>" class="wpsp-lightbox-group-item"><?php echo $thumbnail; ?></a>
-						</div><!--. wpsp-slider-slide -->
+						<div class="item <?php echo $owl_count; ?>">
+							<a href="<?php echo wpsp_get_lightbox_image( $attachment ); ?>" title="<?php echo esc_attr( $attachment_alt ); ?>" class="lightbox-images"><?php echo $thumbnail; ?></a>
+						</div>
 
 					<?php endif; ?>
 
-				<?php endforeach; ?>
-				</div> <!-- .image-border -->
-
+				<?php $owl_count++; endforeach; ?>
 			</div> <!-- .owl-carousel -->
 		</div> <!-- .col-md-8 -->
 		
