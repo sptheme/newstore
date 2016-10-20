@@ -9949,8 +9949,8 @@ span.page-numbers {
  # FOOTER
 --------------------------------------------------------------*/
 .site-footer {
-  background: #262626;
-  color: #777; }
+  background: #f2f2f2;
+  color: #1e2125; }
 
 .site-footer .container {
   padding-top: 45px; }
@@ -9967,73 +9967,50 @@ span.page-numbers {
   font-size: 1.077em;
   margin: 0 0 20px; }
 
-.site-footer p {
-  color: #777; }
-
 .site-footer a,
 .site-footer strong {
   color: #999; }
 
 .site-footer a:hover {
-  color: #fff;
+  color: #d108b2;
   text-decoration: none; }
 
 /* Footer > Bottom */
-#footer-bottom {
-  background: #222;
-  color: #999;
+.footer-bottom {
+  background: #1e2125;
+  color: #656567;
   font-size: 0.923em; }
 
-#footer-bottom-inner {
+.footer-bottom-inner {
   position: relative; }
 
-#footer-bottom p {
-  color: #999; }
-
-#footer-bottom p:last-child {
+.footer-bottom p:last-child {
   margin: 0; }
 
-#footer-bottom-inner {
+.footer-bottom-inner {
   padding-top: 20px;
   padding-bottom: 20px; }
 
-#footer-bottom a {
-  color: #aaa; }
+.footer-bottom a {
+  color: #fff; }
 
-#footer-bottom a:hover {
-  color: #fff;
+.footer-bottom a:hover {
+  color: #d108b2;
   text-decoration: none; }
+
+#nav-footer {
+  margin-bottom: 1.250em; }
+
+#nav-footer .menu-item {
+  float: none; }
 
 /* Footer > Copyright */
 #footer-copyright {
-  font-size: 0.923em;
+  font-size: 12px;
   font-weight: 400; }
 
 #footer-copyright p:last-child {
   margin: 0; }
-
-/* Footer > Social */
-#footer-bottom-menu {
-  position: absolute;
-  right: 0;
-  top: 50%;
-  margin-top: -20px;
-  height: 40px;
-  line-height: 40px; }
-
-#footer-bottom-menu ul {
-  list-style: none;
-  margin: 0; }
-
-#footer-bottom-menu ul li {
-  float: left;
-  margin-left: 20px; }
-
-#footer-bottom-menu ul li:first-child {
-  margin-left: 0; }
-
-#footer-bottom-menu ul li .fa {
-  margin-right: 7px; }
 
 /*-------------------------------------------------------------- 
  # ACCESSIBILITY
