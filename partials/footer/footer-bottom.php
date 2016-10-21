@@ -45,7 +45,7 @@ $copyright = wpsp_translate_theme_mod( 'footer-copyright-text', $copyright ); ?>
 		// Display copyright info
 		if ( $copyright ) : ?>
 
-			<div id="copyright" role="contentinfo" class="text-xs-center">
+			<div role="contentinfo" class="copyright text-xs-center">
 				<?php echo do_shortcode( $copyright ); ?>
 			</div><!-- #copyright -->
 

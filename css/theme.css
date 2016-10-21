@@ -9952,6 +9952,10 @@ span.page-numbers {
   border: 1px solid #eee;
   text-align: center; }
 
+.site-footer .wpsp-newsletter-widget {
+  background: none;
+  border: none; }
+
 .wpsp-newsletter-widget-heading {
   font-weight: 600;
   font-size: 1.231em;
@@ -10004,8 +10008,7 @@ span.page-numbers {
 /* Footer > Bottom */
 .footer-bottom {
   background: #1e2125;
-  color: #656567;
-  font-size: 0.923em; }
+  color: #656567; }
 
 .footer-bottom-inner {
   position: relative; }
@@ -10014,8 +10017,8 @@ span.page-numbers {
   margin: 0; }
 
 .footer-bottom-inner {
-  padding-top: 20px;
-  padding-bottom: 20px; }
+  padding-top: 1em;
+  padding-bottom: 1em; }
 
 .footer-bottom a {
   color: #fff; }
@@ -10025,17 +10028,17 @@ span.page-numbers {
   text-decoration: none; }
 
 #nav-footer {
-  margin-bottom: 1.250em; }
+  margin-bottom: 1em; }
 
 #nav-footer .menu-item {
   float: none; }
 
 /* Footer > Copyright */
-#footer-copyright {
-  font-size: 12px;
+.copyright {
+  font-size: 0.750em;
   font-weight: 400; }
 
-#footer-copyright p:last-child {
+.copyright p:last-child {
   margin: 0; }
 
 /*-------------------------------------------------------------- 
