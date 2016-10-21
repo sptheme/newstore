@@ -6,7 +6,7 @@
  *
  * @package Total WordPress Theme
  * @subpackage Widgets
- * @version 3.3.3
+ * @version 1.0.0
  */
 
 // Prevent direct file access
@@ -15,8 +15,8 @@ if ( ! defined ( 'ABSPATH' ) ) {
 }
 
 // Start widget class
-if ( ! class_exists( 'WPEX_Newsletter_Widget' ) ) {
-	class WPEX_Newsletter_Widget extends WP_Widget {
+if ( ! class_exists( 'WPSP_Newsletter_Widget' ) ) {
+	class WPSP_Newsletter_Widget extends WP_Widget {
 		
 		/**
 		 * Register widget with WordPress.
@@ -27,7 +27,7 @@ if ( ! class_exists( 'WPEX_Newsletter_Widget' ) ) {
 			$branding = wpsp_get_theme_branding();
 			$branding = $branding ? $branding . ' - ' : '';
 			parent::__construct(
-				'wpex_mailchimp',
+				'wpsp_mailchimp',
 				$branding . esc_html__( 'MailChimp Newsletter', 'newstore' )
 			);
 		}
@@ -67,13 +67,13 @@ if ( ! class_exists( 'WPEX_Newsletter_Widget' ) ) {
 
 				<?php if ( $form_action ) { ?>
 
-					<div class="wpex-newsletter-widget wpex-clr">
+					<div class="wpsp-newsletter-widget">
 
 						<?php
 						// Display the heading
 						if ( $heading ) { ?>
 
-							<h4 class="wpex-newsletter-widget-heading"><?php echo wpsp_sanitize_data( $heading, 'html' ); ?></h4>
+							<h4 class="wpsp-newsletter-widget-heading"><?php echo wpsp_sanitize_data( $heading, 'html' ); ?></h4>
 
 						<?php } ?>
 
@@ -81,7 +81,7 @@ if ( ! class_exists( 'WPEX_Newsletter_Widget' ) ) {
 						// Display the description
 						if ( $description ) { ?>
 
-							<div class="wpex-newsletter-widget-description">
+							<div class="wpsp-newsletter-widget-description">
 								<?php echo wpsp_sanitize_data( $description, 'html' ); ?>
 							</div>
 
@@ -90,14 +90,18 @@ if ( ! class_exists( 'WPEX_Newsletter_Widget' ) ) {
 							<form action="<?php echo esc_attr( $form_action ); ?>" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
 
 								<?php if ( $name_field ) : ?>
-									<input type="text" value="<?php echo esc_attr( $name_holder_txt ); ?>" onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;" name="FNAME" id="mce-FNAME" autocomplete="off">
+								<div class="form-group">
+									<input type="text" class="form-control" value="<?php echo esc_attr( $name_holder_txt ); ?>" onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;" name="FNAME" id="mce-FNAME" autocomplete="off">
+								</div>	
 								<?php endif; ?>
+								<div class="input-group">
+									<input type="email" class="form-control" value="<?php echo esc_attr( $email_holder_txt ); ?>" onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;" name="EMAIL" id="mce-EMAIL" autocomplete="off">
+									<span class="input-group-btn">
+										<button type="submit" value="" name="subscribe" class="btn btn-primary"><?php echo strip_tags( $button_text ); ?></button>
+									</span>
+								</div>
+								<?php echo apply_filters( 'wpsp_mailchimp_widget_form_extras', null ); ?>
 
-								<input type="email" value="<?php echo esc_attr( $email_holder_txt ); ?>" onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;" name="EMAIL" id="mce-EMAIL" autocomplete="off">
-
-								<?php echo apply_filters( 'wpex_mailchimp_widget_form_extras', null ); ?>
-
-								<button type="submit" value="" name="subscribe"><?php echo strip_tags( $button_text ); ?></button>
 							</form>
 
 					</div><!-- .mailchimp-widget -->
@@ -204,4 +208,4 @@ if ( ! class_exists( 'WPEX_Newsletter_Widget' ) ) {
 		}
 	}
 }
-register_widget( 'WPEX_Newsletter_Widget' );
+register_widget( 'WPSP_Newsletter_Widget' );

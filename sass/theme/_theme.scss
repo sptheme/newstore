@@ -1123,6 +1123,13 @@ span.page-numbers { line-height: 1; display: block; padding: 0.4em 0.7em; font-s
 .sidebar-widget-icons .widget_pages a:before { content: "\f105 " }
 .sidebar-widget-icons .widget_meta a:before { content: "\f178 " }
 
+/* Widgets > Newsletter */
+.wpsp-newsletter-widget { padding: 20px; background: #f7f7f7; border: 1px solid #eee; text-align: center; }
+.wpsp-newsletter-widget-heading { font-weight: 600; font-size: 1.231em; margin: 0 0 10px; }
+.wpsp-newsletter-widget-description { font-size: 0.923em; margin-bottom: 10px; color: #787878; }
+.wpsp-newsletter-widget-description p:last-child { margin: 0; }
+.wpsp-newsletter-widget button { background: #1e2125; color:#ffffff; text-transform: uppercase; border-color: #1e2125; }
+
 /*-------------------------------------------------------------- 
  # FOOTER
 --------------------------------------------------------------*/
