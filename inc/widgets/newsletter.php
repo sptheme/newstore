@@ -76,7 +76,7 @@ if ( ! class_exists( 'WPSP_Newsletter_Widget' ) ) {
 							<h4 class="wpsp-newsletter-widget-heading"><?php echo wpsp_sanitize_data( $heading, 'html' ); ?></h4>
 
 						<?php } ?>
-
+						<div class="newsletter-content clearfix">
 						<?php
 						// Display the description
 						if ( $description ) { ?>
@@ -87,7 +87,7 @@ if ( ! class_exists( 'WPSP_Newsletter_Widget' ) ) {
 
 						<?php } ?>
 
-							<form action="<?php echo esc_attr( $form_action ); ?>" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+							<form class="newsletter-form" action="<?php echo esc_attr( $form_action ); ?>" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" novalidate>
 
 								<?php if ( $name_field ) : ?>
 								<div class="form-group">
@@ -104,6 +104,7 @@ if ( ! class_exists( 'WPSP_Newsletter_Widget' ) ) {
 
 							</form>
 
+						</div> <!-- .newsletter-content -->
 					</div><!-- .mailchimp-widget -->
 
 				<?php } else { ?>

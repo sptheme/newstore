@@ -10005,6 +10005,27 @@ span.page-numbers {
   color: #d108b2;
   text-decoration: none; }
 
+/* Custom newsletter widget */
+.site-footer .newsletter-content {
+  color: #1e2125; }
+
+@media only screen and (min-width: 768px) {
+  .site-footer .newsletter-content {
+    position: relative; }
+  .site-footer .wpsp-newsletter-widget-description {
+    text-align: right;
+    text-transform: uppercase;
+    color: #1e2125;
+    float: left;
+    width: 58.33333%;
+    padding-left: 15px;
+    padding-right: 15px; }
+  .site-footer .newsletter-form {
+    float: left;
+    width: 41.66667%;
+    padding-left: 15px;
+    padding-right: 15px; } }
+
 /* Footer > Bottom */
 .footer-bottom {
   background: #1e2125;

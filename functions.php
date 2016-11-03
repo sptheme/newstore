@@ -372,8 +372,7 @@ class WPSP_Theme_Setup {
 	 * @version 1.0.0
 	 */
 	public static function configs(){
-		// Register post type will goes here
-
+		
 		// Add admin option with redux framework
 		require_once( get_template_directory() . '/inc/admin/admin-init.php' );
 
@@ -383,6 +382,8 @@ class WPSP_Theme_Setup {
 
 		// Add shortcode supports
 		require_once( get_template_directory() . '/inc/shortcodes/shortcodes.php' );		
+
+		require_once( get_template_directory() . '/inc/slider/slider-config.php');
 
 		if ( class_exists( 'WooCommerce' ) ) {
 			require_once( get_template_directory() .'/inc/woocommerce/woocommerce-config.php' );

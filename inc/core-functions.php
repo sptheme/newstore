@@ -457,6 +457,7 @@ if ( is_admin() && apply_filters( 'wpsp_dashboard_thumbnails', true ) ) :
 
 	add_filter( 'manage_post_posts_columns', 'wpsp_posts_columns' );
 	add_filter( 'manage_portfolio_posts_columns', 'wpsp_posts_columns' );
+	add_filter( 'manage_slider_posts_columns', 'wpsp_posts_columns' );
 	add_action( 'manage_posts_custom_column', 'wpsp_posts_custom_columns', 10, 2 );
 	add_filter( 'manage_page_posts_columns', 'wpsp_posts_columns' );
 	add_action( 'manage_pages_custom_column', 'wpsp_posts_custom_columns', 10, 2 );

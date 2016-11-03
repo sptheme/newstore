@@ -61,10 +61,16 @@ if ( ! class_exists( WPSP_Image_Sizes ) ) {
 			foreach ($sizes as $size => $args ) {
 				extract( $args );
 
-				// Get theme mod values
-				$width  = wpsp_get_redux( $width, '9999' );
-				$height = wpsp_get_redux( $height, '9999' );
-				$crop   = wpsp_get_redux( $crop, 'center-center'  );
+				// Get defaults
+				$defaults       = ! empty( $args['defaults'] ) ? $args['defaults'] : '';
+				$default_width  = isset( $defaults['width'] ) ? $defaults['width'] : '9999';
+				$default_height = isset( $defaults['height'] ) ? $defaults['height'] : '9999';
+				$default_crop   = isset( $defaults['crop'] ) ? $defaults['crop'] : 'center-center';
+
+				// Get theme mod values				
+				$width  = wpsp_get_redux( $width, $default_width );
+				$height = wpsp_get_redux( $height, $default_height );
+				$crop   = wpsp_get_redux( $crop, $default_crop  );
 				$crop   = $crop ? $crop : 'center-center'; // Sanitize crop
 
 				// Turn crop into array
@@ -74,7 +80,7 @@ if ( ! class_exists( WPSP_Image_Sizes ) ) {
 				if ( $width || $height ) {
 					add_image_size( $size, $width, $height, $crop );
 				}
-			}
+			}			
 		}
 
 		/**
