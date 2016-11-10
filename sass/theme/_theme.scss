@@ -1,7 +1,8 @@
 /*--------------------------------------------------------------
 >>> TABLE OF CONTENTS:
 ----------------------------------------------------------------
-
+# TYPOGRAPHY
+# ELEMENTS
 # STRUCTURE AND LAYOUT
 # HEADER
 	## Header main logo
@@ -26,12 +27,31 @@
 # WIDGETS
 # FOOTER
 # ACCESSIBILITY
-# ADDON ELEMENTS
+# COMPONENTS
 	## Scroll to top
 	## Social Sharing
 	## Lean Modal
 	## Owl Carousel2 Thumb
 --------------------------------------------------------------*/
+
+/*-------------------------------------------------------------- 
+# TYPOGRAPHY
+--------------------------------------------------------------*/
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: $font-family-montserrat;
+}
+
+/*-------------------------------------------------------------- 
+# ELEMENTS
+--------------------------------------------------------------*/
+a:hover {
+	color: $link-hover-color;
+	text-decoration: none;
+}
+a:focus {
+	outline:0;
+}
 
 /*-------------------------------------------------------------- 
  # STRUCTURE AND LAYOUT
@@ -1210,7 +1230,7 @@ span.page-numbers { line-height: 1; display: block; padding: 0.4em 0.7em; font-s
 .image-border { border: 1px solid #e4e4e4; }
 
 /*-------------------------------------------------------------- 
- # ADDON ELEMENTS
+ # COMPONENTS
 --------------------------------------------------------------*/
 
 /*-------------------------------------------------------------- 

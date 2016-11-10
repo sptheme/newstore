@@ -7,6 +7,8 @@
 
 function wpsp_scripts() {
 
+    wp_enqueue_style( 'google-font-english', 'https://fonts.googleapis.com/css?family=Montserrat|Open+Sans:400,400i,600,600i' );
+
     wp_enqueue_style( 'styles', get_stylesheet_directory_uri() . '/css/theme.min.css', array(), '0.4.6');
     wp_enqueue_script('jquery'); 
     wp_enqueue_script( 'scripts', get_template_directory_uri() . '/js/theme.min.js', array(), '0.4.6', true );

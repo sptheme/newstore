@@ -255,7 +255,7 @@ html {
   -webkit-tap-highlight-color: transparent; }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-size: 1rem;
   line-height: 1.5;
   color: #373a3c;
@@ -3843,7 +3843,7 @@ button.close {
   position: absolute;
   z-index: 1070;
   display: block;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-style: normal;
   font-weight: normal;
   letter-spacing: normal;
@@ -3922,7 +3922,7 @@ button.close {
   display: block;
   max-width: 276px;
   padding: 1px;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-style: normal;
   font-weight: normal;
   letter-spacing: normal;
@@ -7697,7 +7697,8 @@ img.mfp-img {
 /*--------------------------------------------------------------
 >>> TABLE OF CONTENTS:
 ----------------------------------------------------------------
-
+# TYPOGRAPHY
+# ELEMENTS
 # STRUCTURE AND LAYOUT
 # HEADER
 	## Header main logo
@@ -7722,12 +7723,29 @@ img.mfp-img {
 # WIDGETS
 # FOOTER
 # ACCESSIBILITY
-# ADDON ELEMENTS
+# COMPONENTS
 	## Scroll to top
 	## Social Sharing
 	## Lean Modal
 	## Owl Carousel2 Thumb
 --------------------------------------------------------------*/
+/*-------------------------------------------------------------- 
+# TYPOGRAPHY
+--------------------------------------------------------------*/
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: "Montserrat", sans-serif; }
+
+/*-------------------------------------------------------------- 
+# ELEMENTS
+--------------------------------------------------------------*/
+a:hover {
+  color: #870573;
+  text-decoration: none; }
+
+a:focus {
+  outline: 0; }
+
 /*-------------------------------------------------------------- 
  # STRUCTURE AND LAYOUT
 --------------------------------------------------------------*/
@@ -10108,7 +10126,7 @@ span.page-numbers {
   border: 1px solid #e4e4e4; }
 
 /*-------------------------------------------------------------- 
- # ADDON ELEMENTS
+ # COMPONENTS
 --------------------------------------------------------------*/
 /*-------------------------------------------------------------- 
  ## Scroll to top
