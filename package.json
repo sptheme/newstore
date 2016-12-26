@@ -4,7 +4,8 @@
   "description": "Wordpress Theme framework",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "postinstall": "gulp copy-assets",
+    "dev": "gulp watch"
   },
   "repository": {
     "type": "git",
@@ -29,17 +30,17 @@
     "font-awesome": "^4.6.3",
     "gulp": "^3.9.1",
     "gulp-clone": "^1.0.0",
-    "gulp-concat": "^2.6.0",
+    "gulp-concat": "^2.6.1",
     "gulp-cssnano": "^2.1.2",
-    "gulp-ignore": "^2.0.1",
+    "gulp-ignore": "^2.0.2",
     "gulp-merge": "^0.1.1",
     "gulp-plumber": "^1.1.0",
     "gulp-rename": "^1.2.2",
-    "gulp-rimraf": "^0.2.0",
-    "gulp-sass": "^2.3.2",
-    "gulp-sourcemaps": "^1.6.0",
+    "gulp-rimraf": "^0.2.1",
+    "gulp-sass": "^3.0.0",
+    "gulp-sourcemaps": "^2.2.0",
     "gulp-uglify": "^2.0.0",
-    "gulp-watch": "^4.3.6",
+    "gulp-watch": "^4.3.10",
     "imagesloaded": "^4.1.1",
     "isotope": "0.0.1-security",
     "isotope-layout": "^3.0.1",
@@ -50,5 +51,6 @@
     "photoswipe": "^4.1.1",
     "sidr": "^2.2.1",
     "superfish": "^1.7.9"
-  }
+  },
+  "devDependencies": {}
 }
