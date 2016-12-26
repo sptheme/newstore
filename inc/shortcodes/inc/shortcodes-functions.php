@@ -93,11 +93,11 @@ function col( $atts, $content = null ) {
 function spacer_horz($atts, $content = null) {
 	
 	extract(shortcode_atts(array(
-		'margin_top' => '10',
-		'margin_bottom' => '10'
+		'padding_top' => '10',
+		'padding_bottom' => '10'
 	), $atts));
 	
-	return '<div class="' .$style . '" style="margin-top:' . $margin_top . 'px;margin-bottom:' . $margin_bottom . 'px;"></div>';
+	return '<div class="' .$style . '" style="padding-top:' . $padding_top . 'px;padding-bottom:' . $padding_bottom . 'px;"></div>';
 }
 
 

@@ -24,12 +24,12 @@
 	jQuery( function() {
 		var form = jQuery( '<div id="sc-spacer-form"><table id="sc-spacer-table" class="form-table">\
 							<tr>\
-							<th><label for="sc-spacer-margin-top">Margin top</label></th>\
-							<td><input type="text" name="sc-spacer-margin-top" id="sc-spacer-margin-top" /><small>(Without px. Default value is 40)</small></td>\
+							<th><label for="sc-spacer-padding-top">Padding top</label></th>\
+							<td><input type="text" name="sc-spacer-padding-top" id="sc-spacer-padding-top" /><small>(Without px. Default value is 10)</small></td>\
 							</tr>\
 							<tr>\
-							<th><label for="sc-spacer-margin-bottom">Margin bottom</label></th>\
-							<td><input type="text" name="sc-spacer-margin-bottom" id="sc-spacer-margin-bottom" /><small>(Without px. Default value is 40)</small></td>\
+							<th><label for="sc-spacer-padding-bottom">Padding bottom</label></th>\
+							<td><input type="text" name="sc-spacer-padding-bottom" id="sc-spacer-padding-bottom" /><small>(Without px. Default value is 10)</small></td>\
 							</tr>\
 							</table>\
 							<p class="submit">\
@@ -39,13 +39,13 @@
 		var table = form.find( 'table' );
 		form.appendTo( 'body' ).hide();
 		form.find( '#sc-spacer-submit' ).click( function() {
-			var margin_top = table.find( '#sc-spacer-margin-top').val(),
-			margin_bottom = table.find( '#sc-spacer-margin-bottom' ).val(),
+			var padding_top = table.find( '#sc-spacer-padding-top').val(),
+			padding_bottom = table.find( '#sc-spacer-padding-bottom' ).val(),
 			shortcode = '[spacer_horz';
-			if(margin_top)
-				shortcode += ' margin_top="' + margin_top + '"';
-			if(margin_bottom)
-				shortcode += ' margin_bottom="' + margin_bottom + '"';
+			if(padding_top)
+				shortcode += ' padding_top="' + padding_top + '"';
+			if(padding_bottom)
+				shortcode += ' padding_bottom="' + padding_bottom + '"';
 			shortcode +=']';
 
 			tinyMCE.activeEditor.execCommand( 'mceInsertContent', 0, shortcode );
