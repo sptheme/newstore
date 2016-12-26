@@ -7134,6 +7134,10 @@ a.skip-link {
 /*--------------------------------------------------------------
 ## Thumb
 --------------------------------------------------------------*/
+.owl-thumbs {
+  height: 480px;
+  overflow-x: hidden; }
+
 .owl-thumb-item {
   display: block;
   border: none;
