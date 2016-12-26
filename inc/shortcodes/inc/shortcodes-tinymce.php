@@ -18,6 +18,7 @@ function wpsp_shortcodes_register_mce_button_3( $buttons ) {
 	array_push( $buttons, 'container_tag' );
 	array_push( $buttons, 'col' );
 	array_push( $buttons, 'spacer_horz' );
+	array_push( $buttons, 'box_color' );
 	//array_push( $buttons, 'post' );
 
     return $buttons;
@@ -56,7 +57,8 @@ function wpsp_shortcodes_add_tinymce_plugin($plugin_array) {
 
 	$plugin_array['container_tag'] 	= ED_JS_URL . 'ed-container-tag.js';
 	$plugin_array['col'] 			= ED_JS_URL . 'ed-columns.js';
-	$plugin_array['spacer_horz'] 			= ED_JS_URL . 'ed-spacer.js';
+	$plugin_array['spacer_horz']  	= ED_JS_URL . 'ed-spacer.js';
+	$plugin_array['box_color']  	= ED_JS_URL . 'ed-box-color.js';
 	/*if ( $post_type == 'page' ) {
 		$plugin_array['post']		= ED_JS_URL . 'ed-post.js';
 	}*/
