@@ -7598,6 +7598,7 @@ img.mfp-img {
 	## Mobile Menu Style > Toggle
 	## Mobile Menu Style > Full Screen Fade Overlay
 # PAGE TITLE
+# CONTENT
 # POST META
 # BLOG	
 # SEARCH
@@ -7627,6 +7628,10 @@ a:hover {
 a:focus {
   outline: 0; }
 
+img {
+  max-width: 100%;
+  height: auto; }
+
 /*-------------------------------------------------------------- 
  # STRUCTURE AND LAYOUT
 --------------------------------------------------------------*/
@@ -7652,6 +7657,13 @@ body.full-screen .wrapper .content-area {
   float: none;
   width: 100% !important;
   max-width: none !important; }
+
+@media (min-width: 576px) {
+  .container.md {
+    max-width: 46rem; }
+  .container.sm {
+    width: 540px;
+    max-width: 100%; } }
 
 /*--------------------------------------------------------------
 # HEADER
@@ -8920,6 +8932,12 @@ body.breadcrumbs-position-default .page-header-title {
 
 .background-image-page-header-overlay.style-dashed {
   background: rgba(0, 0, 0, 0.3) url(../images/dashed-overlay.png) repeat; }
+
+/*--------------------------------------------------------------
+# CONTENT
+--------------------------------------------------------------*/
+#content ul, #content ol {
+  padding-left: 1.5em; }
 
 /*--------------------------------------------------------------
 # POST META

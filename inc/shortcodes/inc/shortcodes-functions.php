@@ -67,7 +67,10 @@ function return_clean( $content, $p_tag = false, $br_tag = false )
  * Column
  */
 function container_tag( $atts, $content = null ) {
-	return '<div class="container">' . return_clean($content) . '</div>';
+	extract( shortcode_atts( array(
+		'class' => 'full'
+	), $atts ) );
+	return '<div class="container ' . $class . '">' . return_clean($content) . '</div>';
 }
 
 /**

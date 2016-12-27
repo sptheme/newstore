@@ -21,6 +21,7 @@
 	## Mobile Menu Style > Toggle
 	## Mobile Menu Style > Full Screen Fade Overlay
 # PAGE TITLE
+# CONTENT
 # POST META
 # BLOG	
 # SEARCH
@@ -53,6 +54,12 @@ a:focus {
 	outline:0;
 }
 
+//Limit featured image size to 100%
+img {
+	max-width: 100%;
+  	height: auto;
+}
+
 /*-------------------------------------------------------------- 
  # STRUCTURE AND LAYOUT
 --------------------------------------------------------------*/
@@ -67,6 +74,18 @@ body.full-width .wrapper .content-area,
 body.full-screen #content,
 .full-screen #content,
 body.full-screen .wrapper .content-area { float: none; width: 100% !important; max-width: none !important; }
+
+@media (min-width: 576px) {
+	.container.md {
+	max-width: 46rem;
+	}
+
+	.container.sm {
+		width: 540px;
+	    max-width: 100%;
+	}	
+}
+
 
 /*--------------------------------------------------------------
 # HEADER
@@ -738,6 +757,15 @@ body.breadcrumbs-position-default .page-header-title { max-width: 70% }
 .background-image-page-header-overlay { display: block; position: absolute; top: 0; left: 0; height: 100%; width: 100%; background: #000; z-index: 1; opacity: 0.5; }
 .background-image-page-header-overlay.style-dotted { background: rgba(0,0,0,0.3) url(../images/dotted-overlay.png) repeat }
 .background-image-page-header-overlay.style-dashed { background: rgba(0,0,0,0.3) url(../images/dashed-overlay.png) repeat }
+
+/*--------------------------------------------------------------
+# CONTENT
+--------------------------------------------------------------*/
+#content {
+	ul, ol {
+		padding-left:1.5em;
+	}
+}
 
 /*--------------------------------------------------------------
 # POST META
