@@ -297,6 +297,10 @@ body #site-navigation .sf-menu li.left-dropdowns ul a.sf-with-ul {
 	color:$brand-primary;
 }
 
+#site-navigation .wpsp-dropdown-menu .sale-highlight > a {
+	color: #ed1c24!important;
+}
+
 @media only screen and (min-width: 992px) {
 	#site-navigation { display: block; }
 }

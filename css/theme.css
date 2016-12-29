@@ -7961,6 +7961,9 @@ body #site-navigation .sf-menu li.left-dropdowns ul a.sf-with-ul {
 #site-navigation .wpsp-dropdown-menu .current-menu-parent > a {
   color: #d108b2; }
 
+#site-navigation .wpsp-dropdown-menu .sale-highlight > a {
+  color: #ed1c24 !important; }
+
 @media only screen and (min-width: 992px) {
   #site-navigation {
     display: block; } }
