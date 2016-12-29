@@ -7605,6 +7605,7 @@ img.mfp-img {
 # WIDGETS
 # FOOTER
 # ACCESSIBILITY
+# WP CLASS
 # COMPONENTS
 	## Scroll to top
 	## Social Sharing
@@ -10028,6 +10029,31 @@ span.page-numbers {
 /* Images */
 .image-border {
   border: 1px solid #e4e4e4; }
+
+/*-------------------------------------------------------------- 
+ # WP CLASS
+--------------------------------------------------------------*/
+.wp-caption {
+  font-size: inherit; }
+
+.wp-caption-text {
+  font-size: inherit; }
+
+.screen-reader-text {
+  font-size: inherit; }
+
+.alignright {
+  float: right;
+  padding-left: 10px; }
+
+.alignleft {
+  float: left;
+  padding-right: 10px; }
+
+.aligncenter {
+  clear: both;
+  display: block;
+  margin: 0px auto; }
 
 /*-------------------------------------------------------------- 
  # COMPONENTS
