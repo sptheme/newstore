@@ -24,7 +24,7 @@ function add_script_style_sc() {
  */
 function wpsp_add_shortcodes() {
 	add_shortcode( 'wpsp_row', 'wpsp_row' );
-	add_shortcode( 'container_tag', 'container_tag' );
+	add_shortcode( 'container_box', 'container_box' );
 	add_shortcode( 'col', 'col' );
 	add_shortcode( 'spacer_horz', 'spacer_horz' );
 	add_shortcode( 'box_color', 'box_color' );
@@ -66,7 +66,7 @@ function return_clean( $content, $p_tag = false, $br_tag = false )
 /**
  * Column
  */
-function container_tag( $atts, $content = null ) {
+function container_box( $atts, $content = null ) {
 	extract( shortcode_atts( array(
 		'class' => 'full'
 	), $atts ) );
