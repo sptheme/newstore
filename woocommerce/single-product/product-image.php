@@ -66,7 +66,7 @@ $show_slider = apply_filters( 'wpsp_woo_product_slider', $show_slider ); ?>
 			</div> <!-- .owl-thumbs -->
 		</div> <!-- .col-md-4 -->
 		
-		<div class="col-md-8 image-border">
+		<div class="col-md-8">
 			<div class="owl-carousel" data-slider-id="1">				
 				<?php 
 				// Loop through attachments and display in slider
@@ -79,6 +79,7 @@ $show_slider = apply_filters( 'wpsp_woo_product_slider', $show_slider ); ?>
 					$thumbnail = wpsp_get_post_thumbnail( array(
 						'attachment' => $attachment,
 						'size'       => 'shop_single',
+						'class'		 => 'image-border'
 					) );
 
 					// Display thumbnail

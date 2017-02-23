@@ -48,14 +48,14 @@ if ( $secondary_img_id ) : ?>
 			'attachment' => $attachment,
 			'size'       => 'shop_catalog',
 			'alt'        => wpsp_get_esc_title(),
-			'class'      => 'woo-entry-image-main',
+			'class'      => 'woo-entry-image-main image-border',
 		) ); ?>
 		<?php
 		// Secondary Image
 		wpsp_post_thumbnail( array(
 			'attachment' => $secondary_img_id,
 			'size'       => 'shop_catalog',
-			'class'      => 'woo-entry-image-secondary',
+			'class'      => 'woo-entry-image-secondary image-border',
 		) ); ?>
 	</div><!-- .woo-entry-image-swap -->
 

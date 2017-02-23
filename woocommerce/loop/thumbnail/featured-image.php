@@ -26,7 +26,7 @@ if ( $attachment ) {
         'attachment' => $attachment,
         'size'       => 'shop_catalog',
         'alt'        => wpsp_get_esc_title(),
-        'class'      => 'woo-entry-image-main',
+        'class'      => 'woo-entry-image-main image-border',
     ) );
 
 }
