@@ -77,7 +77,7 @@ if ( ! class_exists( 'WPSP_WooCommerce_Config' ) ) {
 			// Product entries
 			add_action( 'woocommerce_before_shop_loop_item', array( $this, 'add_shop_loop_item_inner_div' ) );
 			add_action( 'woocommerce_after_shop_loop_item', array( $this, 'close_shop_loop_item_inner_div' ) );
-			add_action( 'woocommerce_before_shop_loop_item', array( $this, 'add_shop_loop_item_out_of_stock_badge' ) );
+			add_action( 'woocommerce_before_shop_loop_item', array( $this, 'add_shop_loop_item_out_of_stock_badge' ) );			
 
 			// Product post
 			add_action( 'woocommerce_after_single_product_summary', array( $this, 'clear_summary_floats' ), 1 );
@@ -106,6 +106,11 @@ if ( ! class_exists( 'WPSP_WooCommerce_Config' ) ) {
 		 * @since 1.0.0
 		 */
 		public function init() {
+
+			// Remove add to cart button in archive page
+			if ( ! wpsp_get_redux( 'is-loop-add-to-cart-link', true ) ) {
+				add_filter( 'woocommerce_loop_add_to_cart_link', array(&$this, 'remove_add_to_cart_link'), 99); 
+			}
 
 			// Remove category descriptions, these are added already by the theme
 			remove_action( 'woocommerce_archive_description', 'woocommerce_taxonomy_archive_description', 10 );

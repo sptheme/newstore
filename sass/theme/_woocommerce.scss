@@ -217,7 +217,7 @@ Store
 .woo-product-entry-slider.wpex-slider .sp-buttons { left: auto; right: 0; top: 0; padding: 10px; }
 
 /* product entry > title */
-.woocommerce ul.products li.product h3 { font-size: 16px; font-weight: normal; font-weight: 400; margin: 0; padding: 0; }
+.woocommerce ul.products li.product h3 { font-size: 0.750em; font-weight: normal; font-weight: 400; margin: 0; padding: 0; }
 .woocommerce ul.products li.product h3:hover,
 .woocommerce ul.products li.product h3:hover mark { color: #000 }
 
@@ -233,7 +233,7 @@ Store
 .woocommerce ul.products li.product .star-rating { float: none; display: block; margin: 10px auto 0; }
 
 /* product entry > price */
-.woocommerce ul.products li.product .price { display: block; font-size: 1.231em; font-weight: 600; text-align: center; margin: 10px 0 0; color: #444; }
+.woocommerce ul.products li.product .price { display: block; font-size: 0.813em; text-align: center; margin: 10px 0 0; color: #444; }
 .woocommerce ul.products li.product .price .amount { color: #444 }
 .woocommerce ul.products li.product .price del,
 .woocommerce ul.products li.product .price ins { font-weight: 600; display: inline-block; text-decoration: none; }
@@ -358,7 +358,7 @@ Store
 .woocommerce .term-description { margin-bottom: 40px }
 .woocommerce .term-description p:last-child { margin-bottom: 0 }
 .woocommerce ul.products li.product-category a img { margin-bottom: 20px }
-.woocommerce ul.products li.product h3 { margin: 0; font-size: 1.231em; }
+//.woocommerce ul.products li.product h3 { margin: 0; font-size: 1.231em; }
 .products .product-category { text-align: center }
 .products .product-category img { display: block; margin: 0 auto; }
 .products .product-category mark { background: none }
@@ -634,7 +634,7 @@ Accents
 [Addon]
 -------------------------------------------------------------------*/
 .single-product .wpsp-social-share-wrap {
-	margin-top: 15px;
+	margin-top: 15px; 
 }
 
 /*------------------------------------------------------------------

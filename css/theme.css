@@ -10736,7 +10736,7 @@ Store
 
 /* product entry > title */
 .woocommerce ul.products li.product h3 {
-  font-size: 16px;
+  font-size: 0.750em;
   font-weight: normal;
   font-weight: 400;
   margin: 0;
@@ -10800,8 +10800,7 @@ Store
 /* product entry > price */
 .woocommerce ul.products li.product .price {
   display: block;
-  font-size: 1.231em;
-  font-weight: 600;
+  font-size: 0.813em;
   text-align: center;
   margin: 10px 0 0;
   color: #444; }
@@ -11141,10 +11140,6 @@ Store
 
 .woocommerce ul.products li.product-category a img {
   margin-bottom: 20px; }
-
-.woocommerce ul.products li.product h3 {
-  margin: 0;
-  font-size: 1.231em; }
 
 .products .product-category {
   text-align: center; }

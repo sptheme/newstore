@@ -173,6 +173,12 @@ Redux::setSection( $opt_name, array(
             'title'    => __( 'Enable/Disable Shop Result Count', 'wpsp-redux-framework' ),
             'default'  => '1'// 1 = on | 0 = off
         ),
+        array(
+            'id'       => 'is-loop-add-to-cart-link',
+            'type'     => 'switch',
+            'title'    => __( 'Enable/Disable Loop add to cart link', 'wpsp-redux-framework' ),
+            'default'  => '1'// 1 = on | 0 = off
+        ),
 	)
 ) );
 
