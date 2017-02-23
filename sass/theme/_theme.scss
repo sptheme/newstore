@@ -1328,7 +1328,7 @@ ul.wpsp-social-share { list-style: none }
 .wpsp-social-share.position-vertical .social-share-button-text { display: none }
 
 /* Social Sharing > Horizontal */
-.wpsp-social-share.position-horizontal { margin: 0 0 40px }
+.wpsp-social-share.position-horizontal { margin: 0 0 40px; padding-left:0!important; }
 .wpsp-social-share.position-horizontal li { float: left; margin: 0 5px 5px 0; border: none; }
 .wpsp-social-share.position-horizontal li a { color: #999; width: auto; padding: 0 10px; height: 30px; line-height: 30px; border: 1px solid #e4e4e4; font-weight: normal; }
 .wpsp-social-share.position-horizontal li .fa { margin-right: 5px }
