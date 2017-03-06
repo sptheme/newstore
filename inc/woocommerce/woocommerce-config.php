@@ -680,7 +680,7 @@ if ( ! class_exists( 'WPSP_WooCommerce_Config' ) ) {
 		public static function menu_cart_icon( $items, $args ) {
 
 			// Only used for the main menu
-			if ( 'main_menu' != $args->theme_location ) {
+			if ( 'primary' != $args->theme_location ) {
 				return $items;
 			}
 
