@@ -97,6 +97,7 @@ if ( ! class_exists( 'WPSP_WooCommerce_Config' ) ) {
 			add_filter( 'woocommerce_output_related_products_args', array( $this, 'related_product_args' ) );
 			add_filter( 'woocommerce_pagination_args', array( $this, 'pagination_args' ) );
 			add_filter( 'woocommerce_continue_shopping_redirect', array( $this, 'continue_shopping_redirect' ) );
+			add_filter( 'woocommerce_states', array( $this, 'cambodia_woocommerce_states' ) );
 		}
 
 		/**
@@ -899,6 +900,42 @@ if ( ! class_exists( 'WPSP_WooCommerce_Config' ) ) {
 				$return_to = get_permalink( $shop_id );
 			}
 			return $return_to;
+		}
+
+		/**
+		 * Add Cambodia states.
+		 *
+		 * @since 1.0.0
+		 */
+		public static function cambodia_woocommerce_states( $states ) {
+			$states['KH'] = array(
+				'KH1' => 'Banteay Meanchey',
+				'KH2' => 'Battambang',
+				'KH3' => 'Kompong Cham',
+				'KH4' => 'Kampong Chhnang',
+				'KH5' => 'Kampong Speu',
+				'KH6' => 'Kampong Thom',
+				'KH7' => 'Kampot',
+				'KH8' => 'Kandal',
+				'KH9' => 'Koh Kong',
+				'KH10' => 'Kep',
+				'KH11' => 'Mondulkiri',
+				'KH12' => 'Phnom Penh',
+				'KH13' => 'Preah Vihear',
+				'KH14' => 'Prey Veng',
+				'KH15' => 'Pursat',
+				'KH16' => 'Ratanakiri',
+				'KH17' => 'Siem Reap',
+				'KH18' => 'Preah Sihanouk',
+				'KH19' => 'Stung Treng',
+				'KH20' => 'Svay Rieng',
+				'KH21' => 'Takéo',
+				'KH22' => 'Oddar Meanchey',
+				'KH24' => 'Pailin',
+				'KH25' => 'Tboung Khmum'
+				);
+
+			return $states;
 		}
 
 	}
