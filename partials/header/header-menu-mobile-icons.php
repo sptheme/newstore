@@ -20,14 +20,13 @@
 			$menu = wp_get_nav_menu_object( $locations[ 'mobile_menu' ] );
 			if ( ! empty( $menu ) ) {
 				$menu_items = wp_get_nav_menu_items( $menu->term_id );
-				foreach ( $menu_items as $key => $menu_item ) {
-					if ( in_array( $menu_item->title, wpsp_get_awesome_icons() ) ) {
-						$url = $menu_item->url;
-						$attr_title = $menu_item->attr_title; ?>
-						<a href="<?php echo esc_url( $url ); ?>" title="<?php echo esc_attr( $attr_title ); ?>" class="mobile-menu-extra-icons mobile-menu-<?php echo esc_attr( $menu_item->title ); ?>">
-							<span class="fa fa-<?php echo esc_attr( $menu_item->title ); ?>"></span>
-						</a>
-				<?php }
+				foreach ( $menu_items as $key => $menu_item ) {					
+					$url = $menu_item->url;
+					$attr_title = $menu_item->attr_title; ?>
+					<a href="<?php echo esc_url( $url ); ?>" title="<?php echo esc_attr( $attr_title ); ?>" class="mobile-menu-extra-icons mobile-menu-<?php echo esc_attr( $menu_item->title ); ?>">
+						<span class="fa fa-<?php echo esc_attr( $menu_item->title ); ?>"></span>
+					</a>
+				<?php 
 				}
 			}
 		}
