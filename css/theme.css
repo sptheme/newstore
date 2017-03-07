@@ -10355,7 +10355,7 @@ Globals
 /* price color */
 .price,
 .amount {
-  color: #8db830; }
+  color: #E91E63; }
 
 .price del,
 del .amount {
@@ -10567,7 +10567,8 @@ Store
 /* store > add negative margins to shop for bootstrap style grid */
 .woocommerce .products ul,
 .woocommerce ul.products {
-  margin: 0 -10px; }
+  margin: 0 -10px;
+  padding-left: 0 !important; }
 
 /* store > ordering & sorting */
 .woocommerce .woocommerce-ordering,

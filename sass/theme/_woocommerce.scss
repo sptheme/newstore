@@ -35,7 +35,7 @@ Globals
 
 /* price color */
 .price,
-.amount { color: #8db830 }
+.amount { color: $brand-primary; }
 .price del,
 del .amount { color: #555 !important }
 .woocommerce del { opacity: .5 }
@@ -144,7 +144,7 @@ Store
 
 /* store > add negative margins to shop for bootstrap style grid */
 .woocommerce .products ul,
-.woocommerce ul.products { margin: 0 -10px }
+.woocommerce ul.products { margin: 0 -10px; padding-left: 0!important; }
 
 /* store > ordering & sorting */
 .woocommerce .woocommerce-ordering,
