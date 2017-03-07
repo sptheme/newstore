@@ -97,7 +97,7 @@ if ( ! class_exists( 'WPSP_WooCommerce_Config' ) ) {
 			add_filter( 'woocommerce_output_related_products_args', array( $this, 'related_product_args' ) );
 			add_filter( 'woocommerce_pagination_args', array( $this, 'pagination_args' ) );
 			add_filter( 'woocommerce_continue_shopping_redirect', array( $this, 'continue_shopping_redirect' ) );
-			add_filter( 'woocommerce_states', array( $this, 'cambodia_woocommerce_states' ) );
+			add_filter( 'woocommerce_states', array( $this, 'cambodia_woocommerce_states' ) );			
 		}
 
 		/**
@@ -940,7 +940,6 @@ if ( ! class_exists( 'WPSP_WooCommerce_Config' ) ) {
 
 			return $states;
 		}
-
 	}
 
 }
