@@ -135,6 +135,9 @@ if ( ! class_exists( 'WPSP_WooCommerce_Config' ) ) {
 			// Remove coupon from checkout
 			//remove_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_coupon_form', 10 );
 
+			// Remove "Sale" icon from product single page
+			remove_action( 'woocommerce_before_single_product_summary', 'woocommerce_show_product_sale_flash', 10 );			
+
 			// Remove single meta
 			if ( ! wpsp_get_redux( 'woo-product-meta', true ) ) {
 				remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40 );

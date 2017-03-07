@@ -67,6 +67,7 @@ $show_slider = apply_filters( 'wpsp_woo_product_slider', $show_slider ); ?>
 		</div> <!-- .col-md-4 -->
 		
 		<div class="col-md-8">
+			<?php woocommerce_show_product_sale_flash(); ?>
 			<div class="owl-carousel" data-slider-id="1">				
 				<?php 
 				// Loop through attachments and display in slider
